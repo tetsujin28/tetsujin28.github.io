@@ -106,7 +106,7 @@ code{font-family:var(--mono);font-size:.86em;color:var(--paper);background:var(-
 
 /* download */
 .dl{margin-top:clamp(56px,8vw,96px);border:1px solid var(--line);border-radius:18px;background:var(--panel);display:grid;grid-template-columns:1fr 1.25fr}
-.dl > div{padding:clamp(24px,3.4vw,40px)}
+.dl > div{padding:clamp(20px,3.4vw,40px);min-width:0}
 .dl > div + div{border-left:1px solid var(--line)}
 .dl h3{font-size:28px;font-weight:750;font-variation-settings:"wdth" 110;letter-spacing:-.015em}
 .dl p{color:var(--muted);margin-top:10px;font-size:15.5px}
@@ -116,7 +116,7 @@ code{font-family:var(--mono);font-size:.86em;color:var(--paper);background:var(-
 .files td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
 .files tr:last-child td{border-bottom:0}
 .files td:first-child{color:var(--muted);padding-right:16px;white-space:nowrap}
-.files td:last-child{font:400 13.5px var(--mono);text-align:right;color:var(--paper)}
+.files td:last-child{font:400 13.5px var(--mono);text-align:right;color:var(--paper);overflow-wrap:anywhere}
 
 /* about */
 .about{padding:clamp(100px,14vw,180px) 0 clamp(80px,10vw,130px);border-top:1px solid var(--line);margin-top:clamp(80px,12vw,150px)}
@@ -147,6 +147,11 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
   .hud.bl,.hud.br .hide-sm{display:none}
   .cols > *{grid-column:1/-1}
   .dl{grid-template-columns:1fr}
+  .files tr{display:block;padding:10px 0;border-bottom:1px solid var(--line)}
+  .files tr:last-child{border-bottom:0}
+  .files td{display:block;padding:0;border:0;white-space:normal}
+  .files td:first-child{white-space:normal;font-size:14px}
+  .files td:last-child{text-align:left;margin-top:2px}
   .dl > div + div{border-left:0;border-top:1px solid var(--line)}
   .about .grid,footer .wrap{grid-template-columns:1fr}
 }
@@ -255,9 +260,9 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
       <div>
         <table class="files">
           <tr><td data-i="os.winp">Windows, no install</td><td>Bandua_x.y.z_portable.exe</td></tr>
-          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe or .msi</td></tr>
+          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe / .msi</td></tr>
           <tr><td data-i="os.mac">macOS, Intel and Apple Silicon</td><td>_universal.dmg</td></tr>
-          <tr><td>Linux</td><td>.AppImage or .deb</td></tr>
+          <tr><td>Linux</td><td>.AppImage / .deb</td></tr>
         </table>
         <p class="note" data-i="b.warn">Bandua helps you copy and verify media but does not replace your own checks. Never format a card before checking that every copy is complete and readable.</p>
       </div>
@@ -322,7 +327,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
       <div>
         <table class="files">
           <tr><td data-i="os.winp">Windows, no install</td><td>Ataecina_x.y.z_portable.exe</td></tr>
-          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe or .msi</td></tr>
+          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe / .msi</td></tr>
         </table>
         <p class="note" data-i="a.where">Put untrunc, FFmpeg and PhotoRec next to Ataecina.exe, in a tools folder, or in your PATH. You can also set their location in the app.</p>
       </div>
