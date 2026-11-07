@@ -53,7 +53,7 @@ a{color:inherit}
 .lang button:focus-visible{outline:2px solid var(--paper);outline-offset:-2px}
 
 /* hero: a viewfinder */
-.hero{min-height:100svh;display:grid;place-items:center;padding:96px var(--gut) 40px;position:relative}
+.hero{min-height:100svh;display:grid;place-items:center;padding:96px var(--gut) 40px;position:relative;overflow:hidden}
 .vf{position:relative;width:min(100%,1240px);min-height:min(calc(100svh - 140px),780px);display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,8vw,96px) clamp(24px,6vw,80px)}
 .vf::before{content:"";position:absolute;inset:0;border:1px dashed rgba(236,235,232,.13);pointer-events:none}
 .corner{position:absolute;width:34px;height:34px;border:2px solid var(--paper);opacity:.9}
@@ -64,7 +64,12 @@ a{color:inherit}
 .rec{display:inline-flex;align-items:center;gap:8px;color:var(--paper)}
 .rec i{width:9px;height:9px;border-radius:50%;background:var(--rec);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.hero h1{font-size:clamp(44px,8.4vw,128px);line-height:.9;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em;max-width:11ch}
+.copy{position:relative;z-index:2;max-width:56%}
+.stack{position:absolute;z-index:1;left:58%;top:12%;width:60%;pointer-events:none}
+.stack img{border-radius:12px;border:1px solid var(--line);width:100%;height:auto}
+.stack .s1{box-shadow:0 40px 110px -30px rgba(243,154,60,.4)}
+.stack .s2{position:absolute;width:82%;left:9%;top:46%;box-shadow:0 40px 110px -30px rgba(226,192,67,.35),0 -10px 40px rgba(0,0,0,.5)}
+.hero h1{font-size:clamp(44px,5.8vw,92px);line-height:.9;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em;max-width:11ch}
 .hero p.lede{margin-top:clamp(18px,2.4vw,30px);font-size:clamp(17px,1.6vw,21px);color:var(--muted);max-width:46ch}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 12px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid var(--line);background:var(--panel);transition:border-color .2s,background .2s}
@@ -154,6 +159,10 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 @media (max-width:860px){
   .top nav{display:none}
   .vf{min-height:calc(100svh - 120px)}
+  .copy{max-width:none}
+  .hero h1{font-size:10vw}
+  .brand{font-size:15px;white-space:nowrap}
+  .stack{position:relative;left:12%;top:auto;width:110%;margin-top:40px;margin-bottom:28%}
   .hud.bl,.hud.br .hide-sm{display:none}
   .cols > *{grid-column:1/-1}
   .dl{grid-template-columns:1fr}
@@ -198,11 +207,17 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
     <div class="hud bl" aria-hidden="true"><span>ISO 800</span><span>5600K</span><span>T2.8</span><span>180°</span></div>
     <div class="hud br" aria-hidden="true"><span>2.39:1</span></div>
 
+    <div class="copy">
     <h1 id="h1" data-i="hero.title">Tools for the camera department.</h1>
     <p class="lede" data-i="hero.lede">Two free apps, made on set by a cinematographer. One keeps your footage safe. The other brings it back.</p>
     <div class="ctas">
       <a class="btn" href="#bandua"><img src="assets/bandua-icon.png" alt=""><span>Bandua<small data-i="hero.bandua">Offload and verify cards</small></span></a>
       <a class="btn" href="#ataecina"><img src="assets/ataecina-icon.png" alt=""><span>Ataecina<small data-i="hero.ataecina">Recover and repair footage</small></span></a>
+    </div>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <img class="s1" data-hero="bandua-verified" src="assets/bandua-verified-en.webp" alt="" width="1600" height="1000">
+      <img class="s2" data-hero="ataecina-recovery" src="assets/ataecina-recovery-en.webp" alt="" width="1600" height="1000">
     </div>
   </div>
 </section>
@@ -474,6 +489,7 @@ function applyLang(l){
   });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
   document.querySelectorAll(".monitor").forEach(f => setShot(f, f.querySelector("[aria-selected=true]")));
+  document.querySelectorAll("[data-hero]").forEach(i => i.src = `assets/${i.dataset.hero}-${lang}.webp`);
   try { localStorage.setItem("lang", lang); } catch(e) {}
 }
 document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
