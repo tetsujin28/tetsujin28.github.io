@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domingo Olmo Martin, tools for the camera department</title>
+<meta name="description" content="Bandua and Ataecina, two free apps for film sets by cinematographer Domingo Olmo Martin. Offload camera cards safely, recover and repair lost footage.">
+<meta property="og:title" content="Bandua and Ataecina, free tools for the camera department">
+<meta property="og:description" content="Offload camera cards with hash verification. Recover and repair lost footage. Made on set by Domingo Olmo Martin.">
+<meta property="og:image" content="assets/bandua-verified-en.webp">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0e10; --panel:#15171a; --raise:#1c1f23; --line:#262a30;
+  --paper:#ecebe8; --muted:#8d939c; --faint:#5d636c;
+  --bandua:#f39a3c; --ataecina:#e2c043; --ok:#35d39a; --rec:#ff4b42;
+  --wrap:1180px; --gut:clamp(20px,4vw,48px);
+  --sans:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{font-family:var(--sans);font-variation-settings:"wdth" 100;color:var(--paper);background:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--paper);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono)}
+
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:rgba(13,14,16,.72);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.brand{font-weight:700;font-variation-settings:"wdth" 112;text-decoration:none;letter-spacing:-.01em;margin-right:auto}
+.top nav{display:flex;gap:24px}
+.top nav a{text-decoration:none;color:var(--muted);font-size:15px}
+.top nav a:hover{color:var(--paper)}
+.lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;font:500 12px var(--mono);padding:6px 10px;color:var(--faint)}
+.lang button[aria-pressed="true"]{background:var(--raise);color:var(--paper)}
+.lang button:focus-visible{outline:2px solid var(--paper);outline-offset:-2px}
+
+/* hero: a viewfinder */
+.hero{min-height:100svh;display:grid;place-items:center;padding:96px var(--gut) 40px;position:relative}
+.vf{position:relative;width:min(100%,1240px);min-height:min(calc(100svh - 140px),780px);display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,8vw,96px) clamp(24px,6vw,80px)}
+.vf::before{content:"";position:absolute;inset:0;border:1px dashed rgba(236,235,232,.13);pointer-events:none}
+.corner{position:absolute;width:34px;height:34px;border:2px solid var(--paper);opacity:.9}
+.c1{top:-1px;left:-1px;border-right:0;border-bottom:0}.c2{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.c3{bottom:-1px;left:-1px;border-right:0;border-top:0}.c4{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.hud{position:absolute;font:500 13px var(--mono);color:var(--muted);display:flex;gap:22px;align-items:center}
+.hud.tl{top:18px;left:24px}.hud.tr{top:18px;right:24px}.hud.bl{bottom:18px;left:24px}.hud.br{bottom:18px;right:24px}
+.rec{display:inline-flex;align-items:center;gap:8px;color:var(--paper)}
+.rec i{width:9px;height:9px;border-radius:50%;background:var(--rec);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero h1{font-size:clamp(44px,8.4vw,128px);line-height:.9;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em;max-width:11ch}
+.hero p.lede{margin-top:clamp(18px,2.4vw,30px);font-size:clamp(17px,1.6vw,21px);color:var(--muted);max-width:46ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px 12px 12px;border-radius:12px;text-decoration:none;font-weight:600;border:1px solid var(--line);background:var(--panel);transition:border-color .2s,background .2s}
+.btn img{width:30px;height:30px;border-radius:7px}
+.btn:hover{background:var(--raise);border-color:#3a3f47}
+.btn small{display:block;font-weight:400;color:var(--muted);font-size:13px;line-height:1.2}
+.btn span{line-height:1.2}
+
+/* app sections */
+.app{padding:clamp(80px,12vw,150px) 0 0}
+.app + .app{border-top:1px solid var(--line);margin-top:clamp(80px,12vw,150px)}
+.app h2{font-size:clamp(56px,10vw,150px);line-height:.82;font-weight:850;font-variation-settings:"wdth" 125;letter-spacing:-.04em}
+.app .role{font-size:clamp(20px,2.2vw,28px);font-weight:500;font-variation-settings:"wdth" 90;color:var(--muted);margin-top:14px}
+.myth{margin:34px 0 0;max-width:60ch;font-size:19px;line-height:1.55}
+.myth em{font-style:normal;color:var(--accent)}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.facts span{font-size:14px;padding:5px 12px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.facts span.on{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+#bandua{--accent:var(--bandua)} #ataecina{--accent:var(--ataecina)}
+
+/* monitor */
+.monitor{margin-top:56px}
+.tabs{display:flex;gap:4px;padding:4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;width:max-content;max-width:100%;overflow-x:auto}
+.tabs button{all:unset;cursor:pointer;padding:9px 16px;border-radius:9px;font-size:15px;color:var(--muted);white-space:nowrap}
+.tabs button[aria-selected="true"]{background:var(--raise);color:var(--paper)}
+.tabs button:focus-visible{outline:2px solid var(--paper);outline-offset:-2px}
+.screen{position:relative;margin-top:14px;border-radius:16px;border:1px solid var(--line);background:#000;padding:clamp(8px,1.2vw,14px);box-shadow:0 40px 120px -40px color-mix(in srgb,var(--accent) 30%,transparent)}
+.screen .view{border-radius:8px;overflow:hidden;background:var(--panel);display:grid;place-items:center;cursor:zoom-in}
+.screen .view img{width:100%;height:auto}
+.screen .view.portrait{background:#1b1d21;padding:clamp(16px,4vw,48px)}
+.screen .view.portrait img{width:auto;max-height:min(70vh,720px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.screen figcaption{display:flex;justify-content:space-between;gap:16px;padding:12px 6px 2px;font:400 13px var(--mono);color:var(--faint)}
+
+/* features */
+.cols{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(28px,4vw,56px);margin-top:clamp(56px,8vw,96px)}
+.cols > *{grid-column:span 6}
+.cols h3{font-size:24px;font-weight:700;font-variation-settings:"wdth" 108;letter-spacing:-.01em;margin-bottom:18px}
+.feat{list-style:none;display:grid;gap:16px}
+.feat li{padding-left:22px;position:relative;color:var(--muted)}
+.feat li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.feat b{color:var(--paper);font-weight:600}
+.steps{list-style:none;counter-reset:s;display:grid;gap:14px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;color:var(--muted)}
+.steps li::before{content:counter(s);font:500 14px var(--mono);width:30px;height:30px;border-radius:8px;display:grid;place-items:center;border:1px solid var(--line);color:var(--paper)}
+.steps b{color:var(--paper);font-weight:600}
+.verified{display:inline-block;font:600 13px var(--sans);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 45%,transparent);border-radius:99px;padding:1px 9px}
+code{font-family:var(--mono);font-size:.86em;color:var(--paper);background:var(--raise);padding:2px 6px;border-radius:5px}
+.note{margin-top:22px;font-size:15px;color:var(--faint)}
+
+/* download */
+.dl{margin-top:clamp(56px,8vw,96px);border:1px solid var(--line);border-radius:18px;background:var(--panel);display:grid;grid-template-columns:1fr 1.25fr}
+.dl > div{padding:clamp(24px,3.4vw,40px)}
+.dl > div + div{border-left:1px solid var(--line)}
+.dl h3{font-size:28px;font-weight:750;font-variation-settings:"wdth" 110;letter-spacing:-.015em}
+.dl p{color:var(--muted);margin-top:10px;font-size:15.5px}
+.get{display:inline-flex;margin-top:24px;padding:13px 22px;border-radius:12px;background:var(--accent);color:#16110a;font-weight:700;text-decoration:none}
+.get:hover{filter:brightness(1.08)}
+.files{width:100%;border-collapse:collapse;font-size:15px}
+.files td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.files tr:last-child td{border-bottom:0}
+.files td:first-child{color:var(--muted);padding-right:16px;white-space:nowrap}
+.files td:last-child{font:400 13.5px var(--mono);text-align:right;color:var(--paper)}
+
+/* about */
+.about{padding:clamp(100px,14vw,180px) 0 clamp(80px,10vw,130px);border-top:1px solid var(--line);margin-top:clamp(80px,12vw,150px)}
+.about .grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,90px);align-items:start}
+.about h2{font-size:clamp(44px,6.6vw,92px);line-height:.9;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
+.about .roles{margin-top:22px;color:var(--muted);font-size:18px;font-variation-settings:"wdth" 92}
+.about .text p{font-size:clamp(18px,1.7vw,21px);line-height:1.6;max-width:56ch}
+.about .text p + p{margin-top:1.1em}
+.about .text p:first-child{color:var(--paper)}
+.about .text p:not(:first-child){color:var(--muted)}
+.about .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.about .links a{padding:11px 18px;border-radius:12px;border:1px solid var(--line);text-decoration:none;font-weight:600}
+.about .links a:hover{background:var(--panel)}
+
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--faint);font-size:14px}
+footer .wrap{display:grid;grid-template-columns:1fr 2fr;gap:32px}
+footer p + p{margin-top:8px}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto}
+dialog::backdrop{background:rgba(5,5,6,.9)}
+dialog img{max-width:96vw;max-height:90vh;width:auto;height:auto;border-radius:8px}
+dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:var(--paper);font:500 14px var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+
+@media (max-width:860px){
+  .top nav{display:none}
+  .vf{min-height:calc(100svh - 120px)}
+  .hud.bl,.hud.br .hide-sm{display:none}
+  .cols > *{grid-column:1/-1}
+  .dl{grid-template-columns:1fr}
+  .dl > div + div{border-left:0;border-top:1px solid var(--line)}
+  .about .grid,footer .wrap{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rec i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">Domingo Olmo Martin</a>
+    <nav aria-label="Sections">
+      <a href="#bandua">Bandua</a>
+      <a href="#ataecina">Ataecina</a>
+      <a href="#about" data-i="nav.about">About</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="vf">
+    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+    <div class="hud tl"><span class="rec"><i></i>REC</span><span class="mono" id="tc" aria-hidden="true">--:--:--:--</span></div>
+    <div class="hud tr" aria-hidden="true"><span>A CAM</span><span class="hide-sm">24 fps</span></div>
+    <div class="hud bl" aria-hidden="true"><span>ISO 800</span><span>5600K</span><span>T2.8</span><span>180°</span></div>
+    <div class="hud br" aria-hidden="true"><span>2.39:1</span></div>
+
+    <h1 id="h1" data-i="hero.title">Tools for the camera department.</h1>
+    <p class="lede" data-i="hero.lede">Two free apps, made on set by a cinematographer. One keeps your footage safe. The other brings it back.</p>
+    <div class="ctas">
+      <a class="btn" href="#bandua"><img src="assets/bandua-icon.png" alt=""><span>Bandua<small data-i="hero.bandua">Offload and verify cards</small></span></a>
+      <a class="btn" href="#ataecina"><img src="assets/ataecina-icon.png" alt=""><span>Ataecina<small data-i="hero.ataecina">Recover and repair footage</small></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- BANDUA -->
+<section class="app" id="bandua" aria-labelledby="h-bandua">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-bandua">Bandua</h2>
+        <p class="role" data-i="b.role">Offload camera cards, verify every copy.</p>
+      </div>
+    </div>
+    <p class="myth" data-i="b.myth" data-html>Bandua offloads camera cards to several drives at once, checks every copy against the source with a hash, and writes a log, an MHL and a PDF report for the editor or the lab. <em>Bandua is a protective deity of the western Iberian Peninsula. Here, it watches over your footage.</em></p>
+    <div class="facts">
+      <span class="on" data-i="f.free">Free and open source</span>
+      <span>Windows</span><span>macOS</span><span>Linux</span>
+      <span data-i="f.langs">English, French, Spanish</span>
+      <span>Beta</span>
+    </div>
+
+    <figure class="monitor" data-set="bandua">
+      <div class="tabs" role="tablist" aria-label="Bandua screenshots">
+        <button role="tab" aria-selected="true" data-shot="bandua-offload" data-i="b.t1">Offload in progress</button>
+        <button role="tab" aria-selected="false" data-shot="bandua-verified" data-i="b.t2">Card verified</button>
+        <button role="tab" aria-selected="false" data-shot="bandua-report" data-portrait data-i="b.t3">PDF report</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src="assets/bandua-offload-en.webp" alt="Bandua offloading a RED card to two drives" width="1600" height="1000"></div>
+        <figcaption><span class="cap">2026-11-07_0644_Due_Volti_D03_A_A003</span><span data-i="zoom">Click to enlarge</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3 data-i="what">What it does</h3>
+        <ul class="feat" data-i="b.feat" data-html>
+          <li><b>Reads the card once</b> and writes to one, two or more destinations at the same time.</li>
+          <li><b>Verifies every copy</b> by reading it back from the destination drive and comparing hashes (xxHash64 by default, XXH3, MD5 or SHA-1). A file only gets its final name once it is verified.</li>
+          <li><b>Copies the card exactly as it is</b>: RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, without system junk files. RED .RDC folders are listed as one clip each.</li>
+          <li><b>Writes 4 reports</b> in each dated folder: PDF, text log, MHL (readable by Silverstack, ShotPut, Hedge) and JSON.</li>
+          <li><b>Re-verifies</b> an existing folder from its MHL, before you format a card or deliver a drive.</li>
+          <li><b>Checks free space</b> before starting, and keeps destinations and project info so you can chain cards.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i="how">How to use it</h3>
+        <ol class="steps" data-i="b.steps" data-html>
+          <li><span>Click <b>Source</b> and select the card.</span></li>
+          <li><span>Add one or more <b>destinations</b>.</span></li>
+          <li><span>Fill in the project, shoot day, camera and card. The card number comes from the clip names.</span></li>
+          <li><span>Click <b>Start offload</b>.</span></li>
+          <li><span>Wait for <span class="verified">CARD VERIFIED</span> before you format the card.</span></li>
+        </ol>
+        <p class="note" data-i="b.folder" data-html>Each destination gets a dated folder, such as <code>2026-11-06_1633_PROJECT_D03_A_A003</code>.</p>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3 data-i="dl.title">Download Bandua</h3>
+        <p data-i="b.dl">Ready to run. No Rust, no command line. The app is not signed yet, so your system warns you once on first launch: on Windows click “More info” then “Run anyway”, on macOS right-click the app and choose “Open”.</p>
+        <a class="get" href="https://github.com/tetsujin28/bandua/releases/latest" data-i="dl.btn">Get the latest release</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td data-i="os.winp">Windows, no install</td><td>Bandua_x.y.z_portable.exe</td></tr>
+          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe or .msi</td></tr>
+          <tr><td data-i="os.mac">macOS, Intel and Apple Silicon</td><td>_universal.dmg</td></tr>
+          <tr><td>Linux</td><td>.AppImage or .deb</td></tr>
+        </table>
+        <p class="note" data-i="b.warn">Bandua helps you copy and verify media but does not replace your own checks. Never format a card before checking that every copy is complete and readable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATAECINA -->
+<section class="app" id="ataecina" aria-labelledby="h-ataecina">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-ataecina">Ataecina</h2>
+        <p class="role" data-i="a.role">Recover lost footage, repair broken clips.</p>
+      </div>
+    </div>
+    <p class="myth" data-i="a.myth" data-html>Ataecina reads camera cards, finds deleted files and files from a card formatted by mistake, restores a damaged card format, and repairs broken MOV and MP4 clips with a healthy reference clip. <em>Ataecina is a goddess of the ancient Iberian Peninsula, often read as “the Reborn”. Like her, it brings back to light images we thought were lost.</em></p>
+    <div class="facts">
+      <span class="on" data-i="f.free">Free and open source</span>
+      <span>Windows</span>
+      <span data-i="f.langs">English, French, Spanish</span>
+      <span>Beta 0.11</span>
+    </div>
+
+    <figure class="monitor" data-set="ataecina">
+      <div class="tabs" role="tablist" aria-label="Ataecina screenshots">
+        <button role="tab" aria-selected="true" data-shot="ataecina-recovery" data-i="a.t1">Recovery</button>
+        <button role="tab" aria-selected="false" data-shot="ataecina-repair" data-i="a.t2">Repair</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src="assets/ataecina-recovery-en.webp" alt="Ataecina after reading a card, deleted clips found" width="1600" height="1000" loading="lazy"></div>
+        <figcaption><span class="cap">GH5_JOUR2 / DCIM / 100_PANA</span><span data-i="zoom">Click to enlarge</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3 data-i="a.rec">Recovery</h3>
+        <ul class="feat" data-i="a.featr" data-html>
+          <li><b>Card reading</b> (exFAT, FAT32): original names and folders, deleted files, deep search after a format, boot sector restored from its backup copy.</li>
+          <li><b>PhotoRec search</b> for every card format: MOV, MP4, BRAW, R3D, ARRIRAW, MXF, even files in pieces.</li>
+          <li><b>Card image first</b>, the GNU ddrescue way: healthy areas first, damaged areas last, resume after an interruption.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i="a.rep">Repair</h3>
+        <ul class="feat" data-i="a.featp" data-html>
+          <li><b>Batch repair</b> with untrunc and one or more reference clips, normal mode then step mode.</li>
+          <li><b>Checks</b> with ffprobe, and a full decode with ffmpeg if you ask. Thumbnails and a <code>journal.csv</code>.</li>
+          <li><b>Original files are never modified.</b></li>
+        </ul>
+        <p class="note" data-i="a.tools" data-html>Ataecina drives free tools you install from their official sites: <a href="https://github.com/anthwlock/untrunc">untrunc</a>, <a href="https://ffmpeg.org">FFmpeg</a> and <a href="https://www.cgsecurity.org">TestDisk / PhotoRec</a>.</p>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3 data-i="dl.titlea">Download Ataecina</h3>
+        <p data-i="a.dl">For Windows. The app is not signed yet: Windows warns you once, click “More info” then “Run anyway”. Reading a card directly needs administrator rights, and Ataecina offers to restart itself as administrator when needed.</p>
+        <a class="get" href="https://github.com/tetsujin28/ataecina/releases/latest" data-i="dl.btn">Get the latest release</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td data-i="os.winp">Windows, no install</td><td>Ataecina_x.y.z_portable.exe</td></tr>
+          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe or .msi</td></tr>
+        </table>
+        <p class="note" data-i="a.where">Put untrunc, FFmpeg and PhotoRec next to Ataecina.exe, in a tools folder, or in your PATH. You can also set their location in the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" aria-labelledby="h-about">
+  <div class="wrap grid">
+    <div>
+      <h2 id="h-about">Domingo Olmo Martin</h2>
+      <p class="roles" data-i="ab.roles">Director of photography, screenwriter, director</p>
+    </div>
+    <div class="text">
+      <p data-i="ab.p1">I work behind the camera on fiction films and commercial productions. Born in Barcelona, I live and work in France, and I shoot mostly on Blackmagic, RED and ARRI cameras.</p>
+      <p data-i="ab.p2">I also write code. Bandua and Ataecina started as tools I needed on my own shoots: one to offload cards without a doubt in mind, one for the day a card goes wrong. They are free because every camera department should have them.</p>
+      <p data-i="ab.p3">Found a bug, or have an idea? Open an issue on the project page. Feedback from the set is what makes them better.</p>
+      <div class="links">
+        <a href="https://github.com/tetsujin28">GitHub</a>
+        <a href="https://github.com/tetsujin28/bandua/issues" data-i="ab.ib">Report a Bandua issue</a>
+        <a href="https://github.com/tetsujin28/ataecina/issues" data-i="ab.ia">Report an Ataecina issue</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Domingo Olmo Martin</p>
+    <div>
+      <p data-i="ft.1">Bandua and Ataecina are released under the MIT License.</p>
+      <p data-i="ft.2">They are provided as is, without any warranty. The author cannot be held responsible for any loss or corruption of data.</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Screenshot">
+  <form method="dialog"><button data-i="close">Close</button></form>
+  <img alt="">
+</dialog>
+
+<script>
+const T = {
+fr:{
+ "nav.about":"À propos",
+ "hero.title":"Des outils pour l'équipe image.",
+ "hero.lede":"Deux applications gratuites, faites sur le plateau par un chef opérateur. L'une protège vos rushes. L'autre les ramène.",
+ "hero.bandua":"Décharger et vérifier les cartes","hero.ataecina":"Récupérer et réparer les rushes",
+ "b.role":"Déchargez vos cartes, vérifiez chaque copie.",
+ "b.myth":"Bandua décharge vos cartes caméra vers plusieurs disques en même temps, vérifie chaque copie par rapport à la source grâce à un hash, et produit un log, un MHL et un rapport PDF pour le monteur ou le labo. <em>Bandua est une divinité protectrice de l'ouest de la péninsule Ibérique. Ici, elle veille sur vos rushes.</em>",
+ "f.free":"Gratuit et open source","f.langs":"Français, anglais, espagnol",
+ "b.t1":"Déchargement en cours","b.t2":"Carte vérifiée","b.t3":"Rapport PDF","zoom":"Cliquer pour agrandir",
+ "what":"Ce que fait Bandua","how":"Utilisation",
+ "b.feat":"<li><b>Lit la carte une seule fois</b> et écrit vers une, deux destinations ou plus en même temps.</li><li><b>Vérifie chaque copie</b> en la relisant depuis le disque de destination et en comparant les hash (xxHash64 par défaut, XXH3, MD5 ou SHA-1). Un fichier ne prend son nom définitif qu'une fois vérifié.</li><li><b>Copie la carte à l'identique</b> : RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, sans les fichiers système parasites. Chaque dossier .RDC RED est listé comme un clip.</li><li><b>Écrit 4 rapports</b> dans chaque dossier daté : PDF, log texte, MHL (lisible par Silverstack, ShotPut, Hedge) et JSON.</li><li><b>Re-vérifie</b> un dossier existant à partir de son MHL, avant de formater une carte ou de livrer un disque.</li><li><b>Contrôle l'espace libre</b> avant de commencer, et garde destinations et infos du projet pour enchaîner les cartes.</li>",
+ "b.steps":"<li><span>Cliquez sur <b>Source</b> et sélectionnez la carte.</span></li><li><span>Ajoutez une ou plusieurs <b>destinations</b>.</span></li><li><span>Renseignez le projet, le jour de tournage, la caméra et la carte. Le numéro de carte vient des noms de clips.</span></li><li><span>Cliquez sur <b>Lancer le déchargement</b>.</span></li><li><span>Attendez <span class=\"verified\">CARTE VÉRIFIÉE</span> avant de formater la carte.</span></li>",
+ "b.folder":"Chaque destination reçoit un dossier daté, par exemple <code>2026-11-06_1633_PROJET_J03_A_A003</code>.",
+ "dl.title":"Télécharger Bandua","dl.titlea":"Télécharger Ataecina","dl.btn":"Télécharger la dernière version",
+ "b.dl":"Prêt à lancer. Pas de Rust, pas de ligne de commande. L'app n'est pas encore signée, votre système vous avertit une fois au premier lancement : sur Windows cliquez sur « Informations complémentaires » puis « Exécuter quand même », sur macOS faites un clic droit sur l'app et choisissez « Ouvrir ».",
+ "os.winp":"Windows, sans installation","os.wini":"Windows, installeur","os.mac":"macOS, Intel et Apple Silicon",
+ "b.warn":"Bandua vous aide à copier et vérifier vos médias mais ne remplace pas vos propres contrôles. Ne formatez jamais une carte avant d'avoir vérifié que chaque copie est complète et lisible.",
+ "a.role":"Retrouvez les rushes perdus, réparez les clips cassés.",
+ "a.myth":"Ataecina lit les cartes caméra, retrouve les fichiers supprimés et ceux d'une carte formatée par erreur, restaure le format d'une carte abîmée, et répare les MOV et MP4 cassés à l'aide d'un rush sain de référence. <em>Ataecina est une déesse de la péninsule ibérique antique, souvent interprétée comme « la Renaissante ». Comme elle, ce logiciel ramène à la lumière des images que l'on croyait perdues.</em>",
+ "a.t1":"Récupération","a.t2":"Réparation","a.rec":"Récupération","a.rep":"Réparation",
+ "a.featr":"<li><b>Lecture de la carte</b> (exFAT, FAT32) : noms et dossiers d'origine, fichiers supprimés, recherche approfondie après un formatage, secteur de démarrage restauré depuis sa copie de secours.</li><li><b>Recherche PhotoRec</b> pour tous les formats de carte : MOV, MP4, BRAW, R3D, ARRIRAW, MXF, même pour les fichiers en morceaux.</li><li><b>Image de la carte d'abord</b>, selon la méthode GNU ddrescue : zones saines d'abord, zones abîmées en dernier, reprise après une interruption.</li>",
+ "a.featp":"<li><b>Réparation par lot</b> avec untrunc et une ou plusieurs références, mode normal puis mode pas à pas.</li><li><b>Vérification</b> par ffprobe, et décodage complet par ffmpeg sur demande. Vignettes et <code>journal.csv</code>.</li><li><b>Les fichiers d'origine ne sont jamais modifiés.</b></li>",
+ "a.tools":"Ataecina pilote des outils gratuits à installer depuis leur site officiel : <a href=\"https://github.com/anthwlock/untrunc\">untrunc</a>, <a href=\"https://ffmpeg.org\">FFmpeg</a> et <a href=\"https://www.cgsecurity.org\">TestDisk / PhotoRec</a>.",
+ "a.dl":"Pour Windows. L'app n'est pas encore signée : Windows vous avertit une fois, cliquez sur « Informations complémentaires » puis « Exécuter quand même ». La lecture directe d'une carte demande les droits administrateur, Ataecina propose de se relancer en administrateur si besoin.",
+ "a.where":"Placez untrunc, FFmpeg et PhotoRec à côté d'Ataecina.exe, dans un dossier tools, ou dans le PATH. Leur emplacement peut aussi être réglé dans l'app.",
+ "ab.roles":"Directeur de la photographie, scénariste, réalisateur",
+ "ab.p1":"Je travaille derrière la caméra, en fiction et en production commerciale. Né à Barcelone, je vis et travaille en France, et je tourne surtout avec des caméras Blackmagic, RED et ARRI.",
+ "ab.p2":"Je code aussi. Bandua et Ataecina sont nés d'outils dont j'avais besoin sur mes propres tournages : l'un pour décharger les cartes l'esprit tranquille, l'autre pour le jour où une carte lâche. Ils sont gratuits parce que chaque équipe image devrait les avoir.",
+ "ab.p3":"Un bug, une idée ? Ouvrez une issue sur la page du projet. Les retours du plateau sont ce qui les fait progresser.",
+ "ab.ib":"Signaler un problème sur Bandua","ab.ia":"Signaler un problème sur Ataecina",
+ "ft.1":"Bandua et Ataecina sont publiés sous licence MIT.",
+ "ft.2":"Ils sont fournis tels quels, sans aucune garantie. L'auteur ne peut être tenu responsable d'une perte ou d'une corruption de données.",
+ "close":"Fermer"
+},
+es:{
+ "nav.about":"Sobre mí",
+ "hero.title":"Herramientas para el equipo de cámara.",
+ "hero.lede":"Dos aplicaciones gratuitas, hechas en el rodaje por un director de fotografía. Una protege tu material. La otra lo recupera.",
+ "hero.bandua":"Volcar y verificar tarjetas","hero.ataecina":"Recuperar y reparar material",
+ "b.role":"Vuelca tus tarjetas, verifica cada copia.",
+ "b.myth":"Bandua vuelca tus tarjetas de cámara a varios discos a la vez, verifica cada copia frente al origen mediante un hash y genera un log, un MHL y un informe PDF para el montador o el laboratorio. <em>Bandua es una divinidad protectora del oeste de la península ibérica. Aquí, vela por tu material.</em>",
+ "f.free":"Gratuito y de código abierto","f.langs":"Español, inglés, francés",
+ "b.t1":"Volcado en curso","b.t2":"Tarjeta verificada","b.t3":"Informe PDF","zoom":"Clic para ampliar",
+ "what":"Qué hace","how":"Uso",
+ "b.feat":"<li><b>Lee la tarjeta una sola vez</b> y escribe en uno, dos o más destinos al mismo tiempo.</li><li><b>Verifica cada copia</b> releyéndola desde el disco de destino y comparando los hash (xxHash64 por defecto, XXH3, MD5 o SHA-1). Un archivo solo recibe su nombre definitivo cuando está verificado.</li><li><b>Copia la tarjeta tal cual</b>: RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, sin archivos de sistema innecesarios. Cada carpeta .RDC de RED se lista como un clip.</li><li><b>Escribe 4 informes</b> en cada carpeta con fecha: PDF, log de texto, MHL (legible por Silverstack, ShotPut, Hedge) y JSON.</li><li><b>Reverifica</b> una carpeta existente a partir de su MHL, antes de formatear una tarjeta o entregar un disco.</li><li><b>Comprueba el espacio libre</b> antes de empezar, y conserva destinos y datos del proyecto para encadenar tarjetas.</li>",
+ "b.steps":"<li><span>Haz clic en <b>Origen</b> y selecciona la tarjeta.</span></li><li><span>Añade uno o varios <b>destinos</b>.</span></li><li><span>Rellena el proyecto, el día de rodaje, la cámara y la tarjeta. El número de tarjeta sale de los nombres de los clips.</span></li><li><span>Haz clic en <b>Iniciar el volcado</b>.</span></li><li><span>Espera a <span class=\"verified\">TARJETA VERIFICADA</span> antes de formatear la tarjeta.</span></li>",
+ "b.folder":"Cada destino recibe una carpeta con fecha, por ejemplo <code>2026-11-06_1633_PROYECTO_D03_A_A003</code>.",
+ "dl.title":"Descargar Bandua","dl.titlea":"Descargar Ataecina","dl.btn":"Descargar la última versión",
+ "b.dl":"Listo para usar. Sin Rust, sin línea de comandos. La app aún no está firmada, así que tu sistema te avisará una vez en el primer arranque: en Windows haz clic en «Más información» y luego en «Ejecutar de todas formas», en macOS haz clic derecho en la app y elige «Abrir».",
+ "os.winp":"Windows, sin instalación","os.wini":"Windows, instalador","os.mac":"macOS, Intel y Apple Silicon",
+ "b.warn":"Bandua te ayuda a copiar y verificar tu material, pero no sustituye tus propias comprobaciones. Nunca formatees una tarjeta sin comprobar que cada copia está completa y es legible.",
+ "a.role":"Recupera material perdido, repara clips rotos.",
+ "a.myth":"Ataecina lee tarjetas de cámara, encuentra los archivos borrados y los de una tarjeta formateada por error, restaura el formato de una tarjeta dañada y repara MOV y MP4 rotos con un clip sano de referencia. <em>Ataecina es una diosa de la antigua península ibérica, a menudo interpretada como «la Renacida». Como ella, este programa devuelve a la luz imágenes que se creían perdidas.</em>",
+ "a.t1":"Recuperación","a.t2":"Reparación","a.rec":"Recuperación","a.rep":"Reparación",
+ "a.featr":"<li><b>Lectura de la tarjeta</b> (exFAT, FAT32): nombres y carpetas originales, archivos borrados, búsqueda profunda tras un formateo, sector de arranque restaurado desde su copia de seguridad.</li><li><b>Búsqueda PhotoRec</b> para todos los formatos de tarjeta: MOV, MP4, BRAW, R3D, ARRIRAW, MXF, incluso archivos en trozos.</li><li><b>Primero una imagen de la tarjeta</b>, con el método de GNU ddrescue: primero las zonas sanas, al final las dañadas, reanudación tras una interrupción.</li>",
+ "a.featp":"<li><b>Reparación por lotes</b> con untrunc y una o varias referencias, modo normal y luego modo paso a paso.</li><li><b>Verificación</b> con ffprobe, y decodificación completa con ffmpeg si se pide. Miniaturas y <code>journal.csv</code>.</li><li><b>Los archivos originales nunca se modifican.</b></li>",
+ "a.tools":"Ataecina utiliza herramientas gratuitas que se instalan desde su web oficial: <a href=\"https://github.com/anthwlock/untrunc\">untrunc</a>, <a href=\"https://ffmpeg.org\">FFmpeg</a> y <a href=\"https://www.cgsecurity.org\">TestDisk / PhotoRec</a>.",
+ "a.dl":"Para Windows. La app aún no está firmada: Windows te avisará una vez, haz clic en «Más información» y luego en «Ejecutar de todas formas». Leer una tarjeta directamente requiere permisos de administrador, y Ataecina propone reiniciarse como administrador cuando hace falta.",
+ "a.where":"Coloca untrunc, FFmpeg y PhotoRec junto a Ataecina.exe, en una carpeta tools o en el PATH. También puedes indicar su ubicación en la app.",
+ "ab.roles":"Director de fotografía, guionista, director",
+ "ab.p1":"Trabajo detrás de la cámara, en ficción y en producción publicitaria. Nacido en Barcelona, vivo y trabajo en Francia, y ruedo sobre todo con cámaras Blackmagic, RED y ARRI.",
+ "ab.p2":"También programo. Bandua y Ataecina nacieron como herramientas que necesitaba en mis propios rodajes: una para volcar tarjetas sin dudas, otra para el día en que una tarjeta falla. Son gratuitas porque todo equipo de cámara debería tenerlas.",
+ "ab.p3":"¿Un error, una idea? Abre una issue en la página del proyecto. Lo que llega del rodaje es lo que las hace mejores.",
+ "ab.ib":"Informar de un problema en Bandua","ab.ia":"Informar de un problema en Ataecina",
+ "ft.1":"Bandua y Ataecina se publican bajo licencia MIT.",
+ "ft.2":"Se ofrecen tal cual, sin ninguna garantía. El autor no se hace responsable de ninguna pérdida o corrupción de datos.",
+ "close":"Cerrar"
+}};
+const EN = {};
+document.querySelectorAll("[data-i]").forEach(el => { EN[el.dataset.i] = el.hasAttribute("data-html") ? el.innerHTML : el.textContent; });
+T.en = EN;
+let lang = "en";
+
+function setShot(fig, btn){
+  fig.querySelectorAll("[role=tab]").forEach(b => b.setAttribute("aria-selected", b === btn));
+  const view = fig.querySelector(".view"), img = view.querySelector("img");
+  img.src = `assets/${btn.dataset.shot}-${lang}.webp`;
+  img.alt = btn.textContent;
+  view.classList.toggle("portrait", btn.hasAttribute("data-portrait"));
+}
+function applyLang(l){
+  lang = T[l] ? l : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(el => {
+    const v = T[lang][el.dataset.i]; if (v == null) return;
+    if (el.hasAttribute("data-html")) {
+      if (el.tagName === "P" && el.classList.contains("myth")) el.innerHTML = v; else el.innerHTML = v;
+    } else el.textContent = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  document.querySelectorAll(".monitor").forEach(f => setShot(f, f.querySelector("[aria-selected=true]")));
+  try { localStorage.setItem("lang", lang); } catch(e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+document.querySelectorAll(".monitor [role=tab]").forEach(b => b.addEventListener("click", () => setShot(b.closest(".monitor"), b)));
+
+const lb = document.getElementById("lb");
+document.querySelectorAll(".view").forEach(v => v.addEventListener("click", () => {
+  const src = v.querySelector("img");
+  lb.querySelector("img").src = src.src; lb.querySelector("img").alt = src.alt;
+  lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+
+let saved = null; try { saved = localStorage.getItem("lang"); } catch(e) {}
+const nav = (navigator.language || "en").slice(0,2);
+applyLang(saved || (T[nav] ? nav : "en"));
+
+/* timecode = time of day, 24 fps */
+const tc = document.getElementById("tc");
+const pad = n => String(n).padStart(2,"0");
+function tick(){
+  const d = new Date();
+  tc.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}:${pad(Math.floor(d.getMilliseconds()/(1000/24)))}`;
+}
+tick();
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(tick, 1000);
+else (function loop(){ tick(); requestAnimationFrame(loop); })();
+
+const hdr = document.getElementById("top");
+addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 20), {passive:true});
+</script>
+</body>
+</html>
