@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Domingo Olmo Martin, tools for the camera department</title>
-<meta name="description" content="Bandua and Ataecina, two free apps for film sets by cinematographer Domingo Olmo Martin. Offload camera cards safely, recover and repair lost footage.">
-<meta property="og:title" content="Bandua and Ataecina, free tools for the camera department">
-<meta property="og:description" content="Offload camera cards with hash verification. Recover and repair lost footage. Made on set by Domingo Olmo Martin.">
+<meta name="description" content="Bandua, Bandua MHL Companion and Ataecina, three free apps for film sets by cinematographer Domingo Olmo Martin. Offload camera cards safely, check received footage against its MHL, recover and repair lost footage.">
+<meta property="og:title" content="Bandua, Bandua MHL Companion and Ataecina, free tools for the camera department">
+<meta property="og:description" content="Offload camera cards with hash verification. Check received footage against its MHL. Recover and repair lost footage. Made on set by Domingo Olmo Martin.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tetsujin28.github.io/">
 <meta property="og:site_name" content="Domingo Olmo Martin">
@@ -26,7 +26,7 @@
 :root{
   --ink:#0d0e10; --panel:#15171a; --raise:#1c1f23; --line:#262a30;
   --paper:#ecebe8; --muted:#8d939c; --faint:#5d636c;
-  --bandua:#f39a3c; --ataecina:#e2c043; --ok:#35d39a; --rec:#ff4b42;
+  --bandua:#f39a3c; --companion:#6cb6ff; --ataecina:#e2c043; --ok:#35d39a; --rec:#ff4b42;
   --wrap:1180px; --gut:clamp(20px,4vw,48px);
   --sans:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
 }
@@ -88,7 +88,7 @@ a{color:inherit}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .facts span{font-size:14px;padding:5px 12px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
 .facts span.on{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
-#bandua{--accent:var(--bandua)} #ataecina{--accent:var(--ataecina)}
+#bandua{--accent:var(--bandua)} #companion{--accent:var(--companion)} #ataecina{--accent:var(--ataecina)}
 
 /* monitor */
 .monitor{margin-top:56px}
@@ -187,6 +187,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
     <a class="brand" href="#">Domingo Olmo Martin</a>
     <nav aria-label="Sections">
       <a href="#bandua">Bandua</a>
+      <a href="#companion">MHL Companion</a>
       <a href="#ataecina">Ataecina</a>
       <a href="#about" data-i="nav.about">About</a>
     </nav>
@@ -209,9 +210,10 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 
     <div class="copy">
     <h1 id="h1" data-i="hero.title">Tools for the camera department.</h1>
-    <p class="lede" data-i="hero.lede">Two free apps, made on set by a cinematographer. One keeps your footage safe. The other brings it back.</p>
+    <p class="lede" data-i="hero.lede">Three free apps, made on set by a cinematographer. One keeps your footage safe, one checks it on arrival, one brings it back.</p>
     <div class="ctas">
       <a class="btn" href="#bandua"><img src="assets/bandua-icon.png" alt=""><span>Bandua<small data-i="hero.bandua">Offload and verify cards</small></span></a>
+      <a class="btn" href="#companion"><img src="assets/companion-icon.png" alt=""><span>MHL Companion<small data-i="hero.companion">Check received footage</small></span></a>
       <a class="btn" href="#ataecina"><img src="assets/ataecina-icon.png" alt=""><span>Ataecina<small data-i="hero.ataecina">Recover and repair footage</small></span></a>
     </div>
     </div>
@@ -296,6 +298,78 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
   </div>
 </section>
 
+<!-- BANDUA MHL COMPANION -->
+<section class="app" id="companion" aria-labelledby="h-companion">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-companion">MHL Companion</h2>
+        <p class="role" data-i="c.role">Received the footage? Check that nothing broke on the way.</p>
+      </div>
+    </div>
+    <p class="myth" data-i="c.myth" data-html>Bandua MHL Companion is for the people who receive the footage: editor, assistant editor, lab, post-production, director. Drop the folder, start the check, and it reads every file back, compares it to the MHL that came with it, and tells you clip by clip what is intact and what is corrupt, missing or incomplete. <em>It is the companion of Bandua: Bandua writes the MHL on set, the Companion checks it at the other end. It also reads the MHL files written by Silverstack, ShotPut Pro, Hedge and others.</em></p>
+    <div class="facts">
+      <span class="on" data-i="f.free">Free and open source</span>
+      <span>Windows</span><span>macOS</span>
+      <span data-i="f.langs">English, French, Spanish</span>
+      <span>Beta 0.1</span>
+    </div>
+
+    <figure class="monitor" data-set="companion">
+      <div class="tabs" role="tablist" aria-label="Bandua MHL Companion screenshots">
+        <button role="tab" aria-selected="true" data-shot="companion-result" data-i="c.t1">Problems found</button>
+        <button role="tab" aria-selected="false" data-shot="companion-clips" data-i="c.t2">Every clip</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src="assets/companion-result-en.webp" alt="Bandua MHL Companion after a check, one corrupt clip and one missing clip" width="1600" height="1000" loading="lazy"></div>
+        <figcaption><span class="cap">FILM_J03 / CAM_A / A003 · CAM_B / B002</span><span data-i="zoom">Click to enlarge</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3 data-i="c.what">What it does</h3>
+        <ul class="feat" data-i="c.feat" data-html>
+          <li><b>Finds every MHL in the folder</b> you drop: several shoot days, cameras and cards at once, or a single .mhl file.</li>
+          <li><b>Reads MHL 1.1 and ASC MHL</b>: Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta… ASC MHL histories are merged across generations, and a history modified after the fact is flagged.</li>
+          <li><b>Reads every file back from the drive</b> with the system cache bypassed, and compares its hash (xxHash64, XXH3, XXH128, MD5, SHA-1, SHA-256, C4…).</li>
+          <li><b>Names the problem clips</b>: corrupt, missing, incomplete or unreadable, with the clip name (RED .RDC folders, ARRI, BRAW…) and a button to show the file.</li>
+          <li><b>Lists the files no MHL covers</b>, so you know what could not be checked.</li>
+          <li><b>Exports a text report</b> to send back to the production or the DIT. A command line tool is included for scripts.</li>
+          <li><b>Read only</b>: nothing is ever changed or added next to the footage.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i="how">How to use it</h3>
+        <ol class="steps" data-i="c.steps" data-html>
+          <li><span><b>Drop the footage folder</b> onto the window, or choose it.</span></li>
+          <li><span>Check the list of <b>MHL files found</b>.</span></li>
+          <li><span>Click <b>Start the check</b>.</span></li>
+          <li><span>Wait for <span class="verified">FOOTAGE INTACT</span>, or open the <b>Problems</b> tab to see which clips to ask for again.</span></li>
+          <li><span><b>Export the report</b> if you need to send it.</span></li>
+        </ol>
+        <p class="note" data-i="c.trust">A check only means something if the MHL comes from the person who made the original copy, ideally sent separately from the footage.</p>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3 data-i="dl.titlec">Download Bandua MHL Companion</h3>
+        <p data-i="b.dl">Ready to run. No Rust, no command line. The app is not signed yet, so your system warns you once on first launch: on Windows click “More info” then “Run anyway”, on macOS right-click the app and choose “Open”.</p>
+        <a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases" data-i="dl.btn">Get the latest release</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td data-i="os.winp">Windows, no install</td><td>Bandua_MHL_Companion_x.y.z_portable.exe</td></tr>
+          <tr><td data-i="os.wini">Windows, installer</td><td>_x64-setup.exe / .msi</td></tr>
+          <tr><td data-i="os.mac">macOS, Intel and Apple Silicon</td><td>_universal.dmg</td></tr>
+        </table>
+        <p class="note" data-i="c.warn">Bandua MHL Companion helps you check media but does not replace your own checks and backups. Keep the original drive until the check is done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ATAECINA -->
 <section class="app" id="ataecina" aria-labelledby="h-ataecina">
   <div class="wrap">
@@ -370,11 +444,12 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
     </div>
     <div class="text">
       <p data-i="ab.p1">I work behind the camera on fiction films and commercial productions. Born in Barcelona, I live and work in France, and I shoot mostly on Blackmagic, RED and ARRI cameras.</p>
-      <p data-i="ab.p2">I also write code. Bandua and Ataecina started as tools I needed on my own shoots: one to offload cards without a doubt in mind, one for the day a card goes wrong. They are free because every camera department should have them.</p>
+      <p data-i="ab.p2">I also write code. Bandua, Bandua MHL Companion and Ataecina started as tools I needed on my own shoots: one to offload cards without a doubt in mind, one so the editor can check the footage that reaches them, one for the day a card goes wrong. They are free because every camera department, and everyone after it, should have them.</p>
       <p data-i="ab.p3">Found a bug, or have an idea? Open an issue on the project page. Feedback from the set is what makes them better.</p>
       <div class="links">
         <a href="https://github.com/tetsujin28">GitHub</a>
         <a href="https://github.com/tetsujin28/bandua/issues" data-i="ab.ib">Report a Bandua issue</a>
+        <a href="https://github.com/tetsujin28/bandua-mhl-companion/issues" data-i="ab.ic">Report an MHL Companion issue</a>
         <a href="https://github.com/tetsujin28/ataecina/issues" data-i="ab.ia">Report an Ataecina issue</a>
       </div>
     </div>
@@ -386,7 +461,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
   <div class="wrap">
     <p>© 2026 Domingo Olmo Martin</p>
     <div>
-      <p data-i="ft.1">Bandua and Ataecina are released under the MIT License.</p>
+      <p data-i="ft.1">Bandua, Bandua MHL Companion and Ataecina are released under the MIT License.</p>
       <p data-i="ft.2">They are provided as is, without any warranty. The author cannot be held responsible for any loss or corruption of data.</p>
     </div>
   </div>
@@ -402,8 +477,18 @@ const T = {
 fr:{
  "nav.about":"À propos",
  "hero.title":"Des outils pour l'équipe image.",
- "hero.lede":"Deux applications gratuites, faites sur le plateau par un chef opérateur. L'une protège vos rushes. L'autre les ramène.",
+ "hero.lede":"Trois applications gratuites, faites sur le plateau par un chef opérateur. L'une protège vos rushes, l'une les contrôle à l'arrivée, l'autre les ramène.",
  "hero.bandua":"Décharger et vérifier les cartes","hero.ataecina":"Récupérer et réparer les rushes",
+ "hero.companion":"Contrôler les rushes reçus","c.what":"Ce que fait le Companion",
+ "c.role":"Vous avez reçu les rushes ? Vérifiez que rien ne s'est abîmé en route.",
+ "c.myth":"Bandua MHL Companion s'adresse à ceux qui reçoivent les rushes : monteur, assistant monteur, labo, postproduction, réalisateur. Déposez le dossier, lancez le contrôle : il relit chaque fichier, le compare au MHL qui l'accompagne et vous dit, clip par clip, ce qui est intact et ce qui est abîmé, manquant ou incomplet. <em>C'est le compagnon de Bandua : Bandua écrit le MHL sur le plateau, le Companion le contrôle à l'arrivée. Il lit aussi les MHL écrits par Silverstack, ShotPut Pro, Hedge et les autres.</em>",
+ "c.t1":"Problèmes détectés","c.t2":"Tous les clips",
+ "c.feat":"<li><b>Trouve tous les MHL du dossier</b> déposé : plusieurs jours de tournage, caméras et cartes à la fois, ou un seul fichier .mhl.</li><li><b>Lit les MHL 1.1 et ASC MHL</b> : Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta… Les historiques ASC MHL sont fusionnés sur toutes leurs générations, et un historique modifié après coup est signalé.</li><li><b>Relit chaque fichier depuis le disque</b> en contournant le cache du système, et compare son hash (xxHash64, XXH3, XXH128, MD5, SHA-1, SHA-256, C4…).</li><li><b>Nomme les clips à problème</b> : abîmé, manquant, incomplet ou illisible, avec le nom du clip (dossiers .RDC RED, ARRI, BRAW…) et un bouton pour afficher le fichier.</li><li><b>Liste les fichiers qu'aucun MHL ne couvre</b>, pour savoir ce qui n'a pas pu être contrôlé.</li><li><b>Exporte un rapport texte</b> à renvoyer à la production ou au DIT. Un outil en ligne de commande est fourni pour les scripts.</li><li><b>Lecture seule</b> : rien n'est jamais modifié ni ajouté à côté des rushes.</li>",
+ "c.steps":"<li><span><b>Déposez le dossier des rushes</b> sur la fenêtre, ou choisissez-le.</span></li><li><span>Vérifiez la liste des <b>MHL trouvés</b>.</span></li><li><span>Cliquez sur <b>Lancer le contrôle</b>.</span></li><li><span>Attendez <span class=\"verified\">RUSHES INTACTS</span>, ou ouvrez l'onglet <b>Problèmes</b> pour savoir quels clips redemander.</span></li><li><span><b>Exportez le rapport</b> si vous devez l'envoyer.</span></li>",
+ "c.trust":"Un contrôle n'a de valeur que si le MHL vient de la personne qui a fait la copie d'origine, idéalement envoyé à part des rushes.",
+ "dl.titlec":"Télécharger Bandua MHL Companion",
+ "c.warn":"Bandua MHL Companion vous aide à contrôler vos médias mais ne remplace pas vos propres vérifications ni vos sauvegardes. Gardez le disque d'origine jusqu'à la fin du contrôle.",
+ "ab.ic":"Signaler un problème sur MHL Companion",
  "b.role":"Déchargez vos cartes, vérifiez chaque copie.",
  "b.myth":"Bandua décharge vos cartes caméra vers plusieurs disques en même temps, vérifie chaque copie par rapport à la source grâce à un hash, et produit un log, un MHL et un rapport PDF pour le monteur ou le labo. <em>Bandua est une divinité protectrice de l'ouest de la péninsule Ibérique. Ici, elle veille sur vos rushes.</em>",
  "f.free":"Gratuit et open source","f.langs":"Français, anglais, espagnol",
@@ -426,18 +511,28 @@ fr:{
  "a.where":"Placez untrunc, FFmpeg et PhotoRec à côté d'Ataecina.exe, dans un dossier tools, ou dans le PATH. Leur emplacement peut aussi être réglé dans l'app.",
  "ab.roles":"Directeur de la photographie, scénariste, réalisateur",
  "ab.p1":"Je travaille derrière la caméra, en fiction et en production commerciale. Né à Barcelone, je vis et travaille en France, et je tourne surtout avec des caméras Blackmagic, RED et ARRI.",
- "ab.p2":"Je code aussi. Bandua et Ataecina sont nés d'outils dont j'avais besoin sur mes propres tournages : l'un pour décharger les cartes l'esprit tranquille, l'autre pour le jour où une carte lâche. Ils sont gratuits parce que chaque équipe image devrait les avoir.",
+ "ab.p2":"Je code aussi. Bandua, Bandua MHL Companion et Ataecina sont nés d'outils dont j'avais besoin sur mes propres tournages : l'un pour décharger les cartes l'esprit tranquille, l'un pour que le montage puisse contrôler les rushes qu'il reçoit, l'autre pour le jour où une carte lâche. Ils sont gratuits parce que chaque équipe image, et tous ceux qui travaillent après elle, devraient les avoir.",
  "ab.p3":"Un bug, une idée ? Ouvrez une issue sur la page du projet. Les retours du plateau sont ce qui les fait progresser.",
  "ab.ib":"Signaler un problème sur Bandua","ab.ia":"Signaler un problème sur Ataecina",
- "ft.1":"Bandua et Ataecina sont publiés sous licence MIT.",
+ "ft.1":"Bandua, Bandua MHL Companion et Ataecina sont publiés sous licence MIT.",
  "ft.2":"Ils sont fournis tels quels, sans aucune garantie. L'auteur ne peut être tenu responsable d'une perte ou d'une corruption de données.",
  "close":"Fermer"
 },
 es:{
  "nav.about":"Sobre mí",
  "hero.title":"Herramientas para el equipo de cámara.",
- "hero.lede":"Dos aplicaciones gratuitas, hechas en el rodaje por un director de fotografía. Una protege tu material. La otra lo recupera.",
+ "hero.lede":"Tres aplicaciones gratuitas, hechas en el rodaje por un director de fotografía. Una protege tu material, otra lo controla al llegar, otra lo recupera.",
  "hero.bandua":"Volcar y verificar tarjetas","hero.ataecina":"Recuperar y reparar material",
+ "hero.companion":"Controlar el material recibido","c.what":"Qué hace",
+ "c.role":"¿Has recibido el material? Comprueba que nada se ha dañado por el camino.",
+ "c.myth":"Bandua MHL Companion está pensado para quien recibe el material: montador, ayudante de montaje, laboratorio, postproducción, director. Suelta la carpeta, inicia el control: vuelve a leer cada archivo, lo compara con el MHL que lo acompaña y te dice, clip por clip, qué está intacto y qué está dañado, falta o está incompleto. <em>Es el compañero de Bandua: Bandua escribe el MHL en el rodaje, el Companion lo controla al llegar. También lee los MHL escritos por Silverstack, ShotPut Pro, Hedge y otros.</em>",
+ "c.t1":"Problemas detectados","c.t2":"Todos los clips",
+ "c.feat":"<li><b>Encuentra todos los MHL de la carpeta</b>: varios días de rodaje, cámaras y tarjetas a la vez, o un solo archivo .mhl.</li><li><b>Lee MHL 1.1 y ASC MHL</b>: Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta… Los historiales ASC MHL se combinan en todas sus generaciones, y se avisa si un historial se modificó a posteriori.</li><li><b>Vuelve a leer cada archivo desde el disco</b> evitando la caché del sistema, y compara su hash (xxHash64, XXH3, XXH128, MD5, SHA-1, SHA-256, C4…).</li><li><b>Nombra los clips con problemas</b>: dañado, falta, incompleto o ilegible, con el nombre del clip (carpetas .RDC de RED, ARRI, BRAW…) y un botón para mostrar el archivo.</li><li><b>Lista los archivos que ningún MHL cubre</b>, para saber qué no se ha podido controlar.</li><li><b>Exporta un informe de texto</b> para enviarlo a producción o al DIT. Incluye una herramienta de línea de comandos para scripts.</li><li><b>Solo lectura</b>: nunca se modifica ni se añade nada junto al material.</li>",
+ "c.steps":"<li><span><b>Suelta la carpeta del material</b> en la ventana, o elígela.</span></li><li><span>Revisa la lista de <b>MHL encontrados</b>.</span></li><li><span>Haz clic en <b>Iniciar el control</b>.</span></li><li><span>Espera a <span class=\"verified\">MATERIAL INTACTO</span>, o abre la pestaña <b>Problemas</b> para saber qué clips volver a pedir.</span></li><li><span><b>Exporta el informe</b> si tienes que enviarlo.</span></li>",
+ "c.trust":"Un control solo tiene valor si el MHL viene de quien hizo la copia original, idealmente enviado aparte del material.",
+ "dl.titlec":"Descargar Bandua MHL Companion",
+ "c.warn":"Bandua MHL Companion te ayuda a controlar tu material, pero no sustituye tus propias comprobaciones ni tus copias de seguridad. Conserva el disco original hasta que termine el control.",
+ "ab.ic":"Informar de un problema en MHL Companion",
  "b.role":"Vuelca tus tarjetas, verifica cada copia.",
  "b.myth":"Bandua vuelca tus tarjetas de cámara a varios discos a la vez, verifica cada copia frente al origen mediante un hash y genera un log, un MHL y un informe PDF para el montador o el laboratorio. <em>Bandua es una divinidad protectora del oeste de la península ibérica. Aquí, vela por tu material.</em>",
  "f.free":"Gratuito y de código abierto","f.langs":"Español, inglés, francés",
@@ -460,10 +555,10 @@ es:{
  "a.where":"Coloca untrunc, FFmpeg y PhotoRec junto a Ataecina.exe, en una carpeta tools o en el PATH. También puedes indicar su ubicación en la app.",
  "ab.roles":"Director de fotografía, guionista, director",
  "ab.p1":"Trabajo detrás de la cámara, en ficción y en producción publicitaria. Nacido en Barcelona, vivo y trabajo en Francia, y ruedo sobre todo con cámaras Blackmagic, RED y ARRI.",
- "ab.p2":"También programo. Bandua y Ataecina nacieron como herramientas que necesitaba en mis propios rodajes: una para volcar tarjetas sin dudas, otra para el día en que una tarjeta falla. Son gratuitas porque todo equipo de cámara debería tenerlas.",
+ "ab.p2":"También programo. Bandua, Bandua MHL Companion y Ataecina nacieron como herramientas que necesitaba en mis propios rodajes: una para volcar tarjetas sin dudas, otra para que montaje pueda controlar el material que recibe, otra para el día en que una tarjeta falla. Son gratuitas porque todo equipo de cámara, y todos los que trabajan después, deberían tenerlas.",
  "ab.p3":"¿Un error, una idea? Abre una issue en la página del proyecto. Lo que llega del rodaje es lo que las hace mejores.",
  "ab.ib":"Informar de un problema en Bandua","ab.ia":"Informar de un problema en Ataecina",
- "ft.1":"Bandua y Ataecina se publican bajo licencia MIT.",
+ "ft.1":"Bandua, Bandua MHL Companion y Ataecina se publican bajo licencia MIT.",
  "ft.2":"Se ofrecen tal cual, sin ninguna garantía. El autor no se hace responsable de ninguna pérdida o corrupción de datos.",
  "close":"Cerrar"
 }};
