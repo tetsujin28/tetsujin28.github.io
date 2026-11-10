@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ataecina user guide · Ataecina, mode d&#x27;emploi · Ataecina, manual de uso</title>
+<meta name="description" content="Complete user guide for Ataecina, the free app that recovers footage from formatted or damaged camera cards and repairs broken MOV and MP4 files. With the setup of untrunc, FFmpeg and PhotoRec.">
+<meta property="og:title" content="Ataecina user guide">
+<meta property="og:description" content="Complete user guide for Ataecina, the free app that recovers footage from formatted or damaged camera cards and repairs broken MOV and MP4 files. With the setup of untrunc, FFmpeg and PhotoRec.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tetsujin28.github.io/ataecina/guide/">
+<meta property="og:image" content="https://tetsujin28.github.io/assets/og-image.jpg">
+<link rel="canonical" href="https://tetsujin28.github.io/ataecina/guide/">
+<link rel="icon" href="../../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0e10;--panel:#15171a;--raise:#1c1f23;--line:#262a30;--paper:#ecebe8;--muted:#8d939c;--faint:#5d636c;--accent:#e2c043;--ok:#35d39a;
+  --sans:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gut:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink);scroll-padding-top:84px}
+body{font-family:var(--sans);font-variation-settings:"wdth" 100;color:var(--paper);background:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--paper);outline-offset:3px;border-radius:4px}
+.top{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:rgba(13,14,16,.8);border-bottom:1px solid var(--line)}
+.top .in{max-width:1240px;margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:22px;height:64px}
+.brand{font-weight:700;font-variation-settings:"wdth" 112;text-decoration:none;margin-right:auto;white-space:nowrap}
+.back{color:var(--muted);text-decoration:none;font-size:15px}.back:hover{color:var(--paper)}
+.lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;font:500 12px var(--mono);padding:6px 10px;color:var(--faint)}
+.lang button[aria-pressed="true"]{background:var(--raise);color:var(--paper)}
+.wrap{max-width:1240px;margin:0 auto;padding:104px var(--gut) 80px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(32px,5vw,72px)}
+.toc{position:sticky;top:96px;align-self:start;font-size:14.5px}
+.toc p{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.toc ol{list-style:none;counter-reset:t;display:grid;gap:2px;border-left:1px solid var(--line)}
+.toc li{counter-increment:t}
+.toc a{display:block;padding:5px 0 5px 16px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a::before{content:counter(t) ". ";color:var(--faint);font-family:var(--mono);font-size:12px}
+.toc a:hover{color:var(--paper)}
+.toc a.on{color:var(--paper);border-left-color:var(--accent)}
+[data-l]{display:none}
+html[data-lang="en"] [data-l="en"],html[data-lang="fr"] [data-l="fr"],html[data-lang="es"] [data-l="es"]{display:block}
+article{max-width:860px;min-width:0}
+.ph{display:flex;gap:20px;align-items:center;margin-bottom:12px}
+.ph img{width:64px;border-radius:50%}
+h1{font-size:clamp(34px,4.6vw,58px);line-height:.95;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
+.ph p{color:var(--muted);margin-top:8px;font-size:15px;font-family:var(--mono)}
+.hint{color:var(--faint);font-size:14px;margin:26px 0 0}
+h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.02em;margin:76px 0 20px;padding-top:28px;border-top:1px solid var(--line)}
+h3{font-size:21px;font-weight:700;font-variation-settings:"wdth" 106;margin:40px 0 12px}
+article p{margin:14px 0;color:#c9ccd1}
+article strong{color:var(--paper);font-weight:650}
+article em{color:var(--paper)}
+article ul,article ol{margin:14px 0 14px 22px;color:#c9ccd1}
+article li{margin:6px 0;padding-left:4px}
+article li::marker{color:var(--accent)}
+article a{color:var(--accent);text-underline-offset:3px}
+code{font-family:var(--mono);font-size:.84em;color:var(--paper);background:var(--raise);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0;overflow-x:auto}
+pre code{background:none;padding:0;color:var(--accent);font-size:14.5px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);background:var(--panel);padding:11px 14px}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:#c9ccd1}
+.shot{margin:26px 0;border:1px solid var(--line);border-radius:12px;background:#000;padding:8px;cursor:zoom-in}
+.shot img{border-radius:6px;margin:0 auto}
+.shot.w560 img{max-width:560px}.shot.w700 img{max-width:700px}
+blockquote{margin:22px 0;padding:14px 20px;border-left:3px solid var(--line);background:var(--panel);border-radius:0 10px 10px 0}
+blockquote p{margin:6px 0!important}
+blockquote.alert{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--panel));border-radius:12px;margin:30px 0 0}
+blockquote.alert strong:first-child{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:60px!important;padding-top:32px;border-top:1px solid var(--line)}
+.get{display:inline-flex;padding:13px 22px;border-radius:12px;background:var(--accent);color:#16110a!important;font-weight:700;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:32px var(--gut) 44px;color:var(--faint);font-size:14px;text-align:center}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto}
+dialog::backdrop{background:rgba(5,5,6,.92)}
+dialog img{max-width:96vw;max-height:90vh;width:auto;border-radius:8px}
+dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:var(--paper);font:500 14px var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none!important}.back{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="../../">Domingo Olmo Martin</a>
+  <a class="back" href="../../#ataecina" data-t="back">Back</a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button>
+  </div>
+</div></header>
+<main class="wrap">
+<div>
+<nav class="toc" data-l="en" aria-label="Contents"><p>Contents</p><ol><li><a href="#en-1">Overview</a></li><li><a href="#en-2">Installation</a></li><li><a href="#en-3">Installing the additional software (required)</a></li><li><a href="#en-4">Before you start: good habits</a></li><li><a href="#en-5">Recovery: reading the card</a></li><li><a href="#en-6">Recovery: card formatted by mistake</a></li><li><a href="#en-7">Recovery: unreadable card, restoring the format</a></li><li><a href="#en-8">Recovery: card image and PhotoRec search</a></li><li><a href="#en-9">Repairing broken MOV and MP4 files</a></li><li><a href="#en-10">FAQ</a></li><li><a href="#en-11">Disclaimer and license</a></li></ol></nav>
+<nav class="toc" data-l="fr" aria-label="Sommaire"><p>Sommaire</p><ol><li><a href="#fr-1">Présentation</a></li><li><a href="#fr-2">Installation</a></li><li><a href="#fr-3">Installer les logiciels complémentaires (indispensable)</a></li><li><a href="#fr-4">Avant de commencer : les bons réflexes</a></li><li><a href="#fr-5">Récupération : lire la carte</a></li><li><a href="#fr-6">Récupération : carte formatée par erreur</a></li><li><a href="#fr-7">Récupération : carte illisible, restaurer le format</a></li><li><a href="#fr-8">Récupération : image de la carte et recherche PhotoRec</a></li><li><a href="#fr-9">Réparation des MOV et MP4 cassés</a></li><li><a href="#fr-10">Questions fréquentes</a></li><li><a href="#fr-11">Avertissement et licence</a></li></ol></nav>
+<nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">Instalar los programas complementarios (imprescindible)</a></li><li><a href="#es-4">Antes de empezar: buenos hábitos</a></li><li><a href="#es-5">Recuperación: leer la tarjeta</a></li><li><a href="#es-6">Recuperación: tarjeta formateada por error</a></li><li><a href="#es-7">Recuperación: tarjeta ilegible, restaurar el formato</a></li><li><a href="#es-8">Recuperación: imagen de la tarjeta y búsqueda PhotoRec</a></li><li><a href="#es-9">Reparación de MOV y MP4 rotos</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
+</div>
+<div>
+<article data-l="en" lang="en"><header class="ph"><img src="../../assets/ataecina-icon.png" alt="" width="64" height="64"><div><h1>Ataecina user guide</h1><p>Beta 0.11.4 · Windows</p></div></header><p class="hint">Click an image to enlarge it.</p><blockquote class="alert">
+<p><strong>⚠ Read this first: Ataecina needs additional software.</strong>
+untrunc, FFmpeg and PhotoRec are <strong>not</strong> included with Ataecina. Download them from their official websites and put them <strong>in the same folder as <code>Ataecina.exe</code></strong>. Without them, repair does not start and the PhotoRec search is not available. See <a href="#en-3">section 3</a>.</p>
+</blockquote>
+<h2 id="en-1">1. Overview</h2>
+<p>Ataecina brings lost footage back. It helps in two situations:</p>
+<ul>
+<li><strong>Recovery</strong>: a camera card was emptied, formatted by mistake, or Windows can no longer read it. Ataecina reads the card itself (exFAT and FAT32), finds deleted files and those of a reformatted card, can restore the format of a damaged card, and can call on PhotoRec for the hardest cases.</li>
+<li><strong>Repair</strong>: a MOV or MP4 clip no longer opens, often because the camera shut down while recording. With untrunc and a healthy reference clip, Ataecina rebuilds the missing index.</li>
+</ul>
+<p>The original files and the card are <strong>never modified</strong>, unless you explicitly ask to restore the format (section 7). Ataecina is free, open source (MIT License), for Windows.</p>
+<blockquote>
+<p>Ataecina is a goddess of the ancient Iberian Peninsula, often interpreted as "the Reborn". Like her, this software brings back to light images that were thought to be lost.</p>
+</blockquote>
+<h2 id="en-2">2. Installation</h2>
+<p>The files are on the <a href="https://github.com/tetsujin28/ataecina/releases">Releases page</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ataecina_x.y.z_portable.exe</code></td>
+<td>No install: put it in a folder of your own, for example <code>C:\Ataecina\</code></td>
+</tr>
+<tr>
+<td><code>Ataecina_x.y.z_x64-setup.exe</code> or <code>.msi</code></td>
+<td>Standard installer</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Our advice: the portable version.</strong> You keep it in its own folder and put the additional software right next to it (section 3). With the installer, the executable lives in the installation folder (usually under <code>C:\Program Files\</code>), where Windows asks for administrator rights to add files.</p>
+<p><strong>First launch.</strong> The app is not signed yet, so Windows shows a warning once. Click "More info", then "Run anyway".</p>
+<p><strong>Administrator rights.</strong> Reading a card directly requires administrator rights. When needed, Ataecina shows a banner and offers to restart as administrator; Windows asks you to confirm. The <strong>admin</strong> pill, top right, turns green.</p>
+<h2 id="en-3">3. Installing the additional software (required)</h2>
+<p>Ataecina drives three free programs that are <strong>not</strong> shipped with it. They remain the property of their authors: always download them from their <strong>official website</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Used for</th>
+<th>Where to get it</th>
+<th>Files to place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>untrunc</strong></td>
+<td>Repairing MOV / MP4</td>
+<td><a href="https://github.com/anthwlock/untrunc">github.com/anthwlock/untrunc</a>, Releases page, Windows build</td>
+<td><code>untrunc.exe</code> <strong>and all the .dll files</strong> that come with it</td>
+</tr>
+<tr>
+<td><strong>FFmpeg</strong></td>
+<td>Checking files, creating thumbnails</td>
+<td><a href="https://ffmpeg.org/download.html">ffmpeg.org</a>, Windows section (builds by gyan.dev or BtbN)</td>
+<td><code>ffmpeg.exe</code> and <code>ffprobe.exe</code> (in the archive's <code>bin</code> folder)</td>
+</tr>
+<tr>
+<td><strong>TestDisk / PhotoRec</strong></td>
+<td>The PhotoRec search</td>
+<td><a href="https://www.cgsecurity.org">cgsecurity.org</a>, TestDisk for Windows 64-bit</td>
+<td>the <strong>whole</strong> <code>testdisk-x.y</code> folder (it contains <code>photorec_win.exe</code> and its files)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Where to put them</h3>
+<p><strong>Put them in the same folder as <code>Ataecina.exe</code>.</strong> That is where Ataecina looks first:</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+├── untrunc.exe          ← with the .dll files shipped with untrunc
+├── *.dll
+├── ffmpeg.exe
+├── ffprobe.exe
+└── testdisk-7.2\        ← the TestDisk folder as it is
+    ├── photorec_win.exe
+    └── …
+</code></pre>
+<p>If you prefer to keep things tidy, a <code>tools</code> subfolder next to <code>Ataecina.exe</code> also works, with one folder per program:</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+└── tools\
+    ├── untrunc\         (untrunc.exe and its .dll files)
+    ├── ffmpeg\bin\      (ffmpeg.exe, ffprobe.exe)
+    └── testdisk-7.2\    (photorec_win.exe…)
+</code></pre>
+<p>Two rules:</p>
+<ul>
+<li><strong>Never separate a program from its .dll files.</strong> untrunc and PhotoRec do not start without them. Copy the whole content of the archive, not just the <code>.exe</code>.</li>
+<li><strong>Unzip the archives</strong> (right-click, "Extract All"): Ataecina does not look inside a .zip file.</li>
+</ul>
+<p>Ataecina also finds tools already installed in the Windows PATH. And if you keep them somewhere else, you can set their location by hand: the <strong>untrunc.exe</strong> and <strong>ffmpeg folder</strong> fields in the Repair tab, the <strong>photorec_win.exe</strong> field of the PhotoRec search.</p>
+<h3>Checking that everything is detected</h3>
+<p>Top right, <strong>pills</strong> show the state of each tool: <strong>green</strong> = found, <strong>red</strong> = not found.</p>
+<p>Without the tools, the Repair tab shows red pills (1) and the untrunc.exe field shows that nothing was found (2):</p>
+<figure class="shot w860"><img src="img/00_tools_missing_en.webp" alt="Tools not found" loading="lazy"></figure>
+
+<p>If you start the repair anyway, Ataecina stops with a clear message (1), for example "untrunc.exe not found":</p>
+<figure class="shot w860"><img src="img/01_tools_error_en.webp" alt="untrunc not found error message" loading="lazy"></figure>
+
+<p>Once the tools are next to the executable, the pills turn green (1) and the path found is shown (2). If they stay red, close and restart Ataecina.</p>
+<figure class="shot w860"><img src="img/02_tools_ok_en.webp" alt="Tools detected" loading="lazy"></figure>
+
+<p>In the Recovery tab, the <strong>photorec</strong> pill works the same way:</p>
+<figure class="shot w860"><img src="img/03_tools_recovery_en.webp" alt="Recovery tab pills" loading="lazy"></figure>
+
+<p><strong>What works without the tools:</strong> reading the card, the deep search, copying the files found, restoring the format and creating a card image. <strong>What does not:</strong> the PhotoRec search (without PhotoRec) and the whole repair (without untrunc and FFmpeg).</p>
+<h2 id="en-4">4. Before you start: good habits</h2>
+<ul>
+<li><strong>Stop writing to the card.</strong> Do not shoot on it, do not format it, do not copy anything to it. Every write can overwrite a clip that could still be recovered.</li>
+<li><strong>If Windows offers to format the card, say no.</strong></li>
+<li><strong>Always choose a destination on another drive</strong> than the card being analysed. Ataecina reminds you below the Destination field.</li>
+<li><strong>For a damaged card, create an image first</strong> (section 8): the card is read only once, and all the work then runs on the image.</li>
+</ul>
+<h2 id="en-5">5. Recovery: reading the card</h2>
+<p>This is the method to try first. Ataecina reads the card's exFAT or FAT32 file system itself, without writing anything to it, and finds the original folders and names, including deleted files.</p>
+<figure class="shot w860"><img src="img/10_rec_start_en.webp" alt="Recovery tab" loading="lazy"></figure>
+
+<ol>
+<li><strong>Source</strong>: <em>Card</em> for a card in the reader, <em>Image</em> for a disk image already created.</li>
+<li><strong>Choose the card</strong> in the list. System drives are greyed out. If the card does not show up, click <strong>Refresh</strong>.</li>
+<li><strong>Create an image of the card first</strong>: recommended if the card seems damaged (section 8).</li>
+<li><strong>Method</strong>: <em>Card reading</em>.</li>
+<li><strong>Deep search</strong>: only after a format (section 6).</li>
+<li>Check the <strong>Destination</strong> (a dated subfolder is created there for each recovery), then click <strong>Analyse the card</strong>.</li>
+</ol>
+<h3>Choosing the files to copy</h3>
+<figure class="shot w860"><img src="img/11_rec_found_en.webp" alt="Files found" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>volume card</strong>: format (exFAT or FAT32), name, size, and the state of the boot sector.</li>
+<li>The <strong>filters</strong>: <em>Videos</em>, <em>All</em>, <em>Deleted</em> (and <em>Recovered</em> after a deep search). <em>None</em> / <em>All</em> unticks or ticks everything.</li>
+<li><strong>Deleted</strong> files are marked <em>DELETED</em>, with a warning triangle: their data may have been partly overwritten since.</li>
+<li><strong>Copy</strong> copies the ticked files to the destination. The button shows their number and size.</li>
+</ol>
+<figure class="shot w860"><img src="img/12_rec_copied_en.webp" alt="Copy finished" loading="lazy"></figure>
+
+<p>When the copy is finished (1), each file has a status (2): <em>COPIED</em>, <em>TO REPAIR</em> (the file was copied but does not play) or <em>ERROR</em>. <strong>Open</strong> shows the copy folder.</p>
+<p>The <strong>Send videos to repair</strong> option (under Destination) adds the unplayable videos straight to the list in the Repair tab.</p>
+<h2 id="en-6">6. Recovery: card formatted by mistake</h2>
+<p>After a format, the card looks empty: the simple reading finds nothing. Turn on the <strong>deep search</strong> and run the analysis again.</p>
+<figure class="shot w860"><img src="img/13_rec_deep_en.webp" alt="Deep search after a format" loading="lazy"></figure>
+
+<ol>
+<li>Choose the formatted card.</li>
+<li>Turn on <strong>Deep search</strong>. Ataecina scans the whole card for the old file entries. It takes longer.</li>
+<li>The files found are marked <em>RECOVERED</em> and grouped under "Recovered, original folder lost". Their original names are often kept, but the original folder is lost, and their data is assumed to be in one piece: check them after copying.</li>
+</ol>
+<p>If the deep search finds nothing, try the PhotoRec search (section 8).</p>
+<h2 id="en-7">7. Recovery: unreadable card, restoring the format</h2>
+<p>When Windows no longer recognises a card ("the disk is not formatted"), its boot sector is often damaged. exFAT and FAT32 cards keep a <strong>backup copy</strong> of it: Ataecina uses it to read the card anyway.</p>
+<figure class="shot w860"><img src="img/14_rec_boot_en.webp" alt="Damaged boot sector" loading="lazy"></figure>
+
+<ol>
+<li>The volume card reads <em>Boot sector damaged, backup used</em>. The files are listed normally: <strong>copy the ones that matter first.</strong></li>
+<li><strong>Restore the format</strong> rewrites the boot sector from its backup copy, so that Windows can read the card again.</li>
+</ol>
+<figure class="shot w860"><img src="img/15_rec_restore_en.webp" alt="Restore window" loading="lazy"></figure>
+
+<p>This is <strong>the only Ataecina operation that writes to the card</strong>. Only the boot sector is rewritten, the files are not touched. To be safe, Ataecina asks you to confirm that you have already copied the important files before the <strong>Restore</strong> button is enabled.</p>
+<h2 id="en-8">8. Recovery: card image and PhotoRec search</h2>
+<h3>Creating a card image</h3>
+<p>A card that is starting to fail may not survive several reads. Turn on <strong>Create an image of the card first</strong>: Ataecina copies it entirely into an image file, reading the healthy areas first and the damaged ones last, following the GNU ddrescue method. An interrupted copy can be resumed. The whole analysis then runs on the image, and the card can be put away.</p>
+<p>Allow <strong>as much free space as the size of the card</strong>. The <strong>Image folder</strong> field lets you choose where to save it (empty = the destination folder).</p>
+<figure class="shot w860"><img src="img/16_rec_image_en.webp" alt="Analysing an image" loading="lazy"></figure>
+
+<p>To analyse an existing image, choose <strong>Image</strong> (1) in the source, then give the <strong>image file</strong> (2): an image created by Ataecina, TestDisk or dd.</p>
+<h3>PhotoRec search</h3>
+<p>For cases where reading the card is not enough: destroyed file system, unknown card format, files scattered in pieces. PhotoRec searches for videos directly in the card's raw data. <strong>PhotoRec must be installed</strong> (section 3).</p>
+<figure class="shot w860"><img src="img/04_photorec_missing_en.webp" alt="PhotoRec search" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>photorec</strong> pill must be green.</li>
+<li>Choose the <strong>PhotoRec search</strong> method.</li>
+<li>If PhotoRec is not detected, Ataecina says so here, with a link to TestDisk. You can also give the location of <code>photorec_win.exe</code> in the field above.</li>
+</ol>
+<p>Choose the <strong>formats searched</strong> (MOV / MP4, R3D, ARRIRAW), then click <strong>Start recovery</strong>. Videos appear as they are found. PhotoRec does not recover the original names, and files in pieces often need repairing: at the end, Ataecina offers to send the MOV files to the Repair tab.</p>
+<h2 id="en-9">9. Repairing broken MOV and MP4 files</h2>
+<p>A MOV or MP4 file holds the images and an <strong>index</strong> that says where they are. If the camera shuts down while recording, the index is never written and the file no longer opens. untrunc rebuilds that index based on a <strong>healthy reference clip</strong>. You need <strong>untrunc and FFmpeg</strong> (section 3).</p>
+<figure class="shot w860"><img src="img/20_rep_ready_en.webp" alt="Repair tab" loading="lazy"></figure>
+
+<ol>
+<li><strong>References</strong>: add one or more <strong>healthy</strong> clips, a few seconds is enough, shot <strong>with the same camera and the same recording mode</strong> (resolution, frame rate, codec, bitrate) as the lost files. This is the single most important condition for success.</li>
+<li><strong>Files to repair</strong>: add files one by one (<strong>Files</strong>) or a whole folder (<strong>Whole folder</strong>, for example PhotoRec's output). The <strong>Skip _ftyp files</strong> option leaves out clip beginnings cut by PhotoRec, which are often useless on their own.</li>
+<li><strong>Output and tools</strong>: the <strong>output folder</strong> where the repaired files are written, and the location of the tools if Ataecina does not find them on its own. <strong>Full check</strong> decodes each repaired file entirely with ffmpeg to count errors (slower, safer).</li>
+<li>Click <strong>Start repair</strong>.</li>
+</ol>
+<p>For each file, Ataecina first checks whether it already plays. If not, it tries untrunc with each reference, in normal mode then step-by-step mode, and keeps the best result.</p>
+<figure class="shot w860"><img src="img/21_rep_done_en.webp" alt="Repair results" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>summary</strong>: <em>Repaired</em>, <em>Intact</em>, <em>With errors</em>, <em>Failed</em>. Clicking a category filters the results. <strong>Open output</strong> shows the output folder.</li>
+<li>A <strong>thumbnail</strong> for each file, with the duration recovered:</li>
+<li><strong>REPAIRED</strong>: rebuilt, saved as <code>&lt;name&gt;_repare.mov</code>;</li>
+<li><strong>INTACT</strong>: already played, copied as is;</li>
+<li><strong>ERRORS</strong>: rebuilt, but decoding errors remain;</li>
+<li><strong>FAILED</strong>: no reference could repair it. Try another reference, shot in exactly the same mode.</li>
+</ol>
+<p>Originals are never modified. The output folder also holds <code>journal.csv</code> (the result for each file, to open in a spreadsheet) and a <code>logs</code> folder with the details of every untrunc attempt.</p>
+<h2 id="en-10">10. FAQ</h2>
+<p><strong>Repair does not start: "untrunc.exe not found".</strong>
+untrunc is not next to <code>Ataecina.exe</code>, or its .dll files are missing. See section 3.</p>
+<p><strong>The photorec pill stays red.</strong>
+The TestDisk folder must be unzipped and placed, whole, next to <code>Ataecina.exe</code> (or in <code>tools</code>). Otherwise, give the path of <code>photorec_win.exe</code> in the field provided.</p>
+<p><strong>My card does not show up in the list.</strong>
+Click <strong>Refresh</strong>. Check that Ataecina is running as administrator. If Windows does not see the card at all (not even in Explorer), the reader or the card may be at fault: try another reader.</p>
+<p><strong>Does Ataecina run on a Mac?</strong>
+No, Ataecina is Windows only.</p>
+<p><strong>Which cards can Ataecina read?</strong>
+Card reading handles exFAT and FAT32, the formats of almost every camera card. For other cases, the PhotoRec search works with any card format.</p>
+<p><strong>A repaired file is shorter than expected.</strong>
+untrunc recovers everything usable. If the end of the file was never written to the card, it cannot be rebuilt.</p>
+<h2 id="en-11">11. Disclaimer and license</h2>
+<p>Ataecina is a tool to help recover and repair media. It is provided "as is", without any warranty: recovery is never guaranteed, and the author cannot be held responsible for any loss, corruption or deletion of data. For irreplaceable footage on a physically damaged card, contact a data recovery professional before doing anything.</p>
+<p>untrunc, FFmpeg and TestDisk / PhotoRec remain the property of their authors and are distributed under their own licences.</p>
+<p>© 2026 Domingo Olmo Martin. Released under the <a href="https://github.com/tetsujin28/ataecina/blob/main/LICENSE">MIT License</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/ataecina/releases/latest">Download Ataecina</a><a href="https://github.com/tetsujin28/ataecina/blob/main/docs/GUIDE.md">This guide on GitHub</a></p></article>
+<article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/ataecina-icon.png" alt="" width="64" height="64"><div><h1>Ataecina, mode d'emploi</h1><p>Version bêta 0.11.4 · Windows</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><blockquote class="alert">
+<p><strong>⚠ À lire avant tout : Ataecina a besoin de logiciels complémentaires.</strong>
+untrunc, FFmpeg et PhotoRec ne sont <strong>pas</strong> fournis avec Ataecina. Téléchargez-les sur leur site officiel et placez-les <strong>dans le même dossier que <code>Ataecina.exe</code></strong>. Sans eux, la réparation ne démarre pas et la recherche PhotoRec n'est pas disponible. Voir la <a href="#fr-3">section 3</a>.</p>
+</blockquote>
+<h2 id="fr-1">1. Présentation</h2>
+<p>Ataecina ramène les images perdues. Il sert dans deux situations :</p>
+<ul>
+<li><strong>Récupération</strong> : une carte caméra a été vidée, formatée par erreur, ou Windows ne la lit plus. Ataecina lit lui-même la carte (exFAT et FAT32), retrouve les fichiers supprimés et ceux d'une carte reformatée, peut restaurer le format d'une carte abîmée, et sait faire appel à PhotoRec pour les cas les plus difficiles.</li>
+<li><strong>Réparation</strong> : un rush MOV ou MP4 ne s'ouvre plus, souvent parce que la caméra s'est éteinte en plein enregistrement. Avec untrunc et un rush sain de référence, Ataecina reconstruit l'index manquant.</li>
+</ul>
+<p>Les fichiers d'origine et la carte <strong>ne sont jamais modifiés</strong>, sauf si vous demandez explicitement la restauration du format (section 7). Ataecina est gratuit, open source (licence MIT), pour Windows.</p>
+<blockquote>
+<p>Ataecina est une déesse de la péninsule ibérique antique, souvent interprétée comme « la Renaissante ». Comme elle, ce logiciel ramène à la lumière des images que l'on croyait perdues.</p>
+</blockquote>
+<h2 id="fr-2">2. Installation</h2>
+<p>Les fichiers se trouvent sur la <a href="https://github.com/tetsujin28/ataecina/releases">page des Releases</a> :</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ataecina_x.y.z_portable.exe</code></td>
+<td>Sans installation : placez-le dans un dossier à vous, par exemple <code>C:\Ataecina\</code></td>
+</tr>
+<tr>
+<td><code>Ataecina_x.y.z_x64-setup.exe</code> ou <code>.msi</code></td>
+<td>Installeur classique</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Notre conseil : la version portable.</strong> Vous la rangez dans un dossier dédié, et vous mettez les logiciels complémentaires juste à côté (section 3). Avec l'installeur, l'exécutable se trouve dans le dossier d'installation (en général sous <code>C:\Program Files\</code>), où Windows demande les droits administrateur pour ajouter des fichiers.</p>
+<p><strong>Premier lancement.</strong> L'application n'est pas encore signée : Windows affiche un avertissement une fois. Cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».</p>
+<p><strong>Droits administrateur.</strong> Lire une carte directement demande les droits administrateur. Si besoin, Ataecina affiche un bandeau et propose de se relancer en administrateur ; Windows vous demande alors de confirmer. La pastille <strong>admin</strong>, en haut à droite, passe au vert.</p>
+<h2 id="fr-3">3. Installer les logiciels complémentaires (indispensable)</h2>
+<p>Ataecina pilote trois logiciels gratuits qui ne sont <strong>pas</strong> livrés avec lui. Ils restent la propriété de leurs auteurs : téléchargez-les toujours depuis leur <strong>site officiel</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Logiciel</th>
+<th>Sert à</th>
+<th>Où le trouver</th>
+<th>Fichiers à placer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>untrunc</strong></td>
+<td>Réparer les MOV / MP4</td>
+<td><a href="https://github.com/anthwlock/untrunc">github.com/anthwlock/untrunc</a>, page Releases, version Windows</td>
+<td><code>untrunc.exe</code> <strong>et tous les fichiers .dll</strong> livrés avec lui</td>
+</tr>
+<tr>
+<td><strong>FFmpeg</strong></td>
+<td>Vérifier les fichiers, créer les vignettes</td>
+<td><a href="https://ffmpeg.org/download.html">ffmpeg.org</a>, rubrique Windows (versions compilées par gyan.dev ou BtbN)</td>
+<td><code>ffmpeg.exe</code> et <code>ffprobe.exe</code> (dans le dossier <code>bin</code> de l'archive)</td>
+</tr>
+<tr>
+<td><strong>TestDisk / PhotoRec</strong></td>
+<td>La recherche PhotoRec</td>
+<td><a href="https://www.cgsecurity.org">cgsecurity.org</a>, TestDisk pour Windows 64 bits</td>
+<td>le dossier <code>testdisk-x.y</code> <strong>entier</strong> (il contient <code>photorec_win.exe</code> et ses fichiers)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Où les mettre</h3>
+<p><strong>Placez-les dans le même dossier que <code>Ataecina.exe</code>.</strong> C'est l'endroit où Ataecina les cherche en premier :</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+├── untrunc.exe          ← avec les fichiers .dll livrés avec untrunc
+├── *.dll
+├── ffmpeg.exe
+├── ffprobe.exe
+└── testdisk-7.2\        ← le dossier de TestDisk tel quel
+    ├── photorec_win.exe
+    └── …
+</code></pre>
+<p>Si vous préférez garder les choses rangées, un sous-dossier <code>tools</code> à côté de <code>Ataecina.exe</code> fonctionne aussi, avec un dossier par logiciel :</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+└── tools\
+    ├── untrunc\         (untrunc.exe et ses .dll)
+    ├── ffmpeg\bin\      (ffmpeg.exe, ffprobe.exe)
+    └── testdisk-7.2\    (photorec_win.exe…)
+</code></pre>
+<p>Deux règles à respecter :</p>
+<ul>
+<li><strong>Ne séparez jamais un logiciel de ses fichiers .dll.</strong> untrunc et PhotoRec ne démarrent pas sans eux. Copiez tout le contenu de l'archive, pas seulement le <code>.exe</code>.</li>
+<li><strong>Décompressez les archives</strong> (clic droit, « Extraire tout ») : Ataecina ne lit pas l'intérieur d'un fichier .zip.</li>
+</ul>
+<p>Ataecina trouve aussi les outils déjà installés dans le PATH de Windows. Et si vous les avez rangés ailleurs, vous pouvez indiquer leur emplacement à la main : champs <strong>untrunc.exe</strong> et <strong>Dossier ffmpeg</strong> de l'onglet Réparation, champ <strong>photorec_win.exe</strong> de la recherche PhotoRec.</p>
+<h3>Vérifier que tout est détecté</h3>
+<p>En haut à droite, des <strong>pastilles</strong> indiquent l'état de chaque outil : <strong>verte</strong> = trouvé, <strong>rouge</strong> = introuvable.</p>
+<p>Sans les outils, l'onglet Réparation affiche des pastilles rouges (1) et le champ untrunc.exe signale qu'il ne trouve rien (2) :</p>
+<figure class="shot w860"><img src="img/00_tools_missing_fr.webp" alt="Outils introuvables" loading="lazy"></figure>
+
+<p>Si vous lancez quand même la réparation, Ataecina s'arrête avec un message clair (1), par exemple « untrunc.exe introuvable » :</p>
+<figure class="shot w860"><img src="img/01_tools_error_fr.webp" alt="Message d'erreur untrunc introuvable" loading="lazy"></figure>
+
+<p>Une fois les outils placés à côté de l'exécutable, les pastilles passent au vert (1) et le chemin trouvé s'affiche (2). Si elles restent rouges, fermez et relancez Ataecina.</p>
+<figure class="shot w860"><img src="img/02_tools_ok_fr.webp" alt="Outils détectés" loading="lazy"></figure>
+
+<p>Dans l'onglet Récupération, la pastille <strong>photorec</strong> fait de même :</p>
+<figure class="shot w860"><img src="img/03_tools_recovery_fr.webp" alt="Pastilles de l'onglet Récupération" loading="lazy"></figure>
+
+<p><strong>Ce qui marche sans les outils :</strong> la lecture de la carte, la recherche approfondie, la copie des fichiers retrouvés, la restauration du format et la création d'une image de carte. <strong>Ce qui ne marche pas :</strong> la recherche PhotoRec (sans PhotoRec) et toute la réparation (sans untrunc et FFmpeg).</p>
+<h2 id="fr-4">4. Avant de commencer : les bons réflexes</h2>
+<ul>
+<li><strong>N'écrivez plus rien sur la carte.</strong> Ne filmez plus avec, ne la formatez pas, ne copiez rien dessus. Chaque écriture peut écraser un rush encore récupérable.</li>
+<li><strong>Si Windows propose de formater la carte, refusez.</strong></li>
+<li><strong>Choisissez toujours une destination sur un autre disque</strong> que la carte analysée. Ataecina le rappelle sous le champ Destination.</li>
+<li><strong>Pour une carte abîmée, créez d'abord une image</strong> (section 8) : la carte n'est lue qu'une fois, et tout le travail se fait ensuite sur l'image.</li>
+</ul>
+<h2 id="fr-5">5. Récupération : lire la carte</h2>
+<p>C'est la méthode à essayer en premier. Ataecina lit lui-même le système de fichiers exFAT ou FAT32 de la carte, sans rien y écrire, et retrouve les dossiers et les noms d'origine, y compris les fichiers supprimés.</p>
+<figure class="shot w860"><img src="img/10_rec_start_fr.webp" alt="Onglet Récupération" loading="lazy"></figure>
+
+<ol>
+<li><strong>Source</strong> : <em>Carte</em> pour une carte insérée dans le lecteur, <em>Image</em> pour une image disque déjà créée.</li>
+<li><strong>Choisissez la carte</strong> dans la liste. Les disques système sont grisés. Si la carte n'apparaît pas, cliquez sur <strong>Actualiser</strong>.</li>
+<li><strong>Créer d'abord une image de la carte</strong> : recommandé si la carte semble abîmée (section 8).</li>
+<li><strong>Méthode</strong> : <em>Lecture de la carte</em>.</li>
+<li><strong>Recherche approfondie</strong> : seulement après un formatage (section 6).</li>
+<li>Vérifiez la <strong>Destination</strong> (un sous-dossier daté y est créé à chaque récupération), puis cliquez sur <strong>Analyser la carte</strong>.</li>
+</ol>
+<h3>Choisir les fichiers à copier</h3>
+<figure class="shot w860"><img src="img/11_rec_found_fr.webp" alt="Fichiers trouvés" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>fiche du volume</strong> : format (exFAT ou FAT32), nom, taille, et l'état du secteur de démarrage.</li>
+<li>Les <strong>filtres</strong> : <em>Vidéos</em>, <em>Tout</em>, <em>Supprimés</em> (et <em>Retrouvés</em> après une recherche approfondie). <em>Aucun</em> / <em>Tous</em> décoche ou coche tout.</li>
+<li>Les fichiers <strong>supprimés</strong> sont marqués <em>SUPPRIMÉ</em>, avec un triangle d'avertissement : leurs données ont pu être en partie réécrites depuis.</li>
+<li><strong>Copier</strong> copie les fichiers cochés vers la destination. Le bouton indique leur nombre et leur taille.</li>
+</ol>
+<figure class="shot w860"><img src="img/12_rec_copied_fr.webp" alt="Copie terminée" loading="lazy"></figure>
+
+<p>À la fin de la copie (1), chaque fichier porte un statut (2) : <em>COPIÉ</em>, <em>À RÉPARER</em> (le fichier a été copié mais ne se lit pas) ou <em>ERREUR</em>. <strong>Ouvrir</strong> affiche le dossier de copie.</p>
+<p>L'option <strong>Envoyer les vidéos vers la réparation</strong> (sous Destination) ajoute directement les vidéos illisibles à la liste de l'onglet Réparation.</p>
+<h2 id="fr-6">6. Récupération : carte formatée par erreur</h2>
+<p>Après un formatage, la carte paraît vide : la lecture simple ne trouve rien. Activez la <strong>recherche approfondie</strong> et relancez l'analyse.</p>
+<figure class="shot w860"><img src="img/13_rec_deep_fr.webp" alt="Recherche approfondie après un formatage" loading="lazy"></figure>
+
+<ol>
+<li>Choisissez la carte formatée.</li>
+<li>Activez <strong>Recherche approfondie</strong>. Ataecina parcourt toute la carte à la recherche des anciennes entrées de fichiers. C'est plus long.</li>
+<li>Les fichiers retrouvés sont marqués <em>RETROUVÉ</em> et rangés dans « Retrouvés, dossier d'origine perdu ». Leurs noms d'origine sont souvent conservés, mais le dossier d'origine est perdu, et leurs données sont supposées d'un seul tenant : vérifiez-les après la copie.</li>
+</ol>
+<p>Si la recherche approfondie ne donne rien, essayez la recherche PhotoRec (section 8).</p>
+<h2 id="fr-7">7. Récupération : carte illisible, restaurer le format</h2>
+<p>Quand Windows ne reconnaît plus une carte (« le disque n'est pas formaté »), c'est souvent son secteur de démarrage qui est abîmé. Les cartes exFAT et FAT32 en gardent une <strong>copie de secours</strong> : Ataecina s'en sert pour lire la carte quand même.</p>
+<figure class="shot w860"><img src="img/14_rec_boot_fr.webp" alt="Secteur de démarrage abîmé" loading="lazy"></figure>
+
+<ol>
+<li>La fiche du volume indique <em>Démarrage abîmé, secours utilisé</em>. Les fichiers s'affichent normalement : <strong>copiez d'abord ceux qui comptent.</strong></li>
+<li><strong>Restaurer le format</strong> réécrit le secteur de démarrage à partir de sa copie de secours, pour que Windows lise de nouveau la carte.</li>
+</ol>
+<figure class="shot w860"><img src="img/15_rec_restore_fr.webp" alt="Fenêtre de restauration" loading="lazy"></figure>
+
+<p>C'est <strong>la seule opération d'Ataecina qui écrit sur la carte</strong>. Seul le secteur de démarrage est réécrit, les fichiers ne sont pas touchés. Par sécurité, Ataecina vous demande de confirmer que vous avez déjà copié les fichiers importants avant d'activer le bouton <strong>Restaurer</strong>.</p>
+<h2 id="fr-8">8. Récupération : image de la carte et recherche PhotoRec</h2>
+<h3>Créer une image de la carte</h3>
+<p>Une carte qui commence à lâcher peut ne pas supporter plusieurs lectures. Activez <strong>Créer d'abord une image de la carte</strong> : Ataecina la copie entièrement dans un fichier image, en lisant les zones saines d'abord et les zones abîmées en dernier, selon la méthode de GNU ddrescue. Une copie interrompue peut être reprise. Toute l'analyse se fait ensuite sur l'image, la carte peut être rangée.</p>
+<p>Prévoyez <strong>autant d'espace libre que la taille de la carte</strong>. Le champ <strong>Dossier image</strong> permet de choisir où l'enregistrer (vide = le dossier de destination).</p>
+<figure class="shot w860"><img src="img/16_rec_image_fr.webp" alt="Analyser une image" loading="lazy"></figure>
+
+<p>Pour analyser une image existante, choisissez <strong>Image</strong> (1) dans la source, puis indiquez le <strong>fichier image</strong> (2) : une image créée par Ataecina, par TestDisk ou par dd.</p>
+<h3>Recherche PhotoRec</h3>
+<p>Pour les cas où la lecture de la carte ne suffit pas : système de fichiers détruit, format de carte inconnu, fichiers éparpillés en morceaux. PhotoRec cherche les vidéos directement dans les données brutes de la carte. Il faut que <strong>PhotoRec soit installé</strong> (section 3).</p>
+<figure class="shot w860"><img src="img/04_photorec_missing_fr.webp" alt="Recherche PhotoRec" loading="lazy"></figure>
+
+<ol>
+<li>La pastille <strong>photorec</strong> doit être verte.</li>
+<li>Choisissez la méthode <strong>Recherche PhotoRec</strong>.</li>
+<li>Si PhotoRec n'est pas détecté, Ataecina l'indique ici, avec un lien vers TestDisk. Vous pouvez aussi indiquer l'emplacement de <code>photorec_win.exe</code> dans le champ au-dessus.</li>
+</ol>
+<p>Choisissez les <strong>formats recherchés</strong> (MOV / MP4, R3D, ARRIRAW), puis cliquez sur <strong>Lancer la récupération</strong>. Les vidéos apparaissent au fur et à mesure. PhotoRec ne retrouve pas les noms d'origine, et les fichiers en morceaux ont souvent besoin d'une réparation : à la fin, Ataecina propose d'envoyer les MOV vers l'onglet Réparation.</p>
+<h2 id="fr-9">9. Réparation des MOV et MP4 cassés</h2>
+<p>Un MOV ou un MP4 contient les images et un <strong>index</strong> qui dit où elles se trouvent. Si la caméra s'éteint pendant l'enregistrement, l'index n'est jamais écrit et le fichier ne s'ouvre plus. untrunc reconstruit cet index en s'appuyant sur un <strong>rush sain de référence</strong>. Il faut <strong>untrunc et FFmpeg</strong> (section 3).</p>
+<figure class="shot w860"><img src="img/20_rep_ready_fr.webp" alt="Onglet Réparation" loading="lazy"></figure>
+
+<ol>
+<li><strong>Références</strong> : ajoutez un ou plusieurs rushes <strong>sains</strong>, de quelques secondes suffisent, filmés <strong>avec la même caméra et le même mode d'enregistrement</strong> (résolution, cadence, codec, débit) que les fichiers perdus. C'est la condition de réussite la plus importante.</li>
+<li><strong>Fichiers à réparer</strong> : ajoutez les fichiers un par un (<strong>Fichiers</strong>) ou un dossier entier (<strong>Dossier entier</strong>, par exemple la sortie de PhotoRec). L'option <strong>Ignorer les fichiers _ftyp</strong> écarte les débuts de rush coupés par PhotoRec, souvent inutiles seuls.</li>
+<li><strong>Sortie et outils</strong> : le <strong>dossier de sortie</strong> où seront écrits les fichiers réparés, et l'emplacement des outils si Ataecina ne les trouve pas seul. <strong>Vérification complète</strong> décode chaque fichier réparé en entier avec ffmpeg pour compter les erreurs (plus long, plus sûr).</li>
+<li>Cliquez sur <strong>Lancer la réparation</strong>.</li>
+</ol>
+<p>Pour chaque fichier, Ataecina vérifie d'abord s'il se lit déjà. Sinon, il essaie untrunc avec chaque référence, en mode normal puis en mode pas à pas, et garde le meilleur résultat.</p>
+<figure class="shot w860"><img src="img/21_rep_done_fr.webp" alt="Résultats de la réparation" loading="lazy"></figure>
+
+<ol>
+<li>Le <strong>bilan</strong> : <em>Réparés</em>, <em>Intacts</em>, <em>Avec erreurs</em>, <em>Échecs</em>. Un clic sur une catégorie filtre les résultats. <strong>Ouvrir la sortie</strong> affiche le dossier de sortie.</li>
+<li>Une <strong>vignette</strong> par fichier, avec sa durée récupérée :</li>
+<li><strong>RÉPARÉ</strong> : reconstruit, enregistré sous <code>&lt;nom&gt;_repare.mov</code> ;</li>
+<li><strong>INTACT</strong> : se lisait déjà, copié tel quel ;</li>
+<li><strong>ERREURS</strong> : reconstruit, mais des erreurs de décodage subsistent ;</li>
+<li><strong>ÉCHEC</strong> : aucune référence n'a permis de le réparer. Essayez une autre référence, filmée exactement dans le même mode.</li>
+</ol>
+<p>Les originaux ne sont jamais modifiés. Le dossier de sortie contient aussi <code>journal.csv</code> (le bilan de chaque fichier, à ouvrir dans un tableur) et un dossier <code>logs</code> avec le détail de chaque essai d'untrunc.</p>
+<h2 id="fr-10">10. Questions fréquentes</h2>
+<p><strong>La réparation ne démarre pas : « untrunc.exe introuvable ».</strong>
+untrunc n'est pas à côté de <code>Ataecina.exe</code>, ou ses fichiers .dll manquent. Voir la section 3.</p>
+<p><strong>La pastille photorec reste rouge.</strong>
+Le dossier de TestDisk doit être décompressé, et rangé entier à côté de <code>Ataecina.exe</code> (ou dans <code>tools</code>). Sinon, indiquez le chemin de <code>photorec_win.exe</code> dans le champ prévu.</p>
+<p><strong>Ma carte n'apparaît pas dans la liste.</strong>
+Cliquez sur <strong>Actualiser</strong>. Vérifiez qu'Ataecina tourne en administrateur. Si Windows ne voit pas du tout la carte (même pas dans l'Explorateur), le lecteur ou la carte peut être en cause : essayez un autre lecteur.</p>
+<p><strong>Ataecina fonctionne-t-il sur Mac ?</strong>
+Non, Ataecina est pour Windows uniquement.</p>
+<p><strong>Quelles cartes Ataecina sait-il lire ?</strong>
+La lecture de la carte gère exFAT et FAT32, les formats de la quasi-totalité des cartes de caméra. Pour les autres cas, la recherche PhotoRec fonctionne avec tous les formats de carte.</p>
+<p><strong>Un fichier réparé est plus court que prévu.</strong>
+untrunc récupère tout ce qui est exploitable. Si la fin du fichier n'a jamais été écrite sur la carte, elle ne peut pas être reconstruite.</p>
+<h2 id="fr-11">11. Avertissement et licence</h2>
+<p>Ataecina est un outil d'aide à la récupération et à la réparation de médias. Il est fourni « en l'état », sans aucune garantie : la récupération n'est jamais garantie, et l'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données. Pour des rushes irremplaçables sur une carte physiquement endommagée, adressez-vous à un professionnel de la récupération de données avant toute manipulation.</p>
+<p>untrunc, FFmpeg et TestDisk / PhotoRec restent la propriété de leurs auteurs et sont distribués sous leur propre licence.</p>
+<p>© 2026 Domingo Olmo Martin. Distribué sous <a href="https://github.com/tetsujin28/ataecina/blob/main/LICENSE">licence MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/ataecina/releases/latest">Télécharger Ataecina</a><a href="https://github.com/tetsujin28/ataecina/blob/main/docs/GUIDE.fr.md">Ce guide sur GitHub</a></p></article>
+<article data-l="es" lang="es"><header class="ph"><img src="../../assets/ataecina-icon.png" alt="" width="64" height="64"><div><h1>Ataecina, manual de uso</h1><p>Beta 0.11.4 · Windows</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><blockquote class="alert">
+<p><strong>⚠ Lee esto primero: Ataecina necesita programas complementarios.</strong>
+untrunc, FFmpeg y PhotoRec <strong>no</strong> vienen incluidos con Ataecina. Descárgalos desde su web oficial y colócalos <strong>en la misma carpeta que <code>Ataecina.exe</code></strong>. Sin ellos, la reparación no arranca y la búsqueda PhotoRec no está disponible. Ver la <a href="#es-3">sección 3</a>.</p>
+</blockquote>
+<h2 id="es-1">1. Presentación</h2>
+<p>Ataecina devuelve el material perdido. Sirve en dos situaciones:</p>
+<ul>
+<li><strong>Recuperación</strong>: una tarjeta de cámara se ha vaciado, se ha formateado por error o Windows ya no la lee. Ataecina lee la tarjeta por sí mismo (exFAT y FAT32), encuentra los archivos borrados y los de una tarjeta reformateada, puede restaurar el formato de una tarjeta dañada y recurre a PhotoRec para los casos más difíciles.</li>
+<li><strong>Reparación</strong>: un rush MOV o MP4 ya no se abre, a menudo porque la cámara se apagó en plena grabación. Con untrunc y un rush sano de referencia, Ataecina reconstruye el índice que falta.</li>
+</ul>
+<p>Los archivos originales y la tarjeta <strong>nunca se modifican</strong>, salvo si pides expresamente restaurar el formato (sección 7). Ataecina es gratuito, de código abierto (licencia MIT), para Windows.</p>
+<blockquote>
+<p>Ataecina es una diosa de la antigua península ibérica, a menudo interpretada como «la Renacida». Como ella, este programa devuelve a la luz imágenes que se creían perdidas.</p>
+</blockquote>
+<h2 id="es-2">2. Instalación</h2>
+<p>Los archivos están en la <a href="https://github.com/tetsujin28/ataecina/releases">página de Releases</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ataecina_x.y.z_portable.exe</code></td>
+<td>Sin instalación: guárdalo en una carpeta propia, por ejemplo <code>C:\Ataecina\</code></td>
+</tr>
+<tr>
+<td><code>Ataecina_x.y.z_x64-setup.exe</code> o <code>.msi</code></td>
+<td>Instalador clásico</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nuestro consejo: la versión portable.</strong> La guardas en su propia carpeta y pones los programas complementarios justo al lado (sección 3). Con el instalador, el ejecutable queda en la carpeta de instalación (normalmente en <code>C:\Program Files\</code>), donde Windows pide permisos de administrador para añadir archivos.</p>
+<p><strong>Primer arranque.</strong> La app aún no está firmada: Windows muestra un aviso una vez. Haz clic en «Más información» y luego en «Ejecutar de todas formas».</p>
+<p><strong>Permisos de administrador.</strong> Leer una tarjeta directamente requiere permisos de administrador. Si hace falta, Ataecina muestra una franja y propone reiniciarse como administrador; Windows te pide que lo confirmes. La etiqueta <strong>admin</strong>, arriba a la derecha, pasa a verde.</p>
+<h2 id="es-3">3. Instalar los programas complementarios (imprescindible)</h2>
+<p>Ataecina utiliza tres programas gratuitos que <strong>no</strong> vienen con él. Siguen siendo propiedad de sus autores: descárgalos siempre desde su <strong>web oficial</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Programa</th>
+<th>Sirve para</th>
+<th>Dónde encontrarlo</th>
+<th>Archivos que colocar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>untrunc</strong></td>
+<td>Reparar MOV / MP4</td>
+<td><a href="https://github.com/anthwlock/untrunc">github.com/anthwlock/untrunc</a>, página Releases, versión Windows</td>
+<td><code>untrunc.exe</code> <strong>y todos los archivos .dll</strong> que lo acompañan</td>
+</tr>
+<tr>
+<td><strong>FFmpeg</strong></td>
+<td>Comprobar los archivos, crear las miniaturas</td>
+<td><a href="https://ffmpeg.org/download.html">ffmpeg.org</a>, apartado Windows (versiones compiladas por gyan.dev o BtbN)</td>
+<td><code>ffmpeg.exe</code> y <code>ffprobe.exe</code> (en la carpeta <code>bin</code> del archivo)</td>
+</tr>
+<tr>
+<td><strong>TestDisk / PhotoRec</strong></td>
+<td>La búsqueda PhotoRec</td>
+<td><a href="https://www.cgsecurity.org">cgsecurity.org</a>, TestDisk para Windows de 64 bits</td>
+<td>la carpeta <code>testdisk-x.y</code> <strong>entera</strong> (contiene <code>photorec_win.exe</code> y sus archivos)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Dónde colocarlos</h3>
+<p><strong>Colócalos en la misma carpeta que <code>Ataecina.exe</code>.</strong> Es el primer sitio donde Ataecina los busca:</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+├── untrunc.exe          ← con los archivos .dll que trae untrunc
+├── *.dll
+├── ffmpeg.exe
+├── ffprobe.exe
+└── testdisk-7.2\        ← la carpeta de TestDisk tal cual
+    ├── photorec_win.exe
+    └── …
+</code></pre>
+<p>Si prefieres tenerlo ordenado, también funciona una subcarpeta <code>tools</code> junto a <code>Ataecina.exe</code>, con una carpeta por programa:</p>
+<pre><code>C:\Ataecina\
+├── Ataecina.exe
+└── tools\
+    ├── untrunc\         (untrunc.exe y sus .dll)
+    ├── ffmpeg\bin\      (ffmpeg.exe, ffprobe.exe)
+    └── testdisk-7.2\    (photorec_win.exe…)
+</code></pre>
+<p>Dos reglas:</p>
+<ul>
+<li><strong>No separes nunca un programa de sus archivos .dll.</strong> untrunc y PhotoRec no arrancan sin ellos. Copia todo el contenido del archivo comprimido, no solo el <code>.exe</code>.</li>
+<li><strong>Descomprime los archivos</strong> (clic derecho, «Extraer todo»): Ataecina no mira dentro de un .zip.</li>
+</ul>
+<p>Ataecina también encuentra las herramientas ya instaladas en el PATH de Windows. Y si las tienes en otro sitio, puedes indicar su ubicación a mano: campos <strong>untrunc.exe</strong> y <strong>Carpeta de ffmpeg</strong> de la pestaña Reparación, campo <strong>photorec_win.exe</strong> de la búsqueda PhotoRec.</p>
+<h3>Comprobar que todo se detecta</h3>
+<p>Arriba a la derecha, unas <strong>etiquetas</strong> indican el estado de cada herramienta: <strong>verde</strong> = encontrada, <strong>roja</strong> = no encontrada.</p>
+<p>Sin las herramientas, la pestaña Reparación muestra etiquetas rojas (1) y el campo untrunc.exe indica que no encuentra nada (2):</p>
+<figure class="shot w860"><img src="img/00_tools_missing_es.webp" alt="Herramientas no encontradas" loading="lazy"></figure>
+
+<p>Si lanzas la reparación de todos modos, Ataecina se detiene con un mensaje claro (1), por ejemplo «untrunc.exe no encontrado»:</p>
+<figure class="shot w860"><img src="img/01_tools_error_es.webp" alt="Mensaje de error untrunc no encontrado" loading="lazy"></figure>
+
+<p>Cuando las herramientas están junto al ejecutable, las etiquetas pasan a verde (1) y se muestra la ruta encontrada (2). Si siguen en rojo, cierra y vuelve a abrir Ataecina.</p>
+<figure class="shot w860"><img src="img/02_tools_ok_es.webp" alt="Herramientas detectadas" loading="lazy"></figure>
+
+<p>En la pestaña Recuperación, la etiqueta <strong>photorec</strong> funciona igual:</p>
+<figure class="shot w860"><img src="img/03_tools_recovery_es.webp" alt="Etiquetas de la pestaña Recuperación" loading="lazy"></figure>
+
+<p><strong>Lo que funciona sin las herramientas:</strong> la lectura de la tarjeta, la búsqueda profunda, la copia de los archivos encontrados, la restauración del formato y la creación de una imagen de la tarjeta. <strong>Lo que no funciona:</strong> la búsqueda PhotoRec (sin PhotoRec) y toda la reparación (sin untrunc y FFmpeg).</p>
+<h2 id="es-4">4. Antes de empezar: buenos hábitos</h2>
+<ul>
+<li><strong>No escribas nada más en la tarjeta.</strong> No grabes con ella, no la formatees, no copies nada en ella. Cada escritura puede sobrescribir un rush todavía recuperable.</li>
+<li><strong>Si Windows propone formatear la tarjeta, dile que no.</strong></li>
+<li><strong>Elige siempre un destino en otro disco</strong> que la tarjeta analizada. Ataecina lo recuerda debajo del campo Destino.</li>
+<li><strong>Para una tarjeta dañada, crea primero una imagen</strong> (sección 8): la tarjeta se lee una sola vez y todo el trabajo se hace después sobre la imagen.</li>
+</ul>
+<h2 id="es-5">5. Recuperación: leer la tarjeta</h2>
+<p>Es el método que hay que probar primero. Ataecina lee por sí mismo el sistema de archivos exFAT o FAT32 de la tarjeta, sin escribir nada en ella, y recupera las carpetas y los nombres originales, incluidos los archivos borrados.</p>
+<figure class="shot w860"><img src="img/10_rec_start_es.webp" alt="Pestaña Recuperación" loading="lazy"></figure>
+
+<ol>
+<li><strong>Origen</strong>: <em>Tarjeta</em> para una tarjeta en el lector, <em>Imagen</em> para una imagen de disco ya creada.</li>
+<li><strong>Elige la tarjeta</strong> en la lista. Los discos del sistema aparecen atenuados. Si la tarjeta no aparece, haz clic en <strong>Actualizar</strong>.</li>
+<li><strong>Crear primero una imagen de la tarjeta</strong>: recomendado si la tarjeta parece dañada (sección 8).</li>
+<li><strong>Método</strong>: <em>Lectura de la tarjeta</em>.</li>
+<li><strong>Búsqueda profunda</strong>: solo después de un formateo (sección 6).</li>
+<li>Comprueba el <strong>Destino</strong> (cada recuperación crea allí una subcarpeta con fecha) y haz clic en <strong>Analizar la tarjeta</strong>.</li>
+</ol>
+<h3>Elegir los archivos que copiar</h3>
+<figure class="shot w860"><img src="img/11_rec_found_es.webp" alt="Archivos encontrados" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>ficha del volumen</strong>: formato (exFAT o FAT32), nombre, tamaño y estado del sector de arranque.</li>
+<li>Los <strong>filtros</strong>: <em>Vídeos</em>, <em>Todo</em>, <em>Borrados</em> (y <em>Recuperados</em> tras una búsqueda profunda). <em>Ninguno</em> / <em>Todos</em> desmarca o marca todo.</li>
+<li>Los archivos <strong>borrados</strong> llevan la marca <em>BORRADO</em>, con un triángulo de aviso: sus datos pueden haberse sobrescrito en parte desde entonces.</li>
+<li><strong>Copiar</strong> copia los archivos marcados al destino. El botón indica su número y su tamaño.</li>
+</ol>
+<figure class="shot w860"><img src="img/12_rec_copied_es.webp" alt="Copia terminada" loading="lazy"></figure>
+
+<p>Al terminar la copia (1), cada archivo tiene un estado (2): <em>COPIADO</em>, <em>POR REPARAR</em> (el archivo se ha copiado pero no se reproduce) o <em>ERROR</em>. <strong>Abrir</strong> muestra la carpeta de copia.</p>
+<p>La opción <strong>Enviar los vídeos a reparación</strong> (debajo de Destino) añade directamente los vídeos que no se reproducen a la lista de la pestaña Reparación.</p>
+<h2 id="es-6">6. Recuperación: tarjeta formateada por error</h2>
+<p>Después de un formateo, la tarjeta parece vacía: la lectura simple no encuentra nada. Activa la <strong>búsqueda profunda</strong> y vuelve a lanzar el análisis.</p>
+<figure class="shot w860"><img src="img/13_rec_deep_es.webp" alt="Búsqueda profunda tras un formateo" loading="lazy"></figure>
+
+<ol>
+<li>Elige la tarjeta formateada.</li>
+<li>Activa <strong>Búsqueda profunda</strong>. Ataecina recorre toda la tarjeta en busca de las antiguas entradas de archivos. Tarda más.</li>
+<li>Los archivos encontrados llevan la marca <em>RECUPERADO</em> y se agrupan en «Recuperados, carpeta original perdida». Sus nombres originales suelen conservarse, pero la carpeta original se ha perdido y se supone que sus datos están en un solo bloque: compruébalos después de copiarlos.</li>
+</ol>
+<p>Si la búsqueda profunda no da resultado, prueba la búsqueda PhotoRec (sección 8).</p>
+<h2 id="es-7">7. Recuperación: tarjeta ilegible, restaurar el formato</h2>
+<p>Cuando Windows ya no reconoce una tarjeta («el disco no está formateado»), a menudo es su sector de arranque el que está dañado. Las tarjetas exFAT y FAT32 guardan una <strong>copia de seguridad</strong> de él: Ataecina la usa para leer la tarjeta igualmente.</p>
+<figure class="shot w860"><img src="img/14_rec_boot_es.webp" alt="Sector de arranque dañado" loading="lazy"></figure>
+
+<ol>
+<li>La ficha del volumen indica <em>Arranque dañado, se usa el respaldo</em>. Los archivos se muestran con normalidad: <strong>copia primero los que importan.</strong></li>
+<li><strong>Restaurar el formato</strong> reescribe el sector de arranque a partir de su copia de seguridad, para que Windows vuelva a leer la tarjeta.</li>
+</ol>
+<figure class="shot w860"><img src="img/15_rec_restore_es.webp" alt="Ventana de restauración" loading="lazy"></figure>
+
+<p>Es <strong>la única operación de Ataecina que escribe en la tarjeta</strong>. Solo se reescribe el sector de arranque, los archivos no se tocan. Por seguridad, Ataecina te pide que confirmes que ya has copiado los archivos importantes antes de activar el botón <strong>Restaurar</strong>.</p>
+<h2 id="es-8">8. Recuperación: imagen de la tarjeta y búsqueda PhotoRec</h2>
+<h3>Crear una imagen de la tarjeta</h3>
+<p>Una tarjeta que empieza a fallar puede no aguantar varias lecturas. Activa <strong>Crear primero una imagen de la tarjeta</strong>: Ataecina la copia entera en un archivo de imagen, leyendo primero las zonas sanas y al final las dañadas, con el método de GNU ddrescue. Una copia interrumpida se puede reanudar. Todo el análisis se hace después sobre la imagen y la tarjeta puede guardarse.</p>
+<p>Prevé <strong>tanto espacio libre como el tamaño de la tarjeta</strong>. El campo <strong>Carpeta de imagen</strong> permite elegir dónde guardarla (vacío = la carpeta de destino).</p>
+<figure class="shot w860"><img src="img/16_rec_image_es.webp" alt="Analizar una imagen" loading="lazy"></figure>
+
+<p>Para analizar una imagen existente, elige <strong>Imagen</strong> (1) en el origen e indica el <strong>archivo de imagen</strong> (2): una imagen creada con Ataecina, TestDisk o dd.</p>
+<h3>Búsqueda PhotoRec</h3>
+<p>Para los casos en los que la lectura de la tarjeta no basta: sistema de archivos destruido, formato de tarjeta desconocido, archivos dispersos en fragmentos. PhotoRec busca los vídeos directamente en los datos en bruto de la tarjeta. <strong>PhotoRec tiene que estar instalado</strong> (sección 3).</p>
+<figure class="shot w860"><img src="img/04_photorec_missing_es.webp" alt="Búsqueda PhotoRec" loading="lazy"></figure>
+
+<ol>
+<li>La etiqueta <strong>photorec</strong> debe estar en verde.</li>
+<li>Elige el método <strong>Búsqueda PhotoRec</strong>.</li>
+<li>Si no se detecta PhotoRec, Ataecina lo indica aquí, con un enlace a TestDisk. También puedes indicar la ubicación de <code>photorec_win.exe</code> en el campo de arriba.</li>
+</ol>
+<p>Elige los <strong>formatos buscados</strong> (MOV / MP4, R3D, ARRIRAW) y haz clic en <strong>Iniciar la recuperación</strong>. Los vídeos aparecen a medida que se encuentran. PhotoRec no recupera los nombres originales, y los archivos en fragmentos a menudo necesitan reparación: al final, Ataecina propone enviar los MOV a la pestaña Reparación.</p>
+<h2 id="es-9">9. Reparación de MOV y MP4 rotos</h2>
+<p>Un MOV o un MP4 contiene las imágenes y un <strong>índice</strong> que dice dónde están. Si la cámara se apaga durante la grabación, el índice nunca se escribe y el archivo ya no se abre. untrunc reconstruye ese índice basándose en un <strong>rush sano de referencia</strong>. Hacen falta <strong>untrunc y FFmpeg</strong> (sección 3).</p>
+<figure class="shot w860"><img src="img/20_rep_ready_es.webp" alt="Pestaña Reparación" loading="lazy"></figure>
+
+<ol>
+<li><strong>Referencias</strong>: añade uno o varios rushes <strong>sanos</strong>, bastan unos segundos, grabados <strong>con la misma cámara y el mismo modo de grabación</strong> (resolución, cadencia, códec, bitrate) que los archivos perdidos. Es la condición de éxito más importante.</li>
+<li><strong>Archivos que reparar</strong>: añade los archivos uno a uno (<strong>Archivos</strong>) o una carpeta entera (<strong>Carpeta entera</strong>, por ejemplo la salida de PhotoRec). La opción <strong>Ignorar los archivos _ftyp</strong> descarta los inicios de rush cortados por PhotoRec, a menudo inútiles por sí solos.</li>
+<li><strong>Salida y herramientas</strong>: la <strong>carpeta de salida</strong> donde se escribirán los archivos reparados y la ubicación de las herramientas si Ataecina no las encuentra solo. <strong>Verificación completa</strong> decodifica entero cada archivo reparado con ffmpeg para contar los errores (más lento, más seguro).</li>
+<li>Haz clic en <strong>Iniciar la reparación</strong>.</li>
+</ol>
+<p>Para cada archivo, Ataecina comprueba primero si ya se reproduce. Si no, prueba untrunc con cada referencia, en modo normal y después en modo paso a paso, y se queda con el mejor resultado.</p>
+<figure class="shot w860"><img src="img/21_rep_done_es.webp" alt="Resultados de la reparación" loading="lazy"></figure>
+
+<ol>
+<li>El <strong>balance</strong>: <em>Reparados</em>, <em>Intactos</em>, <em>Con errores</em>, <em>Fallidos</em>. Un clic en una categoría filtra los resultados. <strong>Abrir la salida</strong> muestra la carpeta de salida.</li>
+<li>Una <strong>miniatura</strong> por archivo, con la duración recuperada:</li>
+<li><strong>REPARADO</strong>: reconstruido, guardado como <code>&lt;nombre&gt;_repare.mov</code>;</li>
+<li><strong>INTACTO</strong>: ya se reproducía, copiado tal cual;</li>
+<li><strong>ERRORES</strong>: reconstruido, pero quedan errores de decodificación;</li>
+<li><strong>FALLO</strong>: ninguna referencia ha permitido repararlo. Prueba con otra referencia grabada exactamente en el mismo modo.</li>
+</ol>
+<p>Los originales nunca se modifican. La carpeta de salida contiene también <code>journal.csv</code> (el balance de cada archivo, para abrir en una hoja de cálculo) y una carpeta <code>logs</code> con el detalle de cada intento de untrunc.</p>
+<h2 id="es-10">10. Preguntas frecuentes</h2>
+<p><strong>La reparación no arranca: «untrunc.exe no encontrado».</strong>
+untrunc no está junto a <code>Ataecina.exe</code>, o le faltan sus archivos .dll. Ver la sección 3.</p>
+<p><strong>La etiqueta photorec sigue en rojo.</strong>
+La carpeta de TestDisk tiene que estar descomprimida y colocada entera junto a <code>Ataecina.exe</code> (o en <code>tools</code>). Si no, indica la ruta de <code>photorec_win.exe</code> en el campo previsto.</p>
+<p><strong>Mi tarjeta no aparece en la lista.</strong>
+Haz clic en <strong>Actualizar</strong>. Comprueba que Ataecina se ejecuta como administrador. Si Windows no ve la tarjeta en absoluto (ni siquiera en el Explorador), el problema puede ser el lector o la tarjeta: prueba con otro lector.</p>
+<p><strong>¿Ataecina funciona en Mac?</strong>
+No, Ataecina es solo para Windows.</p>
+<p><strong>¿Qué tarjetas sabe leer Ataecina?</strong>
+La lectura de la tarjeta admite exFAT y FAT32, los formatos de casi todas las tarjetas de cámara. Para los demás casos, la búsqueda PhotoRec funciona con cualquier formato de tarjeta.</p>
+<p><strong>Un archivo reparado es más corto de lo previsto.</strong>
+untrunc recupera todo lo aprovechable. Si el final del archivo nunca se llegó a escribir en la tarjeta, no se puede reconstruir.</p>
+<h2 id="es-11">11. Aviso y licencia</h2>
+<p>Ataecina es una herramienta de ayuda para recuperar y reparar medios. Se ofrece «tal cual», sin ninguna garantía: la recuperación nunca está garantizada y el autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos. Para material irremplazable en una tarjeta dañada físicamente, acude a un profesional de recuperación de datos antes de hacer nada.</p>
+<p>untrunc, FFmpeg y TestDisk / PhotoRec siguen siendo propiedad de sus autores y se distribuyen con su propia licencia.</p>
+<p>© 2026 Domingo Olmo Martin. Distribuido bajo <a href="https://github.com/tetsujin28/ataecina/blob/main/LICENSE">licencia MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/ataecina/releases/latest">Descargar Ataecina</a><a href="https://github.com/tetsujin28/ataecina/blob/main/docs/GUIDE.es.md">Esta guía en GitHub</a></p></article>
+</div>
+</main>
+<footer>© 2026 Domingo Olmo Martin · MIT License</footer>
+<dialog id="lb"><form method="dialog"><button data-t="close">Close</button></form><img alt=""></dialog>
+<script>
+const UI = {"en": {"back": "Back to Ataecina", "close": "Close"}, "fr": {"back": "Retour à Ataecina", "close": "Fermer"}, "es": {"back": "Volver a Ataecina", "close": "Cerrar"}};
+const root = document.documentElement;
+function applyLang(l){
+  if (!UI[l]) l = "en";
+  root.dataset.lang = l; root.lang = l;
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll("[data-t]").forEach(e => e.textContent = UI[l][e.dataset.t]);
+  try { localStorage.setItem("lang", l); } catch(e) {}
+  spy();
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); scrollTo(0, 0); }));
+const lb = document.getElementById("lb");
+document.querySelectorAll(".shot").forEach(f => f.addEventListener("click", () => {
+  const i = f.querySelector("img"); lb.querySelector("img").src = i.src; lb.querySelector("img").alt = i.alt; lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+function spy(){
+  const l = root.dataset.lang, hs = [...document.querySelectorAll(`article[data-l="${l}"] h2`)];
+  let cur = hs[0]; for (const h of hs) if (h.getBoundingClientRect().top < 140) cur = h;
+  document.querySelectorAll(".toc a").forEach(a => a.classList.toggle("on", cur && a.getAttribute("href") === "#" + cur.id));
+}
+addEventListener("scroll", spy, {passive:true});
+const q = new URLSearchParams(location.search).get("lang");
+const fromHash = (location.hash.match(/^#(en|fr|es)-/) || [])[1];
+let saved = null; try { saved = localStorage.getItem("lang"); } catch(e) {}
+const nav = (navigator.language || "en").slice(0, 2);
+applyLang(q || fromHash || saved || (UI[nav] ? nav : "en"));
+if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+</script>
+</body>
+</html>

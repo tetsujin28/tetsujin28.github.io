@@ -354,6 +354,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
           <li><span><b>Export the report</b> if you need to send it.</span></li>
         </ol>
         <p class="note" data-i="c.trust">A check only means something if the MHL comes from the person who made the original copy, ideally sent separately from the footage.</p>
+        <a class="guide" href="companion/guide/"><span data-i="c.guide">Read the full user guide</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -420,6 +421,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
           <li><b>Original files are never modified.</b></li>
         </ul>
         <p class="note" data-i="a.tools" data-html>Ataecina drives free tools you install from their official sites: <a href="https://github.com/anthwlock/untrunc">untrunc</a>, <a href="https://ffmpeg.org">FFmpeg</a> and <a href="https://www.cgsecurity.org">TestDisk / PhotoRec</a>.</p>
+        <a class="guide" href="ataecina/guide/"><span data-i="a.guide">User guide and tool setup</span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -502,6 +504,8 @@ fr:{
  "b.feat":"<li><b>Copie en une seule passe</b> vers une, deux destinations ou plus en même temps.</li><li><b>Vérifie chaque copie sur le disque lui-même</b> : chaque copie est relue en contournant le cache du système et comparée par hash (xxHash64 par défaut, XXH3, MD5 ou SHA-1). Un fichier ne prend son nom définitif qu'une fois vérifié.</li><li><b>Relit la carte une seconde fois</b> (option activée par défaut) pour repérer un lecteur de cartes, un câble ou une carte défaillant.</li><li><b>Surveille la carte pendant le déchargement</b> : un fichier qui change, apparaît ou disparaît fait échouer le déchargement, pour ne jamais formater une carte encore en cours d'écriture.</li><li><b>Copie la carte à l'identique</b> : RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, sans les fichiers système parasites. Chaque dossier .RDC RED est listé comme un clip.</li><li><b>Écrit 4 rapports</b> dans chaque dossier daté : PDF, log texte, MHL (lisible par Silverstack, ShotPut, Hedge) et JSON.</li><li><b>Re-vérifie</b> un dossier existant à partir de son MHL, avant de formater une carte ou de livrer un disque, avec la progression, le statut de chaque clip (vérifié, abîmé, manquant) et son propre rapport PDF.</li><li><b>Contrôle l'espace libre</b> avant de commencer, et garde destinations et infos du projet pour enchaîner les cartes.</li>",
  "b.steps":"<li><span>Cliquez sur <b>Source</b> et sélectionnez la carte.</span></li><li><span>Ajoutez une ou plusieurs <b>destinations</b>.</span></li><li><span>Renseignez le projet, le jour de tournage, la caméra et la carte. Le numéro de carte vient des noms de clips.</span></li><li><span>Cliquez sur <b>Lancer le déchargement</b>.</span></li><li><span>Attendez <span class=\"verified\">CARTE VÉRIFIÉE</span> avant de formater la carte.</span></li>",
  "b.guide":"Lire le mode d'emploi complet",
+ "c.guide":"Lire le mode d'emploi complet",
+ "a.guide":"Mode d'emploi et installation des outils",
  "b.folder":"Chaque destination reçoit un dossier daté, par exemple <code>2026-11-06_1633_PROJET_J03_A_A003</code>.",
  "dl.title":"Télécharger Bandua","dl.titlea":"Télécharger Ataecina","dl.btn":"Télécharger la dernière version",
  "b.dl":"Prêt à lancer. Pas de Rust, pas de ligne de commande. L'app n'est pas encore signée, votre système vous avertit une fois au premier lancement : sur Windows cliquez sur « Informations complémentaires » puis « Exécuter quand même », sur macOS faites un clic droit sur l'app et choisissez « Ouvrir ».",
@@ -547,6 +551,8 @@ es:{
  "b.feat":"<li><b>Copia en una sola pasada</b> a uno, dos o más destinos al mismo tiempo.</li><li><b>Verifica cada copia en el propio disco</b>: cada copia se relee evitando la caché del sistema y se compara por hash (xxHash64 por defecto, XXH3, MD5 o SHA-1). Un archivo solo recibe su nombre definitivo cuando está verificado.</li><li><b>Relee la tarjeta una segunda vez</b> (opción activada por defecto) para detectar un lector de tarjetas, un cable o una tarjeta defectuosos.</li><li><b>Vigila la tarjeta durante el volcado</b>: un archivo que cambia, aparece o desaparece hace fallar el volcado, para no formatear nunca una tarjeta que todavía se estaba escribiendo.</li><li><b>Copia la tarjeta tal cual</b>: RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, sin archivos de sistema innecesarios. Cada carpeta .RDC de RED se lista como un clip.</li><li><b>Escribe 4 informes</b> en cada carpeta con fecha: PDF, log de texto, MHL (legible por Silverstack, ShotPut, Hedge) y JSON.</li><li><b>Reverifica</b> una carpeta existente a partir de su MHL, antes de formatear una tarjeta o entregar un disco, con el progreso, el estado de cada clip (verificado, dañado, falta) y su propio informe PDF.</li><li><b>Comprueba el espacio libre</b> antes de empezar, y conserva destinos y datos del proyecto para encadenar tarjetas.</li>",
  "b.steps":"<li><span>Haz clic en <b>Origen</b> y selecciona la tarjeta.</span></li><li><span>Añade uno o varios <b>destinos</b>.</span></li><li><span>Rellena el proyecto, el día de rodaje, la cámara y la tarjeta. El número de tarjeta sale de los nombres de los clips.</span></li><li><span>Haz clic en <b>Iniciar el volcado</b>.</span></li><li><span>Espera a <span class=\"verified\">TARJETA VERIFICADA</span> antes de formatear la tarjeta.</span></li>",
  "b.guide":"Leer el manual de uso completo",
+ "c.guide":"Leer el manual de uso completo",
+ "a.guide":"Manual de uso e instalación de las herramientas",
  "b.folder":"Cada destino recibe una carpeta con fecha, por ejemplo <code>2026-11-06_1633_PROYECTO_D03_A_A003</code>.",
  "dl.title":"Descargar Bandua","dl.titlea":"Descargar Ataecina","dl.btn":"Descargar la última versión",
  "b.dl":"Listo para usar. Sin Rust, sin línea de comandos. La app aún no está firmada, así que tu sistema te avisará una vez en el primer arranque: en Windows haz clic en «Más información» y luego en «Ejecutar de todas formas», en macOS haz clic derecho en la app y elige «Abrir».",
