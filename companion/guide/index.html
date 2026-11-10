@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandua MHL Companion user guide · Bandua MHL Companion, mode d&#x27;emploi · Bandua MHL Companion, manual de uso</title>
+<meta name="description" content="Complete user guide for Bandua MHL Companion, the free app that checks received footage against its MHL files. Step by step, with annotated screenshots, in English, French and Spanish.">
+<meta property="og:title" content="Bandua MHL Companion user guide">
+<meta property="og:description" content="Complete user guide for Bandua MHL Companion, the free app that checks received footage against its MHL files. Step by step, with annotated screenshots, in English, French and Spanish.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tetsujin28.github.io/companion/guide/">
+<meta property="og:image" content="https://tetsujin28.github.io/assets/og-image.jpg">
+<link rel="canonical" href="https://tetsujin28.github.io/companion/guide/">
+<link rel="icon" href="../../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0e10;--panel:#15171a;--raise:#1c1f23;--line:#262a30;--paper:#ecebe8;--muted:#8d939c;--faint:#5d636c;--accent:#6cb6ff;--ok:#35d39a;
+  --sans:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gut:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink);scroll-padding-top:84px}
+body{font-family:var(--sans);font-variation-settings:"wdth" 100;color:var(--paper);background:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--paper);outline-offset:3px;border-radius:4px}
+.top{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:rgba(13,14,16,.8);border-bottom:1px solid var(--line)}
+.top .in{max-width:1240px;margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:22px;height:64px}
+.brand{font-weight:700;font-variation-settings:"wdth" 112;text-decoration:none;margin-right:auto;white-space:nowrap}
+.back{color:var(--muted);text-decoration:none;font-size:15px}.back:hover{color:var(--paper)}
+.lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;font:500 12px var(--mono);padding:6px 10px;color:var(--faint)}
+.lang button[aria-pressed="true"]{background:var(--raise);color:var(--paper)}
+.wrap{max-width:1240px;margin:0 auto;padding:104px var(--gut) 80px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(32px,5vw,72px)}
+.toc{position:sticky;top:96px;align-self:start;font-size:14.5px}
+.toc p{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.toc ol{list-style:none;counter-reset:t;display:grid;gap:2px;border-left:1px solid var(--line)}
+.toc li{counter-increment:t}
+.toc a{display:block;padding:5px 0 5px 16px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a::before{content:counter(t) ". ";color:var(--faint);font-family:var(--mono);font-size:12px}
+.toc a:hover{color:var(--paper)}
+.toc a.on{color:var(--paper);border-left-color:var(--accent)}
+[data-l]{display:none}
+html[data-lang="en"] [data-l="en"],html[data-lang="fr"] [data-l="fr"],html[data-lang="es"] [data-l="es"]{display:block}
+article{max-width:860px;min-width:0}
+.ph{display:flex;gap:20px;align-items:center;margin-bottom:12px}
+.ph img{width:64px;border-radius:50%}
+h1{font-size:clamp(34px,4.6vw,58px);line-height:.95;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
+.ph p{color:var(--muted);margin-top:8px;font-size:15px;font-family:var(--mono)}
+.hint{color:var(--faint);font-size:14px;margin:26px 0 0}
+h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.02em;margin:76px 0 20px;padding-top:28px;border-top:1px solid var(--line)}
+h3{font-size:21px;font-weight:700;font-variation-settings:"wdth" 106;margin:40px 0 12px}
+article p{margin:14px 0;color:#c9ccd1}
+article strong{color:var(--paper);font-weight:650}
+article em{color:var(--paper)}
+article ul,article ol{margin:14px 0 14px 22px;color:#c9ccd1}
+article li{margin:6px 0;padding-left:4px}
+article li::marker{color:var(--accent)}
+article a{color:var(--accent);text-underline-offset:3px}
+code{font-family:var(--mono);font-size:.84em;color:var(--paper);background:var(--raise);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0;overflow-x:auto}
+pre code{background:none;padding:0;color:var(--accent);font-size:14.5px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);background:var(--panel);padding:11px 14px}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:#c9ccd1}
+.shot{margin:26px 0;border:1px solid var(--line);border-radius:12px;background:#000;padding:8px;cursor:zoom-in}
+.shot img{border-radius:6px;margin:0 auto}
+.shot.w560 img{max-width:560px}.shot.w700 img{max-width:700px}
+blockquote{margin:22px 0;padding:14px 20px;border-left:3px solid var(--line);background:var(--panel);border-radius:0 10px 10px 0}
+blockquote p{margin:6px 0!important}
+blockquote.alert{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--panel));border-radius:12px;margin:30px 0 0}
+blockquote.alert strong:first-child{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:60px!important;padding-top:32px;border-top:1px solid var(--line)}
+.get{display:inline-flex;padding:13px 22px;border-radius:12px;background:var(--accent);color:#16110a!important;font-weight:700;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:32px var(--gut) 44px;color:var(--faint);font-size:14px;text-align:center}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto}
+dialog::backdrop{background:rgba(5,5,6,.92)}
+dialog img{max-width:96vw;max-height:90vh;width:auto;border-radius:8px}
+dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:var(--paper);font:500 14px var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none!important}.back{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="../../">Domingo Olmo Martin</a>
+  <a class="back" href="../../#companion" data-t="back">Back</a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button>
+  </div>
+</div></header>
+<main class="wrap">
+<div>
+<nav class="toc" data-l="en" aria-label="Contents"><p>Contents</p><ol><li><a href="#en-1">Overview</a></li><li><a href="#en-2">Installation</a></li><li><a href="#en-3">Choosing the footage</a></li><li><a href="#en-4">Running the check</a></li><li><a href="#en-5">Reading the result</a></li><li><a href="#en-6">Exporting the report</a></li><li><a href="#en-7">Statuses in detail</a></li><li><a href="#en-8">Supported formats</a></li><li><a href="#en-9">Good practice</a></li><li><a href="#en-10">FAQ</a></li><li><a href="#en-11">Disclaimer and license</a></li></ol></nav>
+<nav class="toc" data-l="fr" aria-label="Sommaire"><p>Sommaire</p><ol><li><a href="#fr-1">Présentation</a></li><li><a href="#fr-2">Installation</a></li><li><a href="#fr-3">Choisir les rushes</a></li><li><a href="#fr-4">Lancer le contrôle</a></li><li><a href="#fr-5">Lire le résultat</a></li><li><a href="#fr-6">Exporter le rapport</a></li><li><a href="#fr-7">Les statuts en détail</a></li><li><a href="#fr-8">Formats reconnus</a></li><li><a href="#fr-9">Bonnes pratiques</a></li><li><a href="#fr-10">Questions fréquentes</a></li><li><a href="#fr-11">Avertissement et licence</a></li></ol></nav>
+<nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">Elegir el material</a></li><li><a href="#es-4">Iniciar el control</a></li><li><a href="#es-5">Leer el resultado</a></li><li><a href="#es-6">Exportar el informe</a></li><li><a href="#es-7">Los estados en detalle</a></li><li><a href="#es-8">Formatos reconocidos</a></li><li><a href="#es-9">Buenas prácticas</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
+</div>
+<div>
+<article data-l="en" lang="en"><header class="ph"><img src="../../assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion user guide</h1><p>Version 0.1.0 · Windows and macOS</p></div></header><p class="hint">Click an image to enlarge it.</p><h2 id="en-1">1. Overview</h2>
+<p>You have just received footage, on a drive or as a download. Did anything get damaged on the way? Bandua MHL Companion reads every file back, compares it with the MHL file that came with it, and tells you, clip by clip, what is intact and what is not.</p>
+<p>An <strong>MHL</strong> is the list of the files in a copy, with their size and fingerprint (hash), written by the software that offloaded the cards on set. If a file changes, even by a single byte, its fingerprint changes: that is what the app checks.</p>
+<p>The app is made for the people who <strong>receive</strong> the footage: editor, assistant editor, lab, post-production, production, director. It is the companion of <a href="https://github.com/tetsujin28/bandua">Bandua</a>, the offload app by the same author, but it also reads MHL files written by Silverstack, ShotPut Pro, Hedge and others.</p>
+<p>It is <strong>read-only</strong>: it never changes, renames or adds anything next to your footage. Free, open source (MIT License), no account needed.</p>
+<h2 id="en-2">2. Installation</h2>
+<h3>Download</h3>
+<p>Go to the <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">Releases page</a> and pick the file for your computer:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, no install</td>
+<td><code>Bandua_MHL_Companion_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, installer</td>
+<td><code>Bandua.MHL.Companion_x.y.z_x64-setup.exe</code> or <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel and Apple Silicon)</td>
+<td><code>Bandua.MHL.Companion_x.y.z_universal.dmg</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>First launch</h3>
+<p>The app is not signed yet, so your system shows a warning, only once:</p>
+<ul>
+<li><strong>Windows</strong>: click "More info", then "Run anyway".</li>
+<li><strong>macOS</strong>: right-click the app, choose "Open", then confirm.</li>
+</ul>
+<h3>Welcome window</h3>
+<p>On first launch, the app explains what it does, the supported formats and a disclaimer (1). Read it, then click <strong>Got it</strong> (2). You can find it again under <strong>About</strong> (the <em>i</em> button, top right). The <strong>FR / EN / ES</strong> buttons switch the language at any time.</p>
+<figure class="shot w860"><img src="img/00_welcome_en.webp" alt="Welcome window" loading="lazy"></figure>
+
+<h2 id="en-3">3. Choosing the footage</h2>
+<figure class="shot w860"><img src="img/01_start_en.webp" alt="Start screen" loading="lazy"></figure>
+
+<p>Three ways to begin:</p>
+<ul>
+<li><strong>drag the footage folder</strong> onto the window and drop it;</li>
+<li>click <strong>Choose a folder</strong> (1);</li>
+<li>or click <strong>Choose an MHL file</strong> (2) to check a single card only.</li>
+</ul>
+<p>You can give it the folder of a whole day, or even a whole shoot: the app finds <strong>every MHL</strong> inside, across several days, cameras and cards at once.</p>
+<p>If no MHL is found, the app says so. Ask the person who sent you the footage for the <code>.mhl</code> file, or the <code>ascmhl</code> folder.</p>
+<h2 id="en-4">4. Running the check</h2>
+<figure class="shot w860"><img src="img/02_ready_en.webp" alt="Footage ready to check" loading="lazy"></figure>
+
+<ol>
+<li><strong>Footage</strong>: the chosen folder, with its number of files and total size. <strong>Change</strong> lets you pick another one.</li>
+<li><strong>MHL files found</strong>: one card per MHL, with its format (<em>MHL 1.1</em> or <em>ASC MHL</em>), its name, its location in the folder, the number of files, the size, the hash algorithm, the software that wrote it and, for an ASC MHL, its number of generations.</li>
+<li>The message at the bottom sums up the job. Click <strong>Start the check</strong>.</li>
+</ol>
+<figure class="shot w860"><img src="img/03_running_en.webp" alt="Check in progress" loading="lazy"></figure>
+
+<p>During the check:</p>
+<ol>
+<li>the <strong>ring</strong> shows how much of the footage has been read back;</li>
+<li>the <strong>counters</strong> give the speed, the time remaining, the time elapsed and the number of files read;</li>
+<li>each <strong>MHL card</strong> shows its state: <em>waiting</em>, <em>checking</em>, <em>intact</em> or its number of problems;</li>
+<li><strong>problems</strong> appear as they are found, without waiting for the end;</li>
+<li>the button becomes <strong>Cancel</strong>. Click it, then <strong>Confirm cancel</strong> within three seconds. A cancelled check gives an incomplete result.</li>
+</ol>
+<p>Every file is read back <strong>from the drive</strong>, with the system cache bypassed, so the check really covers what is written on the drive. The time mostly depends on the drive speed: count the time of a full read of the footage.</p>
+<h2 id="en-5">5. Reading the result</h2>
+<h3>All good</h3>
+<figure class="shot w860"><img src="img/08_ok_en.webp" alt="Footage intact" loading="lazy"></figure>
+
+<ol>
+<li>The ring turns green and reads <em>done</em>.</li>
+<li>The <strong>✓ FOOTAGE INTACT</strong> banner confirms that every file matches its MHL.</li>
+<li>Each MHL card reads <em>intact</em>.</li>
+</ol>
+<h3>There are problems</h3>
+<figure class="shot w860"><img src="img/04_problems_en.webp" alt="Problem files" loading="lazy"></figure>
+
+<ol>
+<li>The red banner gives the number of problem files.</li>
+<li>The <strong>Problems</strong> tab lists each file at fault: its status (<em>CORRUPT</em>, <em>MISSING</em>…), the name of the <strong>clip</strong> it belongs to, the MHL concerned, its path and an explanation. For a corrupt file, both fingerprints (expected and read) are shown.</li>
+<li>The <strong>Show</strong> button opens the file's folder in Explorer or Finder.</li>
+</ol>
+<p>The most useful thing for what comes next is the <strong>clip name</strong>: that is what you will ask to have sent again.</p>
+<h3>The other tabs</h3>
+<figure class="shot w860"><img src="img/05_clips_en.webp" alt="Clips tab" loading="lazy"></figure>
+
+<p>The <strong>Clips</strong> tab (1) shows every clip, with its MHL, its brand (RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI), its number of files, its size and its status. Clips with problems are listed first (2). A RED <code>.RDC</code> folder counts as one clip, as does an ARRIRAW sequence or a <code>.braw</code>.</p>
+<figure class="shot w860"><img src="img/06_extra_en.webp" alt="Not in MHL tab" loading="lazy"></figure>
+
+<p>The <strong>Not in MHL</strong> tab (1) lists the files that are in the folder but in no MHL (2), for example proxies added later. They <strong>could not be checked</strong>, since the MHL says nothing about them. It is not necessarily a problem, but it is worth knowing.</p>
+<h2 id="en-6">6. Exporting the report</h2>
+<figure class="shot w860"><img src="img/07_export_en.webp" alt="Export the report" loading="lazy"></figure>
+
+<ol>
+<li><strong>Export the report</strong> saves a text file wherever you choose, for example <code>Integrity_check_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. It lists the MHL files checked, every problem with its clip, and the files not in any MHL. This is the file you send back to the production or the DIT.</li>
+<li>A message confirms the file was saved.</li>
+<li><strong>New folder</strong> goes back to the start screen.</li>
+<li><strong>Check again</strong> runs the check again on the same folder, for example after copying a clip again.</li>
+</ol>
+<p>The report is the only file the app writes, and only where you decide.</p>
+<h2 id="en-7">7. Statuses in detail</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INTACT</strong></td>
+<td>The file matches the MHL.</td>
+<td>Nothing.</td>
+</tr>
+<tr>
+<td><strong>CORRUPT</strong></td>
+<td>Same size, different content: the file was damaged or modified during the transfer.</td>
+<td>Ask for the clip again.</td>
+</tr>
+<tr>
+<td><strong>MISSING</strong></td>
+<td>The file is listed in the MHL but is not in the folder.</td>
+<td>Check the copy, ask for the clip again.</td>
+</tr>
+<tr>
+<td><strong>INCOMPLETE</strong></td>
+<td>The size differs from the MHL, often an interrupted copy.</td>
+<td>Copy the file again, then check again.</td>
+</tr>
+<tr>
+<td><strong>UNREADABLE</strong></td>
+<td>The drive could not read the file.</td>
+<td>Check the drive and cable, try another computer.</td>
+</tr>
+<tr>
+<td><strong>NO HASH</strong></td>
+<td>The MHL gives no fingerprint for this file: only its size was checked.</td>
+<td>Ask for a complete MHL if it matters.</td>
+</tr>
+</tbody>
+</table></div>
+<p>If an <strong>ASC MHL</strong> history was modified after it was written, the MHL card says so: "ASC MHL history modified after it was written". Be wary of that MHL and ask for a new one.</p>
+<h2 id="en-8">8. Supported formats</h2>
+<ul>
+<li><strong>MHL 1.1</strong> (<code>.mhl</code> file): Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta, mhl-tool…</li>
+<li><strong>ASC MHL</strong> (<code>ascmhl</code> folder): all generations are merged, and the <code>ascmhl_chain.xml</code> file is used to spot a history modified after the fact.</li>
+<li><strong>Hash</strong>: xxHash64, XXH3, XXH128, xxHash32, MD5, SHA-1, SHA-256, C4. When an MHL gives several, the fastest one is used.</li>
+<li><strong>Clips</strong> recognised: RED (<code>.RDC</code> folders), ARRI (MXF and ARRIRAW sequences), Blackmagic (BRAW), Sony, Canon, GoPro, DJI, and common video files.</li>
+</ul>
+<h2 id="en-9">9. Good practice</h2>
+<ul>
+<li><strong>Check on arrival</strong>, before you start working and before the camera team formats the cards.</li>
+<li><strong>Keep the original drive</strong> until the check is done and your own copies are made.</li>
+<li><strong>An MHL is only worth something if it comes from the person who made the original copy</strong>, ideally sent separately from the footage (by email, for example). An MHL made afterwards on files that are already damaged would call them intact.</li>
+<li><strong>Check your own copies too</strong>: after copying the footage to your editing drive, run the check again on the copy.</li>
+<li><strong>Export the report</strong> and keep it with the project.</li>
+</ul>
+<h2 id="en-10">10. FAQ</h2>
+<p><strong>Do I need Bandua to use the app?</strong>
+No. It reads Bandua's MHL files, and those of other tools as well.</p>
+<p><strong>Does the app change my files?</strong>
+No, never. It only reads. The only file it writes is the report, when you export it.</p>
+<p><strong>Why does the check take so long?</strong>
+Every file is read back in full, from the drive. The time depends on the drive speed and the amount of footage.</p>
+<p><strong>A file is CORRUPT but the video plays fine. Does it matter?</strong>
+Yes, report it. The file is no longer the one that was shot: the error may be on a frame you have not seen yet, or in the metadata.</p>
+<p><strong>Is there a command-line version?</strong>
+Yes, for scripts: <code>bandua-mhl-check &lt;folder|file.mhl&gt; [--lang fr|en|es] [--report report.txt]</code>. Exit code: <code>0</code> everything is intact, <code>1</code> problems found, <code>2</code> no MHL found.</p>
+<p><strong>Does the app send data over the Internet?</strong>
+No. Everything happens on your computer.</p>
+<h2 id="en-11">11. Disclaimer and license</h2>
+<p>This tool helps you check media. It does not replace your own checks or backup procedures. It is provided "as is", without any warranty. The author cannot be held responsible for any loss, corruption or deletion of data, nor for any direct or indirect damage resulting from its use.</p>
+<p><strong>A check is only meaningful if the MHL comes from the person who made the original copy.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Released under the <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">MIT License</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Download Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.md">This guide on GitHub</a></p></article>
+<article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion, mode d'emploi</h1><p>Version 0.1.0 · Windows et macOS</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><h2 id="fr-1">1. Présentation</h2>
+<p>Tu viens de recevoir des rushes, sur un disque ou par téléchargement. Quelque chose s'est-il abîmé en route ? Bandua MHL Companion relit chaque fichier, le compare au fichier MHL qui l'accompagne et te dit, clip par clip, ce qui est intact et ce qui ne l'est pas.</p>
+<p>Un <strong>MHL</strong> est la liste des fichiers d'une copie, avec leur taille et leur empreinte (hash), écrite par le logiciel qui a déchargé les cartes sur le plateau. Si un fichier change, même d'un seul octet, son empreinte change : c'est ce que l'app vérifie.</p>
+<p>L'app s'adresse à ceux qui <strong>reçoivent</strong> les rushes : monteur, assistant de montage, labo, post-production, production, réalisateur. Elle est le compagnon de <a href="https://github.com/tetsujin28/bandua">Bandua</a>, l'app de déchargement du même auteur, mais elle lit aussi les MHL écrits par Silverstack, ShotPut Pro, Hedge et les autres.</p>
+<p>Elle est <strong>en lecture seule</strong> : elle ne modifie, ne renomme et n'ajoute jamais rien à côté de tes rushes. Gratuite, open source (licence MIT), sans compte.</p>
+<h2 id="fr-2">2. Installation</h2>
+<h3>Télécharger</h3>
+<p>Va sur la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">page des Releases</a> et choisis le fichier pour ton ordinateur :</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Système</th>
+<th>Fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sans installation</td>
+<td><code>Bandua_MHL_Companion_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, avec installeur</td>
+<td><code>Bandua.MHL.Companion_x.y.z_x64-setup.exe</code> ou <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel et Apple Silicon)</td>
+<td><code>Bandua.MHL.Companion_x.y.z_universal.dmg</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Premier lancement</h3>
+<p>L'app n'est pas encore signée. Ton système affiche donc un avertissement, une seule fois :</p>
+<ul>
+<li><strong>Windows</strong> : clique sur « Informations complémentaires », puis sur « Exécuter quand même ».</li>
+<li><strong>macOS</strong> : fais un clic droit sur l'app, choisis « Ouvrir », puis confirme.</li>
+</ul>
+<h3>Fenêtre de bienvenue</h3>
+<p>Au premier lancement, l'app présente ce qu'elle fait, les formats reconnus et un avertissement (1). Lis-le, puis clique sur <strong>J'ai compris</strong> (2). Tu le retrouveras dans <strong>À propos</strong> (le bouton <em>i</em>, en haut à droite). Les boutons <strong>FR / EN / ES</strong> changent la langue à tout moment.</p>
+<figure class="shot w860"><img src="img/00_welcome_fr.webp" alt="Fenêtre de bienvenue" loading="lazy"></figure>
+
+<h2 id="fr-3">3. Choisir les rushes</h2>
+<figure class="shot w860"><img src="img/01_start_fr.webp" alt="Écran d'accueil" loading="lazy"></figure>
+
+<p>Trois façons de commencer :</p>
+<ul>
+<li><strong>Glisse le dossier des rushes</strong> sur la fenêtre et relâche-le ;</li>
+<li>clique sur <strong>Choisir un dossier</strong> (1) ;</li>
+<li>ou clique sur <strong>Choisir un fichier MHL</strong> (2) pour ne contrôler qu'une seule carte.</li>
+</ul>
+<p>Tu peux donner le dossier de toute une journée, voire de tout un tournage : l'app cherche <strong>tous les MHL</strong> qu'il contient, sur plusieurs jours, caméras et cartes à la fois.</p>
+<p>Si aucun MHL n'est trouvé, l'app te le dit. Demande alors à la personne qui t'a envoyé les rushes le fichier <code>.mhl</code>, ou le dossier <code>ascmhl</code>.</p>
+<h2 id="fr-4">4. Lancer le contrôle</h2>
+<figure class="shot w860"><img src="img/02_ready_fr.webp" alt="Rushes prêts à contrôler" loading="lazy"></figure>
+
+<ol>
+<li><strong>Rushes</strong> : le dossier choisi, avec le nombre de fichiers et la taille totale. <strong>Changer</strong> permet d'en choisir un autre.</li>
+<li><strong>MHL trouvés</strong> : une fiche par MHL, avec son format (<em>MHL 1.1</em> ou <em>ASC MHL</em>), son nom, son emplacement dans le dossier, le nombre de fichiers, la taille, l'algorithme de hash, le logiciel qui l'a écrit et, pour un ASC MHL, son nombre de générations.</li>
+<li>Le message du bas résume le travail. Clique sur <strong>Lancer le contrôle</strong>.</li>
+</ol>
+<figure class="shot w860"><img src="img/03_running_fr.webp" alt="Contrôle en cours" loading="lazy"></figure>
+
+<p>Pendant le contrôle :</p>
+<ol>
+<li>le <strong>cercle</strong> montre la part des rushes déjà relue ;</li>
+<li>les <strong>compteurs</strong> donnent le débit, le temps restant, le temps écoulé et le nombre de fichiers relus ;</li>
+<li>chaque <strong>fiche MHL</strong> affiche son état : <em>en attente</em>, <em>en cours</em>, <em>intact</em> ou le nombre de problèmes ;</li>
+<li>les <strong>problèmes</strong> s'affichent au fur et à mesure, sans attendre la fin ;</li>
+<li>le bouton devient <strong>Annuler</strong>. Clique dessus, puis sur <strong>Confirmer l'annulation</strong> dans les trois secondes. Un contrôle interrompu donne un résultat incomplet.</li>
+</ol>
+<p>Chaque fichier est relu <strong>depuis le disque</strong>, en contournant le cache du système. Le contrôle porte donc vraiment sur ce qui est écrit sur le disque. Le temps dépend surtout de la vitesse du disque : compte la durée d'une lecture complète des rushes.</p>
+<h2 id="fr-5">5. Lire le résultat</h2>
+<h3>Tout est bon</h3>
+<figure class="shot w860"><img src="img/08_ok_fr.webp" alt="Rushes intacts" loading="lazy"></figure>
+
+<ol>
+<li>Le cercle passe au vert, avec la mention <em>terminé</em>.</li>
+<li>Le bandeau <strong>✓ RUSHES INTACTS</strong> confirme que chaque fichier est identique à son MHL.</li>
+<li>Chaque fiche MHL indique <em>intact</em>.</li>
+</ol>
+<h3>Il y a des problèmes</h3>
+<figure class="shot w860"><img src="img/04_problems_fr.webp" alt="Fichiers problématiques" loading="lazy"></figure>
+
+<ol>
+<li>Le bandeau rouge indique le nombre de fichiers problématiques.</li>
+<li>L'onglet <strong>Problèmes</strong> liste chaque fichier en cause : son statut (<em>ABÎMÉ</em>, <em>MANQUANT</em>…), le nom du <strong>clip</strong> auquel il appartient, le MHL concerné, son chemin et une explication. Pour un fichier abîmé, les deux empreintes (attendue et lue) sont affichées.</li>
+<li>Le bouton <strong>Afficher</strong> ouvre le dossier du fichier dans l'Explorateur ou le Finder.</li>
+</ol>
+<p>Le plus utile pour la suite : le <strong>nom du clip</strong>. C'est lui que tu demanderas à renvoyer.</p>
+<h3>Les autres onglets</h3>
+<figure class="shot w860"><img src="img/05_clips_fr.webp" alt="Onglet Clips" loading="lazy"></figure>
+
+<p>L'onglet <strong>Clips</strong> (1) montre tous les clips, avec leur MHL, leur marque (RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI), leur nombre de fichiers, leur taille et leur statut. Les clips en cause sont en tête de liste (2). Un dossier <code>.RDC</code> RED compte pour un clip, tout comme une séquence ARRIRAW ou un <code>.braw</code>.</p>
+<figure class="shot w860"><img src="img/06_extra_fr.webp" alt="Onglet Hors MHL" loading="lazy"></figure>
+
+<p>L'onglet <strong>Hors MHL</strong> (1) liste les fichiers présents dans le dossier mais absents de tout MHL (2), par exemple des proxys ajoutés après coup. Ils n'ont <strong>pas pu être contrôlés</strong>, puisque le MHL ne dit rien d'eux. Ce n'est pas forcément un problème, mais il vaut mieux le savoir.</p>
+<h2 id="fr-6">6. Exporter le rapport</h2>
+<figure class="shot w860"><img src="img/07_export_fr.webp" alt="Exporter le rapport" loading="lazy"></figure>
+
+<ol>
+<li><strong>Exporter le rapport</strong> enregistre un fichier texte à l'endroit de ton choix, par exemple <code>Controle_integrite_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. Il liste les MHL contrôlés, chaque problème avec son clip, et les fichiers hors MHL. C'est ce fichier que tu renvoies à la production ou au DIT.</li>
+<li>Un message confirme l'enregistrement.</li>
+<li><strong>Nouveau dossier</strong> revient à l'écran d'accueil.</li>
+<li><strong>Contrôler à nouveau</strong> relance le contrôle sur le même dossier, par exemple après avoir recopié un clip.</li>
+</ol>
+<p>Le rapport est le seul fichier que l'app écrit, et seulement là où tu le décides.</p>
+<h2 id="fr-7">7. Les statuts en détail</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Statut</th>
+<th>Signification</th>
+<th>Que faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INTACT</strong></td>
+<td>Le fichier est identique au MHL.</td>
+<td>Rien.</td>
+</tr>
+<tr>
+<td><strong>ABÎMÉ</strong></td>
+<td>Même taille, contenu différent : le fichier a été abîmé ou modifié pendant le transfert.</td>
+<td>Redemander le clip.</td>
+</tr>
+<tr>
+<td><strong>MANQUANT</strong></td>
+<td>Le fichier est listé dans le MHL mais absent du dossier.</td>
+<td>Vérifier la copie, redemander le clip.</td>
+</tr>
+<tr>
+<td><strong>INCOMPLET</strong></td>
+<td>Taille différente de celle du MHL, souvent une copie interrompue.</td>
+<td>Recopier le fichier, puis contrôler à nouveau.</td>
+</tr>
+<tr>
+<td><strong>ILLISIBLE</strong></td>
+<td>Le disque n'a pas pu lire le fichier.</td>
+<td>Vérifier le disque et le câble, essayer sur un autre ordinateur.</td>
+</tr>
+<tr>
+<td><strong>SANS HASH</strong></td>
+<td>Le MHL ne donne pas d'empreinte pour ce fichier : seule sa taille a été vérifiée.</td>
+<td>Demander un MHL complet si c'est important.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si un historique <strong>ASC MHL</strong> a été modifié après sa création, la fiche du MHL l'indique : « Historique ASC MHL modifié après sa création ». Méfie-toi alors de ce MHL et demande-en un nouveau.</p>
+<h2 id="fr-8">8. Formats reconnus</h2>
+<ul>
+<li><strong>MHL 1.1</strong> (fichier <code>.mhl</code>) : Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta, mhl-tool…</li>
+<li><strong>ASC MHL</strong> (dossier <code>ascmhl</code>) : toutes les générations sont fusionnées, et le fichier <code>ascmhl_chain.xml</code> sert à repérer un historique modifié après coup.</li>
+<li><strong>Hash</strong> : xxHash64, XXH3, XXH128, xxHash32, MD5, SHA-1, SHA-256, C4. Si un MHL en donne plusieurs, le plus rapide est utilisé.</li>
+<li><strong>Clips</strong> reconnus : RED (dossiers <code>.RDC</code>), ARRI (MXF et séquences ARRIRAW), Blackmagic (BRAW), Sony, Canon, GoPro, DJI, et les fichiers vidéo courants.</li>
+</ul>
+<h2 id="fr-9">9. Bonnes pratiques</h2>
+<ul>
+<li><strong>Contrôle dès réception</strong>, avant de commencer à travailler et avant que l'équipe de tournage ne formate les cartes.</li>
+<li><strong>Garde le disque d'origine</strong> tant que le contrôle n'est pas terminé et que tes propres copies ne sont pas faites.</li>
+<li><strong>Un MHL n'a de valeur que s'il vient de la personne qui a fait la copie d'origine</strong>, idéalement envoyé à part des rushes (par e-mail, par exemple). Un MHL refait après coup sur des fichiers déjà abîmés les déclarerait intacts.</li>
+<li><strong>Contrôle aussi tes propres copies</strong> : après avoir copié les rushes sur ton disque de montage, relance le contrôle sur la copie.</li>
+<li><strong>Exporte le rapport</strong> et garde-le avec le projet.</li>
+</ul>
+<h2 id="fr-10">10. Questions fréquentes</h2>
+<p><strong>Faut-il avoir Bandua pour utiliser l'app ?</strong>
+Non. Elle lit les MHL de Bandua, mais aussi ceux des autres logiciels.</p>
+<p><strong>L'app modifie-t-elle mes fichiers ?</strong>
+Non, jamais. Elle ne fait que lire. Le seul fichier écrit est le rapport, quand tu l'exportes.</p>
+<p><strong>Pourquoi le contrôle est-il aussi long ?</strong>
+Chaque fichier est relu en entier, depuis le disque. La durée dépend de la vitesse du disque et de la quantité de rushes.</p>
+<p><strong>Un fichier est ABÎMÉ, mais la vidéo se lit bien. C'est grave ?</strong>
+Oui, il faut le signaler. Le fichier n'est plus celui qui a été tourné : l'erreur peut se trouver sur une image que tu n'as pas encore vue, ou dans les métadonnées.</p>
+<p><strong>Existe-t-il une version en ligne de commande ?</strong>
+Oui, pour les scripts : <code>bandua-mhl-check &lt;dossier|fichier.mhl&gt; [--lang fr|en|es] [--report rapport.txt]</code>. Code de sortie : <code>0</code> tout est intact, <code>1</code> problèmes trouvés, <code>2</code> aucun MHL trouvé.</p>
+<p><strong>L'app envoie-t-elle des données sur Internet ?</strong>
+Non. Tout se passe sur ton ordinateur.</p>
+<h2 id="fr-11">11. Avertissement et licence</h2>
+<p>Cet outil aide à contrôler des médias. Il ne remplace pas tes propres vérifications ni tes procédures de sauvegarde. Il est fourni « en l'état », sans aucune garantie. L'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données, ni de tout dommage direct ou indirect résultant de son utilisation.</p>
+<p><strong>Un contrôle n'est valable que si le MHL vient de la personne qui a fait la copie d'origine.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Distribué sous <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">licence MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Télécharger Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.fr.md">Ce guide sur GitHub</a></p></article>
+<article data-l="es" lang="es"><header class="ph"><img src="../../assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion, manual de uso</h1><p>Versión 0.1.0 · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
+<p>Acabas de recibir material, en un disco o por descarga. ¿Se ha dañado algo por el camino? Bandua MHL Companion vuelve a leer cada archivo, lo compara con el archivo MHL que lo acompaña y te dice, clip por clip, qué está intacto y qué no.</p>
+<p>Un <strong>MHL</strong> es la lista de los archivos de una copia, con su tamaño y su huella (hash), escrita por el programa que volcó las tarjetas en el rodaje. Si un archivo cambia, aunque sea un solo byte, su huella cambia: eso es lo que comprueba la app.</p>
+<p>La app está pensada para quien <strong>recibe</strong> el material: montador, ayudante de montaje, laboratorio, postproducción, producción, director. Es la compañera de <a href="https://github.com/tetsujin28/bandua">Bandua</a>, la app de volcado del mismo autor, pero también lee los MHL escritos por Silverstack, ShotPut Pro, Hedge y otros.</p>
+<p>Funciona <strong>en solo lectura</strong>: nunca modifica, renombra ni añade nada junto a tu material. Gratuita, de código abierto (licencia MIT), sin cuenta.</p>
+<h2 id="es-2">2. Instalación</h2>
+<h3>Descargar</h3>
+<p>Ve a la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">página de Releases</a> y elige el archivo para tu ordenador:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Archivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sin instalación</td>
+<td><code>Bandua_MHL_Companion_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, con instalador</td>
+<td><code>Bandua.MHL.Companion_x.y.z_x64-setup.exe</code> o <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel y Apple Silicon)</td>
+<td><code>Bandua.MHL.Companion_x.y.z_universal.dmg</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Primer arranque</h3>
+<p>La app aún no está firmada, así que tu sistema muestra un aviso, una sola vez:</p>
+<ul>
+<li><strong>Windows</strong>: haz clic en «Más información» y luego en «Ejecutar de todas formas».</li>
+<li><strong>macOS</strong>: haz clic derecho en la app, elige «Abrir» y confirma.</li>
+</ul>
+<h3>Ventana de bienvenida</h3>
+<p>En el primer arranque, la app presenta lo que hace, los formatos reconocidos y un aviso (1). Léelo y haz clic en <strong>Entendido</strong> (2). Lo encontrarás en <strong>Acerca de</strong> (el botón <em>i</em>, arriba a la derecha). Los botones <strong>FR / EN / ES</strong> cambian el idioma en cualquier momento.</p>
+<figure class="shot w860"><img src="img/00_welcome_es.webp" alt="Ventana de bienvenida" loading="lazy"></figure>
+
+<h2 id="es-3">3. Elegir el material</h2>
+<figure class="shot w860"><img src="img/01_start_es.webp" alt="Pantalla de inicio" loading="lazy"></figure>
+
+<p>Tres formas de empezar:</p>
+<ul>
+<li><strong>arrastra la carpeta del material</strong> a la ventana y suéltala;</li>
+<li>haz clic en <strong>Elegir una carpeta</strong> (1);</li>
+<li>o haz clic en <strong>Elegir un archivo MHL</strong> (2) para controlar una sola tarjeta.</li>
+</ul>
+<p>Puedes darle la carpeta de un día entero, o incluso de todo un rodaje: la app encuentra <strong>todos los MHL</strong> que contiene, de varios días, cámaras y tarjetas a la vez.</p>
+<p>Si no encuentra ningún MHL, te lo dice. Pide entonces a quien te envió el material el archivo <code>.mhl</code>, o la carpeta <code>ascmhl</code>.</p>
+<h2 id="es-4">4. Iniciar el control</h2>
+<figure class="shot w860"><img src="img/02_ready_es.webp" alt="Material listo para controlar" loading="lazy"></figure>
+
+<ol>
+<li><strong>Material</strong>: la carpeta elegida, con su número de archivos y su tamaño total. <strong>Cambiar</strong> permite elegir otra.</li>
+<li><strong>MHL encontrados</strong>: una ficha por MHL, con su formato (<em>MHL 1.1</em> o <em>ASC MHL</em>), su nombre, su ubicación en la carpeta, el número de archivos, el tamaño, el algoritmo de hash, el programa que lo escribió y, para un ASC MHL, su número de generaciones.</li>
+<li>El mensaje de abajo resume el trabajo. Haz clic en <strong>Iniciar el control</strong>.</li>
+</ol>
+<figure class="shot w860"><img src="img/03_running_es.webp" alt="Control en curso" loading="lazy"></figure>
+
+<p>Durante el control:</p>
+<ol>
+<li>el <strong>círculo</strong> muestra la parte del material ya releída;</li>
+<li>los <strong>contadores</strong> dan la velocidad, el tiempo restante, el tiempo transcurrido y el número de archivos leídos;</li>
+<li>cada <strong>ficha MHL</strong> muestra su estado: <em>en espera</em>, <em>en curso</em>, <em>intacto</em> o su número de problemas;</li>
+<li>los <strong>problemas</strong> aparecen a medida que se encuentran, sin esperar al final;</li>
+<li>el botón pasa a <strong>Cancelar</strong>. Haz clic en él y luego en <strong>Confirmar la cancelación</strong> antes de tres segundos. Un control interrumpido da un resultado incompleto.</li>
+</ol>
+<p>Cada archivo se relee <strong>desde el disco</strong>, evitando la caché del sistema, así que el control cubre de verdad lo que está escrito en el disco. El tiempo depende sobre todo de la velocidad del disco: cuenta lo que dura una lectura completa del material.</p>
+<h2 id="es-5">5. Leer el resultado</h2>
+<h3>Todo está bien</h3>
+<figure class="shot w860"><img src="img/08_ok_es.webp" alt="Material intacto" loading="lazy"></figure>
+
+<ol>
+<li>El círculo pasa a verde, con la palabra <em>terminado</em>.</li>
+<li>La franja <strong>✓ MATERIAL INTACTO</strong> confirma que cada archivo es idéntico a su MHL.</li>
+<li>Cada ficha MHL indica <em>intacto</em>.</li>
+</ol>
+<h3>Hay problemas</h3>
+<figure class="shot w860"><img src="img/04_problems_es.webp" alt="Archivos con problemas" loading="lazy"></figure>
+
+<ol>
+<li>La franja roja indica el número de archivos con problemas.</li>
+<li>La pestaña <strong>Problemas</strong> lista cada archivo afectado: su estado (<em>DAÑADO</em>, <em>FALTA</em>…), el nombre del <strong>clip</strong> al que pertenece, el MHL correspondiente, su ruta y una explicación. Para un archivo dañado, se muestran las dos huellas (la esperada y la leída).</li>
+<li>El botón <strong>Mostrar</strong> abre la carpeta del archivo en el Explorador o en el Finder.</li>
+</ol>
+<p>Lo más útil para lo que sigue es el <strong>nombre del clip</strong>: es lo que pedirás que te vuelvan a enviar.</p>
+<h3>Las otras pestañas</h3>
+<figure class="shot w860"><img src="img/05_clips_es.webp" alt="Pestaña Clips" loading="lazy"></figure>
+
+<p>La pestaña <strong>Clips</strong> (1) muestra todos los clips, con su MHL, su marca (RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI), su número de archivos, su tamaño y su estado. Los clips con problemas aparecen primero (2). Una carpeta <code>.RDC</code> de RED cuenta como un clip, igual que una secuencia ARRIRAW o un <code>.braw</code>.</p>
+<figure class="shot w860"><img src="img/06_extra_es.webp" alt="Pestaña Fuera del MHL" loading="lazy"></figure>
+
+<p>La pestaña <strong>Fuera del MHL</strong> (1) lista los archivos que están en la carpeta pero en ningún MHL (2), por ejemplo proxies añadidos después. <strong>No se han podido controlar</strong>, porque el MHL no dice nada de ellos. No es necesariamente un problema, pero conviene saberlo.</p>
+<h2 id="es-6">6. Exportar el informe</h2>
+<figure class="shot w860"><img src="img/07_export_es.webp" alt="Exportar el informe" loading="lazy"></figure>
+
+<ol>
+<li><strong>Exportar el informe</strong> guarda un archivo de texto donde tú elijas, por ejemplo <code>Control_integridad_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. Lista los MHL controlados, cada problema con su clip y los archivos fuera del MHL. Es el archivo que envías a producción o al DIT.</li>
+<li>Un mensaje confirma que se ha guardado.</li>
+<li><strong>Nueva carpeta</strong> vuelve a la pantalla de inicio.</li>
+<li><strong>Controlar de nuevo</strong> vuelve a lanzar el control sobre la misma carpeta, por ejemplo después de copiar de nuevo un clip.</li>
+</ol>
+<p>El informe es el único archivo que escribe la app, y solo donde tú decidas.</p>
+<h2 id="es-7">7. Los estados en detalle</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Significado</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INTACTO</strong></td>
+<td>El archivo es idéntico al MHL.</td>
+<td>Nada.</td>
+</tr>
+<tr>
+<td><strong>DAÑADO</strong></td>
+<td>Mismo tamaño, contenido distinto: el archivo se dañó o se modificó durante la transferencia.</td>
+<td>Volver a pedir el clip.</td>
+</tr>
+<tr>
+<td><strong>FALTA</strong></td>
+<td>El archivo figura en el MHL pero no está en la carpeta.</td>
+<td>Revisar la copia, volver a pedir el clip.</td>
+</tr>
+<tr>
+<td><strong>INCOMPLETO</strong></td>
+<td>Tamaño distinto del del MHL, a menudo una copia interrumpida.</td>
+<td>Volver a copiar el archivo y controlar de nuevo.</td>
+</tr>
+<tr>
+<td><strong>ILEGIBLE</strong></td>
+<td>El disco no ha podido leer el archivo.</td>
+<td>Revisar el disco y el cable, probar en otro ordenador.</td>
+</tr>
+<tr>
+<td><strong>SIN HASH</strong></td>
+<td>El MHL no da huella para este archivo: solo se ha comprobado su tamaño.</td>
+<td>Pedir un MHL completo si es importante.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si un historial <strong>ASC MHL</strong> se modificó después de crearse, la ficha del MHL lo indica: «Historial ASC MHL modificado después de crearse». Desconfía de ese MHL y pide uno nuevo.</p>
+<h2 id="es-8">8. Formatos reconocidos</h2>
+<ul>
+<li><strong>MHL 1.1</strong> (archivo <code>.mhl</code>): Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta, mhl-tool…</li>
+<li><strong>ASC MHL</strong> (carpeta <code>ascmhl</code>): se combinan todas las generaciones, y el archivo <code>ascmhl_chain.xml</code> sirve para detectar un historial modificado a posteriori.</li>
+<li><strong>Hash</strong>: xxHash64, XXH3, XXH128, xxHash32, MD5, SHA-1, SHA-256, C4. Si un MHL da varios, se usa el más rápido.</li>
+<li><strong>Clips</strong> reconocidos: RED (carpetas <code>.RDC</code>), ARRI (MXF y secuencias ARRIRAW), Blackmagic (BRAW), Sony, Canon, GoPro, DJI, y los archivos de vídeo habituales.</li>
+</ul>
+<h2 id="es-9">9. Buenas prácticas</h2>
+<ul>
+<li><strong>Controla al recibir</strong>, antes de empezar a trabajar y antes de que el equipo de rodaje formatee las tarjetas.</li>
+<li><strong>Conserva el disco original</strong> hasta que termine el control y tengas tus propias copias.</li>
+<li><strong>Un MHL solo vale si viene de quien hizo la copia original</strong>, idealmente enviado aparte del material (por correo, por ejemplo). Un MHL hecho después sobre archivos ya dañados los daría por intactos.</li>
+<li><strong>Controla también tus propias copias</strong>: después de copiar el material en tu disco de montaje, vuelve a lanzar el control sobre la copia.</li>
+<li><strong>Exporta el informe</strong> y guárdalo con el proyecto.</li>
+</ul>
+<h2 id="es-10">10. Preguntas frecuentes</h2>
+<p><strong>¿Hace falta Bandua para usar la app?</strong>
+No. Lee los MHL de Bandua, pero también los de otros programas.</p>
+<p><strong>¿La app modifica mis archivos?</strong>
+No, nunca. Solo lee. El único archivo que escribe es el informe, cuando lo exportas.</p>
+<p><strong>¿Por qué tarda tanto el control?</strong>
+Cada archivo se vuelve a leer entero, desde el disco. El tiempo depende de la velocidad del disco y de la cantidad de material.</p>
+<p><strong>Un archivo está DAÑADO, pero el vídeo se reproduce bien. ¿Es grave?</strong>
+Sí, hay que avisar. El archivo ya no es el que se rodó: el error puede estar en una imagen que aún no has visto, o en los metadatos.</p>
+<p><strong>¿Existe una versión de línea de comandos?</strong>
+Sí, para scripts: <code>bandua-mhl-check &lt;carpeta|archivo.mhl&gt; [--lang fr|en|es] [--report informe.txt]</code>. Código de salida: <code>0</code> todo está intacto, <code>1</code> se han encontrado problemas, <code>2</code> no hay ningún MHL.</p>
+<p><strong>¿La app envía datos por Internet?</strong>
+No. Todo ocurre en tu ordenador.</p>
+<h2 id="es-11">11. Aviso y licencia</h2>
+<p>Esta herramienta ayuda a controlar medios. No sustituye tus propias comprobaciones ni tus procedimientos de copia de seguridad. Se ofrece «tal cual», sin ninguna garantía. El autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos, ni de ningún daño directo o indirecto derivado de su uso.</p>
+<p><strong>Un control solo es válido si el MHL viene de quien hizo la copia original.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Distribuido bajo <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">licencia MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Descargar Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.es.md">Esta guía en GitHub</a></p></article>
+</div>
+</main>
+<footer>© 2026 Domingo Olmo Martin · MIT License</footer>
+<dialog id="lb"><form method="dialog"><button data-t="close">Close</button></form><img alt=""></dialog>
+<script>
+const UI = {"en": {"back": "Back to Bandua MHL Companion", "close": "Close"}, "fr": {"back": "Retour à Bandua MHL Companion", "close": "Fermer"}, "es": {"back": "Volver a Bandua MHL Companion", "close": "Cerrar"}};
+const root = document.documentElement;
+function applyLang(l){
+  if (!UI[l]) l = "en";
+  root.dataset.lang = l; root.lang = l;
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll("[data-t]").forEach(e => e.textContent = UI[l][e.dataset.t]);
+  try { localStorage.setItem("lang", l); } catch(e) {}
+  spy();
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); scrollTo(0, 0); }));
+const lb = document.getElementById("lb");
+document.querySelectorAll(".shot").forEach(f => f.addEventListener("click", () => {
+  const i = f.querySelector("img"); lb.querySelector("img").src = i.src; lb.querySelector("img").alt = i.alt; lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+function spy(){
+  const l = root.dataset.lang, hs = [...document.querySelectorAll(`article[data-l="${l}"] h2`)];
+  let cur = hs[0]; for (const h of hs) if (h.getBoundingClientRect().top < 140) cur = h;
+  document.querySelectorAll(".toc a").forEach(a => a.classList.toggle("on", cur && a.getAttribute("href") === "#" + cur.id));
+}
+addEventListener("scroll", spy, {passive:true});
+const q = new URLSearchParams(location.search).get("lang");
+const fromHash = (location.hash.match(/^#(en|fr|es)-/) || [])[1];
+let saved = null; try { saved = localStorage.getItem("lang"); } catch(e) {}
+const nav = (navigator.language || "en").slice(0, 2);
+applyLang(q || fromHash || saved || (UI[nav] ? nav : "en"));
+if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+</script>
+</body>
+</html>

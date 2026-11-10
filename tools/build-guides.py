@@ -1,39 +1,66 @@
-"""Fabrique bandua/guide/index.html à partir du mode d'emploi du dépôt Bandua.
+"""Fabrique les pages d'aide du site à partir des modes d'emploi des dépôts des apps.
 
     pip install markdown pillow
-    python tools/build-bandua-guide.py ../bandua
+    python tools/build-guides.py bandua ../bandua
+    python tools/build-guides.py companion ../bandua-mhl-companion
+    python tools/build-guides.py ataecina ../ataecina
 
-Le mode d'emploi s'écrit dans le dépôt Bandua (docs/GUIDE.md, GUIDE.fr.md, GUIDE.es.md),
-qui reste la seule source. Ce script en tire la page du site et convertit les images en WebP.
+Chaque mode d'emploi s'écrit dans le dépôt de son app (docs/GUIDE.md, GUIDE.fr.md, GUIDE.es.md),
+qui reste la seule source. Ce script en tire la page <app>/guide/ et convertit les images en WebP.
 """
 import html, pathlib, re, sys
 import markdown
 from PIL import Image
 
 SITE = pathlib.Path(__file__).resolve().parents[1]
-BANDUA = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "../bandua").resolve()
-OUT = SITE / "bandua" / "guide"
+APPS = {
+    "bandua": dict(name="Bandua", repo="bandua", accent="#f39a3c", icon="bandua-icon.png",
+                   sub={"en": "Version 0.2.0 (beta) · Windows and macOS", "fr": "Version 0.2.0 (bêta) · Windows et macOS", "es": "Versión 0.2.0 (beta) · Windows y macOS"},
+                   title={"en": "Bandua user guide", "fr": "Bandua, mode d'emploi", "es": "Bandua, manual de uso"},
+                   desc="Complete user guide for Bandua, the free app that offloads camera cards and verifies every copy by hash. Step by step, with annotated screenshots, in English, French and Spanish."),
+    "companion": dict(name="Bandua MHL Companion", repo="bandua-mhl-companion", accent="#6cb6ff", icon="companion-icon.png",
+                   sub={"en": "Version 0.1.0 · Windows and macOS", "fr": "Version 0.1.0 · Windows et macOS", "es": "Versión 0.1.0 · Windows y macOS"},
+                   title={"en": "Bandua MHL Companion user guide", "fr": "Bandua MHL Companion, mode d'emploi", "es": "Bandua MHL Companion, manual de uso"},
+                   desc="Complete user guide for Bandua MHL Companion, the free app that checks received footage against its MHL files. Step by step, with annotated screenshots, in English, French and Spanish."),
+    "ataecina": dict(name="Ataecina", repo="ataecina", accent="#e2c043", icon="ataecina-icon.png",
+                   sub={"en": "Beta 0.11.4 · Windows", "fr": "Version bêta 0.11.4 · Windows", "es": "Beta 0.11.4 · Windows"},
+                   title={"en": "Ataecina user guide", "fr": "Ataecina, mode d'emploi", "es": "Ataecina, manual de uso"},
+                   desc="Complete user guide for Ataecina, the free app that recovers footage from formatted or damaged camera cards and repairs broken MOV and MP4 files. With the setup of untrunc, FFmpeg and PhotoRec."),
+}
+KEY = sys.argv[1] if len(sys.argv) > 1 else "bandua"
+APP = APPS[KEY]
+SRC = pathlib.Path(sys.argv[2] if len(sys.argv) > 2 else f"../{APP['repo']}").resolve()
+OUT = SITE / KEY / "guide"
 IMG = OUT / "img"
 LANGS = {"en": "GUIDE.md", "fr": "GUIDE.fr.md", "es": "GUIDE.es.md"}
+N = APP["name"]
 UI = {
-    "en": dict(title="Bandua user guide", sub="Version 0.2.0 (beta) · Windows and macOS", toc="Contents", back="Back to Bandua",
-               dl="Download Bandua", md="This guide on GitHub", close="Close", zoom="Click an image to enlarge it."),
-    "fr": dict(title="Bandua, mode d'emploi", sub="Version 0.2.0 (bêta) · Windows et macOS", toc="Sommaire", back="Retour à Bandua",
-               dl="Télécharger Bandua", md="Ce guide sur GitHub", close="Fermer", zoom="Cliquez sur une image pour l'agrandir."),
-    "es": dict(title="Bandua, manual de uso", sub="Versión 0.2.0 (beta) · Windows y macOS", toc="Índice", back="Volver a Bandua",
-               dl="Descargar Bandua", md="Esta guía en GitHub", close="Cerrar", zoom="Haz clic en una imagen para ampliarla."),
+    "en": dict(title=APP["title"]["en"], sub=APP["sub"]["en"], toc="Contents", back=f"Back to {N}",
+               dl=f"Download {N}", md="This guide on GitHub", close="Close", zoom="Click an image to enlarge it."),
+    "fr": dict(title=APP["title"]["fr"], sub=APP["sub"]["fr"], toc="Sommaire", back=f"Retour à {N}",
+               dl=f"Télécharger {N}", md="Ce guide sur GitHub", close="Fermer", zoom="Cliquez sur une image pour l'agrandir."),
+    "es": dict(title=APP["title"]["es"], sub=APP["sub"]["es"], toc="Índice", back=f"Volver a {N}",
+               dl=f"Descargar {N}", md="Esta guía en GitHub", close="Cerrar", zoom="Haz clic en una imagen para ampliarla."),
 }
-GH = "https://github.com/tetsujin28/bandua/blob/main/docs/"
+GH = f"https://github.com/tetsujin28/{APP['repo']}/blob/main/docs/"
 
 def convert_images():
     IMG.mkdir(parents=True, exist_ok=True)
-    for p in sorted((BANDUA / "docs" / "guide").glob("*.png")):
+    for p in sorted((SRC / "docs" / "guide").glob("*.png")):
         Image.open(p).convert("RGB").save(IMG / (p.stem + ".webp"), "WEBP", quality=88, method=6)
 
 def body(lang):
-    src = (BANDUA / "docs" / LANGS[lang]).read_text(encoding="utf-8")
-    src = src[src.index("\n## ", src.index("## ") + 3):]  # retire l'en-tête HTML et le sommaire
-    src = src.replace("../LICENSE", "https://github.com/tetsujin28/bandua/blob/main/LICENSE")
+    src = (SRC / "docs" / LANGS[lang]).read_text(encoding="utf-8")
+    # retire l'en-tête HTML (logo, titre, langues) et le sommaire ; garde un éventuel encadré d'avertissement
+    lines = src.split("\n")
+    i = 0
+    while i < len(lines) and (lines[i].startswith("<") or lines[i].startswith("  <") or not lines[i].strip()):
+        i += 1
+    src = "\n".join(lines[i:])
+    a = src.index("\n## ") if not src.startswith("## ") else 0
+    b = src.index("\n## ", a + 4)
+    src = src[:a] + src[b:]
+    src = src.replace("../LICENSE", f"https://github.com/tetsujin28/{APP['repo']}/blob/main/LICENSE")
     out = markdown.markdown(src, extensions=["tables", "fenced_code"])
     toc = []
     def h2(m):
@@ -44,6 +71,9 @@ def body(lang):
     out = re.sub(r'<p align="center"><img src="guide/([^"]+)\.png" width="(\d+)" alt="([^"]*)"></p>',
                  lambda m: f'<figure class="shot w{m.group(2)}"><img src="img/{m.group(1)}.webp" alt="{m.group(3)}" loading="lazy"></figure>', out)
     out = out.replace("<table>", '<div class="tw"><table>').replace("</table>", "</table></div>")
+    out = re.sub(r"<blockquote>\s*<p><strong>⚠", '<blockquote class="alert">\n<p><strong>⚠', out)
+    # ancres internes du markdown (#3-installer-...) vers les ancres de la page (#fr-3)
+    out = re.sub(r'href="#(\d+)-[^"]*"', lambda m: f'href="#{lang}-{m.group(1)}"', out)
     return out, toc
 
 def page():
@@ -54,32 +84,34 @@ def page():
         u = UI[lang]
         tocs.append(f'<nav class="toc" data-l="{lang}" aria-label="{u["toc"]}"><p>{u["toc"]}</p><ol>'
                     + "".join(f'<li><a href="#{i}">{html.escape(re.sub(r"^\d+\. ", "", t))}</a></li>' for i, t in toc) + "</ol></nav>")
-        arts.append(f'<article data-l="{lang}" lang="{lang}"><header class="ph"><img src="../../assets/bandua-icon.png" alt="" width="64" height="64">'
+        arts.append(f'<article data-l="{lang}" lang="{lang}"><header class="ph"><img src="../../assets/{APP['icon']}" alt="" width="64" height="64">'
                     f'<div><h1>{u["title"]}</h1><p>{u["sub"]}</p></div></header><p class="hint">{u["zoom"]}</p>{b}'
-                    f'<p class="links"><a class="get" href="https://github.com/tetsujin28/bandua/releases/latest">{u["dl"]}</a>'
+                    f'<p class="links"><a class="get" href="https://github.com/tetsujin28/{APP["repo"]}/releases/latest">{u["dl"]}</a>'
                     f'<a href="{GH}{LANGS[lang]}">{u["md"]}</a></p></article>')
     ui = {l: {k: UI[l][k] for k in ("back", "close")} for l in UI}
-    return TEMPLATE.replace("{{TOC}}", "\n".join(tocs)).replace("{{ARTICLES}}", "\n".join(arts)).replace("{{UI}}", repr(ui).replace("'", '"'))
+    t = (TEMPLATE.replace("{{KEY}}", KEY).replace("{{ACCENT}}", APP["accent"]).replace("{{DESC}}", html.escape(APP["desc"]))
+         .replace("{{TITLE}}", html.escape(APP["title"]["en"])).replace("{{ALLTITLES}}", html.escape(" · ".join(APP["title"].values()))))
+    return t.replace("{{TOC}}", "\n".join(tocs)).replace("{{ARTICLES}}", "\n".join(arts)).replace("{{UI}}", repr(ui).replace("'", '"'))
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bandua user guide · Mode d'emploi · Manual de uso</title>
-<meta name="description" content="Complete user guide for Bandua, the free app that offloads camera cards and verifies every copy by hash. Step by step, with annotated screenshots, in English, French and Spanish.">
-<meta property="og:title" content="Bandua user guide">
-<meta property="og:description" content="Offload camera cards and verify every copy: the complete Bandua user guide, with annotated screenshots.">
+<title>{{ALLTITLES}}</title>
+<meta name="description" content="{{DESC}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://tetsujin28.github.io/bandua/guide/">
+<meta property="og:url" content="https://tetsujin28.github.io/{{KEY}}/guide/">
 <meta property="og:image" content="https://tetsujin28.github.io/assets/og-image.jpg">
-<link rel="canonical" href="https://tetsujin28.github.io/bandua/guide/">
+<link rel="canonical" href="https://tetsujin28.github.io/{{KEY}}/guide/">
 <link rel="icon" href="../../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0d0e10;--panel:#15171a;--raise:#1c1f23;--line:#262a30;--paper:#ecebe8;--muted:#8d939c;--faint:#5d636c;--accent:#f39a3c;--ok:#35d39a;
+:root{--ink:#0d0e10;--panel:#15171a;--raise:#1c1f23;--line:#262a30;--paper:#ecebe8;--muted:#8d939c;--faint:#5d636c;--accent:{{ACCENT}};--ok:#35d39a;
   --sans:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gut:clamp(20px,4vw,48px)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:var(--ink);scroll-padding-top:84px}
@@ -108,7 +140,7 @@ html[data-lang="en"] [data-l="en"],html[data-lang="fr"] [data-l="fr"],html[data-
 article{max-width:860px;min-width:0}
 .ph{display:flex;gap:20px;align-items:center;margin-bottom:12px}
 .ph img{width:64px;border-radius:50%}
-h1{font-size:clamp(38px,5.4vw,68px);line-height:.95;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
+h1{font-size:clamp(34px,4.6vw,58px);line-height:.95;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
 .ph p{color:var(--muted);margin-top:8px;font-size:15px;font-family:var(--mono)}
 .hint{color:var(--faint);font-size:14px;margin:26px 0 0}
 h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.02em;margin:76px 0 20px;padding-top:28px;border-top:1px solid var(--line)}
@@ -130,6 +162,10 @@ td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:#
 .shot{margin:26px 0;border:1px solid var(--line);border-radius:12px;background:#000;padding:8px;cursor:zoom-in}
 .shot img{border-radius:6px;margin:0 auto}
 .shot.w560 img{max-width:560px}.shot.w700 img{max-width:700px}
+blockquote{margin:22px 0;padding:14px 20px;border-left:3px solid var(--line);background:var(--panel);border-radius:0 10px 10px 0}
+blockquote p{margin:6px 0!important}
+blockquote.alert{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--panel));border-radius:12px;margin:30px 0 0}
+blockquote.alert strong:first-child{color:var(--accent)}
 .links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:60px!important;padding-top:32px;border-top:1px solid var(--line)}
 .get{display:inline-flex;padding:13px 22px;border-radius:12px;background:var(--accent);color:#16110a!important;font-weight:700;text-decoration:none}
 footer{border-top:1px solid var(--line);padding:32px var(--gut) 44px;color:var(--faint);font-size:14px;text-align:center}
@@ -144,7 +180,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 <body>
 <header class="top"><div class="in">
   <a class="brand" href="../../">Domingo Olmo Martin</a>
-  <a class="back" href="../../#bandua" data-t="back">Back to Bandua</a>
+  <a class="back" href="../../#{{KEY}}" data-t="back">Back</a>
   <div class="lang" role="group" aria-label="Language">
     <button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button>
   </div>
