@@ -138,6 +138,15 @@ code{font-family:var(--mono);font-size:.86em;color:var(--paper);background:var(-
 .files td:last-child{font:400 13.5px var(--mono);text-align:right;color:var(--paper);overflow-wrap:anywhere}
 
 /* about */
+.signing{padding:clamp(70px,9vw,110px) 0 0;border-top:1px solid var(--line);margin-top:clamp(80px,12vw,150px)}
+.signing .grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,90px);align-items:start}
+.signing h2{font-size:clamp(30px,4vw,52px);line-height:1;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.03em}
+.signing .text p{font-size:clamp(17px,1.5vw,19px);line-height:1.6;max-width:60ch;color:var(--muted)}
+.signing .text p + p{margin-top:1em}
+.signing .text p:first-child{color:var(--paper)}
+.signing h3{margin-top:1.8em;margin-bottom:.6em;font-size:20px;font-weight:700;font-variation-settings:"wdth" 108}
+.signing .text b{color:var(--paper);font-weight:600}
+.signing + .about{margin-top:clamp(70px,9vw,110px)}
 .about{padding:clamp(100px,14vw,180px) 0 clamp(80px,10vw,130px);border-top:1px solid var(--line);margin-top:clamp(80px,12vw,150px)}
 .about .grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,90px);align-items:start}
 .about h2{font-size:clamp(44px,6.6vw,92px);line-height:.9;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
@@ -176,7 +185,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
   .files td:first-child{white-space:normal;font-size:14px}
   .files td:last-child{text-align:left;margin-top:2px}
   .dl > div + div{border-left:0;border-top:1px solid var(--line)}
-  .about .grid,footer .wrap{grid-template-columns:1fr}
+  .about .grid,.signing .grid,footer .wrap{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -521,6 +530,23 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
   </div>
 </section>
 
+<!-- SIGNATURE -->
+<section class="signing" id="signing" aria-labelledby="h-signing">
+  <div class="wrap grid">
+    <div>
+      <h2 id="h-signing" data-i="sg.title">Security warnings when you download or open the apps</h2>
+    </div>
+    <div class="text">
+      <p data-i="sg.p1" data-html>My apps (Bandua, Bandua MHL Companion, Ataecina and Lugus Transfer) are not signed, so your browser, Windows and macOS show a warning when you download or open them. They are not infected and contain no malicious code: the source code is public on my GitHub.</p>
+      <p data-i="sg.p2" data-html>They are only downloadable from my GitHub repositories (<a href="https://github.com/tetsujin28">github.com/tetsujin28</a>). If a copy shows up anywhere else, it is not mine and it may be dangerous.</p>
+      <h3 data-i="sg.h">To get past the warning</h3>
+      <p data-i="sg.win" data-html><b>Windows:</b> in the “Windows protected your PC” window, click “More info”, then “Run anyway”.</p>
+      <p data-i="sg.mac" data-html><b>macOS:</b> double-click the app, then close the blocking message (do not move the app to the Trash). Open System Settings &gt; Privacy &amp; Security, scroll down to the Security section, click “Open Anyway” next to the app's name, then confirm with your session password. This is only asked once.</p>
+      <p data-i="sg.mac2" data-html>If the button does not appear, open Terminal and type the following command (drag the app onto the window after the space), then press Enter: <code>xattr -dr com.apple.quarantine </code></p>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section class="about" id="about" aria-labelledby="h-about">
   <div class="wrap grid">
@@ -614,6 +640,13 @@ fr:{
  "ab.p2":"Je code aussi. Bandua, Lugus Transfer, Bandua MHL Companion et Ataecina sont nés d'outils dont j'avais besoin sur mes propres tournages : l'un pour décharger les cartes l'esprit tranquille, l'un pour envoyer les rushes au montage sans serveur au milieu, l'un pour que le montage puisse contrôler les rushes qu'il reçoit, l'autre pour le jour où une carte lâche. Ils sont gratuits parce que chaque équipe image, et tous ceux qui travaillent après elle, devraient les avoir.",
  "ab.p3":"Un bug, une idée ? Ouvrez une issue sur la page du projet. Les retours du plateau sont ce qui les fait progresser.",
  "ab.ib":"Signaler un problème sur Bandua","ab.ia":"Signaler un problème sur Ataecina","ab.il":"Signaler un problème sur Lugus Transfer",
+ "sg.title":"Alertes de sécurité au téléchargement et à l'ouverture",
+ "sg.p1":"Mes applications (Bandua, Bandua MHL Companion, Ataecina et Lugus Transfer) ne sont pas signées, donc le navigateur, Windows et macOS affichent un avertissement quand vous les téléchargez ou les ouvrez. Elles ne sont pas vérolées et ne contiennent aucun code malveillant : le code source est public sur mon GitHub.",
+ "sg.p2":"Elles ne sont téléchargeables que depuis mes dépôts GitHub (<a href=\"https://github.com/tetsujin28\">github.com/tetsujin28</a>). Si une copie apparaît ailleurs, ce n'est pas la mienne et elle peut être dangereuse.",
+ "sg.h":"Pour passer l'alerte",
+ "sg.win":"<b>Windows :</b> dans la fenêtre « Windows a protégé votre ordinateur », cliquez sur « Informations complémentaires », puis « Exécuter quand même ».",
+ "sg.mac":"<b>macOS :</b> double-cliquez sur l'application, puis fermez le message de blocage (ne la mettez pas à la corbeille). Ouvrez Réglages Système &gt; Confidentialité et sécurité, descendez jusqu'à la section Sécurité, cliquez sur « Ouvrir quand même » à côté du nom de l'application, puis confirmez avec le mot de passe de session. Cette étape n'est demandée qu'une seule fois.",
+ "sg.mac2":"Si le bouton n'apparaît pas, ouvrez le Terminal et tapez la commande suivante (glissez l'application sur la fenêtre après l'espace), puis validez : <code>xattr -dr com.apple.quarantine </code>",
  "ft.1":"Bandua, Lugus Transfer, Bandua MHL Companion et Ataecina sont publiés sous licence MIT.",
  "ft.2":"Ils sont fournis tels quels, sans aucune garantie. L'auteur ne peut être tenu responsable d'une perte ou d'une corruption de données.",
  "close":"Fermer"
@@ -671,6 +704,13 @@ es:{
  "ab.p2":"También programo. Bandua, Lugus Transfer, Bandua MHL Companion y Ataecina nacieron como herramientas que necesitaba en mis propios rodajes: una para volcar tarjetas sin dudas, otra para enviar el material a montaje sin servidor en medio, otra para que montaje pueda controlar el material que recibe, otra para el día en que una tarjeta falla. Son gratuitas porque todo equipo de cámara, y todos los que trabajan después, deberían tenerlas.",
  "ab.p3":"¿Un error, una idea? Abre una issue en la página del proyecto. Lo que llega del rodaje es lo que las hace mejores.",
  "ab.ib":"Informar de un problema en Bandua","ab.ia":"Informar de un problema en Ataecina","ab.il":"Informar de un problema en Lugus Transfer",
+ "sg.title":"Avisos de seguridad al descargar y abrir las apps",
+ "sg.p1":"Mis aplicaciones (Bandua, Bandua MHL Companion, Ataecina y Lugus Transfer) no están firmadas, así que el navegador, Windows y macOS muestran un aviso al descargarlas o abrirlas. No están infectadas ni contienen código malicioso: el código fuente es público en mi GitHub.",
+ "sg.p2":"Solo se pueden descargar desde mis repositorios de GitHub (<a href=\"https://github.com/tetsujin28\">github.com/tetsujin28</a>). Si aparece una copia en cualquier otro sitio, no es la mía y puede ser peligrosa.",
+ "sg.h":"Para superar el aviso",
+ "sg.win":"<b>Windows:</b> en la ventana «Windows protegió su PC», haz clic en «Más información» y después en «Ejecutar de todas formas».",
+ "sg.mac":"<b>macOS:</b> haz doble clic en la aplicación y cierra el mensaje de bloqueo (no la muevas a la papelera). Abre Ajustes del Sistema &gt; Privacidad y seguridad, baja hasta la sección Seguridad, haz clic en «Abrir de todos modos» junto al nombre de la aplicación y confirma con la contraseña de sesión. Solo se pide una vez.",
+ "sg.mac2":"Si el botón no aparece, abre Terminal y escribe el siguiente comando (arrastra la aplicación a la ventana después del espacio) y pulsa Intro: <code>xattr -dr com.apple.quarantine </code>",
  "ft.1":"Bandua, Lugus Transfer, Bandua MHL Companion y Ataecina se publican bajo licencia MIT.",
  "ft.2":"Se ofrecen tal cual, sin ninguna garantía. El autor no se hace responsable de ninguna pérdida o corrupción de datos.",
  "close":"Cerrar"
