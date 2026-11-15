@@ -131,7 +131,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 <p>The app is not signed yet, so your system shows a warning, only once:</p>
 <ul>
 <li><strong>Windows</strong>: click "More info", then "Run anyway".</li>
-<li><strong>macOS</strong>: right-click the app, choose "Open", then confirm.</li>
+<li><strong>macOS</strong>: double-click the app, then close the blocking message. Open System Settings &gt; Privacy &amp; Security, scroll down to the Security section and click "Open Anyway" next to the app's name, then confirm with your session password (asked only once). If the button does not appear, open Terminal and type <code>xattr -dr com.apple.quarantine</code> followed by the app dragged onto the window.</li>
 </ul>
 <h3>Welcome window</h3>
 <p>On first launch, the app explains what it does, the supported formats and a disclaimer (1). Read it, then click <strong>Got it</strong> (2). You can find it again under <strong>About</strong> (the <em>i</em> button, top right). The <strong>FR / EN / ES</strong> buttons switch the language at any time.</p>
@@ -278,13 +278,13 @@ No. Everything happens on your computer.</p>
 <p><strong>A check is only meaningful if the MHL comes from the person who made the original copy.</strong></p>
 <p>© 2026 Domingo Olmo Martin. Released under the <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">MIT License</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Download Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.md">This guide on GitHub</a></p></article>
 <article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion, mode d'emploi</h1><p>Version 0.1.0 · Windows et macOS</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><h2 id="fr-1">1. Présentation</h2>
-<p>Tu viens de recevoir des rushes, sur un disque ou par téléchargement. Quelque chose s'est-il abîmé en route ? Bandua MHL Companion relit chaque fichier, le compare au fichier MHL qui l'accompagne et te dit, clip par clip, ce qui est intact et ce qui ne l'est pas.</p>
+<p>Vous venez de recevoir des rushes, sur un disque ou par téléchargement. Quelque chose s'est-il abîmé en route ? Bandua MHL Companion relit chaque fichier, le compare au fichier MHL qui l'accompagne et vous dit, clip par clip, ce qui est intact et ce qui ne l'est pas.</p>
 <p>Un <strong>MHL</strong> est la liste des fichiers d'une copie, avec leur taille et leur empreinte (hash), écrite par le logiciel qui a déchargé les cartes sur le plateau. Si un fichier change, même d'un seul octet, son empreinte change : c'est ce que l'app vérifie.</p>
 <p>L'app s'adresse à ceux qui <strong>reçoivent</strong> les rushes : monteur, assistant de montage, labo, post-production, production, réalisateur. Elle est le compagnon de <a href="https://github.com/tetsujin28/bandua">Bandua</a>, l'app de déchargement du même auteur, mais elle lit aussi les MHL écrits par Silverstack, ShotPut Pro, Hedge et les autres.</p>
-<p>Elle est <strong>en lecture seule</strong> : elle ne modifie, ne renomme et n'ajoute jamais rien à côté de tes rushes. Gratuite, open source (licence MIT), sans compte.</p>
+<p>Elle est <strong>en lecture seule</strong> : elle ne modifie, ne renomme et n'ajoute jamais rien à côté de vos rushes. Gratuite, open source (licence MIT), sans compte.</p>
 <h2 id="fr-2">2. Installation</h2>
 <h3>Télécharger</h3>
-<p>Va sur la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">page des Releases</a> et choisis le fichier pour ton ordinateur :</p>
+<p>Allez sur la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">page des Releases</a> et choisissez le fichier pour votre ordinateur :</p>
 <div class="tw"><table>
 <thead>
 <tr>
@@ -308,13 +308,13 @@ No. Everything happens on your computer.</p>
 </tbody>
 </table></div>
 <h3>Premier lancement</h3>
-<p>L'app n'est pas encore signée. Ton système affiche donc un avertissement, une seule fois :</p>
+<p>L'app n'est pas encore signée. Votre système affiche donc un avertissement, une seule fois :</p>
 <ul>
-<li><strong>Windows</strong> : clique sur « Informations complémentaires », puis sur « Exécuter quand même ».</li>
-<li><strong>macOS</strong> : fais un clic droit sur l'app, choisis « Ouvrir », puis confirme.</li>
+<li><strong>Windows</strong> : cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».</li>
+<li><strong>macOS</strong> : double-cliquez sur l'application, puis fermez le message de blocage. Ouvrez Réglages Système &gt; Confidentialité et sécurité, descendez jusqu'à la section Sécurité et cliquez sur « Ouvrir quand même » à côté du nom de l'application ; confirmez avec le mot de passe de session (demandé une seule fois). Si le bouton n'apparaît pas, ouvrez le Terminal et tapez <code>xattr -dr com.apple.quarantine</code> suivi de l'application glissée dans la fenêtre.</li>
 </ul>
 <h3>Fenêtre de bienvenue</h3>
-<p>Au premier lancement, l'app présente ce qu'elle fait, les formats reconnus et un avertissement (1). Lis-le, puis clique sur <strong>J'ai compris</strong> (2). Tu le retrouveras dans <strong>À propos</strong> (le bouton <em>i</em>, en haut à droite). Les boutons <strong>FR / EN / ES</strong> changent la langue à tout moment.</p>
+<p>Au premier lancement, l'app présente ce qu'elle fait, les formats reconnus et un avertissement (1). Lisez-le, puis cliquez sur <strong>J'ai compris</strong> (2). Vous le retrouverez dans <strong>À propos</strong> (le bouton <em>i</em>, en haut à droite). Les boutons <strong>FR / EN / ES</strong> changent la langue à tout moment.</p>
 <figure class="shot w860"><img src="img/00_welcome_fr.webp" alt="Fenêtre de bienvenue" loading="lazy"></figure>
 
 <h2 id="fr-3">3. Choisir les rushes</h2>
@@ -323,18 +323,18 @@ No. Everything happens on your computer.</p>
 <p>Trois façons de commencer :</p>
 <ul>
 <li><strong>Glisse le dossier des rushes</strong> sur la fenêtre et relâche-le ;</li>
-<li>clique sur <strong>Choisir un dossier</strong> (1) ;</li>
-<li>ou clique sur <strong>Choisir un fichier MHL</strong> (2) pour ne contrôler qu'une seule carte.</li>
+<li>cliquez sur <strong>Choisir un dossier</strong> (1) ;</li>
+<li>ou cliquez sur <strong>Choisir un fichier MHL</strong> (2) pour ne contrôler qu'une seule carte.</li>
 </ul>
-<p>Tu peux donner le dossier de toute une journée, voire de tout un tournage : l'app cherche <strong>tous les MHL</strong> qu'il contient, sur plusieurs jours, caméras et cartes à la fois.</p>
-<p>Si aucun MHL n'est trouvé, l'app te le dit. Demande alors à la personne qui t'a envoyé les rushes le fichier <code>.mhl</code>, ou le dossier <code>ascmhl</code>.</p>
+<p>Vous pouvez donner le dossier de toute une journée, voire de tout un tournage : l'app cherche <strong>tous les MHL</strong> qu'il contient, sur plusieurs jours, caméras et cartes à la fois.</p>
+<p>Si aucun MHL n'est trouvé, l'app vous le dit. Demandez alors à la personne qui vous a envoyé les rushes le fichier <code>.mhl</code>, ou le dossier <code>ascmhl</code>.</p>
 <h2 id="fr-4">4. Lancer le contrôle</h2>
 <figure class="shot w860"><img src="img/02_ready_fr.webp" alt="Rushes prêts à contrôler" loading="lazy"></figure>
 
 <ol>
 <li><strong>Rushes</strong> : le dossier choisi, avec le nombre de fichiers et la taille totale. <strong>Changer</strong> permet d'en choisir un autre.</li>
 <li><strong>MHL trouvés</strong> : une fiche par MHL, avec son format (<em>MHL 1.1</em> ou <em>ASC MHL</em>), son nom, son emplacement dans le dossier, le nombre de fichiers, la taille, l'algorithme de hash, le logiciel qui l'a écrit et, pour un ASC MHL, son nombre de générations.</li>
-<li>Le message du bas résume le travail. Clique sur <strong>Lancer le contrôle</strong>.</li>
+<li>Le message du bas résume le travail. Cliquez sur <strong>Lancer le contrôle</strong>.</li>
 </ol>
 <figure class="shot w860"><img src="img/03_running_fr.webp" alt="Contrôle en cours" loading="lazy"></figure>
 
@@ -344,9 +344,9 @@ No. Everything happens on your computer.</p>
 <li>les <strong>compteurs</strong> donnent le débit, le temps restant, le temps écoulé et le nombre de fichiers relus ;</li>
 <li>chaque <strong>fiche MHL</strong> affiche son état : <em>en attente</em>, <em>en cours</em>, <em>intact</em> ou le nombre de problèmes ;</li>
 <li>les <strong>problèmes</strong> s'affichent au fur et à mesure, sans attendre la fin ;</li>
-<li>le bouton devient <strong>Annuler</strong>. Clique dessus, puis sur <strong>Confirmer l'annulation</strong> dans les trois secondes. Un contrôle interrompu donne un résultat incomplet.</li>
+<li>le bouton devient <strong>Annuler</strong>. Cliquez dessus, puis sur <strong>Confirmer l'annulation</strong> dans les trois secondes. Un contrôle interrompu donne un résultat incomplet.</li>
 </ol>
-<p>Chaque fichier est relu <strong>depuis le disque</strong>, en contournant le cache du système. Le contrôle porte donc vraiment sur ce qui est écrit sur le disque. Le temps dépend surtout de la vitesse du disque : compte la durée d'une lecture complète des rushes.</p>
+<p>Chaque fichier est relu <strong>depuis le disque</strong>, en contournant le cache du système. Le contrôle porte donc vraiment sur ce qui est écrit sur le disque. Le temps dépend surtout de la vitesse du disque : comptez la durée d'une lecture complète des rushes.</p>
 <h2 id="fr-5">5. Lire le résultat</h2>
 <h3>Tout est bon</h3>
 <figure class="shot w860"><img src="img/08_ok_fr.webp" alt="Rushes intacts" loading="lazy"></figure>
@@ -364,7 +364,7 @@ No. Everything happens on your computer.</p>
 <li>L'onglet <strong>Problèmes</strong> liste chaque fichier en cause : son statut (<em>ABÎMÉ</em>, <em>MANQUANT</em>…), le nom du <strong>clip</strong> auquel il appartient, le MHL concerné, son chemin et une explication. Pour un fichier abîmé, les deux empreintes (attendue et lue) sont affichées.</li>
 <li>Le bouton <strong>Afficher</strong> ouvre le dossier du fichier dans l'Explorateur ou le Finder.</li>
 </ol>
-<p>Le plus utile pour la suite : le <strong>nom du clip</strong>. C'est lui que tu demanderas à renvoyer.</p>
+<p>Le plus utile pour la suite : le <strong>nom du clip</strong>. C'est lui que vous demanderez à renvoyer.</p>
 <h3>Les autres onglets</h3>
 <figure class="shot w860"><img src="img/05_clips_fr.webp" alt="Onglet Clips" loading="lazy"></figure>
 
@@ -376,12 +376,12 @@ No. Everything happens on your computer.</p>
 <figure class="shot w860"><img src="img/07_export_fr.webp" alt="Exporter le rapport" loading="lazy"></figure>
 
 <ol>
-<li><strong>Exporter le rapport</strong> enregistre un fichier texte à l'endroit de ton choix, par exemple <code>Controle_integrite_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. Il liste les MHL contrôlés, chaque problème avec son clip, et les fichiers hors MHL. C'est ce fichier que tu renvoies à la production ou au DIT.</li>
+<li><strong>Exporter le rapport</strong> enregistre un fichier texte à l'endroit de votre choix, par exemple <code>Controle_integrite_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. Il liste les MHL contrôlés, chaque problème avec son clip, et les fichiers hors MHL. C'est ce fichier que vous renvoyez à la production ou au DIT.</li>
 <li>Un message confirme l'enregistrement.</li>
 <li><strong>Nouveau dossier</strong> revient à l'écran d'accueil.</li>
 <li><strong>Contrôler à nouveau</strong> relance le contrôle sur le même dossier, par exemple après avoir recopié un clip.</li>
 </ol>
-<p>Le rapport est le seul fichier que l'app écrit, et seulement là où tu le décides.</p>
+<p>Le rapport est le seul fichier que l'app écrit, et seulement là où vous le décidez.</p>
 <h2 id="fr-7">7. Les statuts en détail</h2>
 <div class="tw"><table>
 <thead>
@@ -424,7 +424,7 @@ No. Everything happens on your computer.</p>
 </tr>
 </tbody>
 </table></div>
-<p>Si un historique <strong>ASC MHL</strong> a été modifié après sa création, la fiche du MHL l'indique : « Historique ASC MHL modifié après sa création ». Méfie-toi alors de ce MHL et demande-en un nouveau.</p>
+<p>Si un historique <strong>ASC MHL</strong> a été modifié après sa création, la fiche du MHL l'indique : « Historique ASC MHL modifié après sa création ». Méfiez-vous alors de ce MHL et demandez-en un nouveau.</p>
 <h2 id="fr-8">8. Formats reconnus</h2>
 <ul>
 <li><strong>MHL 1.1</strong> (fichier <code>.mhl</code>) : Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta, mhl-tool…</li>
@@ -435,26 +435,26 @@ No. Everything happens on your computer.</p>
 <h2 id="fr-9">9. Bonnes pratiques</h2>
 <ul>
 <li><strong>Contrôle dès réception</strong>, avant de commencer à travailler et avant que l'équipe de tournage ne formate les cartes.</li>
-<li><strong>Garde le disque d'origine</strong> tant que le contrôle n'est pas terminé et que tes propres copies ne sont pas faites.</li>
+<li><strong>Gardez le disque d'origine</strong> tant que le contrôle n'est pas terminé et que vos propres copies ne sont pas faites.</li>
 <li><strong>Un MHL n'a de valeur que s'il vient de la personne qui a fait la copie d'origine</strong>, idéalement envoyé à part des rushes (par e-mail, par exemple). Un MHL refait après coup sur des fichiers déjà abîmés les déclarerait intacts.</li>
-<li><strong>Contrôle aussi tes propres copies</strong> : après avoir copié les rushes sur ton disque de montage, relance le contrôle sur la copie.</li>
-<li><strong>Exporte le rapport</strong> et garde-le avec le projet.</li>
+<li><strong>Contrôlez aussi vos propres copies</strong> : après avoir copié les rushes sur votre disque de montage, relancez le contrôle sur la copie.</li>
+<li><strong>Exportez le rapport</strong> et gardez-le avec le projet.</li>
 </ul>
 <h2 id="fr-10">10. Questions fréquentes</h2>
 <p><strong>Faut-il avoir Bandua pour utiliser l'app ?</strong>
 Non. Elle lit les MHL de Bandua, mais aussi ceux des autres logiciels.</p>
 <p><strong>L'app modifie-t-elle mes fichiers ?</strong>
-Non, jamais. Elle ne fait que lire. Le seul fichier écrit est le rapport, quand tu l'exportes.</p>
+Non, jamais. Elle ne fait que lire. Le seul fichier écrit est le rapport, quand vous l'exportez.</p>
 <p><strong>Pourquoi le contrôle est-il aussi long ?</strong>
 Chaque fichier est relu en entier, depuis le disque. La durée dépend de la vitesse du disque et de la quantité de rushes.</p>
 <p><strong>Un fichier est ABÎMÉ, mais la vidéo se lit bien. C'est grave ?</strong>
-Oui, il faut le signaler. Le fichier n'est plus celui qui a été tourné : l'erreur peut se trouver sur une image que tu n'as pas encore vue, ou dans les métadonnées.</p>
+Oui, il faut le signaler. Le fichier n'est plus celui qui a été tourné : l'erreur peut se trouver sur une image que vous n'avez pas encore vue, ou dans les métadonnées.</p>
 <p><strong>Existe-t-il une version en ligne de commande ?</strong>
 Oui, pour les scripts : <code>bandua-mhl-check &lt;dossier|fichier.mhl&gt; [--lang fr|en|es] [--report rapport.txt]</code>. Code de sortie : <code>0</code> tout est intact, <code>1</code> problèmes trouvés, <code>2</code> aucun MHL trouvé.</p>
 <p><strong>L'app envoie-t-elle des données sur Internet ?</strong>
-Non. Tout se passe sur ton ordinateur.</p>
+Non. Tout se passe sur votre ordinateur.</p>
 <h2 id="fr-11">11. Avertissement et licence</h2>
-<p>Cet outil aide à contrôler des médias. Il ne remplace pas tes propres vérifications ni tes procédures de sauvegarde. Il est fourni « en l'état », sans aucune garantie. L'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données, ni de tout dommage direct ou indirect résultant de son utilisation.</p>
+<p>Cet outil aide à contrôler des médias. Il ne remplace pas vos propres vérifications ni vos procédures de sauvegarde. Il est fourni « en l'état », sans aucune garantie. L'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données, ni de tout dommage direct ou indirect résultant de son utilisation.</p>
 <p><strong>Un contrôle n'est valable que si le MHL vient de la personne qui a fait la copie d'origine.</strong></p>
 <p>© 2026 Domingo Olmo Martin. Distribué sous <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">licence MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Télécharger Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.fr.md">Ce guide sur GitHub</a></p></article>
 <article data-l="es" lang="es"><header class="ph"><img src="../../assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion, manual de uso</h1><p>Versión 0.1.0 · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
@@ -491,7 +491,7 @@ Non. Tout se passe sur ton ordinateur.</p>
 <p>La app aún no está firmada, así que tu sistema muestra un aviso, una sola vez:</p>
 <ul>
 <li><strong>Windows</strong>: haz clic en «Más información» y luego en «Ejecutar de todas formas».</li>
-<li><strong>macOS</strong>: haz clic derecho en la app, elige «Abrir» y confirma.</li>
+<li><strong>macOS</strong>: haz doble clic en la aplicación y cierra el mensaje de bloqueo. Abre Ajustes del Sistema &gt; Privacidad y seguridad, baja hasta la sección Seguridad y haz clic en «Abrir de todos modos» junto al nombre de la aplicación; confirma con la contraseña de sesión (solo se pide una vez). Si el botón no aparece, abre Terminal y escribe <code>xattr -dr com.apple.quarantine</code> seguido de la aplicación arrastrada a la ventana.</li>
 </ul>
 <h3>Ventana de bienvenida</h3>
 <p>En el primer arranque, la app presenta lo que hace, los formatos reconocidos y un aviso (1). Léelo y haz clic en <strong>Entendido</strong> (2). Lo encontrarás en <strong>Acerca de</strong> (el botón <em>i</em>, arriba a la derecha). Los botones <strong>FR / EN / ES</strong> cambian el idioma en cualquier momento.</p>
