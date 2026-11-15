@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lugus Transfer user guide · Lugus Transfer, mode d&#x27;emploi · Lugus Transfer, manual de uso</title>
+<meta name="description" content="Complete user guide for Lugus Transfer, the free app that sends footage straight from one computer to another with a link and a code, verified on arrival. Step by step, with annotated screenshots, in English, French and Spanish.">
+<meta property="og:title" content="Lugus Transfer user guide">
+<meta property="og:description" content="Complete user guide for Lugus Transfer, the free app that sends footage straight from one computer to another with a link and a code, verified on arrival. Step by step, with annotated screenshots, in English, French and Spanish.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tetsujin28.github.io/lugus/guide/">
+<meta property="og:image" content="https://tetsujin28.github.io/assets/og-image.jpg">
+<link rel="canonical" href="https://tetsujin28.github.io/lugus/guide/">
+<link rel="icon" href="../../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0e10;--panel:#15171a;--raise:#1c1f23;--line:#262a30;--paper:#ecebe8;--muted:#8d939c;--faint:#5d636c;--accent:#39c6ff;--ok:#35d39a;
+  --sans:"Archivo",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gut:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink);scroll-padding-top:84px}
+body{font-family:var(--sans);font-variation-settings:"wdth" 100;color:var(--paper);background:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--paper);outline-offset:3px;border-radius:4px}
+.top{position:fixed;inset:0 0 auto;z-index:20;backdrop-filter:blur(14px);background:rgba(13,14,16,.8);border-bottom:1px solid var(--line)}
+.top .in{max-width:1240px;margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:22px;height:64px}
+.brand{font-weight:700;font-variation-settings:"wdth" 112;text-decoration:none;margin-right:auto;white-space:nowrap}
+.back{color:var(--muted);text-decoration:none;font-size:15px}.back:hover{color:var(--paper)}
+.lang{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;font:500 12px var(--mono);padding:6px 10px;color:var(--faint)}
+.lang button[aria-pressed="true"]{background:var(--raise);color:var(--paper)}
+.wrap{max-width:1240px;margin:0 auto;padding:104px var(--gut) 80px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(32px,5vw,72px)}
+.toc{position:sticky;top:96px;align-self:start;font-size:14.5px}
+.toc p{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.toc ol{list-style:none;counter-reset:t;display:grid;gap:2px;border-left:1px solid var(--line)}
+.toc li{counter-increment:t}
+.toc a{display:block;padding:5px 0 5px 16px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a::before{content:counter(t) ". ";color:var(--faint);font-family:var(--mono);font-size:12px}
+.toc a:hover{color:var(--paper)}
+.toc a.on{color:var(--paper);border-left-color:var(--accent)}
+[data-l]{display:none}
+html[data-lang="en"] [data-l="en"],html[data-lang="fr"] [data-l="fr"],html[data-lang="es"] [data-l="es"]{display:block}
+article{max-width:860px;min-width:0}
+.ph{display:flex;gap:20px;align-items:center;margin-bottom:12px}
+.ph img{width:64px;border-radius:50%}
+h1{font-size:clamp(34px,4.6vw,58px);line-height:.95;font-weight:850;font-variation-settings:"wdth" 118;letter-spacing:-.035em}
+.ph p{color:var(--muted);margin-top:8px;font-size:15px;font-family:var(--mono)}
+.hint{color:var(--faint);font-size:14px;margin:26px 0 0}
+h2{font-size:clamp(28px,3.4vw,40px);line-height:1.05;font-weight:800;font-variation-settings:"wdth" 112;letter-spacing:-.02em;margin:76px 0 20px;padding-top:28px;border-top:1px solid var(--line)}
+h3{font-size:21px;font-weight:700;font-variation-settings:"wdth" 106;margin:40px 0 12px}
+article p{margin:14px 0;color:#c9ccd1}
+article strong{color:var(--paper);font-weight:650}
+article em{color:var(--paper)}
+article ul,article ol{margin:14px 0 14px 22px;color:#c9ccd1}
+article li{margin:6px 0;padding-left:4px}
+article li::marker{color:var(--accent)}
+article a{color:var(--accent);text-underline-offset:3px}
+code{font-family:var(--mono);font-size:.84em;color:var(--paper);background:var(--raise);padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0;overflow-x:auto}
+pre code{background:none;padding:0;color:var(--accent);font-size:14.5px}
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);background:var(--panel);padding:11px 14px}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top;color:#c9ccd1}
+.shot{margin:26px 0;border:1px solid var(--line);border-radius:12px;background:#000;padding:8px;cursor:zoom-in}
+.shot img{border-radius:6px;margin:0 auto}
+.shot.w560 img{max-width:560px}.shot.w700 img{max-width:700px}
+blockquote{margin:22px 0;padding:14px 20px;border-left:3px solid var(--line);background:var(--panel);border-radius:0 10px 10px 0}
+blockquote p{margin:6px 0!important}
+blockquote.alert{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--panel));border-radius:12px;margin:30px 0 0}
+blockquote.alert strong:first-child{color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:60px!important;padding-top:32px;border-top:1px solid var(--line)}
+.get{display:inline-flex;padding:13px 22px;border-radius:12px;background:var(--accent);color:#16110a!important;font-weight:700;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:32px var(--gut) 44px;color:var(--faint);font-size:14px;text-align:center}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;margin:auto}
+dialog::backdrop{background:rgba(5,5,6,.92)}
+dialog img{max-width:96vw;max-height:90vh;width:auto;border-radius:8px}
+dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:var(--paper);font:500 14px var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none!important}.back{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="../../">Domingo Olmo Martin</a>
+  <a class="back" href="../../#lugus" data-t="back">Back</a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button><button type="button" data-lang="es">ES</button>
+  </div>
+</div></header>
+<main class="wrap">
+<div>
+<nav class="toc" data-l="en" aria-label="Contents"><p>Contents</p><ol><li><a href="#en-1">Overview</a></li><li><a href="#en-2">Installation</a></li><li><a href="#en-3">The interface at a glance</a></li><li><a href="#en-4">Sending footage, step by step</a></li><li><a href="#en-5">Receiving footage, step by step</a></li><li><a href="#en-6">Noctiluca mode: receiving overnight</a></li><li><a href="#en-7">What Lugus Transfer does to protect your footage</a></li><li><a href="#en-8">Interruptions and errors</a></li><li><a href="#en-9">Good practice</a></li><li><a href="#en-10">FAQ</a></li><li><a href="#en-11">Disclaimer and license</a></li></ol></nav>
+<nav class="toc" data-l="fr" aria-label="Sommaire"><p>Sommaire</p><ol><li><a href="#fr-1">Présentation</a></li><li><a href="#fr-2">Installation</a></li><li><a href="#fr-3">L&#x27;interface en un coup d&#x27;œil</a></li><li><a href="#fr-4">Envoyer des rushes, pas à pas</a></li><li><a href="#fr-5">Recevoir des rushes, pas à pas</a></li><li><a href="#fr-6">Mode Noctiluca : recevoir pendant la nuit</a></li><li><a href="#fr-7">Ce que Lugus Transfer fait pour protéger vos rushes</a></li><li><a href="#fr-8">Interruptions et erreurs</a></li><li><a href="#fr-9">Bonnes pratiques</a></li><li><a href="#fr-10">Questions fréquentes</a></li><li><a href="#fr-11">Avertissement et licence</a></li></ol></nav>
+<nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">La interfaz de un vistazo</a></li><li><a href="#es-4">Enviar material, paso a paso</a></li><li><a href="#es-5">Recibir material, paso a paso</a></li><li><a href="#es-6">Modo Noctiluca: recibir de noche</a></li><li><a href="#es-7">Lo que hace Lugus Transfer para proteger tu material</a></li><li><a href="#es-8">Interrupciones y errores</a></li><li><a href="#es-9">Buenas prácticas</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
+</div>
+<div>
+<article data-l="en" lang="en"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer user guide</h1><p>Version 0.1.0 (beta) · Windows and macOS</p></div></header><p class="hint">Click an image to enlarge it.</p><h2 id="en-1">1. Overview</h2>
+<p>Lugus Transfer sends footage straight from one computer to another. The sender creates a link and a code, the recipient types them in, and the files travel directly between the two machines, encrypted end to end. There is no server in the middle, no cloud storage and no account.</p>
+<p>The rule is the same as on set: <strong>a transfer is only finished once the files have been checked on arrival.</strong> Lugus Transfer reads every received file back from the recipient's disk, compares it with the source, and only then calls it "verified". An MHL file is written in the received folder, and the sender gets a delivery receipt.</p>
+<p>Lugus Transfer is free, open source (MIT License), and needs no account or license key.</p>
+<h2 id="en-2">2. Installation</h2>
+<h3>Download</h3>
+<p>The files are on the <a href="https://github.com/tetsujin28/lugus-transfer/releases">Releases page</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>System</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, no install</td>
+<td><code>Lugus_Transfer_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, installer</td>
+<td><code>Lugus_Transfer_x.y.z_x64-setup.exe</code> or <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel and Apple Silicon)</td>
+<td><code>Lugus_Transfer_x.y.z_universal.dmg</code></td>
+</tr>
+<tr>
+<td>Command line (optional)</td>
+<td><code>lugus_x.y.z_windows.exe</code>, <code>lugus_x.y.z_macos</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The sender and the recipient both need Lugus Transfer, but not the same system: a Mac can send to a PC and the other way round.</p>
+<h3>First launch</h3>
+<p>The app is not signed yet, so your system shows a warning, only once:</p>
+<ul>
+<li><strong>Windows</strong>: click "More info", then "Run anyway".</li>
+<li><strong>macOS</strong>: right-click the app, choose "Open", then confirm.</li>
+</ul>
+<p>Your browser may also flag the download as unusual. This is common for a new, unsigned app. Keep the file from the downloads panel. If in doubt, have it scanned on <a href="https://www.virustotal.com">VirusTotal</a>.</p>
+<p>If your system or your firewall asks whether Lugus Transfer may use the network, allow it. That is how the two computers reach each other.</p>
+<h3>Welcome window</h3>
+<p>On first launch, Lugus Transfer shows a disclaimer (1). Read it, then click <strong>I understand and accept</strong> (2). You can find it again under <strong>About</strong> (the <em>i</em> button).</p>
+<figure class="shot w860"><img src="img/00_welcome_en.webp" alt="Welcome window" loading="lazy"></figure>
+
+<h2 id="en-3">3. The interface at a glance</h2>
+<figure class="shot w860"><img src="img/01_interface_en.webp" alt="The Lugus Transfer interface" loading="lazy"></figure>
+
+<ol>
+<li><strong>Send / Receive</strong>: the two modes of the app. The same app is used on both sides.</li>
+<li><strong>Drop zone</strong>: drop a folder, one file or several files here.</li>
+<li><strong>Choose a folder / Choose files</strong>: the same thing with the system window. "Choose files" lets you pick several files at once.</li>
+<li><strong>After delivery</strong>: do nothing, put the computer to sleep, or shut it down once the recipient has confirmed delivery.</li>
+<li><strong>Main button</strong>: <strong>Create the link</strong> when sending, <strong>Receive</strong> when receiving, then <strong>Stop</strong> while a transfer is running.</li>
+<li><strong>FR / EN / ES</strong>: switches the interface language instantly.</li>
+<li><strong>About</strong> (the <em>i</em> button): version, license and disclaimer.</li>
+</ol>
+<p>During a transfer, the right side shows:
+- a row of <strong>numbered steps</strong>, the current one highlighted;
+- a <strong>status line</strong> in plain words, saying what is happening and what to do;
+- the <strong>progress</strong>: percentage, a blue bar for the data transferred, a green bar for the data already verified on the recipient's disk, speed, time remaining, time elapsed and network path (<em>local network</em>, <em>direct</em> or <em>relay</em>);
+- the <strong>log</strong> and, when receiving, the list of <strong>verified files</strong>.</p>
+<p>At the top, the badge next to the app name sums up the state: <em>Ready</em>, <em>Preparing</em>, <em>Publishing</em>, <em>Waiting</em>, <em>Sending</em>, <em>Searching</em>, <em>Choosing</em>, <em>Receiving</em>, <em>Noctiluca</em>, <em>Verified</em>, <em>Error</em>, <em>Stopped</em>.</p>
+<p>The line <strong>The machine stays awake during the transfer</strong> reminds you that Lugus Transfer stops the computer from going to sleep on its own while it works.</p>
+<h2 id="en-4">4. Sending footage, step by step</h2>
+<h3>Step 1: choose what to send</h3>
+<p>Drop a folder on the window, or click <strong>Choose a folder</strong>. You can also send:
+- <strong>one file</strong>: it will arrive on its own in the recipient's folder;
+- <strong>several files</strong>: drop them together, or select them with <strong>Choose files</strong>. They must come from the same folder.</p>
+<p>When you choose a folder or several files, their content is listed on the right, everything ticked:</p>
+<figure class="shot w860"><img src="img/02_choose_send_en.webp" alt="Choosing the files to send" loading="lazy"></figure>
+
+<ol>
+<li><strong>Quick filters</strong>: <strong>All</strong>, <strong>None</strong>, then <strong>Originals</strong>, <strong>Proxies</strong> and <strong>Sidecars</strong> (XML, LUT, sound, reports…) with their count. A click ticks or unticks the whole category.</li>
+<li><strong>The tree</strong> of the folder: click a folder name to open it, tick or untick a file or a whole folder. A half-filled box means part of the folder is selected.</li>
+<li><strong>The total</strong> of what will be sent: number of files and size.</li>
+<li><strong>The summary</strong> on the left shows the same total, for example <em>Files 17 / 25</em>. The <strong>✕ Remove</strong> button clears everything and starts again from scratch.</li>
+</ol>
+<p>You do not need to click Remove to change your mind: choosing another folder or other files simply replaces the previous choice.</p>
+<h3>Step 2: after delivery (optional)</h3>
+<p>Under <strong>After delivery</strong>, choose what the computer does once the recipient has confirmed delivery: <strong>Do nothing</strong>, <strong>Sleep</strong> or <strong>Shut down the computer</strong>. Useful when you send a big batch and leave.</p>
+<h3>Step 3: create the link</h3>
+<p>Click <strong>Create the link</strong>. Lugus Transfer analyses the files, then publishes the link on the network:</p>
+<figure class="shot w860"><img src="img/03_publishing_en.webp" alt="Publishing the link" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>steps</strong> move from <em>Preparing</em> to <em>Publishing</em>.</li>
+<li>The <strong>status line</strong> says the link is being published. It takes a few seconds, and you can already copy the link and the code.</li>
+<li>The <strong>badge</strong> next to the link reads <em>Publishing…</em>.</li>
+</ol>
+<p>As soon as the link can be found on the network, the badge turns to <strong>Online</strong>:</p>
+<figure class="shot w700"><img src="img/04_link_en.webp" alt="Link and code online" loading="lazy"></figure>
+
+<ol>
+<li><strong>Online</strong>: the recipient can now reach your computer. If the badge reads <em>Not visible yet</em> after 90 seconds, the link may work anyway: send it, and keep Lugus Transfer open.</li>
+<li><strong>The link</strong> (<code>lugus://r/…</code>) and its <strong>Copy link</strong> button.</li>
+<li><strong>The code</strong> (for example <code>4821-lanterne-7</code>), with <strong>Copy code</strong> and <strong>New code</strong>.</li>
+<li><strong>The reminder</strong>: send the link and the code through <strong>two different channels</strong>, for example the link by email and the code by text message. The link is valid for 24 hours, with 3 attempts per code.</li>
+</ol>
+<p>Someone who only has the link cannot do anything with it: they also need the code.</p>
+<h3>Step 4: wait for the recipient</h3>
+<p>Keep Lugus Transfer open. When the recipient types the code, the status line says a recipient is connecting and the code is being checked.</p>
+<ul>
+<li><strong>Wrong code</strong>: the log says so and shows how many attempts are left. The recipient can try again after a short delay.</li>
+<li><strong>3 failed attempts</strong>: the code is locked. Click <strong>New code</strong> and send the new code. The link does not change.</li>
+<li><strong>Code accepted</strong>: the recipient chooses the files they want. The status line says so.</li>
+</ul>
+<h3>Step 5: the transfer</h3>
+<figure class="shot w860"><img src="img/05_send_progress_en.webp" alt="Sending in progress" loading="lazy"></figure>
+
+<ol>
+<li><strong>The percentage and the blue bar</strong>: how much the recipient has received.</li>
+<li><strong>The green bar</strong>: how much has already been read back and verified on the recipient's disk. Each file is verified as soon as it is complete, so the green bar follows the blue one.</li>
+<li><strong>Speed, time remaining, time elapsed and network path.</strong></li>
+<li><strong>The log</strong>: connection, code, files chosen by the recipient.</li>
+<li><strong>Stop</strong>: ends the transfer and closes the link. Nothing already received is lost on the other side (see section 8).</li>
+</ol>
+<p>The figures shown are those of the recipient: after an interruption and a resume, both screens show the same percentage.</p>
+<h3>Step 6: verification on the recipient's side</h3>
+<p>When everything has been sent, the transfer is not over yet. The recipient reads the last files back from their disk:</p>
+<figure class="shot w860"><img src="img/06_send_verify_en.webp" alt="Verification by the recipient" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>status line</strong> reads <em>Everything is sent. Verification by the recipient</em>, with the percentage.</li>
+<li>The <strong>green bar</strong> goes on up to 100 %.</li>
+</ol>
+<p><strong>Keep Lugus Transfer open until the confirmation.</strong></p>
+<h3>Step 7: delivered</h3>
+<figure class="shot w860"><img src="img/07_delivered_en.webp" alt="Delivered and verified" loading="lazy"></figure>
+
+<ol>
+<li>Every step is ticked and <em>Done</em> turns green.</li>
+<li>The <strong>✓ DELIVERED AND VERIFIED</strong> banner gives the number of files and the size, read back and verified on the recipient's disk.</li>
+</ol>
+<p>The recipient has sent an authenticated delivery receipt: it can only come from the person who typed the right code. You can close Lugus Transfer. The link is then used: to send to someone else, create a new link.</p>
+<h2 id="en-5">5. Receiving footage, step by step</h2>
+<h3>Step 1: link, code and destination</h3>
+<p>Click <strong>Receive</strong> at the top left.</p>
+<figure class="shot w860"><img src="img/08_receive_form_en.webp" alt="Receiving: link, code and destination" loading="lazy"></figure>
+
+<ol>
+<li><strong>Link</strong>: paste the link you were sent. <em>Valid link</em> confirms its form.</li>
+<li><strong>Code</strong>: type the code. It is checked on your computer before anything is sent: a typo is caught right away and <strong>never uses up an attempt</strong>.</li>
+<li><strong>Destination</strong>: click <strong>Choose</strong> and pick the folder where the footage will arrive. A folder arrives in a sub-folder with its name, and so do several files sent together (with the name of the folder they come from). A single file arrives directly in the destination.</li>
+<li><strong>Noctiluca mode</strong>: to receive overnight (see section 6).</li>
+<li><strong>Receive</strong>: starts the reception.</li>
+</ol>
+<p>Lugus Transfer then looks for the sender on the network. It usually takes a few seconds. If the sender cannot be found yet (common right after the link was created), Lugus Transfer tries again on its own for 90 seconds and shows the attempt number.</p>
+<h3>Step 2: choose the files</h3>
+<p>Once the code is accepted, the content offered by the sender is listed, everything ticked:</p>
+<figure class="shot w860"><img src="img/09_receive_choose_en.webp" alt="Choosing the files to receive" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>status line</strong> asks you to choose the files.</li>
+<li><strong>Quick filters</strong>: <strong>All</strong>, <strong>None</strong>, <strong>Originals</strong>, <strong>Proxies</strong>, <strong>Sidecars</strong>. Here, the originals have been unticked to get the proxies first.</li>
+<li><strong>The tree</strong>, with a box for each file and each folder.</li>
+<li><strong>Receive the selection</strong> starts the transfer.</li>
+</ol>
+<p>What you leave out now can be received later with the same link and the same code: files already received and verified are skipped.</p>
+<h3>Step 3: the transfer</h3>
+<figure class="shot w860"><img src="img/10_receive_progress_en.webp" alt="Receiving in progress" loading="lazy"></figure>
+
+<ol>
+<li><strong>The percentage and the blue bar</strong>: what has been received.</li>
+<li><strong>The green bar</strong>: what has already been read back from your disk and verified.</li>
+<li><strong>The verified files</strong>, one by one, newest at the top.</li>
+</ol>
+<p>Proxies and sidecar files come first, then the originals. Up to 4 files are received at the same time.</p>
+<h3>Step 4: verification on your disk</h3>
+<p>When everything is received, Lugus Transfer finishes reading the last files back:</p>
+<figure class="shot w860"><img src="img/11_receive_verify_en.webp" alt="Verification on your disk" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>status line</strong> reads <em>Everything is received. Verification on your disk</em>, with the percentage. With large files, this can take a few minutes: the whole file is read back from the disk, bypassing the system cache, and compared with the source.</li>
+<li>The <strong>green bar</strong> goes on up to 100 %.</li>
+</ol>
+<h3>Step 5: MHL and receipt</h3>
+<figure class="shot w860"><img src="img/12_receive_mhl_en.webp" alt="Writing the MHL" loading="lazy"></figure>
+
+<ol>
+<li>The <em>MHL</em> step is active.</li>
+<li>The <strong>status line</strong> says every file is verified and the MHL is being written, then the delivery receipt is sent to the sender.</li>
+</ol>
+<h3>Step 6: received</h3>
+<figure class="shot w860"><img src="img/13_received_en.webp" alt="Received and verified" loading="lazy"></figure>
+
+<ol>
+<li>The <strong>✓ RECEIVED AND VERIFIED</strong> banner: number of files, size, duration and network path.</li>
+<li><strong>Open folder</strong> opens the received folder, <strong>Show MHL</strong> shows the MHL file.</li>
+<li><strong>The list of verified files.</strong></li>
+</ol>
+<p>The MHL is called <code>&lt;name&gt;_lugus_&lt;date&gt;.mhl</code>, for example <code>D04_lugus_2026-11-15_143212.mhl</code>. It never overwrites an MHL already in the folder, such as the one written by Bandua on set.</p>
+<h2 id="en-6">6. Noctiluca mode: receiving overnight</h2>
+<p>Big transfers are best done at night, when the connection is free and nobody needs the computer. Noctiluca mode schedules the reception and handles the end on its own.</p>
+<figure class="shot w860"><img src="img/14_noctiluca_en.webp" alt="Noctiluca mode" loading="lazy"></figure>
+
+<ol>
+<li>Tick <strong>Noctiluca mode</strong>, set the <strong>Start at</strong> time (01:00 for example), and choose what happens <strong>After reception</strong>: do nothing, sleep, or shut down the computer. Then click <strong>Schedule the reception</strong>.</li>
+<li>The steps start with <em>Scheduled start</em>.</li>
+<li>The status line gives the start time. The computer stays awake until then.</li>
+</ol>
+<p>The link and the code are checked before the wait, so a typo shows up straight away and not at 1 in the morning. If the time has already passed today, the reception starts tomorrow at that time.</p>
+<p>In Noctiluca mode, nobody is there to choose the files: <strong>everything the sender offers is received</strong>. The sender's computer must be on and Lugus Transfer open at the start time.</p>
+<p>When everything is verified, the computer goes to sleep or shuts down. On Windows, the shutdown leaves 60 seconds to cancel it.</p>
+<h2 id="en-7">7. What Lugus Transfer does to protect your footage</h2>
+<p>All of this happens in the background, with nothing for you to set.</p>
+<ol>
+<li><strong>Nothing in the middle.</strong> The files go from one computer to the other. They are never stored on a server. Even when the connection goes through a public relay, it stays encrypted end to end: the relay only passes along data it cannot read.</li>
+<li><strong>The code never travels.</strong> The two computers prove to each other that they know the code (SPAKE2) without ever sending it. Someone who intercepts the link learns nothing, and only has 3 attempts.</li>
+<li><strong>Every block is checked.</strong> Files travel in 4 MB blocks. The sender computes the hash of each block when it reads it from its disk; the recipient checks it before writing the block.</li>
+<li><strong>Safe writing.</strong> Each file is first written under a temporary name (<code>.lugus-part</code>), with a journal (<code>.lugus-journal</code>) noting every block written. A file only gets its real name <strong>once verified</strong>. A file with its final name is therefore a checked file.</li>
+<li><strong>Verification on the disk, not in memory.</strong> At the end of each file, the recipient reads it back from the disk with the system cache bypassed, and compares each block, then the whole file, with the hash of the source (BLAKE3). If anything differs, the file is rejected and its progress erased, so it is received again from the start.</li>
+<li><strong>Original dates kept.</strong> Received files get the modification date of the source.</li>
+<li><strong>Authenticated receipt.</strong> At the end, the recipient sends the sender a receipt that only they can produce. That is what turns the sender's screen to <em>Delivered and verified</em>.</li>
+</ol>
+<h2 id="en-8">8. Interruptions and errors</h2>
+<h3>Resuming after an interruption</h3>
+<p>Network cut, window closed, computer gone to sleep, <strong>Stop</strong> clicked by mistake: the transfer can resume exactly where it stopped.</p>
+<ul>
+<li><strong>On the sender's side</strong>, nothing to do: Lugus Transfer stays waiting, the link remains valid (24 hours). If the sender closed Lugus Transfer or clicked <strong>Stop</strong>, they create a new link for the same files and send it.</li>
+<li><strong>On the recipient's side</strong>, start the reception again with the link and the code (the same ones, or the new ones), and <strong>the same destination</strong>. Each file resumes after its last block written and checked; files already complete are read back and checked again, then skipped.</li>
+</ul>
+<p>Both screens show the same progress from the moment the computers reconnect. Right after a resume, the green bar may start lower than the blue one: files already present are read back once more before being counted as verified.</p>
+<h3>When something goes wrong</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What it means</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Sender not found yet, trying again…"</td>
+<td>The link is not visible on the network yet, or the network answers badly.</td>
+<td>Wait: Lugus Transfer tries again on its own for 90 seconds.</td>
+</tr>
+<tr>
+<td>"Sender not found" (after 90 seconds)</td>
+<td>The sender's computer is off, asleep, or Lugus Transfer is closed, or the link is wrong.</td>
+<td>Check with the sender that Lugus Transfer is open, then start again.</td>
+</tr>
+<tr>
+<td>"Wrong code, N attempt(s) left"</td>
+<td>The code typed does not match.</td>
+<td>Check the code. Wait a few seconds between attempts.</td>
+</tr>
+<tr>
+<td>"This code is locked"</td>
+<td>3 attempts failed.</td>
+<td>Ask the sender for a new code (<strong>New code</strong>). The link does not change.</td>
+</tr>
+<tr>
+<td>"Connection lost"</td>
+<td>The network dropped, or the other computer went to sleep or was closed.</td>
+<td>Start the reception again with the same link and code: it resumes where it stopped.</td>
+</tr>
+<tr>
+<td>"This link has expired"</td>
+<td>More than 24 hours have passed.</td>
+<td>The sender creates a new link.</td>
+</tr>
+<tr>
+<td>"Another file with the same name already exists at the destination"</td>
+<td>A file with the same name, but different, is already in the destination folder.</td>
+<td>Choose another destination, or move the old file. Lugus Transfer never overwrites anything.</td>
+</tr>
+<tr>
+<td>"The file read back from the disk does not match the source"</td>
+<td>What was written on the disk is not what was sent: a disk, cable or connection problem on the recipient's side.</td>
+<td>Start the reception again: the file is received again from the start. If it happens again, check the destination disk.</td>
+</tr>
+<tr>
+<td>"A file changed at the sender's since the link was created"</td>
+<td>The source file was modified, or was still being written when the link was created.</td>
+<td>The sender waits until the copy or export is finished, then creates a new link.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="en-9">9. Good practice</h2>
+<ul>
+<li><strong>Send the link and the code through two different channels.</strong> The link alone is useless, which is the point.</li>
+<li><strong>Keep both computers plugged in.</strong> A transfer of several hundred gigabytes takes hours.</li>
+<li><strong>Leave a laptop open.</strong> Lugus Transfer keeps the computer awake, but closing the lid usually puts a laptop to sleep anyway.</li>
+<li><strong>Ask for the proxies first</strong> if the editor needs to start quickly, then the originals, overnight in Noctiluca mode.</li>
+<li><strong>Wait for <em>Delivered and verified</em></strong> before deleting anything at the sender's side, and keep the original copies anyway until the footage has been backed up at the recipient's.</li>
+<li><strong>Check the MHL</strong> with <a href="https://github.com/tetsujin28/bandua-mhl-companion">Bandua MHL Companion</a> when the footage moves again, from one drive to another.</li>
+</ul>
+<h2 id="en-10">10. FAQ</h2>
+<p><strong>How fast is it?</strong>
+As fast as the slower of the two connections allows, often the sender's upload speed. On the same local network, the transfer runs at local network speed. The <em>Path</em> box says whether the connection is <em>local network</em>, <em>direct</em> or <em>relay</em>; a relay is slower.</p>
+<p><strong>Is there a size limit?</strong>
+No. Lugus Transfer is made for very large files and whole shoot days.</p>
+<p><strong>Do both computers need to be on at the same time?</strong>
+Yes. Nothing is stored in between: the files go directly from one to the other. Noctiluca mode lets you schedule the reception for when both are free.</p>
+<p><strong>Can I send to several people?</strong>
+One link is for one delivery. To send the same footage to someone else, create a new link.</p>
+<p><strong>What goes on the Internet?</strong>
+To be found, the sender publishes its network addresses, signed by a one-time key, in the public BitTorrent DHT. The files, the folder names and the code are never published: they only travel encrypted between the two computers.</p>
+<p><strong>Can the editor's software read the MHL?</strong>
+Yes, it is MHL 1.1 with xxHash64, the standard read by Silverstack, ShotPut Pro, Hedge and Bandua MHL Companion.</p>
+<p><strong>Does Lugus Transfer run on Linux?</strong>
+Not for now. The code stays compatible, but there is no Linux build until it can be tested. The command line tool can be built on Linux from the source code.</p>
+<h2 id="en-11">11. Disclaimer and license</h2>
+<p>Lugus Transfer is a tool to help transfer and verify media. It does not replace your own checks or backup procedures. The software is provided "as is", without any warranty. The author cannot be held responsible for any loss, corruption or deletion of data, footage or media, nor for any direct or indirect damage (production costs, reshoots, loss of income…) resulting from the use, misuse or malfunction of the software.</p>
+<p><strong>Never delete the original before checking that the received copy is complete and readable.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Released under the <a href="https://github.com/tetsujin28/lugus-transfer/blob/main/LICENSE">MIT License</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">Download Lugus Transfer</a><a href="https://github.com/tetsujin28/lugus-transfer/blob/main/docs/GUIDE.md">This guide on GitHub</a></p></article>
+<article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, mode d'emploi</h1><p>Version 0.1.0 (bêta) · Windows et macOS</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><h2 id="fr-1">1. Présentation</h2>
+<p>Lugus Transfer envoie vos rushes directement d'un ordinateur à l'autre. L'expéditeur crée un lien et un code, le destinataire les saisit, et les fichiers passent directement d'une machine à l'autre, chiffrés de bout en bout. Pas de serveur au milieu, pas de stockage dans le cloud, pas de compte.</p>
+<p>La règle est la même que sur le plateau : <strong>un transfert n'est terminé qu'une fois les fichiers contrôlés à l'arrivée.</strong> Lugus Transfer relit chaque fichier reçu sur le disque du destinataire, le compare à la source, et seulement alors le déclare « vérifié ». Un fichier MHL est écrit dans le dossier reçu, et l'expéditeur reçoit un accusé de réception.</p>
+<p>Lugus Transfer est gratuit, open source (licence MIT) et ne demande ni compte ni licence.</p>
+<h2 id="fr-2">2. Installation</h2>
+<h3>Télécharger</h3>
+<p>Les fichiers se trouvent sur la <a href="https://github.com/tetsujin28/lugus-transfer/releases">page des Releases</a> :</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Système</th>
+<th>Fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sans installation</td>
+<td><code>Lugus_Transfer_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, avec installateur</td>
+<td><code>Lugus_Transfer_x.y.z_x64-setup.exe</code> ou <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel et Apple Silicon)</td>
+<td><code>Lugus_Transfer_x.y.z_universal.dmg</code></td>
+</tr>
+<tr>
+<td>Ligne de commande (facultatif)</td>
+<td><code>lugus_x.y.z_windows.exe</code>, <code>lugus_x.y.z_macos</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>L'expéditeur et le destinataire ont tous deux besoin de Lugus Transfer, mais pas du même système : un Mac peut envoyer à un PC, et inversement.</p>
+<h3>Premier lancement</h3>
+<p>L'application n'est pas encore signée. Votre système affiche donc un avertissement, une seule fois :</p>
+<ul>
+<li><strong>Windows</strong> : cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».</li>
+<li><strong>macOS</strong> : faites un clic droit sur l'application, choisissez « Ouvrir », puis confirmez.</li>
+</ul>
+<p>Il arrive aussi que le navigateur signale le téléchargement comme inhabituel. C'est courant pour une application récente qui n'est pas signée. Gardez le fichier depuis le panneau des téléchargements. En cas de doute, faites-le analyser sur <a href="https://www.virustotal.com">VirusTotal</a>.</p>
+<p>Si votre système ou votre pare-feu demande si Lugus Transfer peut utiliser le réseau, autorisez-le. C'est ainsi que les deux ordinateurs se joignent.</p>
+<h3>Fenêtre de bienvenue</h3>
+<p>Au premier lancement, Lugus Transfer affiche un avertissement de non-responsabilité (1). Lisez-le, puis cliquez sur <strong>J'ai compris et j'accepte</strong> (2). Vous le retrouverez ensuite dans <strong>À propos</strong> (le bouton <em>i</em>).</p>
+<figure class="shot w860"><img src="img/00_welcome_fr.webp" alt="Fenêtre de bienvenue" loading="lazy"></figure>
+
+<h2 id="fr-3">3. L'interface en un coup d'œil</h2>
+<figure class="shot w860"><img src="img/01_interface_fr.webp" alt="L'interface de Lugus Transfer" loading="lazy"></figure>
+
+<ol>
+<li><strong>Envoyer / Recevoir</strong> : les deux modes de l'application. La même application sert des deux côtés.</li>
+<li><strong>Zone de dépôt</strong> : déposez-y un dossier, un fichier ou plusieurs fichiers.</li>
+<li><strong>Choisir un dossier / Choisir des fichiers</strong> : la même chose avec la fenêtre du système. « Choisir des fichiers » permet d'en sélectionner plusieurs d'un coup.</li>
+<li><strong>Après la livraison</strong> : ne rien faire, mettre l'ordinateur en veille ou l'éteindre une fois la livraison confirmée par le destinataire.</li>
+<li><strong>Bouton principal</strong> : <strong>Créer le lien</strong> pour envoyer, <strong>Recevoir</strong> pour recevoir, puis <strong>Arrêter</strong> pendant un transfert.</li>
+<li><strong>FR / EN / ES</strong> : change instantanément la langue de l'interface.</li>
+<li><strong>À propos</strong> (le bouton <em>i</em>) : version, licence et avertissement.</li>
+</ol>
+<p>Pendant un transfert, la partie droite affiche :
+- une frise d'<strong>étapes numérotées</strong>, l'étape en cours mise en évidence ;
+- une <strong>phrase d'état</strong>, en clair, qui dit ce qui se passe et ce qu'il faut faire ;
+- l'<strong>avancement</strong> : pourcentage, barre bleue pour les données transférées, barre verte pour les données déjà vérifiées sur le disque du destinataire, débit, temps restant, temps écoulé et chemin réseau (<em>réseau local</em>, <em>direct</em> ou <em>relais</em>) ;
+- le <strong>journal</strong> et, en réception, la liste des <strong>fichiers vérifiés</strong>.</p>
+<p>En haut, le badge à côté du nom de l'application résume l'état : <em>Prêt</em>, <em>Préparation</em>, <em>Publication</em>, <em>En attente</em>, <em>Envoi</em>, <em>Recherche</em>, <em>Choix</em>, <em>Réception</em>, <em>Noctiluca</em>, <em>Vérifié</em>, <em>Erreur</em>, <em>Arrêté</em>.</p>
+<p>La ligne <strong>La machine reste éveillée pendant le transfert</strong> rappelle que Lugus Transfer empêche l'ordinateur de se mettre en veille tout seul pendant qu'il travaille.</p>
+<h2 id="fr-4">4. Envoyer des rushes, pas à pas</h2>
+<h3>Étape 1 : choisir ce qu'on envoie</h3>
+<p>Déposez un dossier sur la fenêtre, ou cliquez sur <strong>Choisir un dossier</strong>. Vous pouvez aussi envoyer :
+- <strong>un seul fichier</strong> : il arrivera seul dans le dossier du destinataire ;
+- <strong>plusieurs fichiers</strong> : déposez-les ensemble, ou sélectionnez-les avec <strong>Choisir des fichiers</strong>. Ils doivent venir du même dossier.</p>
+<p>Quand vous choisissez un dossier ou plusieurs fichiers, leur contenu s'affiche à droite, tout coché :</p>
+<figure class="shot w860"><img src="img/02_choose_send_fr.webp" alt="Choix des fichiers à envoyer" loading="lazy"></figure>
+
+<ol>
+<li><strong>Les filtres rapides</strong> : <strong>Tout</strong>, <strong>Rien</strong>, puis <strong>Originaux</strong>, <strong>Proxys</strong> et <strong>Annexes</strong> (XML, LUT, son, rapports…) avec leur nombre. Un clic coche ou décoche toute la catégorie.</li>
+<li><strong>L'arbre</strong> du dossier : cliquez sur le nom d'un dossier pour l'ouvrir, cochez ou décochez un fichier ou un dossier entier. Une case à moitié remplie signifie qu'une partie du dossier est choisie.</li>
+<li><strong>Le total</strong> de ce qui sera envoyé : nombre de fichiers et taille.</li>
+<li><strong>Le résumé</strong> à gauche affiche le même total, par exemple <em>Fichiers 17 / 25</em>. Le bouton <strong>✕ Retirer</strong> efface tout pour repartir de zéro.</li>
+</ol>
+<p>Pas besoin de cliquer sur Retirer pour changer d'avis : choisir un autre dossier ou d'autres fichiers remplace simplement le choix précédent.</p>
+<h3>Étape 2 : après la livraison (facultatif)</h3>
+<p>Sous <strong>Après la livraison</strong>, choisissez ce que fait l'ordinateur une fois la livraison confirmée par le destinataire : <strong>Ne rien faire</strong>, <strong>Mettre en veille</strong> ou <strong>Éteindre l'ordinateur</strong>. Pratique quand on envoie un gros volume avant de partir.</p>
+<h3>Étape 3 : créer le lien</h3>
+<p>Cliquez sur <strong>Créer le lien</strong>. Lugus Transfer analyse les fichiers, puis publie le lien sur le réseau :</p>
+<figure class="shot w860"><img src="img/03_publishing_fr.webp" alt="Publication du lien" loading="lazy"></figure>
+
+<ol>
+<li>Les <strong>étapes</strong> passent de <em>Préparation</em> à <em>Publication</em>.</li>
+<li>La <strong>phrase d'état</strong> indique que le lien est en cours de publication. Cela prend quelques secondes, et vous pouvez déjà copier le lien et le code.</li>
+<li>Le <strong>badge</strong> à côté du lien affiche <em>Publication…</em>.</li>
+</ol>
+<p>Dès que le lien peut être trouvé sur le réseau, le badge passe à <strong>En ligne</strong> :</p>
+<figure class="shot w700"><img src="img/04_link_fr.webp" alt="Lien et code en ligne" loading="lazy"></figure>
+
+<ol>
+<li><strong>En ligne</strong> : le destinataire peut désormais joindre votre ordinateur. Si le badge affiche <em>Pas encore visible</em> après 90 secondes, le lien peut fonctionner quand même : envoyez-le, et laissez Lugus Transfer ouvert.</li>
+<li><strong>Le lien</strong> (<code>lugus://r/…</code>) et son bouton <strong>Copier le lien</strong>.</li>
+<li><strong>Le code</strong> (par exemple <code>4821-lanterne-7</code>), avec <strong>Copier le code</strong> et <strong>Nouveau code</strong>.</li>
+<li><strong>Le rappel</strong> : transmettez le lien et le code par <strong>deux canaux différents</strong>, par exemple le lien par mail et le code par SMS. Le lien est valable 24 heures, avec 3 essais par code.</li>
+</ol>
+<p>Quelqu'un qui n'a que le lien ne peut rien en faire : il lui faut aussi le code.</p>
+<h3>Étape 4 : attendre le destinataire</h3>
+<p>Laissez Lugus Transfer ouvert. Quand le destinataire saisit le code, la phrase d'état indique qu'un destinataire se connecte et que le code est vérifié.</p>
+<ul>
+<li><strong>Code incorrect</strong> : le journal le signale et indique le nombre d'essais restants. Le destinataire peut réessayer après un court délai.</li>
+<li><strong>3 essais ratés</strong> : le code est bloqué. Cliquez sur <strong>Nouveau code</strong> et transmettez le nouveau code. Le lien ne change pas.</li>
+<li><strong>Code accepté</strong> : le destinataire choisit les fichiers qu'il veut. La phrase d'état le dit.</li>
+</ul>
+<h3>Étape 5 : le transfert</h3>
+<figure class="shot w860"><img src="img/05_send_progress_fr.webp" alt="Envoi en cours" loading="lazy"></figure>
+
+<ol>
+<li><strong>Le pourcentage et la barre bleue</strong> : ce que le destinataire a reçu.</li>
+<li><strong>La barre verte</strong> : ce qui a déjà été relu et vérifié sur le disque du destinataire. Chaque fichier est vérifié dès qu'il est complet : la barre verte suit la bleue.</li>
+<li><strong>Débit, temps restant, temps écoulé et chemin réseau.</strong></li>
+<li><strong>Le journal</strong> : connexion, code, fichiers choisis par le destinataire.</li>
+<li><strong>Arrêter</strong> : met fin au transfert et ferme le lien. Rien de ce qui a déjà été reçu n'est perdu de l'autre côté (voir la section 8).</li>
+</ol>
+<p>Les chiffres affichés sont ceux du destinataire : après une interruption et une reprise, les deux écrans affichent le même pourcentage.</p>
+<h3>Étape 6 : la vérification chez le destinataire</h3>
+<p>Quand tout est envoyé, le transfert n'est pas encore fini. Le destinataire relit les derniers fichiers sur son disque :</p>
+<figure class="shot w860"><img src="img/06_send_verify_fr.webp" alt="Vérification chez le destinataire" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>phrase d'état</strong> affiche <em>Tout est envoyé. Vérification chez le destinataire</em>, avec le pourcentage.</li>
+<li>La <strong>barre verte</strong> continue jusqu'à 100 %.</li>
+</ol>
+<p><strong>Laissez Lugus Transfer ouvert jusqu'à la confirmation.</strong></p>
+<h3>Étape 7 : livré</h3>
+<figure class="shot w860"><img src="img/07_delivered_fr.webp" alt="Livré et vérifié" loading="lazy"></figure>
+
+<ol>
+<li>Toutes les étapes sont cochées et <em>Terminé</em> passe au vert.</li>
+<li>Le bandeau <strong>✓ LIVRÉ ET VÉRIFIÉ</strong> donne le nombre de fichiers et la taille, relus et vérifiés sur le disque du destinataire.</li>
+</ol>
+<p>Le destinataire a envoyé un accusé de réception authentifié : il ne peut venir que de la personne qui a saisi le bon code. Vous pouvez fermer Lugus Transfer. Le lien a alors servi : pour envoyer à quelqu'un d'autre, créez un nouveau lien.</p>
+<h2 id="fr-5">5. Recevoir des rushes, pas à pas</h2>
+<h3>Étape 1 : lien, code et destination</h3>
+<p>Cliquez sur <strong>Recevoir</strong>, en haut à gauche.</p>
+<figure class="shot w860"><img src="img/08_receive_form_fr.webp" alt="Réception : lien, code et destination" loading="lazy"></figure>
+
+<ol>
+<li><strong>Lien</strong> : collez le lien reçu. <em>Lien valide</em> confirme sa forme.</li>
+<li><strong>Code</strong> : tapez le code. Il est vérifié sur votre ordinateur avant tout envoi : une faute de frappe est repérée tout de suite et <strong>ne consomme jamais d'essai</strong>.</li>
+<li><strong>Destination</strong> : cliquez sur <strong>Choisir</strong> et sélectionnez le dossier où arriveront les rushes. Un dossier arrive dans un sous-dossier à son nom, de même que plusieurs fichiers envoyés ensemble (au nom du dossier d'où ils viennent). Un fichier seul arrive directement dans la destination.</li>
+<li><strong>Mode Noctiluca</strong> : pour recevoir pendant la nuit (voir la section 6).</li>
+<li><strong>Recevoir</strong> : lance la réception.</li>
+</ol>
+<p>Lugus Transfer cherche alors l'expéditeur sur le réseau. Cela prend en général quelques secondes. Si l'expéditeur n'est pas encore trouvé (fréquent juste après la création du lien), Lugus Transfer réessaie tout seul pendant 90 secondes et affiche le numéro de l'essai.</p>
+<h3>Étape 2 : choisir les fichiers</h3>
+<p>Une fois le code accepté, le contenu proposé par l'expéditeur s'affiche, tout coché :</p>
+<figure class="shot w860"><img src="img/09_receive_choose_fr.webp" alt="Choix des fichiers à recevoir" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>phrase d'état</strong> vous invite à choisir les fichiers.</li>
+<li><strong>Les filtres rapides</strong> : <strong>Tout</strong>, <strong>Rien</strong>, <strong>Originaux</strong>, <strong>Proxys</strong>, <strong>Annexes</strong>. Ici, les originaux ont été décochés pour recevoir d'abord les proxys.</li>
+<li><strong>L'arbre</strong>, avec une case pour chaque fichier et chaque dossier.</li>
+<li><strong>Recevoir la sélection</strong> lance le transfert.</li>
+</ol>
+<p>Ce que vous laissez de côté maintenant pourra être reçu plus tard avec le même lien et le même code : les fichiers déjà reçus et vérifiés sont sautés.</p>
+<h3>Étape 3 : le transfert</h3>
+<figure class="shot w860"><img src="img/10_receive_progress_fr.webp" alt="Réception en cours" loading="lazy"></figure>
+
+<ol>
+<li><strong>Le pourcentage et la barre bleue</strong> : ce qui a été reçu.</li>
+<li><strong>La barre verte</strong> : ce qui a déjà été relu sur votre disque et vérifié.</li>
+<li><strong>Les fichiers vérifiés</strong>, un par un, le plus récent en haut.</li>
+</ol>
+<p>Les proxys et les fichiers annexes arrivent en premier, puis les originaux. Jusqu'à 4 fichiers sont reçus en même temps.</p>
+<h3>Étape 4 : la vérification sur votre disque</h3>
+<p>Quand tout est reçu, Lugus Transfer finit de relire les derniers fichiers :</p>
+<figure class="shot w860"><img src="img/11_receive_verify_fr.webp" alt="Vérification sur votre disque" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>phrase d'état</strong> affiche <em>Tout est reçu. Vérification sur ton disque</em>, avec le pourcentage. Sur de gros fichiers, cela peut prendre quelques minutes : chaque fichier est relu en entier sur le disque, sans le cache du système, et comparé à la source.</li>
+<li>La <strong>barre verte</strong> continue jusqu'à 100 %.</li>
+</ol>
+<h3>Étape 5 : MHL et accusé de réception</h3>
+<figure class="shot w860"><img src="img/12_receive_mhl_fr.webp" alt="Écriture du MHL" loading="lazy"></figure>
+
+<ol>
+<li>L'étape <em>MHL</em> est active.</li>
+<li>La <strong>phrase d'état</strong> indique que tous les fichiers sont vérifiés et que le MHL est en cours d'écriture, puis que l'accusé de réception part chez l'expéditeur.</li>
+</ol>
+<h3>Étape 6 : reçu</h3>
+<figure class="shot w860"><img src="img/13_received_fr.webp" alt="Reçu et vérifié" loading="lazy"></figure>
+
+<ol>
+<li>Le bandeau <strong>✓ REÇU ET VÉRIFIÉ</strong> : nombre de fichiers, taille, durée et chemin réseau.</li>
+<li><strong>Ouvrir le dossier</strong> ouvre le dossier reçu, <strong>Afficher le MHL</strong> montre le fichier MHL.</li>
+<li><strong>La liste des fichiers vérifiés.</strong></li>
+</ol>
+<p>Le MHL s'appelle <code>&lt;nom&gt;_lugus_&lt;date&gt;.mhl</code>, par exemple <code>J04_lugus_2026-11-15_143212.mhl</code>. Il n'écrase jamais un MHL déjà présent dans le dossier, comme celui écrit par Bandua sur le plateau.</p>
+<h2 id="fr-6">6. Mode Noctiluca : recevoir pendant la nuit</h2>
+<p>Les gros transferts se font mieux la nuit, quand la connexion est libre et que personne n'a besoin de l'ordinateur. Le mode Noctiluca programme la réception et gère la fin tout seul.</p>
+<figure class="shot w860"><img src="img/14_noctiluca_fr.webp" alt="Mode Noctiluca" loading="lazy"></figure>
+
+<ol>
+<li>Cochez <strong>Mode Noctiluca</strong>, réglez l'heure de <strong>Départ à</strong> (01:00 par exemple), et choisissez ce qui se passe <strong>Après la réception</strong> : ne rien faire, mettre en veille ou éteindre l'ordinateur. Cliquez ensuite sur <strong>Programmer la réception</strong>.</li>
+<li>Les étapes commencent par <em>Départ programmé</em>.</li>
+<li>La phrase d'état rappelle l'heure de départ. L'ordinateur reste éveillé jusque-là.</li>
+</ol>
+<p>Le lien et le code sont vérifiés avant l'attente : une faute de frappe se voit tout de suite, et pas à une heure du matin. Si l'heure est déjà passée aujourd'hui, la réception démarre le lendemain à cette heure.</p>
+<p>En mode Noctiluca, personne n'est là pour choisir les fichiers : <strong>tout ce que propose l'expéditeur est reçu</strong>. L'ordinateur de l'expéditeur doit être allumé et Lugus Transfer ouvert à l'heure du départ.</p>
+<p>Quand tout est vérifié, l'ordinateur se met en veille ou s'éteint. Sous Windows, l'extinction laisse 60 secondes pour l'annuler.</p>
+<h2 id="fr-7">7. Ce que Lugus Transfer fait pour protéger vos rushes</h2>
+<p>Tout cela se passe en arrière-plan, sans réglage de votre part.</p>
+<ol>
+<li><strong>Rien au milieu.</strong> Les fichiers vont d'un ordinateur à l'autre. Ils ne sont jamais stockés sur un serveur. Même quand la connexion passe par un relais public, elle reste chiffrée de bout en bout : le relais ne fait que transmettre des données qu'il ne peut pas lire.</li>
+<li><strong>Le code ne circule jamais.</strong> Les deux ordinateurs se prouvent mutuellement qu'ils connaissent le code (SPAKE2) sans jamais l'envoyer. Quelqu'un qui intercepte le lien n'apprend rien, et n'a que 3 essais.</li>
+<li><strong>Chaque bloc est contrôlé.</strong> Les fichiers circulent par blocs de 4 Mo. L'expéditeur calcule le hash de chaque bloc au moment où il le lit sur son disque ; le destinataire le contrôle avant d'écrire le bloc.</li>
+<li><strong>Écriture sûre.</strong> Chaque fichier est d'abord écrit sous un nom temporaire (<code>.lugus-part</code>), avec un journal (<code>.lugus-journal</code>) qui note chaque bloc écrit. Un fichier ne prend son vrai nom <strong>qu'une fois vérifié</strong>. Un fichier qui porte son nom définitif est donc un fichier contrôlé.</li>
+<li><strong>Vérification sur le disque, pas en mémoire.</strong> À la fin de chaque fichier, le destinataire le relit sur le disque en contournant le cache du système, et compare chaque bloc, puis le fichier entier, au hash de la source (BLAKE3). Au moindre écart, le fichier est refusé et sa progression effacée, pour qu'il soit reçu à nouveau depuis le début.</li>
+<li><strong>Dates d'origine conservées.</strong> Les fichiers reçus prennent la date de modification de la source.</li>
+<li><strong>Accusé de réception authentifié.</strong> À la fin, le destinataire envoie à l'expéditeur un accusé que lui seul peut produire. C'est lui qui fait passer l'écran de l'expéditeur à <em>Livré et vérifié</em>.</li>
+</ol>
+<h2 id="fr-8">8. Interruptions et erreurs</h2>
+<h3>Reprendre après une interruption</h3>
+<p>Coupure du réseau, fenêtre fermée, ordinateur mis en veille, <strong>Arrêter</strong> cliqué par erreur : le transfert peut reprendre exactement là où il s'est arrêté.</p>
+<ul>
+<li><strong>Côté expéditeur</strong>, rien à faire : Lugus Transfer reste en attente, le lien reste valable (24 heures). Si l'expéditeur a fermé Lugus Transfer ou cliqué sur <strong>Arrêter</strong>, il crée un nouveau lien pour les mêmes fichiers et le transmet.</li>
+<li><strong>Côté destinataire</strong>, relancez la réception avec le lien et le code (les mêmes, ou les nouveaux), et <strong>la même destination</strong>. Chaque fichier reprend après son dernier bloc écrit et contrôlé ; les fichiers déjà complets sont relus et vérifiés à nouveau, puis sautés.</li>
+</ul>
+<p>Les deux écrans affichent le même avancement dès que les ordinateurs se reconnectent. Juste après une reprise, la barre verte peut repartir plus bas que la bleue : les fichiers déjà présents sont relus une fois de plus avant d'être comptés comme vérifiés.</p>
+<h3>En cas d'erreur</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ce que vous voyez</th>
+<th>Ce que ça veut dire</th>
+<th>Que faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>« Expéditeur pas encore trouvé, nouvel essai… »</td>
+<td>Le lien n'est pas encore visible sur le réseau, ou le réseau répond mal.</td>
+<td>Patientez : Lugus Transfer réessaie tout seul pendant 90 secondes.</td>
+</tr>
+<tr>
+<td>« Expéditeur introuvable » (après 90 secondes)</td>
+<td>L'ordinateur de l'expéditeur est éteint ou en veille, Lugus Transfer est fermé, ou le lien n'est pas le bon.</td>
+<td>Vérifiez avec l'expéditeur que Lugus Transfer est ouvert, puis relancez.</td>
+</tr>
+<tr>
+<td>« Code incorrect, N essai(s) restant(s) »</td>
+<td>Le code saisi ne correspond pas.</td>
+<td>Vérifiez le code. Attendez quelques secondes entre deux essais.</td>
+</tr>
+<tr>
+<td>« Ce code est bloqué »</td>
+<td>3 essais ont échoué.</td>
+<td>Demandez un nouveau code à l'expéditeur (<strong>Nouveau code</strong>). Le lien ne change pas.</td>
+</tr>
+<tr>
+<td>« Connexion perdue »</td>
+<td>Le réseau a coupé, ou l'autre ordinateur s'est mis en veille ou a été fermé.</td>
+<td>Relancez la réception avec le même lien et le même code : elle reprend là où elle s'est arrêtée.</td>
+</tr>
+<tr>
+<td>« Ce lien a expiré »</td>
+<td>Plus de 24 heures se sont écoulées.</td>
+<td>L'expéditeur crée un nouveau lien.</td>
+</tr>
+<tr>
+<td>« Un autre fichier du même nom existe déjà à destination »</td>
+<td>Un fichier de même nom, mais différent, se trouve déjà dans le dossier de destination.</td>
+<td>Choisissez une autre destination, ou déplacez l'ancien fichier. Lugus Transfer n'écrase jamais rien.</td>
+</tr>
+<tr>
+<td>« Le fichier relu sur le disque ne correspond pas à la source »</td>
+<td>Ce qui a été écrit sur le disque n'est pas ce qui a été envoyé : problème de disque, de câble ou de connexion chez le destinataire.</td>
+<td>Relancez la réception : le fichier est reçu à nouveau depuis le début. Si cela se reproduit, vérifiez le disque de destination.</td>
+</tr>
+<tr>
+<td>« Un fichier a changé chez l'expéditeur depuis la création du lien »</td>
+<td>Le fichier source a été modifié, ou était encore en cours d'écriture à la création du lien.</td>
+<td>L'expéditeur attend la fin de la copie ou de l'export, puis crée un nouveau lien.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="fr-9">9. Bonnes pratiques</h2>
+<ul>
+<li><strong>Transmettez le lien et le code par deux canaux différents.</strong> Le lien seul ne sert à rien, et c'est voulu.</li>
+<li><strong>Branchez les deux ordinateurs sur secteur.</strong> Un transfert de plusieurs centaines de gigaoctets prend des heures.</li>
+<li><strong>Laissez un portable ouvert.</strong> Lugus Transfer garde l'ordinateur éveillé, mais fermer le capot met en général un portable en veille malgré tout.</li>
+<li><strong>Demandez d'abord les proxys</strong> si le montage doit commencer vite, puis les originaux, la nuit, en mode Noctiluca.</li>
+<li><strong>Attendez <em>Livré et vérifié</em></strong> avant de supprimer quoi que ce soit chez l'expéditeur, et gardez de toute façon les copies d'origine jusqu'à ce que les rushes soient sauvegardés chez le destinataire.</li>
+<li><strong>Contrôlez le MHL</strong> avec <a href="https://github.com/tetsujin28/bandua-mhl-companion">Bandua MHL Companion</a> quand les rushes changent encore de disque.</li>
+</ul>
+<h2 id="fr-10">10. Questions fréquentes</h2>
+<p><strong>Quelle est la vitesse ?</strong>
+Celle que permet la plus lente des deux connexions, souvent le débit montant de l'expéditeur. Sur un même réseau local, le transfert va à la vitesse du réseau local. La case <em>Chemin</em> indique si la connexion est <em>réseau local</em>, <em>direct</em> ou <em>relais</em> ; un relais est plus lent.</p>
+<p><strong>Y a-t-il une limite de taille ?</strong>
+Non. Lugus Transfer est fait pour de très gros fichiers et des journées de tournage entières.</p>
+<p><strong>Les deux ordinateurs doivent-ils être allumés en même temps ?</strong>
+Oui. Rien n'est stocké entre les deux : les fichiers passent directement de l'un à l'autre. Le mode Noctiluca permet de programmer la réception à un moment où les deux sont libres.</p>
+<p><strong>Puis-je envoyer à plusieurs personnes ?</strong>
+Un lien sert à une livraison. Pour envoyer les mêmes rushes à quelqu'un d'autre, créez un nouveau lien.</p>
+<p><strong>Qu'est-ce qui passe sur Internet ?</strong>
+Pour être trouvé, l'expéditeur publie ses adresses réseau, signées par une clé à usage unique, dans la DHT publique de BitTorrent. Les fichiers, les noms de dossiers et le code ne sont jamais publiés : ils ne circulent que chiffrés, entre les deux ordinateurs.</p>
+<p><strong>Le logiciel du monteur peut-il lire le MHL ?</strong>
+Oui, c'est du MHL 1.1 en xxHash64, le standard lu par Silverstack, ShotPut Pro, Hedge et Bandua MHL Companion.</p>
+<p><strong>Lugus Transfer fonctionne-t-il sous Linux ?</strong>
+Pas pour l'instant. Le code reste compatible, mais il n'y a pas de version Linux tant qu'elle ne peut pas être testée. L'outil en ligne de commande peut être compilé sous Linux à partir du code source.</p>
+<h2 id="fr-11">11. Avertissement et licence</h2>
+<p>Lugus Transfer est un outil d'aide au transfert et à la vérification de médias. Il ne remplace pas vos propres contrôles ni vos procédures de sauvegarde. Le logiciel est fourni « tel quel », sans aucune garantie. L'auteur ne pourra être tenu responsable d'aucune perte, corruption ou suppression de données, de rushes ou de supports, ni d'aucun dommage direct ou indirect (coûts de production, retournages, perte de revenus…) résultant de l'utilisation, d'une mauvaise utilisation ou d'un dysfonctionnement du logiciel.</p>
+<p><strong>Ne supprimez jamais l'original avant d'avoir vérifié que la copie reçue est complète et lisible.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Publié sous <a href="https://github.com/tetsujin28/lugus-transfer/blob/main/LICENSE">licence MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">Télécharger Lugus Transfer</a><a href="https://github.com/tetsujin28/lugus-transfer/blob/main/docs/GUIDE.fr.md">Ce guide sur GitHub</a></p></article>
+<article data-l="es" lang="es"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, manual de uso</h1><p>Versión 0.1.0 (beta) · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
+<p>Lugus Transfer envía tu material directamente de un ordenador a otro. El remitente crea un enlace y un código, el destinatario los introduce, y los archivos pasan directamente de una máquina a la otra, cifrados de extremo a extremo. Sin servidor en medio, sin almacenamiento en la nube y sin cuenta.</p>
+<p>La regla es la misma que en el rodaje: <strong>una transferencia solo termina cuando los archivos se han comprobado a la llegada.</strong> Lugus Transfer relee cada archivo recibido en el disco del destinatario, lo compara con el origen y solo entonces lo declara «verificado». Se escribe un archivo MHL en la carpeta recibida, y el remitente recibe un acuse de recibo.</p>
+<p>Lugus Transfer es gratuito, de código abierto (licencia MIT) y no pide ni cuenta ni licencia.</p>
+<h2 id="es-2">2. Instalación</h2>
+<h3>Descargar</h3>
+<p>Los archivos están en la <a href="https://github.com/tetsujin28/lugus-transfer/releases">página de Releases</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Archivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sin instalación</td>
+<td><code>Lugus_Transfer_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, con instalador</td>
+<td><code>Lugus_Transfer_x.y.z_x64-setup.exe</code> o <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel y Apple Silicon)</td>
+<td><code>Lugus_Transfer_x.y.z_universal.dmg</code></td>
+</tr>
+<tr>
+<td>Línea de comandos (opcional)</td>
+<td><code>lugus_x.y.z_windows.exe</code>, <code>lugus_x.y.z_macos</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>El remitente y el destinatario necesitan Lugus Transfer, pero no el mismo sistema: un Mac puede enviar a un PC, y al revés.</p>
+<h3>Primer arranque</h3>
+<p>La aplicación todavía no está firmada, así que tu sistema muestra un aviso, una sola vez:</p>
+<ul>
+<li><strong>Windows</strong>: haz clic en «Más información» y después en «Ejecutar de todas formas».</li>
+<li><strong>macOS</strong>: haz clic derecho en la aplicación, elige «Abrir» y confirma.</li>
+</ul>
+<p>También puede que el navegador marque la descarga como inusual. Es habitual con una aplicación reciente y sin firmar. Conserva el archivo desde el panel de descargas. Si tienes dudas, analízalo en <a href="https://www.virustotal.com">VirusTotal</a>.</p>
+<p>Si tu sistema o tu cortafuegos pregunta si Lugus Transfer puede usar la red, permítelo. Así es como los dos ordenadores se encuentran.</p>
+<h3>Ventana de bienvenida</h3>
+<p>En el primer arranque, Lugus Transfer muestra un aviso de exención de responsabilidad (1). Léelo y haz clic en <strong>Lo he entendido y acepto</strong> (2). Lo encontrarás después en <strong>Acerca de</strong> (el botón <em>i</em>).</p>
+<figure class="shot w860"><img src="img/00_welcome_es.webp" alt="Ventana de bienvenida" loading="lazy"></figure>
+
+<h2 id="es-3">3. La interfaz de un vistazo</h2>
+<figure class="shot w860"><img src="img/01_interface_es.webp" alt="La interfaz de Lugus Transfer" loading="lazy"></figure>
+
+<ol>
+<li><strong>Enviar / Recibir</strong>: los dos modos de la aplicación. La misma aplicación sirve en los dos lados.</li>
+<li><strong>Zona de depósito</strong>: suelta aquí una carpeta, un archivo o varios archivos.</li>
+<li><strong>Elegir una carpeta / Elegir archivos</strong>: lo mismo con la ventana del sistema. «Elegir archivos» permite seleccionar varios a la vez.</li>
+<li><strong>Tras la entrega</strong>: no hacer nada, suspender el ordenador o apagarlo cuando el destinatario haya confirmado la entrega.</li>
+<li><strong>Botón principal</strong>: <strong>Crear el enlace</strong> para enviar, <strong>Recibir</strong> para recibir, y después <strong>Detener</strong> durante una transferencia.</li>
+<li><strong>FR / EN / ES</strong>: cambia al instante el idioma de la interfaz.</li>
+<li><strong>Acerca de</strong> (el botón <em>i</em>): versión, licencia y aviso.</li>
+</ol>
+<p>Durante una transferencia, la parte derecha muestra:
+- una fila de <strong>pasos numerados</strong>, con el paso actual resaltado;
+- una <strong>frase de estado</strong>, en palabras sencillas, que dice lo que ocurre y lo que hay que hacer;
+- el <strong>avance</strong>: porcentaje, una barra azul para los datos transferidos, una barra verde para los datos ya verificados en el disco del destinatario, velocidad, tiempo restante, tiempo transcurrido y camino de red (<em>red local</em>, <em>directa</em> o <em>relé</em>);
+- el <strong>registro</strong> y, al recibir, la lista de <strong>archivos verificados</strong>.</p>
+<p>Arriba, la etiqueta junto al nombre de la aplicación resume el estado: <em>Listo</em>, <em>Preparando</em>, <em>Publicando</em>, <em>En espera</em>, <em>Enviando</em>, <em>Buscando</em>, <em>Elección</em>, <em>Recibiendo</em>, <em>Noctiluca</em>, <em>Verificado</em>, <em>Error</em>, <em>Detenido</em>.</p>
+<p>La línea <strong>El equipo permanece despierto durante la transferencia</strong> recuerda que Lugus Transfer impide que el ordenador entre en reposo solo mientras trabaja.</p>
+<h2 id="es-4">4. Enviar material, paso a paso</h2>
+<h3>Paso 1: elegir qué se envía</h3>
+<p>Suelta una carpeta en la ventana o haz clic en <strong>Elegir una carpeta</strong>. También puedes enviar:
+- <strong>un solo archivo</strong>: llegará solo a la carpeta del destinatario;
+- <strong>varios archivos</strong>: suéltalos juntos o selecciónalos con <strong>Elegir archivos</strong>. Deben venir de la misma carpeta.</p>
+<p>Cuando eliges una carpeta o varios archivos, su contenido aparece a la derecha, todo marcado:</p>
+<figure class="shot w860"><img src="img/02_choose_send_es.webp" alt="Elección de los archivos a enviar" loading="lazy"></figure>
+
+<ol>
+<li><strong>Los filtros rápidos</strong>: <strong>Todo</strong>, <strong>Nada</strong>, y después <strong>Originales</strong>, <strong>Proxies</strong> y <strong>Anexos</strong> (XML, LUT, sonido, informes…) con su número. Un clic marca o desmarca toda la categoría.</li>
+<li><strong>El árbol</strong> de la carpeta: haz clic en el nombre de una carpeta para abrirla, marca o desmarca un archivo o una carpeta entera. Una casilla a medio llenar significa que parte de la carpeta está elegida.</li>
+<li><strong>El total</strong> de lo que se enviará: número de archivos y tamaño.</li>
+<li><strong>El resumen</strong> de la izquierda muestra el mismo total, por ejemplo <em>Archivos 17 / 25</em>. El botón <strong>✕ Quitar</strong> lo borra todo para empezar de cero.</li>
+</ol>
+<p>No hace falta hacer clic en Quitar para cambiar de idea: elegir otra carpeta u otros archivos sustituye sin más la elección anterior.</p>
+<h3>Paso 2: tras la entrega (opcional)</h3>
+<p>En <strong>Tras la entrega</strong>, elige lo que hará el ordenador cuando el destinatario haya confirmado la entrega: <strong>No hacer nada</strong>, <strong>Suspender</strong> o <strong>Apagar el ordenador</strong>. Útil cuando envías un gran volumen antes de irte.</p>
+<h3>Paso 3: crear el enlace</h3>
+<p>Haz clic en <strong>Crear el enlace</strong>. Lugus Transfer analiza los archivos y publica el enlace en la red:</p>
+<figure class="shot w860"><img src="img/03_publishing_es.webp" alt="Publicación del enlace" loading="lazy"></figure>
+
+<ol>
+<li>Los <strong>pasos</strong> pasan de <em>Preparación</em> a <em>Publicación</em>.</li>
+<li>La <strong>frase de estado</strong> indica que el enlace se está publicando. Tarda unos segundos, y ya puedes copiar el enlace y el código.</li>
+<li>La <strong>etiqueta</strong> junto al enlace muestra <em>Publicando…</em>.</li>
+</ol>
+<p>En cuanto el enlace se puede encontrar en la red, la etiqueta cambia a <strong>En línea</strong>:</p>
+<figure class="shot w700"><img src="img/04_link_es.webp" alt="Enlace y código en línea" loading="lazy"></figure>
+
+<ol>
+<li><strong>En línea</strong>: el destinatario ya puede llegar a tu ordenador. Si la etiqueta muestra <em>Aún no visible</em> después de 90 segundos, el enlace puede funcionar de todos modos: envíalo y deja Lugus Transfer abierto.</li>
+<li><strong>El enlace</strong> (<code>lugus://r/…</code>) y su botón <strong>Copiar enlace</strong>.</li>
+<li><strong>El código</strong> (por ejemplo <code>4821-lanterne-7</code>), con <strong>Copiar código</strong> y <strong>Nuevo código</strong>.</li>
+<li><strong>El recordatorio</strong>: envía el enlace y el código por <strong>dos canales distintos</strong>, por ejemplo el enlace por correo y el código por SMS. El enlace es válido 24 horas, con 3 intentos por código.</li>
+</ol>
+<p>Quien solo tenga el enlace no puede hacer nada con él: también necesita el código.</p>
+<h3>Paso 4: esperar al destinatario</h3>
+<p>Deja Lugus Transfer abierto. Cuando el destinatario introduce el código, la frase de estado indica que un destinatario se está conectando y que se está comprobando el código.</p>
+<ul>
+<li><strong>Código incorrecto</strong>: el registro lo indica y muestra cuántos intentos quedan. El destinatario puede volver a intentarlo tras una breve espera.</li>
+<li><strong>3 intentos fallidos</strong>: el código queda bloqueado. Haz clic en <strong>Nuevo código</strong> y envía el nuevo código. El enlace no cambia.</li>
+<li><strong>Código aceptado</strong>: el destinatario elige los archivos que quiere. La frase de estado lo indica.</li>
+</ul>
+<h3>Paso 5: la transferencia</h3>
+<figure class="shot w860"><img src="img/05_send_progress_es.webp" alt="Envío en curso" loading="lazy"></figure>
+
+<ol>
+<li><strong>El porcentaje y la barra azul</strong>: lo que ha recibido el destinatario.</li>
+<li><strong>La barra verde</strong>: lo que ya se ha releído y verificado en el disco del destinatario. Cada archivo se verifica en cuanto está completo, así que la barra verde sigue a la azul.</li>
+<li><strong>Velocidad, tiempo restante, tiempo transcurrido y camino de red.</strong></li>
+<li><strong>El registro</strong>: conexión, código, archivos elegidos por el destinatario.</li>
+<li><strong>Detener</strong>: termina la transferencia y cierra el enlace. No se pierde nada de lo ya recibido al otro lado (ver la sección 8).</li>
+</ol>
+<p>Las cifras que se muestran son las del destinatario: tras una interrupción y una reanudación, las dos pantallas muestran el mismo porcentaje.</p>
+<h3>Paso 6: la verificación en el equipo del destinatario</h3>
+<p>Cuando todo está enviado, la transferencia todavía no ha terminado. El destinatario relee los últimos archivos de su disco:</p>
+<figure class="shot w860"><img src="img/06_send_verify_es.webp" alt="Verificación por el destinatario" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>frase de estado</strong> muestra <em>Todo enviado. Verificación por el destinatario</em>, con el porcentaje.</li>
+<li>La <strong>barra verde</strong> sigue hasta el 100 %.</li>
+</ol>
+<p><strong>Deja Lugus Transfer abierto hasta la confirmación.</strong></p>
+<h3>Paso 7: entregado</h3>
+<figure class="shot w860"><img src="img/07_delivered_es.webp" alt="Entregado y verificado" loading="lazy"></figure>
+
+<ol>
+<li>Todos los pasos están marcados y <em>Terminado</em> se pone en verde.</li>
+<li>El aviso <strong>✓ ENTREGADO Y VERIFICADO</strong> da el número de archivos y el tamaño, releídos y verificados en el disco del destinatario.</li>
+</ol>
+<p>El destinatario ha enviado un acuse de recibo autenticado: solo puede venir de la persona que introdujo el código correcto. Puedes cerrar Lugus Transfer. El enlace ya se ha usado: para enviar a otra persona, crea un nuevo enlace.</p>
+<h2 id="es-5">5. Recibir material, paso a paso</h2>
+<h3>Paso 1: enlace, código y destino</h3>
+<p>Haz clic en <strong>Recibir</strong>, arriba a la izquierda.</p>
+<figure class="shot w860"><img src="img/08_receive_form_es.webp" alt="Recepción: enlace, código y destino" loading="lazy"></figure>
+
+<ol>
+<li><strong>Enlace</strong>: pega el enlace que te han enviado. <em>Enlace válido</em> confirma su forma.</li>
+<li><strong>Código</strong>: escribe el código. Se comprueba en tu ordenador antes de cualquier envío: una errata se detecta en el acto y <strong>nunca gasta un intento</strong>.</li>
+<li><strong>Destino</strong>: haz clic en <strong>Elegir</strong> y selecciona la carpeta donde llegará el material. Una carpeta llega en una subcarpeta con su nombre, igual que varios archivos enviados juntos (con el nombre de la carpeta de la que vienen). Un archivo solo llega directamente al destino.</li>
+<li><strong>Modo Noctiluca</strong>: para recibir de noche (ver la sección 6).</li>
+<li><strong>Recibir</strong>: inicia la recepción.</li>
+</ol>
+<p>Lugus Transfer busca entonces al remitente en la red. Suele tardar unos segundos. Si todavía no encuentra al remitente (habitual justo después de crear el enlace), Lugus Transfer lo reintenta solo durante 90 segundos y muestra el número de intento.</p>
+<h3>Paso 2: elegir los archivos</h3>
+<p>Una vez aceptado el código, aparece el contenido que ofrece el remitente, todo marcado:</p>
+<figure class="shot w860"><img src="img/09_receive_choose_es.webp" alt="Elección de los archivos a recibir" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>frase de estado</strong> te pide que elijas los archivos.</li>
+<li><strong>Los filtros rápidos</strong>: <strong>Todo</strong>, <strong>Nada</strong>, <strong>Originales</strong>, <strong>Proxies</strong>, <strong>Anexos</strong>. Aquí se han desmarcado los originales para recibir primero los proxies.</li>
+<li><strong>El árbol</strong>, con una casilla para cada archivo y cada carpeta.</li>
+<li><strong>Recibir la selección</strong> inicia la transferencia.</li>
+</ol>
+<p>Lo que dejes de lado ahora podrás recibirlo más tarde con el mismo enlace y el mismo código: los archivos ya recibidos y verificados se saltan.</p>
+<h3>Paso 3: la transferencia</h3>
+<figure class="shot w860"><img src="img/10_receive_progress_es.webp" alt="Recepción en curso" loading="lazy"></figure>
+
+<ol>
+<li><strong>El porcentaje y la barra azul</strong>: lo que se ha recibido.</li>
+<li><strong>La barra verde</strong>: lo que ya se ha releído de tu disco y verificado.</li>
+<li><strong>Los archivos verificados</strong>, uno a uno, el más reciente arriba.</li>
+</ol>
+<p>Los proxies y los archivos anexos llegan primero, después los originales. Se reciben hasta 4 archivos a la vez.</p>
+<h3>Paso 4: la verificación en tu disco</h3>
+<p>Cuando todo está recibido, Lugus Transfer termina de releer los últimos archivos:</p>
+<figure class="shot w860"><img src="img/11_receive_verify_es.webp" alt="Verificación en tu disco" loading="lazy"></figure>
+
+<ol>
+<li>La <strong>frase de estado</strong> muestra <em>Todo recibido. Verificación en tu disco</em>, con el porcentaje. Con archivos grandes, puede tardar unos minutos: cada archivo se relee entero del disco, sin la caché del sistema, y se compara con el origen.</li>
+<li>La <strong>barra verde</strong> sigue hasta el 100 %.</li>
+</ol>
+<h3>Paso 5: MHL y acuse de recibo</h3>
+<figure class="shot w860"><img src="img/12_receive_mhl_es.webp" alt="Escritura del MHL" loading="lazy"></figure>
+
+<ol>
+<li>El paso <em>MHL</em> está activo.</li>
+<li>La <strong>frase de estado</strong> indica que todos los archivos están verificados y que se está escribiendo el MHL, y después que el acuse de recibo sale hacia el remitente.</li>
+</ol>
+<h3>Paso 6: recibido</h3>
+<figure class="shot w860"><img src="img/13_received_es.webp" alt="Recibido y verificado" loading="lazy"></figure>
+
+<ol>
+<li>El aviso <strong>✓ RECIBIDO Y VERIFICADO</strong>: número de archivos, tamaño, duración y camino de red.</li>
+<li><strong>Abrir la carpeta</strong> abre la carpeta recibida, <strong>Mostrar el MHL</strong> muestra el archivo MHL.</li>
+<li><strong>La lista de archivos verificados.</strong></li>
+</ol>
+<p>El MHL se llama <code>&lt;nombre&gt;_lugus_&lt;fecha&gt;.mhl</code>, por ejemplo <code>D04_lugus_2026-11-15_143212.mhl</code>. Nunca sobrescribe un MHL que ya esté en la carpeta, como el que escribe Bandua en el rodaje.</p>
+<h2 id="es-6">6. Modo Noctiluca: recibir de noche</h2>
+<p>Las transferencias grandes se hacen mejor de noche, cuando la conexión está libre y nadie necesita el ordenador. El modo Noctiluca programa la recepción y se ocupa del final solo.</p>
+<figure class="shot w860"><img src="img/14_noctiluca_es.webp" alt="Modo Noctiluca" loading="lazy"></figure>
+
+<ol>
+<li>Marca <strong>Modo Noctiluca</strong>, ajusta la hora de <strong>Salida a las</strong> (la 01:00, por ejemplo) y elige qué ocurre <strong>Tras la recepción</strong>: no hacer nada, suspender o apagar el ordenador. Después haz clic en <strong>Programar la recepción</strong>.</li>
+<li>Los pasos empiezan por <em>Salida programada</em>.</li>
+<li>La frase de estado recuerda la hora de salida. El ordenador permanece despierto hasta entonces.</li>
+</ol>
+<p>El enlace y el código se comprueban antes de la espera: una errata se ve en el acto, y no a la una de la madrugada. Si la hora ya ha pasado hoy, la recepción empieza al día siguiente a esa hora.</p>
+<p>En modo Noctiluca no hay nadie para elegir los archivos: <strong>se recibe todo lo que ofrece el remitente</strong>. El ordenador del remitente debe estar encendido y Lugus Transfer abierto a la hora de salida.</p>
+<p>Cuando todo está verificado, el ordenador se suspende o se apaga. En Windows, el apagado deja 60 segundos para cancelarlo.</p>
+<h2 id="es-7">7. Lo que hace Lugus Transfer para proteger tu material</h2>
+<p>Todo esto ocurre en segundo plano, sin nada que ajustar.</p>
+<ol>
+<li><strong>Nada en medio.</strong> Los archivos van de un ordenador al otro. Nunca se guardan en un servidor. Incluso cuando la conexión pasa por un relé público, sigue cifrada de extremo a extremo: el relé solo transmite datos que no puede leer.</li>
+<li><strong>El código nunca viaja.</strong> Los dos ordenadores se demuestran mutuamente que conocen el código (SPAKE2) sin enviarlo nunca. Quien intercepte el enlace no aprende nada, y solo tiene 3 intentos.</li>
+<li><strong>Cada bloque se comprueba.</strong> Los archivos viajan en bloques de 4 MB. El remitente calcula el hash de cada bloque al leerlo de su disco; el destinatario lo comprueba antes de escribir el bloque.</li>
+<li><strong>Escritura segura.</strong> Cada archivo se escribe primero con un nombre temporal (<code>.lugus-part</code>), con un diario (<code>.lugus-journal</code>) que anota cada bloque escrito. Un archivo solo recibe su nombre real <strong>cuando está verificado</strong>. Un archivo con su nombre definitivo es, por tanto, un archivo comprobado.</li>
+<li><strong>Verificación en el disco, no en memoria.</strong> Al final de cada archivo, el destinatario lo relee del disco evitando la caché del sistema, y compara cada bloque, y después el archivo entero, con el hash del origen (BLAKE3). Ante la menor diferencia, el archivo se rechaza y su avance se borra, para que se reciba de nuevo desde el principio.</li>
+<li><strong>Fechas originales conservadas.</strong> Los archivos recibidos toman la fecha de modificación del origen.</li>
+<li><strong>Acuse de recibo autenticado.</strong> Al final, el destinatario envía al remitente un acuse que solo él puede producir. Es lo que pone la pantalla del remitente en <em>Entregado y verificado</em>.</li>
+</ol>
+<h2 id="es-8">8. Interrupciones y errores</h2>
+<h3>Reanudar tras una interrupción</h3>
+<p>Corte de red, ventana cerrada, ordenador en reposo, <strong>Detener</strong> pulsado por error: la transferencia puede reanudarse justo donde se detuvo.</p>
+<ul>
+<li><strong>En el lado del remitente</strong>, nada que hacer: Lugus Transfer sigue esperando, el enlace sigue siendo válido (24 horas). Si el remitente cerró Lugus Transfer o pulsó <strong>Detener</strong>, crea un nuevo enlace para los mismos archivos y lo envía.</li>
+<li><strong>En el lado del destinatario</strong>, vuelve a lanzar la recepción con el enlace y el código (los mismos o los nuevos) y <strong>el mismo destino</strong>. Cada archivo se reanuda tras su último bloque escrito y comprobado; los archivos ya completos se releen y se verifican otra vez, y después se saltan.</li>
+</ul>
+<p>Las dos pantallas muestran el mismo avance desde que los ordenadores vuelven a conectarse. Justo después de una reanudación, la barra verde puede empezar más abajo que la azul: los archivos ya presentes se releen una vez más antes de contar como verificados.</p>
+<h3>Cuando algo va mal</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Lo que ves</th>
+<th>Qué significa</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Remitente aún no encontrado, nuevo intento…»</td>
+<td>El enlace todavía no es visible en la red, o la red responde mal.</td>
+<td>Espera: Lugus Transfer lo reintenta solo durante 90 segundos.</td>
+</tr>
+<tr>
+<td>«Remitente no encontrado» (tras 90 segundos)</td>
+<td>El ordenador del remitente está apagado o en reposo, Lugus Transfer está cerrado, o el enlace no es el correcto.</td>
+<td>Comprueba con el remitente que Lugus Transfer está abierto y vuelve a empezar.</td>
+</tr>
+<tr>
+<td>«Código incorrecto, quedan N intento(s)»</td>
+<td>El código introducido no coincide.</td>
+<td>Revisa el código. Espera unos segundos entre intentos.</td>
+</tr>
+<tr>
+<td>«Este código está bloqueado»</td>
+<td>Han fallado 3 intentos.</td>
+<td>Pide un nuevo código al remitente (<strong>Nuevo código</strong>). El enlace no cambia.</td>
+</tr>
+<tr>
+<td>«Conexión perdida»</td>
+<td>La red se ha cortado, o el otro ordenador ha entrado en reposo o se ha cerrado.</td>
+<td>Vuelve a lanzar la recepción con el mismo enlace y el mismo código: se reanuda donde se detuvo.</td>
+</tr>
+<tr>
+<td>«Este enlace ha caducado»</td>
+<td>Han pasado más de 24 horas.</td>
+<td>El remitente crea un nuevo enlace.</td>
+</tr>
+<tr>
+<td>«Ya existe en el destino otro archivo con el mismo nombre»</td>
+<td>Un archivo con el mismo nombre, pero distinto, ya está en la carpeta de destino.</td>
+<td>Elige otro destino o mueve el archivo antiguo. Lugus Transfer nunca sobrescribe nada.</td>
+</tr>
+<tr>
+<td>«El archivo releído del disco no coincide con el origen»</td>
+<td>Lo que se escribió en el disco no es lo que se envió: un problema de disco, de cable o de conexión en el equipo del destinatario.</td>
+<td>Vuelve a lanzar la recepción: el archivo se recibe de nuevo desde el principio. Si se repite, revisa el disco de destino.</td>
+</tr>
+<tr>
+<td>«Un archivo ha cambiado en el equipo del remitente desde que se creó el enlace»</td>
+<td>El archivo de origen se ha modificado, o todavía se estaba escribiendo cuando se creó el enlace.</td>
+<td>El remitente espera a que termine la copia o la exportación y crea un nuevo enlace.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="es-9">9. Buenas prácticas</h2>
+<ul>
+<li><strong>Envía el enlace y el código por dos canales distintos.</strong> El enlace solo no sirve para nada, y esa es la idea.</li>
+<li><strong>Conecta los dos ordenadores a la corriente.</strong> Una transferencia de varios cientos de gigabytes dura horas.</li>
+<li><strong>Deja abierto un portátil.</strong> Lugus Transfer mantiene el ordenador despierto, pero cerrar la tapa suele suspender un portátil de todos modos.</li>
+<li><strong>Pide primero los proxies</strong> si el montaje tiene que empezar pronto, y después los originales, de noche, en modo Noctiluca.</li>
+<li><strong>Espera a <em>Entregado y verificado</em></strong> antes de borrar nada en el equipo del remitente, y conserva de todos modos las copias originales hasta que el material esté respaldado en el equipo del destinatario.</li>
+<li><strong>Comprueba el MHL</strong> con <a href="https://github.com/tetsujin28/bandua-mhl-companion">Bandua MHL Companion</a> cuando el material vuelva a cambiar de disco.</li>
+</ul>
+<h2 id="es-10">10. Preguntas frecuentes</h2>
+<p><strong>¿Qué velocidad tiene?</strong>
+La que permita la más lenta de las dos conexiones, a menudo la subida del remitente. En una misma red local, la transferencia va a la velocidad de la red local. La casilla <em>Ruta</em> indica si la conexión es <em>red local</em>, <em>directa</em> o <em>relé</em>; un relé es más lento.</p>
+<p><strong>¿Hay un límite de tamaño?</strong>
+No. Lugus Transfer está hecho para archivos muy grandes y jornadas de rodaje completas.</p>
+<p><strong>¿Tienen que estar encendidos los dos ordenadores a la vez?</strong>
+Sí. No se guarda nada entre los dos: los archivos pasan directamente de uno a otro. El modo Noctiluca permite programar la recepción para un momento en que los dos estén libres.</p>
+<p><strong>¿Puedo enviar a varias personas?</strong>
+Un enlace sirve para una entrega. Para enviar el mismo material a otra persona, crea un nuevo enlace.</p>
+<p><strong>¿Qué pasa por Internet?</strong>
+Para que lo encuentren, el remitente publica sus direcciones de red, firmadas con una clave de un solo uso, en la DHT pública de BitTorrent. Los archivos, los nombres de carpetas y el código nunca se publican: solo viajan cifrados entre los dos ordenadores.</p>
+<p><strong>¿El programa del montador puede leer el MHL?</strong>
+Sí, es MHL 1.1 en xxHash64, el estándar que leen Silverstack, ShotPut Pro, Hedge y Bandua MHL Companion.</p>
+<p><strong>¿Funciona Lugus Transfer en Linux?</strong>
+De momento no. El código sigue siendo compatible, pero no hay versión para Linux hasta que se pueda probar. La herramienta de línea de comandos se puede compilar en Linux a partir del código fuente.</p>
+<h2 id="es-11">11. Aviso y licencia</h2>
+<p>Lugus Transfer es una herramienta de ayuda para transferir y verificar medios. No sustituye tus propias comprobaciones ni tus procedimientos de copia de seguridad. El software se proporciona «tal cual», sin ninguna garantía. El autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos, material grabado o soportes, ni de ningún daño directo o indirecto (costes de producción, nuevos rodajes, pérdida de ingresos…) derivado del uso, mal uso o mal funcionamiento del software.</p>
+<p><strong>No borres nunca el original sin haber comprobado que la copia recibida está completa y es legible.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Publicado bajo <a href="https://github.com/tetsujin28/lugus-transfer/blob/main/LICENSE">licencia MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">Descargar Lugus Transfer</a><a href="https://github.com/tetsujin28/lugus-transfer/blob/main/docs/GUIDE.es.md">Esta guía en GitHub</a></p></article>
+</div>
+</main>
+<footer>© 2026 Domingo Olmo Martin · MIT License</footer>
+<dialog id="lb"><form method="dialog"><button data-t="close">Close</button></form><img alt=""></dialog>
+<script>
+const UI = {"en": {"back": "Back to Lugus Transfer", "close": "Close"}, "fr": {"back": "Retour à Lugus Transfer", "close": "Fermer"}, "es": {"back": "Volver a Lugus Transfer", "close": "Cerrar"}};
+const root = document.documentElement;
+function applyLang(l){
+  if (!UI[l]) l = "en";
+  root.dataset.lang = l; root.lang = l;
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll("[data-t]").forEach(e => e.textContent = UI[l][e.dataset.t]);
+  try { localStorage.setItem("lang", l); } catch(e) {}
+  spy();
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); scrollTo(0, 0); }));
+const lb = document.getElementById("lb");
+document.querySelectorAll(".shot").forEach(f => f.addEventListener("click", () => {
+  const i = f.querySelector("img"); lb.querySelector("img").src = i.src; lb.querySelector("img").alt = i.alt; lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+function spy(){
+  const l = root.dataset.lang, hs = [...document.querySelectorAll(`article[data-l="${l}"] h2`)];
+  let cur = hs[0]; for (const h of hs) if (h.getBoundingClientRect().top < 140) cur = h;
+  document.querySelectorAll(".toc a").forEach(a => a.classList.toggle("on", cur && a.getAttribute("href") === "#" + cur.id));
+}
+addEventListener("scroll", spy, {passive:true});
+const q = new URLSearchParams(location.search).get("lang");
+const fromHash = (location.hash.match(/^#(en|fr|es)-/) || [])[1];
+let saved = null; try { saved = localStorage.getItem("lang"); } catch(e) {}
+const nav = (navigator.language || "en").slice(0, 2);
+applyLang(q || fromHash || saved || (UI[nav] ? nav : "en"));
+if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+</script>
+</body>
+</html>

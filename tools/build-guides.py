@@ -4,6 +4,7 @@
     python tools/build-guides.py bandua ../bandua
     python tools/build-guides.py companion ../bandua-mhl-companion
     python tools/build-guides.py ataecina ../ataecina
+    python tools/build-guides.py lugus ../lugus-transfer
 
 Chaque mode d'emploi s'écrit dans le dépôt de son app (docs/GUIDE.md, GUIDE.fr.md, GUIDE.es.md),
 qui reste la seule source. Ce script en tire la page <app>/guide/ et convertit les images en WebP.
@@ -22,6 +23,10 @@ APPS = {
                    sub={"en": "Version 0.1.0 · Windows and macOS", "fr": "Version 0.1.0 · Windows et macOS", "es": "Versión 0.1.0 · Windows y macOS"},
                    title={"en": "Bandua MHL Companion user guide", "fr": "Bandua MHL Companion, mode d'emploi", "es": "Bandua MHL Companion, manual de uso"},
                    desc="Complete user guide for Bandua MHL Companion, the free app that checks received footage against its MHL files. Step by step, with annotated screenshots, in English, French and Spanish."),
+    "lugus": dict(name="Lugus Transfer", repo="lugus-transfer", accent="#39c6ff", icon="lugus-icon.png",
+                   sub={"en": "Version 0.1.0 (beta) · Windows and macOS", "fr": "Version 0.1.0 (bêta) · Windows et macOS", "es": "Versión 0.1.0 (beta) · Windows y macOS"},
+                   title={"en": "Lugus Transfer user guide", "fr": "Lugus Transfer, mode d'emploi", "es": "Lugus Transfer, manual de uso"},
+                   desc="Complete user guide for Lugus Transfer, the free app that sends footage straight from one computer to another with a link and a code, verified on arrival. Step by step, with annotated screenshots, in English, French and Spanish."),
     "ataecina": dict(name="Ataecina", repo="ataecina", accent="#e2c043", icon="ataecina-icon.png",
                    sub={"en": "Beta 0.11.4 · Windows", "fr": "Version bêta 0.11.4 · Windows", "es": "Beta 0.11.4 · Windows"},
                    title={"en": "Ataecina user guide", "fr": "Ataecina, mode d'emploi", "es": "Ataecina, manual de uso"},
