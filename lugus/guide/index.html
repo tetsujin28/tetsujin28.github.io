@@ -97,7 +97,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 <nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">La interfaz de un vistazo</a></li><li><a href="#es-4">Enviar material, paso a paso</a></li><li><a href="#es-5">Recibir material, paso a paso</a></li><li><a href="#es-6">Modo Noctiluca: recibir de noche</a></li><li><a href="#es-7">Lo que hace Lugus Transfer para proteger tu material</a></li><li><a href="#es-8">Interrupciones y errores</a></li><li><a href="#es-9">Buenas prácticas</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
 </div>
 <div>
-<article data-l="en" lang="en"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer user guide</h1><p>Version 0.1.0 (beta) · Windows and macOS</p></div></header><p class="hint">Click an image to enlarge it.</p><h2 id="en-1">1. Overview</h2>
+<article data-l="en" lang="en"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer user guide</h1><p>Version 0.2.0 (beta) · Windows and macOS</p></div></header><p class="hint">Click an image to enlarge it.</p><h2 id="en-1">1. Overview</h2>
 <p>Lugus Transfer sends footage straight from one computer to another. The sender creates a link and a code, the recipient types them in, and the files travel directly between the two machines, encrypted end to end. There is no server in the middle, no cloud storage and no account.</p>
 <p>The rule is the same as on set: <strong>a transfer is only finished once the files have been checked on arrival.</strong> Lugus Transfer reads every received file back from the recipient's disk, compares it with the source, and only then calls it "verified". An MHL file is written in the received folder, and the sender gets a delivery receipt.</p>
 <p>Lugus Transfer is free, open source (MIT License), and needs no account or license key.</p>
@@ -148,8 +148,8 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 
 <ol>
 <li><strong>Send / Receive</strong>: the two modes of the app. The same app is used on both sides.</li>
-<li><strong>Drop zone</strong>: drop a folder, one file or several files here.</li>
-<li><strong>Choose a folder / Choose files</strong>: the same thing with the system window. "Choose files" lets you pick several files at once.</li>
+<li><strong>Drop zone</strong>: drop folders or files here. Each drop is added to what is already there.</li>
+<li><strong>Choose a folder / Choose files</strong>: the same thing with the system window, and these also add to what is there. "Choose files" lets you pick several files at once.</li>
 <li><strong>After delivery</strong>: do nothing, put the computer to sleep, or shut it down once the recipient has confirmed delivery.</li>
 <li><strong>Main button</strong>: <strong>Create the link</strong> when sending, <strong>Receive</strong> when receiving, then <strong>Stop</strong> while a transfer is running.</li>
 <li><strong>FR / EN / ES</strong>: switches the interface language instantly.</li>
@@ -166,7 +166,8 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 <h3>Step 1: choose what to send</h3>
 <p>Drop a folder on the window, or click <strong>Choose a folder</strong>. You can also send:
 - <strong>one file</strong>: it will arrive on its own in the recipient's folder;
-- <strong>several files</strong>: drop them together, or select them with <strong>Choose files</strong>. They must come from the same folder.</p>
+- <strong>several files</strong>: drop them together, or select them with <strong>Choose files</strong>;
+- <strong>several places</strong>: two drives, or two folders in different locations. Drop or choose the first, then the second: it is added, it does not replace. Each source has a ✕ to remove it, and <strong>Remove all</strong> starts again. If you add a folder that is already inside one you added, it is not sent twice.</p>
 <p>When you choose a folder or several files, their content is listed on the right, everything ticked:</p>
 <figure class="shot w860"><img src="img/02_choose_send_en.webp" alt="Choosing the files to send" loading="lazy"></figure>
 
@@ -241,7 +242,7 @@ dialog button{all:unset;position:fixed;top:16px;right:20px;cursor:pointer;color:
 <ol>
 <li><strong>Link</strong>: paste the link you were sent. <em>Valid link</em> confirms its form.</li>
 <li><strong>Code</strong>: type the code. It is checked on your computer before anything is sent: a typo is caught right away and <strong>never uses up an attempt</strong>.</li>
-<li><strong>Destination</strong>: click <strong>Choose</strong> and pick the folder where the footage will arrive. A folder arrives in a sub-folder with its name, and so do several files sent together (with the name of the folder they come from). A single file arrives directly in the destination.</li>
+<li><strong>Destination</strong>: click <strong>Choose</strong> and pick the folder where the footage will arrive. A folder arrives in a sub-folder with its name, and so do several files sent together (with the name of the folder they come from). When the footage comes from several places, you get one folder <code>Rushes_&lt;date&gt;</code> with a sub-folder for each source, named after the folder or the drive (<code>_2</code> is added if two sources have the same name). A single file arrives directly in the destination.</li>
 <li><strong>Noctiluca mode</strong>: to receive overnight (see section 6).</li>
 <li><strong>Receive</strong>: starts the reception.</li>
 </ol>
@@ -406,7 +407,7 @@ Not for now. The code stays compatible, but there is no Linux build until it can
 <p>Lugus Transfer is a tool to help transfer and verify media. It does not replace your own checks or backup procedures. The software is provided "as is", without any warranty. The author cannot be held responsible for any loss, corruption or deletion of data, footage or media, nor for any direct or indirect damage (production costs, reshoots, loss of income…) resulting from the use, misuse or malfunction of the software.</p>
 <p><strong>Never delete the original before checking that the received copy is complete and readable.</strong></p>
 <p>© 2026 Domingo Olmo Martin. Released under the <a href="https://github.com/tetsujin28/lugus-transfer/blob/main/LICENSE">MIT License</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">Download Lugus Transfer</a><a href="https://github.com/tetsujin28/lugus-transfer/blob/main/docs/GUIDE.md">This guide on GitHub</a></p></article>
-<article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, mode d'emploi</h1><p>Version 0.1.0 (bêta) · Windows et macOS</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><h2 id="fr-1">1. Présentation</h2>
+<article data-l="fr" lang="fr"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, mode d'emploi</h1><p>Version 0.2.0 (bêta) · Windows et macOS</p></div></header><p class="hint">Cliquez sur une image pour l'agrandir.</p><h2 id="fr-1">1. Présentation</h2>
 <p>Lugus Transfer envoie vos rushes directement d'un ordinateur à l'autre. L'expéditeur crée un lien et un code, le destinataire les saisit, et les fichiers passent directement d'une machine à l'autre, chiffrés de bout en bout. Pas de serveur au milieu, pas de stockage dans le cloud, pas de compte.</p>
 <p>La règle est la même que sur le plateau : <strong>un transfert n'est terminé qu'une fois les fichiers contrôlés à l'arrivée.</strong> Lugus Transfer relit chaque fichier reçu sur le disque du destinataire, le compare à la source, et seulement alors le déclare « vérifié ». Un fichier MHL est écrit dans le dossier reçu, et l'expéditeur reçoit un accusé de réception.</p>
 <p>Lugus Transfer est gratuit, open source (licence MIT) et ne demande ni compte ni licence.</p>
@@ -457,8 +458,8 @@ Not for now. The code stays compatible, but there is no Linux build until it can
 
 <ol>
 <li><strong>Envoyer / Recevoir</strong> : les deux modes de l'application. La même application sert des deux côtés.</li>
-<li><strong>Zone de dépôt</strong> : déposez-y un dossier, un fichier ou plusieurs fichiers.</li>
-<li><strong>Choisir un dossier / Choisir des fichiers</strong> : la même chose avec la fenêtre du système. « Choisir des fichiers » permet d'en sélectionner plusieurs d'un coup.</li>
+<li><strong>Zone de dépôt</strong> : déposez-y des dossiers ou des fichiers. Chaque dépôt s'ajoute à ce qui est déjà là.</li>
+<li><strong>Choisir un dossier / Choisir des fichiers</strong> : la même chose avec la fenêtre du système, et cela s'ajoute aussi à ce qui est là. « Choisir des fichiers » permet d'en sélectionner plusieurs d'un coup.</li>
 <li><strong>Après la livraison</strong> : ne rien faire, mettre l'ordinateur en veille ou l'éteindre une fois la livraison confirmée par le destinataire.</li>
 <li><strong>Bouton principal</strong> : <strong>Créer le lien</strong> pour envoyer, <strong>Recevoir</strong> pour recevoir, puis <strong>Arrêter</strong> pendant un transfert.</li>
 <li><strong>FR / EN / ES</strong> : change instantanément la langue de l'interface.</li>
@@ -475,7 +476,8 @@ Not for now. The code stays compatible, but there is no Linux build until it can
 <h3>Étape 1 : choisir ce qu'on envoie</h3>
 <p>Déposez un dossier sur la fenêtre, ou cliquez sur <strong>Choisir un dossier</strong>. Vous pouvez aussi envoyer :
 - <strong>un seul fichier</strong> : il arrivera seul dans le dossier du destinataire ;
-- <strong>plusieurs fichiers</strong> : déposez-les ensemble, ou sélectionnez-les avec <strong>Choisir des fichiers</strong>. Ils doivent venir du même dossier.</p>
+- <strong>plusieurs fichiers</strong> : déposez-les ensemble, ou sélectionnez-les avec <strong>Choisir des fichiers</strong> ;
+- <strong>plusieurs endroits</strong> : deux disques, ou deux dossiers placés à des endroits différents. Déposez ou choisissez le premier, puis le second : il s'ajoute, il ne remplace pas. Chaque source a une ✕ pour la retirer, et <strong>Tout retirer</strong> recommence. Si vous ajoutez un dossier qui se trouve déjà dans un dossier ajouté, il n'est pas envoyé deux fois.</p>
 <p>Quand vous choisissez un dossier ou plusieurs fichiers, leur contenu s'affiche à droite, tout coché :</p>
 <figure class="shot w860"><img src="img/02_choose_send_fr.webp" alt="Choix des fichiers à envoyer" loading="lazy"></figure>
 
@@ -550,7 +552,7 @@ Not for now. The code stays compatible, but there is no Linux build until it can
 <ol>
 <li><strong>Lien</strong> : collez le lien reçu. <em>Lien valide</em> confirme sa forme.</li>
 <li><strong>Code</strong> : tapez le code. Il est vérifié sur votre ordinateur avant tout envoi : une faute de frappe est repérée tout de suite et <strong>ne consomme jamais d'essai</strong>.</li>
-<li><strong>Destination</strong> : cliquez sur <strong>Choisir</strong> et sélectionnez le dossier où arriveront les rushes. Un dossier arrive dans un sous-dossier à son nom, de même que plusieurs fichiers envoyés ensemble (au nom du dossier d'où ils viennent). Un fichier seul arrive directement dans la destination.</li>
+<li><strong>Destination</strong> : cliquez sur <strong>Choisir</strong> et sélectionnez le dossier où arriveront les rushes. Un dossier arrive dans un sous-dossier à son nom, de même que plusieurs fichiers envoyés ensemble (au nom du dossier d'où ils viennent). Quand les rushes viennent de plusieurs endroits, ils arrivent dans un dossier <code>Rushes_&lt;date&gt;</code> qui contient un sous-dossier par source, au nom du dossier ou du disque (<code>_2</code> s'ajoute si deux sources portent le même nom). Un fichier seul arrive directement dans la destination.</li>
 <li><strong>Mode Noctiluca</strong> : pour recevoir pendant la nuit (voir la section 6).</li>
 <li><strong>Recevoir</strong> : lance la réception.</li>
 </ol>
@@ -715,7 +717,7 @@ Pas pour l'instant. Le code reste compatible, mais il n'y a pas de version Linux
 <p>Lugus Transfer est un outil d'aide au transfert et à la vérification de médias. Il ne remplace pas vos propres contrôles ni vos procédures de sauvegarde. Le logiciel est fourni « tel quel », sans aucune garantie. L'auteur ne pourra être tenu responsable d'aucune perte, corruption ou suppression de données, de rushes ou de supports, ni d'aucun dommage direct ou indirect (coûts de production, retournages, perte de revenus…) résultant de l'utilisation, d'une mauvaise utilisation ou d'un dysfonctionnement du logiciel.</p>
 <p><strong>Ne supprimez jamais l'original avant d'avoir vérifié que la copie reçue est complète et lisible.</strong></p>
 <p>© 2026 Domingo Olmo Martin. Publié sous <a href="https://github.com/tetsujin28/lugus-transfer/blob/main/LICENSE">licence MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">Télécharger Lugus Transfer</a><a href="https://github.com/tetsujin28/lugus-transfer/blob/main/docs/GUIDE.fr.md">Ce guide sur GitHub</a></p></article>
-<article data-l="es" lang="es"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, manual de uso</h1><p>Versión 0.1.0 (beta) · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
+<article data-l="es" lang="es"><header class="ph"><img src="../../assets/lugus-icon.png" alt="" width="64" height="64"><div><h1>Lugus Transfer, manual de uso</h1><p>Versión 0.2.0 (beta) · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
 <p>Lugus Transfer envía tu material directamente de un ordenador a otro. El remitente crea un enlace y un código, el destinatario los introduce, y los archivos pasan directamente de una máquina a la otra, cifrados de extremo a extremo. Sin servidor en medio, sin almacenamiento en la nube y sin cuenta.</p>
 <p>La regla es la misma que en el rodaje: <strong>una transferencia solo termina cuando los archivos se han comprobado a la llegada.</strong> Lugus Transfer relee cada archivo recibido en el disco del destinatario, lo compara con el origen y solo entonces lo declara «verificado». Se escribe un archivo MHL en la carpeta recibida, y el remitente recibe un acuse de recibo.</p>
 <p>Lugus Transfer es gratuito, de código abierto (licencia MIT) y no pide ni cuenta ni licencia.</p>
@@ -766,8 +768,8 @@ Pas pour l'instant. Le code reste compatible, mais il n'y a pas de version Linux
 
 <ol>
 <li><strong>Enviar / Recibir</strong>: los dos modos de la aplicación. La misma aplicación sirve en los dos lados.</li>
-<li><strong>Zona de depósito</strong>: suelta aquí una carpeta, un archivo o varios archivos.</li>
-<li><strong>Elegir una carpeta / Elegir archivos</strong>: lo mismo con la ventana del sistema. «Elegir archivos» permite seleccionar varios a la vez.</li>
+<li><strong>Zona de depósito</strong>: suelta aquí carpetas o archivos. Cada depósito se suma a lo que ya está.</li>
+<li><strong>Elegir una carpeta / Elegir archivos</strong>: lo mismo con la ventana del sistema, y también se suma a lo que ya está. «Elegir archivos» permite seleccionar varios a la vez.</li>
 <li><strong>Tras la entrega</strong>: no hacer nada, suspender el ordenador o apagarlo cuando el destinatario haya confirmado la entrega.</li>
 <li><strong>Botón principal</strong>: <strong>Crear el enlace</strong> para enviar, <strong>Recibir</strong> para recibir, y después <strong>Detener</strong> durante una transferencia.</li>
 <li><strong>FR / EN / ES</strong>: cambia al instante el idioma de la interfaz.</li>
@@ -784,7 +786,8 @@ Pas pour l'instant. Le code reste compatible, mais il n'y a pas de version Linux
 <h3>Paso 1: elegir qué se envía</h3>
 <p>Suelta una carpeta en la ventana o haz clic en <strong>Elegir una carpeta</strong>. También puedes enviar:
 - <strong>un solo archivo</strong>: llegará solo a la carpeta del destinatario;
-- <strong>varios archivos</strong>: suéltalos juntos o selecciónalos con <strong>Elegir archivos</strong>. Deben venir de la misma carpeta.</p>
+- <strong>varios archivos</strong>: suéltalos juntos o selecciónalos con <strong>Elegir archivos</strong>;
+- <strong>varios lugares</strong>: dos discos, o dos carpetas en sitios distintos. Suelta o elige la primera y luego la segunda: se suma, no reemplaza. Cada fuente tiene una ✕ para quitarla, y <strong>Quitar todo</strong> vuelve a empezar. Si añades una carpeta que ya está dentro de otra añadida, no se envía dos veces.</p>
 <p>Cuando eliges una carpeta o varios archivos, su contenido aparece a la derecha, todo marcado:</p>
 <figure class="shot w860"><img src="img/02_choose_send_es.webp" alt="Elección de los archivos a enviar" loading="lazy"></figure>
 
@@ -859,7 +862,7 @@ Pas pour l'instant. Le code reste compatible, mais il n'y a pas de version Linux
 <ol>
 <li><strong>Enlace</strong>: pega el enlace que te han enviado. <em>Enlace válido</em> confirma su forma.</li>
 <li><strong>Código</strong>: escribe el código. Se comprueba en tu ordenador antes de cualquier envío: una errata se detecta en el acto y <strong>nunca gasta un intento</strong>.</li>
-<li><strong>Destino</strong>: haz clic en <strong>Elegir</strong> y selecciona la carpeta donde llegará el material. Una carpeta llega en una subcarpeta con su nombre, igual que varios archivos enviados juntos (con el nombre de la carpeta de la que vienen). Un archivo solo llega directamente al destino.</li>
+<li><strong>Destino</strong>: haz clic en <strong>Elegir</strong> y selecciona la carpeta donde llegará el material. Una carpeta llega en una subcarpeta con su nombre, igual que varios archivos enviados juntos (con el nombre de la carpeta de la que vienen). Cuando el material viene de varios lugares, llega en una carpeta <code>Rushes_&lt;fecha&gt;</code> con una subcarpeta por cada fuente, con el nombre de la carpeta o del disco (se añade <code>_2</code> si dos fuentes tienen el mismo nombre). Un archivo solo llega directamente al destino.</li>
 <li><strong>Modo Noctiluca</strong>: para recibir de noche (ver la sección 6).</li>
 <li><strong>Recibir</strong>: inicia la recepción.</li>
 </ol>
