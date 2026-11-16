@@ -24,7 +24,7 @@ APPS = {
                    title={"en": "Bandua MHL Companion user guide", "fr": "Bandua MHL Companion, mode d'emploi", "es": "Bandua MHL Companion, manual de uso"},
                    desc="Complete user guide for Bandua MHL Companion, the free app that checks received footage against its MHL files. Step by step, with annotated screenshots, in English, French and Spanish."),
     "lugus": dict(name="Lugus Transfer", repo="lugus-transfer", accent="#39c6ff", icon="lugus-icon.png",
-                   sub={"en": "Version 0.1.0 (beta) · Windows and macOS", "fr": "Version 0.1.0 (bêta) · Windows et macOS", "es": "Versión 0.1.0 (beta) · Windows y macOS"},
+                   sub={"en": "Version 0.2.0 (beta) · Windows and macOS", "fr": "Version 0.2.0 (bêta) · Windows et macOS", "es": "Versión 0.2.0 (beta) · Windows y macOS"},
                    title={"en": "Lugus Transfer user guide", "fr": "Lugus Transfer, mode d'emploi", "es": "Lugus Transfer, manual de uso"},
                    desc="Complete user guide for Lugus Transfer, the free app that sends footage straight from one computer to another with a link and a code, verified on arrival. Step by step, with annotated screenshots, in English, French and Spanish."),
     "ataecina": dict(name="Ataecina", repo="ataecina", accent="#e2c043", icon="ataecina-icon.png",
