@@ -1,0 +1,290 @@
+<nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">La interfaz de un vistazo</a></li><li><a href="#es-4">Volcar una tarjeta, paso a paso</a></li><li><a href="#es-5">Lo que hace Bandua durante la copia</a></li><li><a href="#es-6">Los informes</a></li><li><a href="#es-7">Reverificar una carpeta con su MHL</a></li><li><a href="#es-8">Cancelación y errores</a></li><li><a href="#es-9">Buenas prácticas en rodaje</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
+<!--ARTICLE-->
+<article data-l="es" lang="es"><header class="ph"><img src="/assets/bandua-icon.png" alt="" width="64" height="64"><div><h1>Bandua, manual de uso</h1><p>Versión 0.2.0 (beta) · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
+<p>Bandua vuelca tus tarjetas de cámara a uno o varios discos a la vez. Verifica cada copia frente al origen mediante un hash. Después genera un informe PDF, un log, un archivo MHL y un archivo JSON, para entregar al montador, a producción o al laboratorio.</p>
+<p>La regla es sencilla: <strong>nunca se formatea una tarjeta fiándose de una barra de progreso.</strong> Bandua solo declara una tarjeta «verificada» cuando cada archivo se ha releído desde cada disco de destino y se ha comparado con el original.</p>
+<p>Bandua es gratuito, de código abierto (licencia MIT) y no pide ni cuenta ni licencia.</p>
+<h2 id="es-2">2. Instalación</h2>
+<h3>Descargar</h3>
+<p>Los archivos están en la <a href="https://github.com/tetsujin28/bandua/releases">página de Releases</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Archivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sin instalación</td>
+<td><code>Bandua_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, con instalador</td>
+<td><code>Bandua_x.y.z_x64-setup.exe</code> o <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel y Apple Silicon)</td>
+<td><code>Bandua_x.y.z_universal.dmg</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Primer arranque</h3>
+<p>La app aún no está firmada, así que tu sistema muestra un aviso, una sola vez:</p>
+<ul>
+<li><strong>Windows</strong>: haz clic en «Más información» y luego en «Ejecutar de todas formas».</li>
+<li><strong>macOS</strong>: haz doble clic en la aplicación y cierra el mensaje de bloqueo. Abre Ajustes del Sistema &gt; Privacidad y seguridad, baja hasta la sección Seguridad y haz clic en «Abrir de todos modos» junto al nombre de la aplicación; confirma con la contraseña de sesión (solo se pide una vez). Si el botón no aparece, abre Terminal y escribe <code>xattr -dr com.apple.quarantine</code> seguido de la aplicación arrastrada a la ventana.</li>
+</ul>
+<p>Puede que el navegador también marque la descarga como poco habitual. Es normal en una app reciente y sin firmar. Conserva el archivo desde el panel de descargas. Si tienes dudas, analízalo en <a href="https://www.virustotal.com">VirusTotal</a>.</p>
+<h3>Ventana de bienvenida</h3>
+<p>En el primer arranque, Bandua muestra un aviso de exención de responsabilidad (1). Léelo y haz clic en <strong>Lo he entendido y acepto</strong> (2). Lo encontrarás después en <strong>Acerca de</strong> (el botón <em>i</em>).</p>
+<figure class="shot w860"><img src="/bandua/guide/img/00_welcome_es.webp" alt="Ventana de bienvenida" loading="lazy"></figure>
+
+<h2 id="es-3">3. La interfaz de un vistazo</h2>
+<figure class="shot w860"><img src="/bandua/guide/img/01_interface_es.webp" alt="La interfaz de Bandua" loading="lazy"></figure>
+
+<ol>
+<li><strong>Origen</strong>: la tarjeta que se va a volcar, con su marca, su tamaño y su número de clips y archivos.</li>
+<li><strong>Destinos</strong>: los discos que recibirán una copia, con su espacio libre.</li>
+<li><strong>Identificación</strong>: proyecto, día de rodaje, cámara, tarjeta, operador, notas, y la vista previa del nombre de la carpeta que se creará.</li>
+<li><strong>Verificación</strong>: el algoritmo de hash y la casilla <strong>Releer la tarjeta</strong>.</li>
+<li><strong>Reverificar un MHL</strong>: el control de una carpeta ya copiada (ver la sección 7).</li>
+<li><strong>Panel</strong>: el círculo de progreso, los contadores (<em>Velocidad</em>, <em>Restante</em>, <em>Transcurrido</em>, <em>Archivos verificados</em>), el archivo en curso y las barras de copia y verificación.</li>
+<li><strong>Lista de clips</strong> de la tarjeta, con el estado de cada uno.</li>
+<li><strong>Log</strong>: el registro en directo.</li>
+<li><strong>Botón principal</strong>: <strong>Iniciar el volcado</strong>, luego <strong>Cancelar</strong>, luego <strong>Nuevo volcado</strong> o <strong>Reintentar esta tarjeta</strong>. A su izquierda, un mensaje resume el estado.</li>
+</ol>
+<p>Arriba, la etiqueta junto al nombre de la app indica el estado: <em>Listo</em>, <em>Copiando</em>, <em>Verificando</em>, <em>Verificado</em>, <em>Errores</em>, <em>Cancelado</em>. Los botones <strong>FR / EN / ES</strong> cambian el idioma de la interfaz al instante.</p>
+<h2 id="es-4">4. Volcar una tarjeta, paso a paso</h2>
+<h3>Paso 1: elegir el origen</h3>
+<p>Haz clic en el recuadro <strong>Origen</strong> («Elegir la tarjeta») y selecciona la tarjeta, o la carpeta que la representa.</p>
+<figure class="shot w560"><img src="/bandua/guide/img/02_source_es.webp" alt="El origen" loading="lazy"></figure>
+
+<p>Bandua analiza la tarjeta y muestra:
+- la marca reconocida (RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI, o «Générique» para el resto);
+- el número de clips y archivos, y el tamaño total;
+- la lista de clips en la tabla de la derecha, en estado <em>En espera</em>.</p>
+<p>Si no se reconoce ningún clip de vídeo, Bandua lo indica, pero <strong>copia igualmente todos los archivos</strong> de la tarjeta.</p>
+<h3>Paso 2: añadir los destinos</h3>
+<p>Haz clic en <strong>+ Añadir un destino</strong> (2) y elige una carpeta en tu primer disco. Repite para cada copia que necesites (normalmente dos discos, a veces tres).</p>
+<figure class="shot w560"><img src="/bandua/guide/img/03_destinations_es.webp" alt="Los destinos" loading="lazy"></figure>
+
+<p>Para cada destino (1), Bandua muestra:
+- el espacio libre y la parte que ocupará la tarjeta;
+- un indicador verde, que pasa a rojo con <strong>ESPACIO INSUFICIENTE</strong> si la tarjeta no cabe.</p>
+<p>La tarjeta se lee <strong>una sola vez</strong> para alimentar todos los destinos. Añadir discos no multiplica el tiempo de lectura de la tarjeta.</p>
+<p>Para quitar un destino, haz clic en la cruz de su derecha. Bandua rechaza un destino igual al origen, o una carpeta ya elegida.</p>
+<h3>Paso 3: identificar la tarjeta</h3>
+<p>Rellena la sección <strong>Identificación</strong>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Ejemplo</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proyecto</td>
+<td>Blade Runner</td>
+<td>se conserva de una sesión a otra</td>
+</tr>
+<tr>
+<td>Día de rodaje</td>
+<td>D03</td>
+<td>se conserva</td>
+</tr>
+<tr>
+<td>Cámara</td>
+<td>A</td>
+<td>se conserva; se rellena solo si está vacío</td>
+</tr>
+<tr>
+<td>Tarjeta</td>
+<td>A003</td>
+<td>se rellena solo a partir de los nombres de los clips</td>
+</tr>
+<tr>
+<td>Operador</td>
+<td>nombre del DIT o del ayudante</td>
+<td>se conserva</td>
+</tr>
+<tr>
+<td>Notas</td>
+<td>«Ligero flare en C004, lluvia artificial en C007»</td>
+<td>aparecen en el informe</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="shot w560"><img src="/bandua/guide/img/04_identification_es.webp" alt="La identificación" loading="lazy"></figure>
+
+<p>El número de tarjeta (1) se deduce de los nombres de los clips (por ejemplo <code>A003_C001…</code> da la tarjeta <code>A003</code> y la cámara <code>A</code>). Compruébalo de todos modos.</p>
+<p>Debajo de estos campos (2), Bandua muestra en directo el nombre de la carpeta que se creará en <strong>cada</strong> destino:</p>
+<pre><code>2026-11-10_1142_Blade_Runner_D03_A_A003
+</code></pre>
+<p>Es decir: fecha y hora de inicio, luego proyecto, día, cámara y tarjeta. Los campos vacíos simplemente se omiten. Si ya existe una carpeta con el mismo nombre, Bandua añade <code>_2</code>, <code>_3</code>, etc., y nunca sobrescribe nada.</p>
+<h3>Paso 4: ajustar la verificación (opcional)</h3>
+<figure class="shot w700"><img src="/bandua/guide/img/05_verification_es.webp" alt="Ajustes de verificación" loading="lazy"></figure>
+
+<ul>
+<li><strong>Algoritmo</strong> (1):</li>
+<li><strong>xxHash64 (estándar MHL)</strong>: la opción por defecto, recomendada. Rápida, y reconocida por los programas de postproducción.</li>
+<li><strong>XXH3-64 (más rápido)</strong>: aún más rápida en equipos recientes.</li>
+<li><strong>MD5</strong> o <strong>SHA-1</strong>: más lentos, solo si un laboratorio o una producción los exige.</li>
+<li><strong>Releer la tarjeta</strong> (2): Bandua lee la tarjeta una segunda vez y compara las dos lecturas. Es más lento, pero detecta un lector de tarjetas, un cable o una tarjeta que fallan. Déjala marcada salvo urgencia real.</li>
+</ul>
+<h3>Paso 5: iniciar</h3>
+<p>El mensaje de abajo (1) resume la operación, por ejemplo: <em>«Listo: 103 GB hacia 2 destino(s), verificación xxHash64.»</em> Haz clic en <strong>Iniciar el volcado</strong> (2).</p>
+<figure class="shot w860"><img src="/bandua/guide/img/06_start_es.webp" alt="Iniciar el volcado" loading="lazy"></figure>
+
+<p>Durante el volcado, <strong>no retires ni la tarjeta ni los discos</strong>.</p>
+<figure class="shot w860"><img src="/bandua/guide/img/07_progress_es.webp" alt="Volcado en curso" loading="lazy"></figure>
+
+<ol>
+<li>El <strong>círculo</strong> indica la parte de la tarjeta ya copiada (como la barra naranja), con una palabra bajo el porcentaje: <em>copia</em>, <em>relectura</em>, <em>verificación</em> y luego <em>espere</em> durante los últimos controles.</li>
+<li>Los <strong>contadores</strong> dan la velocidad, el tiempo restante, el tiempo transcurrido y el número de archivos verificados.</li>
+<li>Las <strong>barras</strong> siguen por separado la copia y la verificación.</li>
+<li>El <strong>clip en curso</strong> aparece resaltado, con su propio progreso. Después, cada clip pasa a <strong>VERIFICADO</strong> (verde) o <strong>ERROR</strong> (rojo).</li>
+<li>El botón pasa a <strong>Cancelar</strong> (ver la sección 8).</li>
+</ol>
+<h3>Paso 6: leer el resultado</h3>
+<figure class="shot w860"><img src="/bandua/guide/img/08_verified_es.webp" alt="Tarjeta verificada" loading="lazy"></figure>
+
+<p><strong>Todo está bien:</strong>
+1. el círculo pasa a verde, con la palabra <em>verificado</em>; la etiqueta de arriba indica <em>Verificado</em>;
+2. la franja <strong>✓ TARJETA VERIFICADA</strong> aparece unos segundos: todas las copias tienen el mismo hash que el origen;
+3. aparecen tres botones: <strong>Abrir el informe PDF</strong>, <strong>Mostrar la carpeta</strong> y <strong>Nuevo volcado</strong>.</p>
+<p>El mensaje de abajo confirma el número de archivos y destinos y la velocidad media, e indica que la tarjeta se puede expulsar. Un clic en un destino abre directamente la carpeta copiada en ese disco.</p>
+<p><strong>Algo ha fallado:</strong> el círculo pasa a rojo y aparece la franja <strong>✕ ERRORES DETECTADOS</strong>. Consulta el log y la lista de clips antes de tocar la tarjeta, y <strong>no la formatees</strong>. Ver la sección 8.</p>
+<h3>Paso 7: tarjeta siguiente</h3>
+<p>Haz clic en <strong>Nuevo volcado</strong>. Los destinos y los datos del proyecto (proyecto, día, cámara, operador) se conservan. Solo se vacían la tarjeta y las notas. Solo queda elegir la tarjeta siguiente.</p>
+<h2 id="es-5">5. Lo que hace Bandua durante la copia</h2>
+<p>Todo esto ocurre en segundo plano, sin que tengas que ajustar nada. Es lo que permite fiarse del círculo verde.</p>
+<ol>
+<li><strong>Copia segura.</strong> Cada archivo se escribe primero con un nombre temporal (<code>.bandua-part</code>). Solo recibe su nombre real <strong>una vez verificado</strong>. Un archivo con su nombre definitivo es, por tanto, un archivo controlado.</li>
+<li><strong>Verificación en el disco, no en memoria.</strong> La copia se relee desde el disco de destino evitando la caché del sistema. Se verifica de verdad el disco, y no una copia que se ha quedado en la memoria RAM. Si un volumen no permite evitar la caché, el log y el PDF lo indican.</li>
+<li><strong>Tamaño controlado.</strong> Un archivo demasiado corto o demasiado largo se considera un error.</li>
+<li><strong>Doble lectura de la tarjeta</strong> (si <em>Releer la tarjeta</em> está marcada). Si las dos lecturas difieren, las copias afectadas se marcan <code>.HASH_ERREUR</code>.</li>
+<li><strong>Vigilancia de la tarjeta.</strong> El tamaño y la fecha de cada archivo se controlan antes y después de su copia, y al final se hace un nuevo inventario completo de la tarjeta. Un archivo que cambia, aparece o desaparece hace fallar el volcado. Así se evita formatear una tarjeta que todavía se estaba escribiendo, o que otro programa ha modificado.</li>
+<li><strong>Copia idéntica.</strong> Se respeta la estructura de carpetas de la tarjeta (RED <code>.RDM</code> / <code>.RDC</code>, ARRIRAW, MXF, ProRes, BRAW, etc.), y se conservan las fechas de modificación originales.</li>
+<li><strong>Archivos de sistema ignorados.</strong> Los archivos que añaden los ordenadores (<code>.DS_Store</code>, <code>.Spotlight-V100</code>, <code>.Trashes</code>, <code>.fseventsd</code>, <code>System Volume Information</code>, <code>$RECYCLE.BIN</code>, <code>Thumbs.db</code>, <code>desktop.ini</code>, archivos <code>._</code> de macOS) no se copian.</li>
+</ol>
+<h2 id="es-6">6. Los informes</h2>
+<p>En <strong>cada</strong> carpeta con fecha, en <strong>cada</strong> destino, Bandua escribe cuatro archivos, en el idioma de la interfaz:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;carpeta&gt;_informe.pdf</code> (<code>_report.pdf</code> en inglés, <code>_rapport.pdf</code> en francés)</td>
+<td>El documento que se entrega: proyecto, tarjeta, cámara, operador, notas, controles realizados, lista de clips con su estado, algoritmo, resultado.</td>
+</tr>
+<tr>
+<td><code>&lt;carpeta&gt;_log.txt</code></td>
+<td>El registro detallado, archivo por archivo, con los hash. Útil en caso de duda o de litigio.</td>
+</tr>
+<tr>
+<td><code>&lt;carpeta&gt;.mhl</code></td>
+<td>La lista de hash en formato MHL 1.1, legible por Silverstack, ShotPut Pro, Hedge… Es el archivo que permite reverificar la carpeta más adelante.</td>
+</tr>
+<tr>
+<td><code>&lt;carpeta&gt;.json</code></td>
+<td>La misma información en un formato que puede usar un script u otro programa.</td>
+</tr>
+</tbody>
+</table></div>
+<p>En el informe, los clips se agrupan por marca: una carpeta <code>.RDC</code> de RED cuenta como un clip, una carpeta ARRIRAW como un clip, un <code>.braw</code> como un clip, etc.</p>
+<figure class="shot w560"><img src="/bandua/guide/img/11_report_es.webp" alt="Informe PDF" loading="lazy"></figure>
+
+<h2 id="es-7">7. Reverificar una carpeta con su MHL</h2>
+<p>Esta función sirve para comprobar que una carpeta ya copiada sigue intacta:
+- antes de formatear una tarjeta, si la copia no es reciente;
+- al entregar un disco al montador o al laboratorio;
+- al recibir un disco, o después de un transporte.</p>
+<p><strong>Procedimiento:</strong>
+1. Haz clic en <strong>Reverificar un MHL</strong> en la barra superior.
+2. Elige el archivo <code>.mhl</code> de la carpeta con fecha.
+3. Bandua relee cada archivo y lo compara con el hash guardado en el MHL. Tienes el mismo panel que en un volcado (progreso, velocidad, estado de cada clip). Puedes cancelar en cualquier momento.</p>
+<figure class="shot w700"><img src="/bandua/guide/img/09_reverify_button_es.webp" alt="Botón Reverificar un MHL" loading="lazy"></figure>
+
+<p><strong>Estados posibles:</strong>
+- <strong>VERIFICADO</strong>: el archivo es idéntico al MHL;
+- <strong>DAÑADO</strong>: el hash es distinto, el archivo ha cambiado o se ha corrompido;
+- <strong>FALTA</strong>: el archivo que figura en el MHL ya no existe.</p>
+<p><strong>Resultado:</strong>
+- <strong>✓ CARPETA INTACTA</strong>: todos los archivos son idénticos al MHL;
+- si no, el clip afectado aparece marcado (1) y una franja roja (2) indica el número de archivos que faltan y dañados, con un recordatorio: no formatees la tarjeta original.</p>
+<figure class="shot w860"><img src="/bandua/guide/img/10_reverify_error_es.webp" alt="Reverificación con un archivo dañado" loading="lazy"></figure>
+
+<p>Los archivos presentes en la carpeta pero <strong>ausentes del MHL</strong> (añadidos después) se indican en el log, pero no se verifican.</p>
+<p>Bandua escribe junto al MHL un informe PDF y un log de reverificación, con fecha y hora, por ejemplo <code>&lt;carpeta&gt;_reverificacion_2026-11-10_143012.pdf</code>. El MHL original nunca se modifica.</p>
+<h3>Controlar un MHL con Bandua MHL Companion</h3>
+<p>Quien recibe el material (montador, ayudante de montaje, laboratorio, producción) no necesita Bandua para controlar un MHL. Puede usar <strong><a href="https://github.com/tetsujin28/bandua-mhl-companion">Bandua MHL Companion</a></strong>, una app gratuita y más sencilla, pensada solo para eso.</p>
+<p>Basta con soltar la carpeta del material en su ventana: encuentra todos los MHL que contiene, relee cada archivo y lo compara con el hash guardado. Indica claramente si el material está intacto o qué clip da problemas, y puede exportar un informe de texto para enviarlo a producción o al DIT. Lee los MHL de Bandua, y también los de Silverstack, ShotPut Pro, Hedge y otros programas (MHL 1.1 y ASC MHL). Funciona en solo lectura: no copia nada y no modifica ningún archivo.</p>
+<p>Bandua MHL Companion está disponible para Windows y macOS en la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">página de Releases</a> de su repositorio de GitHub.</p>
+<h2 id="es-8">8. Cancelación y errores</h2>
+<h3>Cancelar</h3>
+<p>Haz clic en <strong>Cancelar</strong> y luego en <strong>Confirmar la cancelación</strong> antes de tres segundos (dos clics, para evitar una cancelación accidental). Bandua se detiene limpiamente y no deja ningún archivo <code>.bandua-part</code>. La franja <strong>✕ CANCELADO</strong> recuerda que no hay que formatear la tarjeta.</p>
+<h3>En caso de error</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Lo que ves</th>
+<th>Lo que significa</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clip en <strong>ERROR</strong>, archivo <code>.HASH_ERREUR</code> en el destino</td>
+<td>La copia no coincide con el origen, o las dos lecturas de la tarjeta difieren.</td>
+<td>Leer el log. Probar con otro lector u otro cable, y luego <strong>Reintentar esta tarjeta</strong>.</td>
+</tr>
+<tr>
+<td>«La tarjeta cambió durante el volcado»</td>
+<td>Se modificó, añadió o borró un archivo de la tarjeta durante la operación.</td>
+<td>No formatear. Comprobar que ningún otro programa accede a la tarjeta, y volver a lanzarla.</td>
+</tr>
+<tr>
+<td><strong>ESPACIO INSUFICIENTE</strong> en un destino</td>
+<td>La tarjeta no cabe en ese disco.</td>
+<td>Liberar espacio o elegir otro disco. Bandua no arranca hasta que se resuelva.</td>
+</tr>
+<tr>
+<td>«Lectura imposible» en el origen</td>
+<td>La tarjeta o el lector no responden.</td>
+<td>Volver a insertar la tarjeta, cambiar de lector.</td>
+</tr>
+</tbody>
+</table></div>
+<p>El botón <strong>Reintentar esta tarjeta</strong> vuelve a lanzar la misma tarjeta con los mismos ajustes. Se crea una carpeta nueva (con el sufijo <code>_2</code> si hace falta), y las copias defectuosas siguen siendo fáciles de identificar por su extensión <code>.HASH_ERREUR</code>.</p>
+<h2 id="es-9">9. Buenas prácticas en rodaje</h2>
+<ul>
+<li><strong>Siempre dos copias como mínimo</strong>, en dos discos físicamente distintos.</li>
+<li><strong>Esperar al círculo verde y a «Verificado»</strong> antes de expulsar, y más aún antes de formatear.</li>
+<li><strong>Formatear la tarjeta en la cámara</strong>, nunca en el ordenador.</li>
+<li><strong>Dejar «Releer la tarjeta» marcada</strong>: la mayoría de las pérdidas vienen de un lector o un cable defectuoso, no de la propia tarjeta.</li>
+<li><strong>Rellenar las notas</strong>: incidencias, tarjeta formateada dos veces, clip cortado… El montador te lo agradecerá.</li>
+<li><strong>Reverificar con el MHL</strong> antes de entregar un disco.</li>
+<li><strong>No abrir la tarjeta con ningún otro programa</strong> durante el volcado (navegador de medios, programa de montaje…).</li>
+</ul>
+<h2 id="es-10">10. Preguntas frecuentes</h2>
+<p><strong>¿Cuánto tarda?</strong>
+El tiempo de lectura de la tarjeta, más la verificación. Con «Releer la tarjeta», cuenta aproximadamente una lectura de tarjeta más. El cuello de botella suele ser el lector de tarjetas o el disco más lento.</p>
+<p><strong>¿Puedo usar Bandua con una cámara que no está en la lista?</strong>
+Sí. Todas las tarjetas se copian completas. Solo la agrupación en clips del informe será más simple (marcada «Générique»).</p>
+<p><strong>Mi montador usa Silverstack, ShotPut o Hedge. ¿Puede leer mis MHL?</strong>
+Sí, el MHL 1.1 con xxHash64 es el estándar que leen esos programas. También puede usar Bandua MHL Companion, gratuito.</p>
+<p><strong>¿Bandua funciona en Linux?</strong>
+Por ahora no. El código sigue siendo compatible, pero no hay versión para Linux mientras no se pueda probar.</p>
+<p><strong>¿Bandua envía datos por Internet?</strong>
+No. Todo ocurre en tu ordenador.</p>
+<h2 id="es-11">11. Aviso y licencia</h2>
+<p>Bandua es una herramienta de ayuda para copiar y verificar medios. No sustituye tus propios controles ni tus procedimientos de copia de seguridad. El software se proporciona «tal cual», sin ninguna garantía. El autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos, material grabado o soportes, ni de ningún daño directo o indirecto derivado del uso, mal uso o mal funcionamiento del software.</p>
+<p><strong>No formatees ni reutilices nunca una tarjeta sin haber comprobado que cada copia está completa y es legible.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Distribuido bajo <a href="https://github.com/tetsujin28/bandua/blob/main/LICENSE">licencia MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua/releases/latest">Descargar Bandua</a><a href="https://github.com/tetsujin28/bandua/blob/main/docs/GUIDE.es.md">Esta guía en GitHub</a></p></article>

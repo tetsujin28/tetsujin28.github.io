@@ -1,0 +1,182 @@
+<nav class="toc" data-l="es" aria-label="Índice"><p>Índice</p><ol><li><a href="#es-1">Presentación</a></li><li><a href="#es-2">Instalación</a></li><li><a href="#es-3">Elegir el material</a></li><li><a href="#es-4">Iniciar el control</a></li><li><a href="#es-5">Leer el resultado</a></li><li><a href="#es-6">Exportar el informe</a></li><li><a href="#es-7">Los estados en detalle</a></li><li><a href="#es-8">Formatos reconocidos</a></li><li><a href="#es-9">Buenas prácticas</a></li><li><a href="#es-10">Preguntas frecuentes</a></li><li><a href="#es-11">Aviso y licencia</a></li></ol></nav>
+<!--ARTICLE-->
+<article data-l="es" lang="es"><header class="ph"><img src="/assets/companion-icon.png" alt="" width="64" height="64"><div><h1>Bandua MHL Companion, manual de uso</h1><p>Versión 0.1.0 · Windows y macOS</p></div></header><p class="hint">Haz clic en una imagen para ampliarla.</p><h2 id="es-1">1. Presentación</h2>
+<p>Acabas de recibir material, en un disco o por descarga. ¿Se ha dañado algo por el camino? Bandua MHL Companion vuelve a leer cada archivo, lo compara con el archivo MHL que lo acompaña y te dice, clip por clip, qué está intacto y qué no.</p>
+<p>Un <strong>MHL</strong> es la lista de los archivos de una copia, con su tamaño y su huella (hash), escrita por el programa que volcó las tarjetas en el rodaje. Si un archivo cambia, aunque sea un solo byte, su huella cambia: eso es lo que comprueba la app.</p>
+<p>La app está pensada para quien <strong>recibe</strong> el material: montador, ayudante de montaje, laboratorio, postproducción, producción, director. Es la compañera de <a href="https://github.com/tetsujin28/bandua">Bandua</a>, la app de volcado del mismo autor, pero también lee los MHL escritos por Silverstack, ShotPut Pro, Hedge y otros.</p>
+<p>Funciona <strong>en solo lectura</strong>: nunca modifica, renombra ni añade nada junto a tu material. Gratuita, de código abierto (licencia MIT), sin cuenta.</p>
+<h2 id="es-2">2. Instalación</h2>
+<h3>Descargar</h3>
+<p>Ve a la <a href="https://github.com/tetsujin28/bandua-mhl-companion/releases">página de Releases</a> y elige el archivo para tu ordenador:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Archivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows, sin instalación</td>
+<td><code>Bandua_MHL_Companion_x.y.z_portable.exe</code></td>
+</tr>
+<tr>
+<td>Windows, con instalador</td>
+<td><code>Bandua.MHL.Companion_x.y.z_x64-setup.exe</code> o <code>.msi</code></td>
+</tr>
+<tr>
+<td>macOS (Intel y Apple Silicon)</td>
+<td><code>Bandua.MHL.Companion_x.y.z_universal.dmg</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Primer arranque</h3>
+<p>La app aún no está firmada, así que tu sistema muestra un aviso, una sola vez:</p>
+<ul>
+<li><strong>Windows</strong>: haz clic en «Más información» y luego en «Ejecutar de todas formas».</li>
+<li><strong>macOS</strong>: haz doble clic en la aplicación y cierra el mensaje de bloqueo. Abre Ajustes del Sistema &gt; Privacidad y seguridad, baja hasta la sección Seguridad y haz clic en «Abrir de todos modos» junto al nombre de la aplicación; confirma con la contraseña de sesión (solo se pide una vez). Si el botón no aparece, abre Terminal y escribe <code>xattr -dr com.apple.quarantine</code> seguido de la aplicación arrastrada a la ventana.</li>
+</ul>
+<h3>Ventana de bienvenida</h3>
+<p>En el primer arranque, la app presenta lo que hace, los formatos reconocidos y un aviso (1). Léelo y haz clic en <strong>Entendido</strong> (2). Lo encontrarás en <strong>Acerca de</strong> (el botón <em>i</em>, arriba a la derecha). Los botones <strong>FR / EN / ES</strong> cambian el idioma en cualquier momento.</p>
+<figure class="shot w860"><img src="/companion/guide/img/00_welcome_es.webp" alt="Ventana de bienvenida" loading="lazy"></figure>
+
+<h2 id="es-3">3. Elegir el material</h2>
+<figure class="shot w860"><img src="/companion/guide/img/01_start_es.webp" alt="Pantalla de inicio" loading="lazy"></figure>
+
+<p>Tres formas de empezar:</p>
+<ul>
+<li><strong>arrastra la carpeta del material</strong> a la ventana y suéltala;</li>
+<li>haz clic en <strong>Elegir una carpeta</strong> (1);</li>
+<li>o haz clic en <strong>Elegir un archivo MHL</strong> (2) para controlar una sola tarjeta.</li>
+</ul>
+<p>Puedes darle la carpeta de un día entero, o incluso de todo un rodaje: la app encuentra <strong>todos los MHL</strong> que contiene, de varios días, cámaras y tarjetas a la vez.</p>
+<p>Si no encuentra ningún MHL, te lo dice. Pide entonces a quien te envió el material el archivo <code>.mhl</code>, o la carpeta <code>ascmhl</code>.</p>
+<h2 id="es-4">4. Iniciar el control</h2>
+<figure class="shot w860"><img src="/companion/guide/img/02_ready_es.webp" alt="Material listo para controlar" loading="lazy"></figure>
+
+<ol>
+<li><strong>Material</strong>: la carpeta elegida, con su número de archivos y su tamaño total. <strong>Cambiar</strong> permite elegir otra.</li>
+<li><strong>MHL encontrados</strong>: una ficha por MHL, con su formato (<em>MHL 1.1</em> o <em>ASC MHL</em>), su nombre, su ubicación en la carpeta, el número de archivos, el tamaño, el algoritmo de hash, el programa que lo escribió y, para un ASC MHL, su número de generaciones.</li>
+<li>El mensaje de abajo resume el trabajo. Haz clic en <strong>Iniciar el control</strong>.</li>
+</ol>
+<figure class="shot w860"><img src="/companion/guide/img/03_running_es.webp" alt="Control en curso" loading="lazy"></figure>
+
+<p>Durante el control:</p>
+<ol>
+<li>el <strong>círculo</strong> muestra la parte del material ya releída;</li>
+<li>los <strong>contadores</strong> dan la velocidad, el tiempo restante, el tiempo transcurrido y el número de archivos leídos;</li>
+<li>cada <strong>ficha MHL</strong> muestra su estado: <em>en espera</em>, <em>en curso</em>, <em>intacto</em> o su número de problemas;</li>
+<li>los <strong>problemas</strong> aparecen a medida que se encuentran, sin esperar al final;</li>
+<li>el botón pasa a <strong>Cancelar</strong>. Haz clic en él y luego en <strong>Confirmar la cancelación</strong> antes de tres segundos. Un control interrumpido da un resultado incompleto.</li>
+</ol>
+<p>Cada archivo se relee <strong>desde el disco</strong>, evitando la caché del sistema, así que el control cubre de verdad lo que está escrito en el disco. El tiempo depende sobre todo de la velocidad del disco: cuenta lo que dura una lectura completa del material.</p>
+<h2 id="es-5">5. Leer el resultado</h2>
+<h3>Todo está bien</h3>
+<figure class="shot w860"><img src="/companion/guide/img/08_ok_es.webp" alt="Material intacto" loading="lazy"></figure>
+
+<ol>
+<li>El círculo pasa a verde, con la palabra <em>terminado</em>.</li>
+<li>La franja <strong>✓ MATERIAL INTACTO</strong> confirma que cada archivo es idéntico a su MHL.</li>
+<li>Cada ficha MHL indica <em>intacto</em>.</li>
+</ol>
+<h3>Hay problemas</h3>
+<figure class="shot w860"><img src="/companion/guide/img/04_problems_es.webp" alt="Archivos con problemas" loading="lazy"></figure>
+
+<ol>
+<li>La franja roja indica el número de archivos con problemas.</li>
+<li>La pestaña <strong>Problemas</strong> lista cada archivo afectado: su estado (<em>DAÑADO</em>, <em>FALTA</em>…), el nombre del <strong>clip</strong> al que pertenece, el MHL correspondiente, su ruta y una explicación. Para un archivo dañado, se muestran las dos huellas (la esperada y la leída).</li>
+<li>El botón <strong>Mostrar</strong> abre la carpeta del archivo en el Explorador o en el Finder.</li>
+</ol>
+<p>Lo más útil para lo que sigue es el <strong>nombre del clip</strong>: es lo que pedirás que te vuelvan a enviar.</p>
+<h3>Las otras pestañas</h3>
+<figure class="shot w860"><img src="/companion/guide/img/05_clips_es.webp" alt="Pestaña Clips" loading="lazy"></figure>
+
+<p>La pestaña <strong>Clips</strong> (1) muestra todos los clips, con su MHL, su marca (RED, ARRI, Blackmagic, Sony, Canon, GoPro, DJI), su número de archivos, su tamaño y su estado. Los clips con problemas aparecen primero (2). Una carpeta <code>.RDC</code> de RED cuenta como un clip, igual que una secuencia ARRIRAW o un <code>.braw</code>.</p>
+<figure class="shot w860"><img src="/companion/guide/img/06_extra_es.webp" alt="Pestaña Fuera del MHL" loading="lazy"></figure>
+
+<p>La pestaña <strong>Fuera del MHL</strong> (1) lista los archivos que están en la carpeta pero en ningún MHL (2), por ejemplo proxies añadidos después. <strong>No se han podido controlar</strong>, porque el MHL no dice nada de ellos. No es necesariamente un problema, pero conviene saberlo.</p>
+<h2 id="es-6">6. Exportar el informe</h2>
+<figure class="shot w860"><img src="/companion/guide/img/07_export_es.webp" alt="Exportar el informe" loading="lazy"></figure>
+
+<ol>
+<li><strong>Exportar el informe</strong> guarda un archivo de texto donde tú elijas, por ejemplo <code>Control_integridad_BLADE_RUNNER_J03_2026-11-10_1432.txt</code>. Lista los MHL controlados, cada problema con su clip y los archivos fuera del MHL. Es el archivo que envías a producción o al DIT.</li>
+<li>Un mensaje confirma que se ha guardado.</li>
+<li><strong>Nueva carpeta</strong> vuelve a la pantalla de inicio.</li>
+<li><strong>Controlar de nuevo</strong> vuelve a lanzar el control sobre la misma carpeta, por ejemplo después de copiar de nuevo un clip.</li>
+</ol>
+<p>El informe es el único archivo que escribe la app, y solo donde tú decidas.</p>
+<h2 id="es-7">7. Los estados en detalle</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Significado</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INTACTO</strong></td>
+<td>El archivo es idéntico al MHL.</td>
+<td>Nada.</td>
+</tr>
+<tr>
+<td><strong>DAÑADO</strong></td>
+<td>Mismo tamaño, contenido distinto: el archivo se dañó o se modificó durante la transferencia.</td>
+<td>Volver a pedir el clip.</td>
+</tr>
+<tr>
+<td><strong>FALTA</strong></td>
+<td>El archivo figura en el MHL pero no está en la carpeta.</td>
+<td>Revisar la copia, volver a pedir el clip.</td>
+</tr>
+<tr>
+<td><strong>INCOMPLETO</strong></td>
+<td>Tamaño distinto del del MHL, a menudo una copia interrumpida.</td>
+<td>Volver a copiar el archivo y controlar de nuevo.</td>
+</tr>
+<tr>
+<td><strong>ILEGIBLE</strong></td>
+<td>El disco no ha podido leer el archivo.</td>
+<td>Revisar el disco y el cable, probar en otro ordenador.</td>
+</tr>
+<tr>
+<td><strong>SIN HASH</strong></td>
+<td>El MHL no da huella para este archivo: solo se ha comprobado su tamaño.</td>
+<td>Pedir un MHL completo si es importante.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si un historial <strong>ASC MHL</strong> se modificó después de crearse, la ficha del MHL lo indica: «Historial ASC MHL modificado después de crearse». Desconfía de ese MHL y pide uno nuevo.</p>
+<h2 id="es-8">8. Formatos reconocidos</h2>
+<ul>
+<li><strong>MHL 1.1</strong> (archivo <code>.mhl</code>): Bandua, Silverstack, ShotPut Pro, Hedge, YoYotta, mhl-tool…</li>
+<li><strong>ASC MHL</strong> (carpeta <code>ascmhl</code>): se combinan todas las generaciones, y el archivo <code>ascmhl_chain.xml</code> sirve para detectar un historial modificado a posteriori.</li>
+<li><strong>Hash</strong>: xxHash64, XXH3, XXH128, xxHash32, MD5, SHA-1, SHA-256, C4. Si un MHL da varios, se usa el más rápido.</li>
+<li><strong>Clips</strong> reconocidos: RED (carpetas <code>.RDC</code>), ARRI (MXF y secuencias ARRIRAW), Blackmagic (BRAW), Sony, Canon, GoPro, DJI, y los archivos de vídeo habituales.</li>
+</ul>
+<h2 id="es-9">9. Buenas prácticas</h2>
+<ul>
+<li><strong>Controla al recibir</strong>, antes de empezar a trabajar y antes de que el equipo de rodaje formatee las tarjetas.</li>
+<li><strong>Conserva el disco original</strong> hasta que termine el control y tengas tus propias copias.</li>
+<li><strong>Un MHL solo vale si viene de quien hizo la copia original</strong>, idealmente enviado aparte del material (por correo, por ejemplo). Un MHL hecho después sobre archivos ya dañados los daría por intactos.</li>
+<li><strong>Controla también tus propias copias</strong>: después de copiar el material en tu disco de montaje, vuelve a lanzar el control sobre la copia.</li>
+<li><strong>Exporta el informe</strong> y guárdalo con el proyecto.</li>
+</ul>
+<h2 id="es-10">10. Preguntas frecuentes</h2>
+<p><strong>¿Hace falta Bandua para usar la app?</strong>
+No. Lee los MHL de Bandua, pero también los de otros programas.</p>
+<p><strong>¿La app modifica mis archivos?</strong>
+No, nunca. Solo lee. El único archivo que escribe es el informe, cuando lo exportas.</p>
+<p><strong>¿Por qué tarda tanto el control?</strong>
+Cada archivo se vuelve a leer entero, desde el disco. El tiempo depende de la velocidad del disco y de la cantidad de material.</p>
+<p><strong>Un archivo está DAÑADO, pero el vídeo se reproduce bien. ¿Es grave?</strong>
+Sí, hay que avisar. El archivo ya no es el que se rodó: el error puede estar en una imagen que aún no has visto, o en los metadatos.</p>
+<p><strong>¿Existe una versión de línea de comandos?</strong>
+Sí, para scripts: <code>bandua-mhl-check &lt;carpeta|archivo.mhl&gt; [--lang fr|en|es] [--report informe.txt]</code>. Código de salida: <code>0</code> todo está intacto, <code>1</code> se han encontrado problemas, <code>2</code> no hay ningún MHL.</p>
+<p><strong>¿La app envía datos por Internet?</strong>
+No. Todo ocurre en tu ordenador.</p>
+<h2 id="es-11">11. Aviso y licencia</h2>
+<p>Esta herramienta ayuda a controlar medios. No sustituye tus propias comprobaciones ni tus procedimientos de copia de seguridad. Se ofrece «tal cual», sin ninguna garantía. El autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos, ni de ningún daño directo o indirecto derivado de su uso.</p>
+<p><strong>Un control solo es válido si el MHL viene de quien hizo la copia original.</strong></p>
+<p>© 2026 Domingo Olmo Martin. Distribuido bajo <a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/LICENSE">licencia MIT</a>.</p><p class="links"><a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases/latest">Descargar Bandua MHL Companion</a><a href="https://github.com/tetsujin28/bandua-mhl-companion/blob/main/docs/GUIDE.es.md">Esta guía en GitHub</a></p></article>
