@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tetsujin28.github.io/sitemap-index.xml
