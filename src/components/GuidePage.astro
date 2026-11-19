@@ -1,0 +1,83 @@
+---
+import '../styles/guide.css';
+import { APPS, UI } from '../lib/apps';
+import { LANGS, LOCALES, homeUrl, guideUrl, abs, type Lang } from '../lib/site';
+
+const { app, lang } = Astro.props as { app: string; lang: Lang };
+const A = APPS[app];
+const pages = import.meta.glob('../guides/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const [toc, article] = pages[`../guides/${app}.${lang}.html`].split('<!--ARTICLE-->');
+const ui = UI[lang];
+---
+<!doctype html>
+<html lang={lang} data-lang={lang} style={`--accent:${A.accent}`}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{A.title[lang]}</title>
+<meta name="description" content={A.desc[lang]}>
+<meta property="og:title" content={A.title[lang]}>
+<meta property="og:description" content={A.desc[lang]}>
+<meta property="og:type" content="article">
+<meta property="og:url" content={abs(guideUrl(app, lang))}>
+<meta property="og:locale" content={LOCALES[lang]}>
+<meta property="og:image" content={abs('/assets/og-image.jpg')}>
+<link rel="canonical" href={abs(guideUrl(app, lang))}>
+{LANGS.map(l => <link rel="alternate" hreflang={l} href={abs(guideUrl(app, l))}>)}
+<link rel="alternate" hreflang="x-default" href={abs(guideUrl(app, 'en'))}>
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href={homeUrl(lang)}>Domingo Olmo Martin</a>
+  <a class="back" href={`${homeUrl(lang)}#${app}`}>{ui.back(A.name)}</a>
+  <div class="lang" role="group" aria-label="Language">
+    {LANGS.map(l => <a href={guideUrl(app, l)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined} data-lang={l}>{l.toUpperCase()}</a>)}
+  </div>
+</div></header>
+<main class="wrap">
+<div><Fragment set:html={toc} /></div>
+<div><Fragment set:html={article} /></div>
+</main>
+<footer>© 2026 Domingo Olmo Martin · MIT License</footer>
+<dialog id="lb"><form method="dialog"><button>{ui.close}</button></form><img alt=""></dialog>
+<script define:vars={{ app }}>
+const root = document.documentElement;
+const lang = root.lang;
+const LANGS = ["en", "fr", "es"];
+const url = l => (l === "en" ? "" : "/" + l) + "/" + app + "/guide/";
+
+/* language: one URL per language; the choice is remembered */
+document.querySelectorAll(".lang a").forEach(a => a.addEventListener("click", () => {
+  try { localStorage.setItem("lang", a.dataset.lang); } catch (e) {}
+}));
+/* old links: ?lang=fr and #fr-3 land on the French page; first visit follows the saved or browser language */
+if (lang === "en") {
+  const q = new URLSearchParams(location.search).get("lang");
+  const fromHash = (location.hash.match(/^#(en|fr|es)-/) || [])[1];
+  let saved = null; try { saved = localStorage.getItem("lang"); } catch (e) {}
+  const nav = (navigator.language || "en").slice(0, 2);
+  const want = q || fromHash || saved || nav;
+  if (want !== "en" && LANGS.includes(want)) location.replace(url(want) + location.hash);
+}
+
+const lb = document.getElementById("lb");
+document.querySelectorAll(".shot").forEach(f => f.addEventListener("click", () => {
+  const i = f.querySelector("img"); lb.querySelector("img").src = i.src; lb.querySelector("img").alt = i.alt; lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+
+function spy() {
+  const hs = [...document.querySelectorAll("article h2")];
+  let cur = hs[0]; for (const h of hs) if (h.getBoundingClientRect().top < 140) cur = h;
+  document.querySelectorAll(".toc a").forEach(a => a.classList.toggle("on", cur && a.getAttribute("href") === "#" + cur.id));
+}
+addEventListener("scroll", spy, { passive: true });
+spy();
+if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+</script>
+</body>
+</html>

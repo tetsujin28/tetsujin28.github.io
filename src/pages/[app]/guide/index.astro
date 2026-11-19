@@ -1,0 +1,7 @@
+---
+import GuidePage from '../../../components/GuidePage.astro';
+import { APPS } from '../../../lib/apps';
+export const getStaticPaths = () => Object.keys(APPS).map(app => ({ params: { app } }));
+const { app } = Astro.params;
+---
+<GuidePage app={app} lang="en" />

@@ -1,0 +1,426 @@
+---
+import '../styles/home.css';
+import en from '../i18n/home.en.json';
+import fr from '../i18n/home.fr.json';
+import es from '../i18n/home.es.json';
+import { LANGS, homeUrl, guideUrl, abs, LOCALES } from '../lib/site';
+const { lang } = Astro.props;
+const t = { ...en, ...({ en, fr, es }[lang]) };
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{t["meta.title"]}</title>
+<meta name="description" content={t["meta.desc"]}>
+<meta property="og:title" content={t["meta.ogtitle"]}>
+<meta property="og:description" content={t["meta.ogdesc"]}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={abs(homeUrl(lang))}>
+<meta property="og:site_name" content="Domingo Olmo Martin">
+<meta property="og:locale" content={LOCALES[lang]}>
+{LANGS.filter(l => l !== lang).map(l => <meta property="og:locale:alternate" content={LOCALES[l]}>)}
+<meta property="og:image" content={abs('/assets/og-image.jpg')}>
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content={t["meta.ogalt"]}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content={abs('/assets/og-image.jpg')}>
+<link rel="canonical" href={abs(homeUrl(lang))}>
+{LANGS.map(l => <link rel="alternate" hreflang={l} href={abs(homeUrl(l))}>)}
+<link rel="alternate" hreflang="x-default" href={abs('/')}>
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">Domingo Olmo Martin</a>
+    <nav aria-label="Sections">
+      <a href="#bandua">Bandua</a>
+      <a href="#lugus">Lugus Transfer</a>
+      <a href="#companion">MHL Companion</a>
+      <a href="#ataecina">Ataecina</a>
+      <a href="#about">{t["nav.about"]}</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      {LANGS.map(l => <a href={homeUrl(l)} hreflang={l} lang={l} aria-current={l === lang ? "true" : undefined} data-lang={l}>{l.toUpperCase()}</a>)}
+    </div>
+    </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="vf">
+    <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+    <div class="hud tl"><span class="rec"><i></i>REC</span><span class="mono" id="tc" aria-hidden="true">--:--:--:--</span></div>
+    <div class="hud tr" aria-hidden="true"><span>A CAM</span><span class="hide-sm">24 fps</span></div>
+    <div class="hud bl" aria-hidden="true"><span>ISO 800</span><span>5600K</span><span>T2.8</span><span>180°</span></div>
+    <div class="hud br" aria-hidden="true"><span>2.39:1</span></div>
+
+    <div class="copy">
+    <h1 id="h1">{t["hero.title"]}</h1>
+    <p class="lede">{t["hero.lede"]}</p>
+    <div class="ctas">
+      <a class="btn" href="#bandua"><img src="/assets/bandua-icon.png" alt=""><span>Bandua<small>{t["hero.bandua"]}</small></span></a>
+      <a class="btn" href="#lugus"><img src="/assets/lugus-icon.png" alt=""><span>Lugus Transfer<small>{t["hero.lugus"]}</small></span></a>
+      <a class="btn" href="#companion"><img src="/assets/companion-icon.png" alt=""><span>MHL Companion<small>{t["hero.companion"]}</small></span></a>
+      <a class="btn" href="#ataecina"><img src="/assets/ataecina-icon.png" alt=""><span>Ataecina<small>{t["hero.ataecina"]}</small></span></a>
+    </div>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <img class="s1" src={`/assets/bandua-verified-${lang}.webp`} alt="" width="1600" height="1025">
+      <img class="s2" src={`/assets/lugus-link-${lang}.webp`} alt="" width="1600" height="1025">
+      <img class="s3" src={`/assets/companion-result-${lang}.webp`} alt="" width="1600" height="1000">
+      <img class="s4" src={`/assets/ataecina-recovery-${lang}.webp`} alt="" width="1600" height="1000">
+    </div>
+  </div>
+</section>
+
+<!-- BANDUA -->
+<section class="app" id="bandua" aria-labelledby="h-bandua">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-bandua">Bandua</h2>
+        <p class="role">{t["b.role"]}</p>
+      </div>
+    </div>
+    <p class="myth"><Fragment set:html={t["b.myth"]} /></p>
+    <div class="facts">
+      <span class="on">{t["f.free"]}</span>
+      <span>Windows</span><span>macOS</span>
+      <span>{t["f.langs"]}</span>
+      <span>Beta 0.2</span>
+    </div>
+
+    <figure class="monitor" data-set="bandua">
+      <div class="tabs" role="tablist" aria-label="Bandua screenshots">
+        <button role="tab" aria-selected="true" data-shot="bandua-offload">{t["b.t1"]}</button>
+        <button role="tab" aria-selected="false" data-shot="bandua-verified">{t["b.t2"]}</button>
+        <button role="tab" aria-selected="false" data-shot="bandua-report" data-portrait>{t["b.t3"]}</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src={`/assets/bandua-offload-${lang}.webp`} alt={t["b.t1"]} width="1600" height="1025"></div>
+        <figcaption><span class="cap">2026-11-10_1142_Blade_Runner_D03_A_A003</span><span>{t["zoom"]}</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3>{t["what"]}</h3>
+        <ul class="feat"><Fragment set:html={t["b.feat"]} /></ul>
+      </div>
+      <div>
+        <h3>{t["how"]}</h3>
+        <ol class="steps"><Fragment set:html={t["b.steps"]} /></ol>
+        <p class="note"><Fragment set:html={t["b.folder"]} /></p>
+        <a class="guide" href={guideUrl("bandua", lang)}><span>{t["b.guide"]}</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3>{t["dl.title"]}</h3>
+        <p>{t["b.dl"]}</p>
+        <a class="get" href="https://github.com/tetsujin28/bandua/releases/latest">{t["dl.btn"]}</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td>{t["os.winp"]}</td><td>Bandua_x.y.z_portable.exe</td></tr>
+          <tr><td>{t["os.wini"]}</td><td>_x64-setup.exe / .msi</td></tr>
+          <tr><td>{t["os.mac"]}</td><td>_universal.dmg</td></tr>
+        </table>
+        <p class="note">{t["b.warn"]}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LUGUS TRANSFER -->
+<section class="app" id="lugus" aria-labelledby="h-lugus">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-lugus">Lugus Transfer</h2>
+        <p class="role">{t["l.role"]}</p>
+      </div>
+    </div>
+    <p class="myth"><Fragment set:html={t["l.myth"]} /></p>
+    <div class="facts">
+      <span class="on">{t["f.free"]}</span>
+      <span>Windows</span><span>macOS</span>
+      <span>{t["f.langs"]}</span>
+      <span>Beta 0.1</span>
+    </div>
+
+    <figure class="monitor" data-set="lugus">
+      <div class="tabs" role="tablist" aria-label="Lugus Transfer screenshots">
+        <button role="tab" aria-selected="true" data-shot="lugus-link">{t["l.t1"]}</button>
+        <button role="tab" aria-selected="false" data-shot="lugus-choose">{t["l.t2"]}</button>
+        <button role="tab" aria-selected="false" data-shot="lugus-progress">{t["l.t3"]}</button>
+        <button role="tab" aria-selected="false" data-shot="lugus-received">{t["l.t4"]}</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src={`/assets/lugus-link-${lang}.webp`} alt={t["l.t1"]} width="1600" height="1025" loading="lazy"></div>
+        <figcaption><span class="cap">lugus://r/ng6bfcmw…?v=1 · 4821-lanterne-7</span><span>{t["zoom"]}</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3>{t["l.what"]}</h3>
+        <ul class="feat"><Fragment set:html={t["l.feat"]} /></ul>
+      </div>
+      <div>
+        <h3>{t["how"]}</h3>
+        <ol class="steps"><Fragment set:html={t["l.steps"]} /></ol>
+        <p class="note"><Fragment set:html={t["l.how"]} /></p>
+        <a class="guide" href={guideUrl("lugus", lang)}><span>{t["l.guide"]}</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3>{t["dl.titlel"]}</h3>
+        <p>{t["l.dl"]}</p>
+        <a class="get" href="https://github.com/tetsujin28/lugus-transfer/releases/latest">{t["dl.btn"]}</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td>{t["os.winp"]}</td><td>Lugus_Transfer_x.y.z_portable.exe</td></tr>
+          <tr><td>{t["os.wini"]}</td><td>_x64-setup.exe / .msi</td></tr>
+          <tr><td>{t["os.mac"]}</td><td>_universal.dmg</td></tr>
+        </table>
+        <p class="note">{t["l.warn"]}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDUA MHL COMPANION -->
+<section class="app" id="companion" aria-labelledby="h-companion">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-companion">MHL Companion</h2>
+        <p class="role">{t["c.role"]}</p>
+      </div>
+    </div>
+    <p class="myth"><Fragment set:html={t["c.myth"]} /></p>
+    <div class="facts">
+      <span class="on">{t["f.free"]}</span>
+      <span>Windows</span><span>macOS</span>
+      <span>{t["f.langs"]}</span>
+      <span>Beta 0.1</span>
+    </div>
+
+    <figure class="monitor" data-set="companion">
+      <div class="tabs" role="tablist" aria-label="Bandua MHL Companion screenshots">
+        <button role="tab" aria-selected="true" data-shot="companion-result">{t["c.t1"]}</button>
+        <button role="tab" aria-selected="false" data-shot="companion-clips">{t["c.t2"]}</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src={`/assets/companion-result-${lang}.webp`} alt={t["c.t1"]} width="1600" height="1000" loading="lazy"></div>
+        <figcaption><span class="cap">FILM_J03 / CAM_A / A003 · CAM_B / B002</span><span>{t["zoom"]}</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3>{t["c.what"]}</h3>
+        <ul class="feat"><Fragment set:html={t["c.feat"]} /></ul>
+      </div>
+      <div>
+        <h3>{t["how"]}</h3>
+        <ol class="steps"><Fragment set:html={t["c.steps"]} /></ol>
+        <p class="note">{t["c.trust"]}</p>
+        <a class="guide" href={guideUrl("companion", lang)}><span>{t["c.guide"]}</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3>{t["dl.titlec"]}</h3>
+        <p>{t["b.dl"]}</p>
+        <a class="get" href="https://github.com/tetsujin28/bandua-mhl-companion/releases">{t["dl.btn"]}</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td>{t["os.winp"]}</td><td>Bandua_MHL_Companion_x.y.z_portable.exe</td></tr>
+          <tr><td>{t["os.wini"]}</td><td>_x64-setup.exe / .msi</td></tr>
+          <tr><td>{t["os.mac"]}</td><td>_universal.dmg</td></tr>
+        </table>
+        <p class="note">{t["c.warn"]}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATAECINA -->
+<section class="app" id="ataecina" aria-labelledby="h-ataecina">
+  <div class="wrap">
+    <div class="app-head">
+      <div>
+        <h2 id="h-ataecina">Ataecina</h2>
+        <p class="role">{t["a.role"]}</p>
+      </div>
+    </div>
+    <p class="myth"><Fragment set:html={t["a.myth"]} /></p>
+    <div class="facts">
+      <span class="on">{t["f.free"]}</span>
+      <span>Windows</span>
+      <span>{t["f.langs"]}</span>
+      <span>Beta 0.11</span>
+    </div>
+
+    <figure class="monitor" data-set="ataecina">
+      <div class="tabs" role="tablist" aria-label="Ataecina screenshots">
+        <button role="tab" aria-selected="true" data-shot="ataecina-recovery">{t["a.t1"]}</button>
+        <button role="tab" aria-selected="false" data-shot="ataecina-repair">{t["a.t2"]}</button>
+      </div>
+      <div class="screen">
+        <div class="view"><img src={`/assets/ataecina-recovery-${lang}.webp`} alt={t["a.t1"]} width="1600" height="1000" loading="lazy"></div>
+        <figcaption><span class="cap">GH5_JOUR2 / DCIM / 100_PANA</span><span>{t["zoom"]}</span></figcaption>
+      </div>
+    </figure>
+
+    <div class="cols">
+      <div>
+        <h3>{t["a.rec"]}</h3>
+        <ul class="feat"><Fragment set:html={t["a.featr"]} /></ul>
+      </div>
+      <div>
+        <h3>{t["a.rep"]}</h3>
+        <ul class="feat"><Fragment set:html={t["a.featp"]} /></ul>
+        <p class="note"><Fragment set:html={t["a.tools"]} /></p>
+        <a class="guide" href={guideUrl("ataecina", lang)}><span>{t["a.guide"]}</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="dl">
+      <div>
+        <h3>{t["dl.titlea"]}</h3>
+        <p>{t["a.dl"]}</p>
+        <a class="get" href="https://github.com/tetsujin28/ataecina/releases/latest">{t["dl.btn"]}</a>
+      </div>
+      <div>
+        <table class="files">
+          <tr><td>{t["os.winp"]}</td><td>Ataecina_x.y.z_portable.exe</td></tr>
+          <tr><td>{t["os.wini"]}</td><td>_x64-setup.exe / .msi</td></tr>
+        </table>
+        <p class="note">{t["a.where"]}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<section class="signing" id="signing" aria-labelledby="h-signing">
+  <div class="wrap grid">
+    <div>
+      <h2 id="h-signing">{t["sg.title"]}</h2>
+    </div>
+    <div class="text">
+      <p><Fragment set:html={t["sg.p1"]} /></p>
+      <p><Fragment set:html={t["sg.p2"]} /></p>
+      <h3>{t["sg.h"]}</h3>
+      <p><Fragment set:html={t["sg.win"]} /></p>
+      <p><Fragment set:html={t["sg.mac"]} /></p>
+      <p><Fragment set:html={t["sg.mac2"]} /></p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" aria-labelledby="h-about">
+  <div class="wrap grid">
+    <div>
+      <h2 id="h-about">Domingo Olmo Martin</h2>
+      <p class="roles">{t["ab.roles"]}</p>
+    </div>
+    <div class="text">
+      <p>{t["ab.p1"]}</p>
+      <p>{t["ab.p2"]}</p>
+      <p>{t["ab.p3"]}</p>
+      <div class="links">
+        <a href="https://github.com/tetsujin28">GitHub</a>
+        <a href="https://github.com/tetsujin28/bandua/issues">{t["ab.ib"]}</a>
+        <a href="https://github.com/tetsujin28/lugus-transfer/issues">{t["ab.il"]}</a>
+        <a href="https://github.com/tetsujin28/bandua-mhl-companion/issues">{t["ab.ic"]}</a>
+        <a href="https://github.com/tetsujin28/ataecina/issues">{t["ab.ia"]}</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Domingo Olmo Martin</p>
+    <div>
+      <p>{t["ft.1"]}</p>
+      <p>{t["ft.2"]}</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Screenshot">
+  <form method="dialog"><button>{t["close"]}</button></form>
+  <img alt="">
+</dialog>
+
+
+<script>
+const lang = document.documentElement.lang || "en";
+const LANGS = ["en", "fr", "es"];
+
+function setShot(fig: HTMLElement, btn: HTMLElement) {
+  fig.querySelectorAll("[role=tab]").forEach(b => b.setAttribute("aria-selected", String(b === btn)));
+  const view = fig.querySelector(".view") as HTMLElement, img = view.querySelector("img") as HTMLImageElement;
+  img.src = `/assets/${btn.dataset.shot}-${lang}.webp`;
+  img.alt = btn.textContent || "";
+  view.classList.toggle("portrait", btn.hasAttribute("data-portrait"));
+}
+document.querySelectorAll<HTMLElement>(".monitor [role=tab]").forEach(b => b.addEventListener("click", () => setShot(b.closest(".monitor") as HTMLElement, b)));
+
+const lb = document.getElementById("lb") as HTMLDialogElement;
+document.querySelectorAll(".view").forEach(v => v.addEventListener("click", () => {
+  const src = v.querySelector("img") as HTMLImageElement;
+  const big = lb.querySelector("img") as HTMLImageElement;
+  big.src = src.src; big.alt = src.alt;
+  lb.showModal();
+}));
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+
+/* language: one URL per language; the choice is remembered */
+document.querySelectorAll<HTMLElement>(".lang a").forEach(a => a.addEventListener("click", () => {
+  try { localStorage.setItem("lang", a.dataset.lang || "en"); } catch (e) {}
+}));
+if (lang === "en" && location.pathname === "/") {
+  let saved: string | null = null; try { saved = localStorage.getItem("lang"); } catch (e) {}
+  const nav = (navigator.language || "en").slice(0, 2);
+  const want = saved || nav;
+  if (want !== "en" && LANGS.includes(want)) location.replace(`/${want}/${location.search}${location.hash}`);
+}
+
+/* timecode = time of day, 24 fps */
+const tc = document.getElementById("tc") as HTMLElement;
+const pad = (n: number) => String(n).padStart(2, "0");
+function tick() {
+  const d = new Date();
+  tc.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}:${pad(Math.floor(d.getMilliseconds() / (1000 / 24)))}`;
+}
+tick();
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(tick, 1000);
+else (function loop() { tick(); requestAnimationFrame(loop); })();
+
+const hdr = document.getElementById("top") as HTMLElement;
+addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 20), { passive: true });
+</script>
+</body>
+</html>
