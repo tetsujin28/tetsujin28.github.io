@@ -55,8 +55,7 @@
 <li><strong>Choisir un dossier / Choisir des fichiers</strong> : la même chose avec la fenêtre du système, et cela s'ajoute aussi à ce qui est là. « Choisir des fichiers » permet d'en sélectionner plusieurs d'un coup.</li>
 <li><strong>Après la livraison</strong> : ne rien faire, mettre l'ordinateur en veille ou l'éteindre une fois la livraison confirmée par le destinataire.</li>
 <li><strong>Bouton principal</strong> : <strong>Créer le lien</strong> pour envoyer, <strong>Recevoir</strong> pour recevoir, puis <strong>Arrêter</strong> pendant un transfert.</li>
-<li><strong>FR / EN / ES</strong> : change instantanément la langue de l'interface.</li>
-<li><strong>À propos</strong> (le bouton <em>i</em>) : version, licence et avertissement.</li>
+<li><strong>En haut à droite</strong> : le numéro de version, qui signale aussi une nouvelle version (voir plus bas), <strong>FR / EN / ES</strong> pour changer instantanément la langue, les <strong>Réglages</strong> (la roue dentée) et <strong>À propos</strong> (le bouton <em>i</em>) : licence et avertissement.</li>
 </ol>
 <p>Pendant un transfert, la partie droite affiche :
 - une frise d'<strong>étapes numérotées</strong>, l'étape en cours mise en évidence ;
@@ -65,6 +64,13 @@
 - le <strong>journal</strong> et, en réception, la liste des <strong>fichiers vérifiés</strong>.</p>
 <p>En haut, le badge à côté du nom de l'application résume l'état : <em>Prêt</em>, <em>Préparation</em>, <em>Publication</em>, <em>En attente</em>, <em>Envoi</em>, <em>Recherche</em>, <em>Choix</em>, <em>Réception</em>, <em>Noctiluca</em>, <em>Vérifié</em>, <em>Erreur</em>, <em>Arrêté</em>.</p>
 <p>La ligne <strong>La machine reste éveillée pendant le transfert</strong> rappelle que Lugus Transfer empêche l'ordinateur de se mettre en veille tout seul pendant qu'il travaille.</p>
+<h3>Version et réglages</h3>
+<p>Au lancement, Lugus Transfer demande une fois à GitHub si une version plus récente existe (les versions bêta comptent). Si c'est le cas, le numéro de version en haut à droite devient <strong>vX.Y.Z disponible</strong>, en bleu : un clic ouvre la page de téléchargement. Rien ne s'installe tout seul ; vous téléchargez la nouvelle version quand vous le décidez, de préférence entre deux transferts. Hors ligne, rien ne s'affiche et l'application fonctionne normalement.</p>
+<figure class="shot w520"><img src="/lugus/guide/img/15_update_fr.webp" alt="Une nouvelle version est disponible" loading="lazy"></figure>
+
+<p>La roue dentée ouvre les <strong>Réglages</strong>. La case <strong>Vérifier les nouvelles versions</strong> (1) est cochée par défaut ; décochez-la pour que l'application ne contacte jamais GitHub. Aucune autre donnée n'est envoyée lors de cette vérification.</p>
+<figure class="shot w620"><img src="/lugus/guide/img/16_settings_fr.webp" alt="Les réglages" loading="lazy"></figure>
+
 <h2 id="fr-4">4. Envoyer des rushes, pas à pas</h2>
 <h3>Étape 1 : choisir ce qu'on envoie</h3>
 <p>Déposez un dossier sur la fenêtre, ou cliquez sur <strong>Choisir un dossier</strong>. Vous pouvez aussi envoyer :
@@ -301,7 +307,7 @@ Oui. Rien n'est stocké entre les deux : les fichiers passent directement de l'u
 <p><strong>Puis-je envoyer à plusieurs personnes ?</strong>
 Un lien sert à une livraison. Pour envoyer les mêmes rushes à quelqu'un d'autre, créez un nouveau lien.</p>
 <p><strong>Qu'est-ce qui passe sur Internet ?</strong>
-Pour être trouvé, l'expéditeur publie ses adresses réseau, signées par une clé à usage unique, dans la DHT publique de BitTorrent. Les fichiers, les noms de dossiers et le code ne sont jamais publiés : ils ne circulent que chiffrés, entre les deux ordinateurs.</p>
+Pour être trouvé, l'expéditeur publie ses adresses réseau, signées par une clé à usage unique, dans la DHT publique de BitTorrent. Les fichiers, les noms de dossiers et le code ne sont jamais publiés : ils ne circulent que chiffrés, entre les deux ordinateurs. En dehors des transferts, l'application demande seulement à GitHub, au lancement, si une nouvelle version existe ; vous pouvez le désactiver dans les Réglages.</p>
 <p><strong>Le logiciel du monteur peut-il lire le MHL ?</strong>
 Oui, c'est du MHL 1.1 en xxHash64, le standard lu par Silverstack, ShotPut Pro, Hedge et Bandua MHL Companion.</p>
 <p><strong>Lugus Transfer fonctionne-t-il sous Linux ?</strong>
