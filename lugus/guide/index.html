@@ -56,8 +56,7 @@
 <li><strong>Choose a folder / Choose files</strong>: the same thing with the system window, and these also add to what is there. "Choose files" lets you pick several files at once.</li>
 <li><strong>After delivery</strong>: do nothing, put the computer to sleep, or shut it down once the recipient has confirmed delivery.</li>
 <li><strong>Main button</strong>: <strong>Create the link</strong> when sending, <strong>Receive</strong> when receiving, then <strong>Stop</strong> while a transfer is running.</li>
-<li><strong>FR / EN / ES</strong>: switches the interface language instantly.</li>
-<li><strong>About</strong> (the <em>i</em> button): version, license and disclaimer.</li>
+<li><strong>Top right</strong>: the version number, which also tells you when a new version is out (see below), <strong>FR / EN / ES</strong> to switch the interface language instantly, <strong>Settings</strong> (the gear) and <strong>About</strong> (the <em>i</em> button): license and disclaimer.</li>
 </ol>
 <p>During a transfer, the right side shows:
 - a row of <strong>numbered steps</strong>, the current one highlighted;
@@ -66,6 +65,13 @@
 - the <strong>log</strong> and, when receiving, the list of <strong>verified files</strong>.</p>
 <p>At the top, the badge next to the app name sums up the state: <em>Ready</em>, <em>Preparing</em>, <em>Publishing</em>, <em>Waiting</em>, <em>Sending</em>, <em>Searching</em>, <em>Choosing</em>, <em>Receiving</em>, <em>Noctiluca</em>, <em>Verified</em>, <em>Error</em>, <em>Stopped</em>.</p>
 <p>The line <strong>The machine stays awake during the transfer</strong> reminds you that Lugus Transfer stops the computer from going to sleep on its own while it works.</p>
+<h3>Version and settings</h3>
+<p>At startup, Lugus Transfer asks GitHub once whether a newer version exists (beta versions count). If so, the version number at the top right turns into <strong>vX.Y.Z available</strong>, in blue: one click opens the download page. Nothing installs itself; you download the new version when you decide to, ideally between two transfers. When offline, nothing is shown and the app works as usual.</p>
+<figure class="shot w520"><img src="/lugus/guide/img/15_update_en.webp" alt="A new version is available" loading="lazy"></figure>
+
+<p>The gear opens the <strong>Settings</strong>. The <strong>Check for new versions</strong> box (1) is ticked by default; untick it so the app never contacts GitHub. No other data is sent during this check.</p>
+<figure class="shot w620"><img src="/lugus/guide/img/16_settings_en.webp" alt="The settings" loading="lazy"></figure>
+
 <h2 id="en-4">4. Sending footage, step by step</h2>
 <h3>Step 1: choose what to send</h3>
 <p>Drop a folder on the window, or click <strong>Choose a folder</strong>. You can also send:
@@ -302,7 +308,7 @@ Yes. Nothing is stored in between: the files go directly from one to the other. 
 <p><strong>Can I send to several people?</strong>
 One link is for one delivery. To send the same footage to someone else, create a new link.</p>
 <p><strong>What goes on the Internet?</strong>
-To be found, the sender publishes its network addresses, signed by a one-time key, in the public BitTorrent DHT. The files, the folder names and the code are never published: they only travel encrypted between the two computers.</p>
+To be found, the sender publishes its network addresses, signed by a one-time key, in the public BitTorrent DHT. The files, the folder names and the code are never published: they only travel encrypted between the two computers. Outside transfers, the app only asks GitHub, at startup, whether a new version exists; you can turn this off in the Settings.</p>
 <p><strong>Can the editor's software read the MHL?</strong>
 Yes, it is MHL 1.1 with xxHash64, the standard read by Silverstack, ShotPut Pro, Hedge and Bandua MHL Companion.</p>
 <p><strong>Does Lugus Transfer run on Linux?</strong>

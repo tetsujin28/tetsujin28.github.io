@@ -41,6 +41,13 @@
 <p>En el primer arranque, la app presenta lo que hace, los formatos reconocidos y un aviso (1). Léelo y haz clic en <strong>Entendido</strong> (2). Lo encontrarás en <strong>Acerca de</strong> (el botón <em>i</em>, arriba a la derecha). Los botones <strong>FR / EN / ES</strong> cambian el idioma en cualquier momento.</p>
 <figure class="shot w860"><img src="/companion/guide/img/00_welcome_es.webp" alt="Ventana de bienvenida" loading="lazy"></figure>
 
+<h3>Versión y ajustes</h3>
+<p>Al iniciar, Bandua MHL Companion pregunta una vez a GitHub si existe una versión más reciente (las versiones beta cuentan). Si es así, el número de versión de arriba a la derecha pasa a <strong>vX.Y.Z disponible</strong>: un clic abre la página de descarga. Nada se instala solo; descargas la nueva versión cuando lo decidas, mejor entre dos trabajos. Sin conexión, no se muestra nada y la aplicación funciona con normalidad.</p>
+<figure class="shot w520"><img src="/companion/guide/img/09_update_es.webp" alt="Hay una nueva versión disponible" loading="lazy"></figure>
+
+<p>La rueda dentada abre los <strong>Ajustes</strong>. La casilla <strong>Buscar nuevas versiones</strong> (1) está marcada por defecto; desmárcala para que la aplicación no contacte nunca con GitHub. No se envía ningún otro dato durante esta comprobación.</p>
+<figure class="shot w620"><img src="/companion/guide/img/10_settings_es.webp" alt="Los ajustes" loading="lazy"></figure>
+
 <h2 id="es-3">3. Elegir el material</h2>
 <figure class="shot w860"><img src="/companion/guide/img/01_start_es.webp" alt="Pantalla de inicio" loading="lazy"></figure>
 
@@ -176,7 +183,7 @@ Sí, hay que avisar. El archivo ya no es el que se rodó: el error puede estar e
 <p><strong>¿Existe una versión de línea de comandos?</strong>
 Sí, para scripts: <code>bandua-mhl-check &lt;carpeta|archivo.mhl&gt; [--lang fr|en|es] [--report informe.txt]</code>. Código de salida: <code>0</code> todo está intacto, <code>1</code> se han encontrado problemas, <code>2</code> no hay ningún MHL.</p>
 <p><strong>¿La app envía datos por Internet?</strong>
-No. Todo ocurre en tu ordenador.</p>
+No. El control y el informe se hacen enteramente en tu ordenador. La única conexión es la búsqueda de nuevas versiones al iniciar, una petición a GitHub que no envía nada más; puedes desactivarla en los Ajustes.</p>
 <h2 id="es-11">11. Aviso y licencia</h2>
 <p>Esta herramienta ayuda a controlar medios. No sustituye tus propias comprobaciones ni tus procedimientos de copia de seguridad. Se ofrece «tal cual», sin ninguna garantía. El autor no se hace responsable de ninguna pérdida, corrupción o eliminación de datos, ni de ningún daño directo o indirecto derivado de su uso.</p>
 <p><strong>Un control solo es válido si el MHL viene de quien hizo la copia original.</strong></p>

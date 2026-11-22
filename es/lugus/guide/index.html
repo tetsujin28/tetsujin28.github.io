@@ -56,8 +56,7 @@
 <li><strong>Elegir una carpeta / Elegir archivos</strong>: lo mismo con la ventana del sistema, y también se suma a lo que ya está. «Elegir archivos» permite seleccionar varios a la vez.</li>
 <li><strong>Tras la entrega</strong>: no hacer nada, suspender el ordenador o apagarlo cuando el destinatario haya confirmado la entrega.</li>
 <li><strong>Botón principal</strong>: <strong>Crear el enlace</strong> para enviar, <strong>Recibir</strong> para recibir, y después <strong>Detener</strong> durante una transferencia.</li>
-<li><strong>FR / EN / ES</strong>: cambia al instante el idioma de la interfaz.</li>
-<li><strong>Acerca de</strong> (el botón <em>i</em>): versión, licencia y aviso.</li>
+<li><strong>Arriba a la derecha</strong>: el número de versión, que también avisa cuando hay una nueva (ver más abajo), <strong>FR / EN / ES</strong> para cambiar al instante el idioma, los <strong>Ajustes</strong> (la rueda dentada) y <strong>Acerca de</strong> (el botón <em>i</em>): licencia y aviso.</li>
 </ol>
 <p>Durante una transferencia, la parte derecha muestra:
 - una fila de <strong>pasos numerados</strong>, con el paso actual resaltado;
@@ -66,6 +65,13 @@
 - el <strong>registro</strong> y, al recibir, la lista de <strong>archivos verificados</strong>.</p>
 <p>Arriba, la etiqueta junto al nombre de la aplicación resume el estado: <em>Listo</em>, <em>Preparando</em>, <em>Publicando</em>, <em>En espera</em>, <em>Enviando</em>, <em>Buscando</em>, <em>Elección</em>, <em>Recibiendo</em>, <em>Noctiluca</em>, <em>Verificado</em>, <em>Error</em>, <em>Detenido</em>.</p>
 <p>La línea <strong>El equipo permanece despierto durante la transferencia</strong> recuerda que Lugus Transfer impide que el ordenador entre en reposo solo mientras trabaja.</p>
+<h3>Versión y ajustes</h3>
+<p>Al iniciar, Lugus Transfer pregunta una vez a GitHub si existe una versión más reciente (las versiones beta cuentan). Si es así, el número de versión de arriba a la derecha pasa a <strong>vX.Y.Z disponible</strong>, en azul: un clic abre la página de descarga. Nada se instala solo; descargas la nueva versión cuando lo decidas, mejor entre dos transferencias. Sin conexión, no se muestra nada y la aplicación funciona con normalidad.</p>
+<figure class="shot w520"><img src="/lugus/guide/img/15_update_es.webp" alt="Hay una nueva versión disponible" loading="lazy"></figure>
+
+<p>La rueda dentada abre los <strong>Ajustes</strong>. La casilla <strong>Buscar nuevas versiones</strong> (1) está marcada por defecto; desmárcala para que la aplicación no contacte nunca con GitHub. No se envía ningún otro dato durante esta comprobación.</p>
+<figure class="shot w620"><img src="/lugus/guide/img/16_settings_es.webp" alt="Los ajustes" loading="lazy"></figure>
+
 <h2 id="es-4">4. Enviar material, paso a paso</h2>
 <h3>Paso 1: elegir qué se envía</h3>
 <p>Suelta una carpeta en la ventana o haz clic en <strong>Elegir una carpeta</strong>. También puedes enviar:
@@ -302,7 +308,7 @@ Sí. No se guarda nada entre los dos: los archivos pasan directamente de uno a o
 <p><strong>¿Puedo enviar a varias personas?</strong>
 Un enlace sirve para una entrega. Para enviar el mismo material a otra persona, crea un nuevo enlace.</p>
 <p><strong>¿Qué pasa por Internet?</strong>
-Para que lo encuentren, el remitente publica sus direcciones de red, firmadas con una clave de un solo uso, en la DHT pública de BitTorrent. Los archivos, los nombres de carpetas y el código nunca se publican: solo viajan cifrados entre los dos ordenadores.</p>
+Para que lo encuentren, el remitente publica sus direcciones de red, firmadas con una clave de un solo uso, en la DHT pública de BitTorrent. Los archivos, los nombres de carpetas y el código nunca se publican: solo viajan cifrados entre los dos ordenadores. Fuera de las transferencias, la aplicación solo pregunta a GitHub, al iniciar, si hay una nueva versión; puedes desactivarlo en los Ajustes.</p>
 <p><strong>¿El programa del montador puede leer el MHL?</strong>
 Sí, es MHL 1.1 en xxHash64, el estándar que leen Silverstack, ShotPut Pro, Hedge y Bandua MHL Companion.</p>
 <p><strong>¿Funciona Lugus Transfer en Linux?</strong>

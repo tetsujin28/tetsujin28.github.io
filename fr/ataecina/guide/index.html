@@ -38,6 +38,13 @@ untrunc, FFmpeg et PhotoRec ne sont <strong>pas</strong> fournis avec Ataecina. 
 <p><strong>Notre conseil : la version portable.</strong> Vous la rangez dans un dossier dédié, et vous mettez les logiciels complémentaires juste à côté (section 3). Avec l'installeur, l'exécutable se trouve dans le dossier d'installation (en général sous <code>C:\Program Files\</code>), où Windows demande les droits administrateur pour ajouter des fichiers.</p>
 <p><strong>Premier lancement.</strong> L'application n'est pas encore signée : Windows affiche un avertissement une fois. Cliquez sur « Informations complémentaires », puis sur « Exécuter quand même ».</p>
 <p><strong>Droits administrateur.</strong> Lire une carte directement demande les droits administrateur. Si besoin, Ataecina affiche un bandeau et propose de se relancer en administrateur ; Windows vous demande alors de confirmer. La pastille <strong>admin</strong>, en haut à droite, passe au vert.</p>
+<h3>Version et réglages</h3>
+<p>Le numéro de version est affiché à côté du nom, en haut à gauche. Au lancement, Ataecina demande une fois à GitHub si une version plus récente existe (les versions bêta comptent). Si c'est le cas, un badge <strong>vX.Y.Z disponible</strong> apparaît en haut à droite : un clic ouvre la page de téléchargement. Rien ne s'installe tout seul ; vous téléchargez la nouvelle version quand vous le décidez, de préférence entre deux récupérations. Hors ligne, rien ne s'affiche et l'application fonctionne normalement.</p>
+<figure class="shot w560"><img src="/ataecina/guide/img/30_update_fr.webp" alt="Une nouvelle version est disponible" loading="lazy"></figure>
+
+<p>La roue dentée ouvre les <strong>Réglages</strong>. L'interrupteur <strong>Vérifier les nouvelles versions</strong> (1) est activé par défaut ; désactivez-le pour qu'Ataecina ne contacte jamais GitHub. Aucune autre donnée n'est envoyée lors de cette vérification.</p>
+<figure class="shot w620"><img src="/ataecina/guide/img/31_settings_fr.webp" alt="Les réglages" loading="lazy"></figure>
+
 <h2 id="fr-3">3. Installer les logiciels complémentaires (indispensable)</h2>
 <p>Ataecina pilote trois logiciels gratuits qui ne sont <strong>pas</strong> livrés avec lui. Ils restent la propriété de leurs auteurs : téléchargez-les toujours depuis leur <strong>site officiel</strong>.</p>
 <div class="tw"><table>
@@ -216,6 +223,8 @@ Non, Ataecina est pour Windows uniquement.</p>
 La lecture de la carte gère exFAT et FAT32, les formats de la quasi-totalité des cartes de caméra. Pour les autres cas, la recherche PhotoRec fonctionne avec tous les formats de carte.</p>
 <p><strong>Un fichier réparé est plus court que prévu.</strong>
 untrunc récupère tout ce qui est exploitable. Si la fin du fichier n'a jamais été écrite sur la carte, elle ne peut pas être reconstruite.</p>
+<p><strong>Ataecina envoie-t-il des données sur Internet ?</strong>
+Non. La lecture, la récupération et la réparation se font entièrement sur votre ordinateur. La seule connexion est la vérification des nouvelles versions au lancement, une requête à GitHub qui n'envoie rien d'autre ; vous pouvez la désactiver dans les Réglages.</p>
 <h2 id="fr-11">11. Avertissement et licence</h2>
 <p>Ataecina est un outil d'aide à la récupération et à la réparation de médias. Il est fourni « en l'état », sans aucune garantie : la récupération n'est jamais garantie, et l'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données. Pour des rushes irremplaçables sur une carte physiquement endommagée, adressez-vous à un professionnel de la récupération de données avant toute manipulation.</p>
 <p>untrunc, FFmpeg et TestDisk / PhotoRec restent la propriété de leurs auteurs et sont distribués sous leur propre licence.</p>

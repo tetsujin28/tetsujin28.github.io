@@ -55,7 +55,14 @@
 <li><strong>Log</strong>: the live journal.</li>
 <li><strong>Main button</strong>: <strong>Start offload</strong>, then <strong>Cancel</strong>, then <strong>New offload</strong> or <strong>Retry this card</strong>. A message on its left sums up the current state.</li>
 </ol>
-<p>At the top, the badge next to the app name shows the state: <em>Ready</em>, <em>Copying</em>, <em>Verifying</em>, <em>Verified</em>, <em>Errors</em>, <em>Cancelled</em>. The <strong>FR / EN / ES</strong> buttons switch the interface language instantly.</p>
+<p>At the top, the badge next to the app name shows the state: <em>Ready</em>, <em>Copying</em>, <em>Verifying</em>, <em>Verified</em>, <em>Errors</em>, <em>Cancelled</em>. The <strong>FR / EN / ES</strong> buttons switch the interface language instantly. On the right you also find the version number, the <strong>Settings</strong> gear and <strong>About</strong> (the <em>i</em> button).</p>
+<h3>Version and settings</h3>
+<p>At startup, Bandua asks GitHub once whether a newer version exists (beta versions count). If so, the version number at the top right turns into <strong>vX.Y.Z available</strong>: one click opens the download page. Nothing installs itself; you download the new version when you decide to, ideally between two jobs. When offline, nothing is shown and the app works as usual.</p>
+<figure class="shot w520"><img src="/bandua/guide/img/12_update_en.webp" alt="A new version is available" loading="lazy"></figure>
+
+<p>The gear opens the <strong>Settings</strong>. The <strong>Check for new versions</strong> box (1) is ticked by default; untick it so the app never contacts GitHub. No other data is sent during this check.</p>
+<figure class="shot w620"><img src="/bandua/guide/img/13_settings_en.webp" alt="The settings" loading="lazy"></figure>
+
 <h2 id="en-4">4. Offloading a card, step by step</h2>
 <h3>Step 1: choose the source</h3>
 <p>Click the <strong>Source</strong> box ("Choose the card") and select the card, or the folder that stands for it.</p>
@@ -284,7 +291,7 @@ Yes, MHL 1.1 with xxHash64 is the standard these tools read. They can also use t
 <p><strong>Does Bandua run on Linux?</strong>
 Not for now. The code stays compatible, but there is no Linux build until it can be tested.</p>
 <p><strong>Does Bandua send data over the Internet?</strong>
-No. Everything happens on your computer.</p>
+No. Copying, verification and reports happen entirely on your computer. The only connection is the check for new versions at startup, a request to GitHub that sends nothing else; you can turn it off in the Settings.</p>
 <h2 id="en-11">11. Disclaimer and license</h2>
 <p>Bandua is a tool to help copy and verify media. It does not replace your own checks or backup procedures. The software is provided "as is", without any warranty. The author cannot be held responsible for any loss, corruption or deletion of data, footage or media, nor for any direct or indirect damage resulting from the use, misuse or malfunction of the software.</p>
 <p><strong>Never format or reuse a card before checking that every copy is complete and readable.</strong></p>

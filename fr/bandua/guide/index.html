@@ -55,7 +55,14 @@
 <li><strong>Log</strong> : le journal en direct.</li>
 <li><strong>Bouton principal</strong> : <strong>Lancer le déchargement</strong>, puis <strong>Annuler</strong>, puis <strong>Nouveau déchargement</strong> ou <strong>Relancer cette carte</strong>. À sa gauche, un message résume l'état.</li>
 </ol>
-<p>En haut, la pastille à côté du nom de l'application indique l'état : <em>Prêt</em>, <em>Copie en cours</em>, <em>Vérification</em>, <em>Vérifié</em>, <em>Erreurs</em>, <em>Annulé</em>. Les boutons <strong>FR / EN / ES</strong> changent la langue de l'interface immédiatement.</p>
+<p>En haut, la pastille à côté du nom de l'application indique l'état : <em>Prêt</em>, <em>Copie en cours</em>, <em>Vérification</em>, <em>Vérifié</em>, <em>Erreurs</em>, <em>Annulé</em>. Les boutons <strong>FR / EN / ES</strong> changent la langue de l'interface immédiatement. À droite se trouvent aussi le numéro de version, la roue dentée des <strong>Réglages</strong> et <strong>À propos</strong> (le bouton <em>i</em>).</p>
+<h3>Version et réglages</h3>
+<p>Au lancement, Bandua demande une fois à GitHub si une version plus récente existe (les versions bêta comptent). Si c'est le cas, le numéro de version en haut à droite devient <strong>vX.Y.Z disponible</strong> : un clic ouvre la page de téléchargement. Rien ne s'installe tout seul ; vous téléchargez la nouvelle version quand vous le décidez, de préférence entre deux travaux. Hors ligne, rien ne s'affiche et l'application fonctionne normalement.</p>
+<figure class="shot w520"><img src="/bandua/guide/img/12_update_fr.webp" alt="Une nouvelle version est disponible" loading="lazy"></figure>
+
+<p>La roue dentée ouvre les <strong>Réglages</strong>. La case <strong>Vérifier les nouvelles versions</strong> (1) est cochée par défaut ; décochez-la pour que l'application ne contacte jamais GitHub. Aucune autre donnée n'est envoyée lors de cette vérification.</p>
+<figure class="shot w620"><img src="/bandua/guide/img/13_settings_fr.webp" alt="Les réglages" loading="lazy"></figure>
+
 <h2 id="fr-4">4. Décharger une carte, pas à pas</h2>
 <h3>Étape 1 : choisir la source</h3>
 <p>Cliquez sur le cadre <strong>Source</strong> (« Choisir la carte ») et sélectionnez la carte, ou le dossier qui la représente.</p>
@@ -284,7 +291,7 @@ Oui, le MHL 1.1 avec xxHash64 est le standard que ces logiciels lisent. Il peut 
 <p><strong>Bandua fonctionne-t-il sous Linux ?</strong>
 Pas pour l'instant. Le code reste compatible, mais la version Linux n'est pas proposée tant qu'elle ne peut pas être testée.</p>
 <p><strong>Bandua envoie-t-il des données sur Internet ?</strong>
-Non. Tout se passe sur votre ordinateur.</p>
+Non. La copie, la vérification et les rapports se font entièrement sur votre ordinateur. La seule connexion est la vérification des nouvelles versions au lancement, une requête à GitHub qui n'envoie rien d'autre ; vous pouvez la désactiver dans les Réglages.</p>
 <h2 id="fr-11">11. Avertissement et licence</h2>
 <p>Bandua est un outil d'aide à la copie et à la vérification de médias. Il ne remplace pas vos propres contrôles ni vos procédures de sauvegarde. Le logiciel est fourni « en l'état », sans aucune garantie. L'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données, rushes ou supports, ni de tout dommage direct ou indirect résultant de l'utilisation, d'une mauvaise utilisation ou d'un dysfonctionnement du logiciel.</p>
 <p><strong>Ne formatez ni ne réutilisez jamais une carte avant d'avoir vérifié que chaque copie est complète et lisible.</strong></p>

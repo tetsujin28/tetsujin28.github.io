@@ -41,6 +41,13 @@
 <p>Au premier lancement, l'app présente ce qu'elle fait, les formats reconnus et un avertissement (1). Lisez-le, puis cliquez sur <strong>J'ai compris</strong> (2). Vous le retrouverez dans <strong>À propos</strong> (le bouton <em>i</em>, en haut à droite). Les boutons <strong>FR / EN / ES</strong> changent la langue à tout moment.</p>
 <figure class="shot w860"><img src="/companion/guide/img/00_welcome_fr.webp" alt="Fenêtre de bienvenue" loading="lazy"></figure>
 
+<h3>Version et réglages</h3>
+<p>Au lancement, Bandua MHL Companion demande une fois à GitHub si une version plus récente existe (les versions bêta comptent). Si c'est le cas, le numéro de version en haut à droite devient <strong>vX.Y.Z disponible</strong> : un clic ouvre la page de téléchargement. Rien ne s'installe tout seul ; vous téléchargez la nouvelle version quand vous le décidez, de préférence entre deux travaux. Hors ligne, rien ne s'affiche et l'application fonctionne normalement.</p>
+<figure class="shot w520"><img src="/companion/guide/img/09_update_fr.webp" alt="Une nouvelle version est disponible" loading="lazy"></figure>
+
+<p>La roue dentée ouvre les <strong>Réglages</strong>. La case <strong>Vérifier les nouvelles versions</strong> (1) est cochée par défaut ; décochez-la pour que l'application ne contacte jamais GitHub. Aucune autre donnée n'est envoyée lors de cette vérification.</p>
+<figure class="shot w620"><img src="/companion/guide/img/10_settings_fr.webp" alt="Les réglages" loading="lazy"></figure>
+
 <h2 id="fr-3">3. Choisir les rushes</h2>
 <figure class="shot w860"><img src="/companion/guide/img/01_start_fr.webp" alt="Écran d'accueil" loading="lazy"></figure>
 
@@ -176,7 +183,7 @@ Oui, il faut le signaler. Le fichier n'est plus celui qui a été tourné : l'er
 <p><strong>Existe-t-il une version en ligne de commande ?</strong>
 Oui, pour les scripts : <code>bandua-mhl-check &lt;dossier|fichier.mhl&gt; [--lang fr|en|es] [--report rapport.txt]</code>. Code de sortie : <code>0</code> tout est intact, <code>1</code> problèmes trouvés, <code>2</code> aucun MHL trouvé.</p>
 <p><strong>L'app envoie-t-elle des données sur Internet ?</strong>
-Non. Tout se passe sur votre ordinateur.</p>
+Non. Le contrôle et le rapport se font entièrement sur votre ordinateur. La seule connexion est la vérification des nouvelles versions au lancement, une requête à GitHub qui n'envoie rien d'autre ; vous pouvez la désactiver dans les Réglages.</p>
 <h2 id="fr-11">11. Avertissement et licence</h2>
 <p>Cet outil aide à contrôler des médias. Il ne remplace pas vos propres vérifications ni vos procédures de sauvegarde. Il est fourni « en l'état », sans aucune garantie. L'auteur ne saurait être tenu responsable de toute perte, corruption ou suppression de données, ni de tout dommage direct ou indirect résultant de son utilisation.</p>
 <p><strong>Un contrôle n'est valable que si le MHL vient de la personne qui a fait la copie d'origine.</strong></p>
