@@ -37,6 +37,13 @@ untrunc, FFmpeg and PhotoRec are <strong>not</strong> included with Ataecina. Do
 <p><strong>Our advice: the portable version.</strong> You keep it in its own folder and put the additional software right next to it (section 3). With the installer, the executable lives in the installation folder (usually under <code>C:\Program Files\</code>), where Windows asks for administrator rights to add files.</p>
 <p><strong>First launch.</strong> The app is not signed yet, so Windows shows a warning once. Click "More info", then "Run anyway".</p>
 <p><strong>Administrator rights.</strong> Reading a card directly requires administrator rights. When needed, Ataecina shows a banner and offers to restart as administrator; Windows asks you to confirm. The <strong>admin</strong> pill, top right, turns green.</p>
+<h3>Version and settings</h3>
+<p>The version number is shown next to the name, at the top left. At startup, Ataecina asks GitHub once whether a newer version exists (beta versions count). If so, a <strong>vX.Y.Z available</strong> badge appears at the top right: one click opens the download page. Nothing installs itself; you download the new version when you decide to, ideally between two recoveries. When offline, nothing is shown and the app works as usual.</p>
+<figure class="shot w560"><img src="/ataecina/guide/img/30_update_en.webp" alt="A new version is available" loading="lazy"></figure>
+
+<p>The gear opens the <strong>Settings</strong>. The <strong>Check for new versions</strong> switch (1) is on by default; turn it off so Ataecina never contacts GitHub. No other data is sent during this check.</p>
+<figure class="shot w620"><img src="/ataecina/guide/img/31_settings_en.webp" alt="The settings" loading="lazy"></figure>
+
 <h2 id="en-3">3. Installing the additional software (required)</h2>
 <p>Ataecina drives three free programs that are <strong>not</strong> shipped with it. They remain the property of their authors: always download them from their <strong>official website</strong>.</p>
 <div class="tw"><table>
@@ -215,6 +222,8 @@ No, Ataecina is Windows only.</p>
 Card reading handles exFAT and FAT32, the formats of almost every camera card. For other cases, the PhotoRec search works with any card format.</p>
 <p><strong>A repaired file is shorter than expected.</strong>
 untrunc recovers everything usable. If the end of the file was never written to the card, it cannot be rebuilt.</p>
+<p><strong>Does Ataecina send data over the Internet?</strong>
+No. Reading, recovery and repair happen entirely on your computer. The only connection is the check for new versions at startup, a request to GitHub that sends nothing else; you can turn it off in the Settings.</p>
 <h2 id="en-11">11. Disclaimer and license</h2>
 <p>Ataecina is a tool to help recover and repair media. It is provided "as is", without any warranty: recovery is never guaranteed, and the author cannot be held responsible for any loss, corruption or deletion of data. For irreplaceable footage on a physically damaged card, contact a data recovery professional before doing anything.</p>
 <p>untrunc, FFmpeg and TestDisk / PhotoRec remain the property of their authors and are distributed under their own licences.</p>

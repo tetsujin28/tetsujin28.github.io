@@ -40,6 +40,13 @@
 <p>On first launch, the app explains what it does, the supported formats and a disclaimer (1). Read it, then click <strong>Got it</strong> (2). You can find it again under <strong>About</strong> (the <em>i</em> button, top right). The <strong>FR / EN / ES</strong> buttons switch the language at any time.</p>
 <figure class="shot w860"><img src="/companion/guide/img/00_welcome_en.webp" alt="Welcome window" loading="lazy"></figure>
 
+<h3>Version and settings</h3>
+<p>At startup, Bandua MHL Companion asks GitHub once whether a newer version exists (beta versions count). If so, the version number at the top right turns into <strong>vX.Y.Z available</strong>: one click opens the download page. Nothing installs itself; you download the new version when you decide to, ideally between two jobs. When offline, nothing is shown and the app works as usual.</p>
+<figure class="shot w520"><img src="/companion/guide/img/09_update_en.webp" alt="A new version is available" loading="lazy"></figure>
+
+<p>The gear opens the <strong>Settings</strong>. The <strong>Check for new versions</strong> box (1) is ticked by default; untick it so the app never contacts GitHub. No other data is sent during this check.</p>
+<figure class="shot w620"><img src="/companion/guide/img/10_settings_en.webp" alt="The settings" loading="lazy"></figure>
+
 <h2 id="en-3">3. Choosing the footage</h2>
 <figure class="shot w860"><img src="/companion/guide/img/01_start_en.webp" alt="Start screen" loading="lazy"></figure>
 
@@ -175,7 +182,7 @@ Yes, report it. The file is no longer the one that was shot: the error may be on
 <p><strong>Is there a command-line version?</strong>
 Yes, for scripts: <code>bandua-mhl-check &lt;folder|file.mhl&gt; [--lang fr|en|es] [--report report.txt]</code>. Exit code: <code>0</code> everything is intact, <code>1</code> problems found, <code>2</code> no MHL found.</p>
 <p><strong>Does the app send data over the Internet?</strong>
-No. Everything happens on your computer.</p>
+No. The check and the report happen entirely on your computer. The only connection is the check for new versions at startup, a request to GitHub that sends nothing else; you can turn it off in the Settings.</p>
 <h2 id="en-11">11. Disclaimer and license</h2>
 <p>This tool helps you check media. It does not replace your own checks or backup procedures. It is provided "as is", without any warranty. The author cannot be held responsible for any loss, corruption or deletion of data, nor for any direct or indirect damage resulting from its use.</p>
 <p><strong>A check is only meaningful if the MHL comes from the person who made the original copy.</strong></p>
