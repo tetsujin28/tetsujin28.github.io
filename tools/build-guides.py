@@ -19,16 +19,16 @@ from PIL import Image
 SITE = pathlib.Path(__file__).resolve().parents[1]
 APPS = {
     "bandua": dict(name="Bandua", repo="bandua", icon="bandua-icon.png",
-                   sub={"en": "Version 0.2.0 (beta) · Windows and macOS", "fr": "Version 0.2.0 (bêta) · Windows et macOS", "es": "Versión 0.2.0 (beta) · Windows y macOS"},
+                   sub={"en": "Version 0.3.0 (beta) · Windows and macOS", "fr": "Version 0.3.0 (bêta) · Windows et macOS", "es": "Versión 0.3.0 (beta) · Windows y macOS"},
                    title={"en": "Bandua user guide", "fr": "Bandua, mode d'emploi", "es": "Bandua, manual de uso"}),
     "companion": dict(name="Bandua MHL Companion", repo="bandua-mhl-companion", icon="companion-icon.png",
-                   sub={"en": "Version 0.1.0 · Windows and macOS", "fr": "Version 0.1.0 · Windows et macOS", "es": "Versión 0.1.0 · Windows y macOS"},
+                   sub={"en": "Version 0.2.0 · Windows and macOS", "fr": "Version 0.2.0 · Windows et macOS", "es": "Versión 0.2.0 · Windows y macOS"},
                    title={"en": "Bandua MHL Companion user guide", "fr": "Bandua MHL Companion, mode d'emploi", "es": "Bandua MHL Companion, manual de uso"}),
     "lugus": dict(name="Lugus Transfer", repo="lugus-transfer", icon="lugus-icon.png",
-                   sub={"en": "Version 0.2.0 (beta) · Windows and macOS", "fr": "Version 0.2.0 (bêta) · Windows et macOS", "es": "Versión 0.2.0 (beta) · Windows y macOS"},
+                   sub={"en": "Version 0.3.0 (beta) · Windows and macOS", "fr": "Version 0.3.0 (bêta) · Windows et macOS", "es": "Versión 0.3.0 (beta) · Windows y macOS"},
                    title={"en": "Lugus Transfer user guide", "fr": "Lugus Transfer, mode d'emploi", "es": "Lugus Transfer, manual de uso"}),
     "ataecina": dict(name="Ataecina", repo="ataecina", icon="ataecina-icon.png",
-                   sub={"en": "Beta 0.11.4 · Windows", "fr": "Version bêta 0.11.4 · Windows", "es": "Beta 0.11.4 · Windows"},
+                   sub={"en": "Beta 0.11.5 · Windows", "fr": "Version bêta 0.11.5 · Windows", "es": "Beta 0.11.5 · Windows"},
                    title={"en": "Ataecina user guide", "fr": "Ataecina, mode d'emploi", "es": "Ataecina, manual de uso"}),
 }
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
